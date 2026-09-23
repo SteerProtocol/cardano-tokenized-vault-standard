@@ -1,0 +1,80 @@
+{
+  "standard": "CTVS-1 planning vectors",
+  "feeScale": 10000,
+  "cases": [
+    {
+      "name": "bootstrap deposit without fees",
+      "state": { "totalAssets": 0, "totalShares": 0, "virtualAssets": 1, "virtualShares": 1 },
+      "fees": { "entryFeeBps": 0, "exitFeeBps": 0 },
+      "action": "deposit",
+      "amount": 1000000,
+      "expected": { "grossAssets": 1000000, "netAssets": 1000000, "feeAssets": 0, "shares": 1000000 }
+    },
+    {
+      "name": "deposit uses floor rounding",
+      "state": { "totalAssets": 3, "totalShares": 2, "virtualAssets": 1, "virtualShares": 1 },
+      "fees": { "entryFeeBps": 0, "exitFeeBps": 0 },
+      "action": "deposit",
+      "amount": 1,
+      "expected": { "grossAssets": 1, "netAssets": 1, "feeAssets": 0, "shares": 0 }
+    },
+    {
+      "name": "mint uses ceiling rounding",
+      "state": { "totalAssets": 3, "totalShares": 2, "virtualAssets": 1, "virtualShares": 1 },
+      "fees": { "entryFeeBps": 0, "exitFeeBps": 0 },
+      "action": "mint",
+      "amount": 1,
+      "expected": { "grossAssets": 2, "netAssets": 2, "feeAssets": 0, "shares": 1 }
+    },
+    {
+      "name": "one percent deposit fee is included in the gross amount",
+      "state": { "totalAssets": 0, "totalShares": 0, "virtualAssets": 1, "virtualShares": 1 },
+      "fees": { "entryFeeBps": 100, "exitFeeBps": 100 },
+      "action": "deposit",
+      "amount": 1000,
+      "expected": { "grossAssets": 1000, "netAssets": 990, "feeAssets": 10, "shares": 990 }
+    },
+    {
+      "name": "one percent withdraw fee is added to the vault outflow",
+      "state": { "totalAssets": 1000000, "totalShares": 1000000, "virtualAssets": 1, "virtualShares": 1 },
+      "fees": { "entryFeeBps": 100, "exitFeeBps": 100 },
+      "action": "withdraw",
+      "amount": 1000,
+      "expected": { "grossAssets": 1010, "netAssets": 1000, "feeAssets": 10, "shares": 1010 }
+    }
+  ],
+  "accountingCases": [
+    {
+      "name": "ADA deposit accrues the fee without spending state storage",
+      "underlying": "ada",
+      "action": "deposit",
+      "before": { "totalAssets": 1000, "accruedFeeAssets": 20, "storageLovelace": 300 },
+      "quote": { "grossAssets": 100, "netAssets": 99, "feeAssets": 1 },
+      "after": { "totalAssets": 1099, "accruedFeeAssets": 21, "storageLovelace": 300, "rawAssetAmount": 1420 }
+    },
+    {
+      "name": "ADA withdrawal shifts its fee to the recipient liability",
+      "underlying": "ada",
+      "action": "withdraw",
+      "before": { "totalAssets": 1000, "accruedFeeAssets": 20, "storageLovelace": 300 },
+      "quote": { "grossAssets": 102, "netAssets": 100, "feeAssets": 2 },
+      "after": { "totalAssets": 898, "accruedFeeAssets": 22, "storageLovelace": 300, "rawAssetAmount": 1220 }
+    },
+    {
+      "name": "native-token deposit keeps lovelace storage separate",
+      "underlying": "native",
+      "action": "deposit",
+      "before": { "totalAssets": 1000, "accruedFeeAssets": 20, "storageLovelace": 300 },
+      "quote": { "grossAssets": 100, "netAssets": 99, "feeAssets": 1 },
+      "after": { "totalAssets": 1099, "accruedFeeAssets": 21, "storageLovelace": 300, "rawAssetAmount": 1120 }
+    },
+    {
+      "name": "fee claim removes only accrued ADA",
+      "underlying": "ada",
+      "action": "claimFees",
+      "before": { "totalAssets": 898, "accruedFeeAssets": 22, "storageLovelace": 300 },
+      "quote": { "grossAssets": 22, "netAssets": 0, "feeAssets": 22 },
+      "after": { "totalAssets": 898, "accruedFeeAssets": 0, "storageLovelace": 300, "rawAssetAmount": 1198 }
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "scope": "copied-source isolated compiled handler probes; not signed ledger transactions",
+  "compiler": "aiken v1.1.22+39d6b04",
+  "probe_sha256": "b2396c3736676382331894db11b29312379c2cc3251a2fe767b370db65c231e5",
+  "sources": [
+    {
+      "path": "reference/packages/onchain/lib/ctvs/decode.ak",
+      "sha256": "c9f026d1a432a13866b5752a402d6c42939f8729f9da9fa5b1cef0ad6413eb83"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/genesis.ak",
+      "sha256": "72c200596391b894c34446f923e7fa5d8d701424d1edc2f3000c92e838f4d254"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/ledger.ak",
+      "sha256": "4cecb26a221e5d79b1de474c498629b78d803de2f71b21c445cf8e9a25867532"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/math.ak",
+      "sha256": "d483ac652817a851a3fc3d7abaacc20aa041f5ce9a0d6b8cf78a047e7d73f3a2"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/state_core.ak",
+      "sha256": "6d7404ccb39633601f61300ca91a5fcb8aeb41f427a76247e1dbcde8fcf7a0ae"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/testing.ak",
+      "sha256": "24b258b22a32ff622c0b5bedb44f459dbb971e0a155043fdc4d3641758cab3bd"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/validation.ak",
+      "sha256": "2549e7368266914810cf261dedec7d02b2276782de85e1f747ebdb98140a9260"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/wire.ak",
+      "sha256": "e3c08c639f48fe19892adfb67f34dce83923927a7a3443c8b23758e7f5a90627"
+    },
+    {
+      "path": "reference/packages/onchain/validators/config_lock.ak",
+      "sha256": "0b07dcf24cb825849dbc6e70edde801b0f8fdd20e91e3a5489a9335b30eb0246"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak",
+      "sha256": "ed510deeb9d16d929c57bae57ba991758bc19b08231090f86cf887e8fa536ae2"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak",
+      "sha256": "6c1ef75f6a1b61657dc5cd4452208eae3f104461869e76e7693aac4328d10bf6"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak",
+      "sha256": "c08f3edecce64ef036d6049d6376902f4faef61e3b4e5aa24bd029a1ba1393cf"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.ak",
+      "sha256": "7a297812af3d2cf099b1f9223561c8d55639d72bc238e6e7fa4f08f4e5d320a3"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.test.ak",
+      "sha256": "ee45052373b763b75d2bde157ba1324e85206675c151ffdd89bfa60b63960622"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak",
+      "sha256": "ad586edfe6974fde65b6b20ec051243207ef87460abcbb13c7b4e04a37bd8bc2"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/claim.ak",
+      "sha256": "14f2b80ff8c9c5825a229093e73144cc6849755e49c2c2baed03df02015e8efb"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/vault.ak",
+      "sha256": "b8b0f918a3ee7e17d22b169bf11493481d47202f866bdf80127238edf5115caf"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/aiken.toml",
+      "sha256": "392fda3ff39b0f05cf91ce8e2080a2607e1e70730d12c90d1422774a6da83d77"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/aiken.lock",
+      "sha256": "6ad38573bfc4d4987ef66afb832bc39e45dc1c262bff79fc8139ad804c5a8b92"
+    },
+    {
+      "path": "reference/.build/ctvs2/lib/ctvs/deployment.ak",
+      "sha256": "4cde62098c599c26d6ccb326ff50fbddfd9ac3b9e0ed1f2fa4c7998386138330"
+    }
+  ]
+}

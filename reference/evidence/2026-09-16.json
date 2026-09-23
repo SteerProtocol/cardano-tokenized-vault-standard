@@ -1,0 +1,308 @@
+{
+  "recordedAt": "2026-09-16T17:44:04.011Z",
+  "scope": "local-reference-validation",
+  "sourcePdfSha256": "e06e90a6eb2eb1e9ffdc90d38b7bcabd392b54b3144d78faf11c8be321054e75",
+  "gitBase": "f5f782de9ba6a7bf6cbb8213995a31734888559c",
+  "includesUncommittedSource": true,
+  "runtime": {
+    "node": "v26.7.0",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "remoteCiRun": false,
+  "networkSubmission": false,
+  "cardanoNodeAcceptance": false,
+  "coverage": {
+    "scope": "production TypeScript packages and both clients; excludes tools/harness and Aiken",
+    "lines": {
+      "total": 787,
+      "covered": 784,
+      "skipped": 0,
+      "pct": 99.61
+    },
+    "statements": {
+      "total": 885,
+      "covered": 879,
+      "skipped": 0,
+      "pct": 99.32
+    },
+    "functions": {
+      "total": 174,
+      "covered": 174,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 701,
+      "covered": 690,
+      "skipped": 0,
+      "pct": 98.43
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "typescript": {
+    "passed": 185,
+    "failed": 0,
+    "skipped": 0,
+    "generatedProperties": 11,
+    "generatedCases": 7550,
+    "seed": 20260916
+  },
+  "integration": {
+    "passed": 28,
+    "signedLifecycleCases": 26,
+    "parameterOnlyCases": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "implementations": {
+    "ctvs1": {
+      "aiken": {
+        "total": 83,
+        "passed": 83,
+        "failed": 0,
+        "kind": {
+          "unit": 74,
+          "property": 9
+        }
+      },
+      "aikenSeed": 20260916,
+      "propertyExecutions": 9000,
+      "vaultTemplateBytes": 12018,
+      "buildManifestSha256": "269c1438c84a854f925ab8b4c2afe26354bb2e3cf3d21b91dce1e476620a472d",
+      "permittedExecutionModes": [
+        1,
+        2,
+        3
+      ],
+      "signedLifecycleScenarios": 18,
+      "acceptedTransactions": 72,
+      "finalSignedPlutusEvaluations": 54,
+      "compiledRejections": 8,
+      "publicationBytes": [
+        12351
+      ],
+      "parameterOnlyCrosscheck": {
+        "scope": "parameter-application-only",
+        "implementation": "ctvs1",
+        "syntheticParameters": true,
+        "networkSubmission": false,
+        "ledgerAcceptance": false,
+        "templateHash": "f53a4e8753c81aa5d9755718d6461a9cffc89d124abf77a473af5355",
+        "seed": {
+          "txId": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+          "index": "257"
+        },
+        "termsCommitment": "b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6",
+        "policy": "51ff8b340c86084f3e3fda01f9e9c633e6d204c610abc856a1c566e8",
+        "normalizedScriptBytesMatch": true
+      },
+      "lifecycleApplication": {
+        "scope": "parameter-application-against-signed-lifecycle-fixture",
+        "fixture": "artifacts/integration/ctvs1/ada/deposit/implementation.json",
+        "fixtureSha256": "d4c9fe50cf421b3b257b2ade096cc88c16a1bbf0aed2e841fff7115b71e4f0f3",
+        "seed": {
+          "txId": "0000000000000000000000000000000000000000000000000000000000000000",
+          "index": "0"
+        },
+        "termsHash": "cfddb1d72dd0c885cf46d197101503362ee042c79c4fa3bb882e9a2ee82ee4c2",
+        "policy": "ba9724ae831d5c041677e1b82b05da3b37ec1e5ac90974ca6036f282",
+        "normalizedScriptBytesMatch": true
+      },
+      "reports": [
+        {
+          "path": "artifacts/integration/ctvs1/ada/deposit/report.json",
+          "sha256": "5383d0145b76fedfb1b1a9fcbd06e8a61df3b60b4fc9764832f2888bcec25561"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/maintenance/report.json",
+          "sha256": "28774800a5329cf4d89e0cba86e8f64b27eed8f00fc5ebe0c7011ddc28111693"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/mint/report.json",
+          "sha256": "9591e4d077a8983ed9f714d78286ade2a8c0510d67fbf1fee10f817b2e2cd0dd"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/redeem/report.json",
+          "sha256": "847a392eb1fc3013518e13dde7487be9519b39111aedc157b5d95eef25998c56"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/reject-minimum/report.json",
+          "sha256": "ff2c0f01e0407b5cb17939d102e39820ce0d91e2502809ec109a55464007ff0e"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/reject-pause-authority/report.json",
+          "sha256": "167b5c334b1f65952ee971e5a15d09f442a7a3b2db16327965bd3749d36b56a7"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/reject-paused-entry/report.json",
+          "sha256": "4bc4ac974bc9601dab32172492a5f2edb9f54960f392f0756c78c11604e41282"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/reject-recipient/report.json",
+          "sha256": "27d8476b36e435778d7e1b6129568a30779c3afccbfc3fa88bb70782e0d23013"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/ada/withdraw/report.json",
+          "sha256": "db60874aaaf866c0d6a660b84b258c7822f3f29105755f967428c07e48073258"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/deposit/report.json",
+          "sha256": "29ebbd7f21316614cf3d5da029b5f00cdf0484d27b43dd6f06f2f469c0fddb31"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/maintenance/report.json",
+          "sha256": "d027b59d8c6e83e9b4271267afdb1e923459d33b228e5e7006df9a2191ccec27"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/mint/report.json",
+          "sha256": "fb33ad9463da796a7e92a08af9ab2dc5923cf987aff67d07895bae0bd83bf439"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/redeem/report.json",
+          "sha256": "0117f5cb6cf85d5117a5569caca34110becbe24a199e41cf39b37c4789694a4c"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/reject-minimum/report.json",
+          "sha256": "29aae19b8d4a4b4717612d6af4b85f0b85b0a65873d052c734119edbbb6c959d"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/reject-pause-authority/report.json",
+          "sha256": "8acbb2cb1cf2f78a07f4373c967ec2f8d0a53911247e98f1779329d5f8eaa60e"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/reject-paused-entry/report.json",
+          "sha256": "a9a48f510dc0781480ec1724ab16dd2e95d6fdbebf2a078ac68e74134be385ac"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/reject-recipient/report.json",
+          "sha256": "d7c199a065e3fd7a2643710cc53e1213708da791b3c0f4b44ac8199f53efab15"
+        },
+        {
+          "path": "artifacts/integration/ctvs1/native/withdraw/report.json",
+          "sha256": "fcfe96a546f91d25703778d9aee387789afd1de71e9db206eb43a23b170faab0"
+        }
+      ]
+    },
+    "ctvs2": {
+      "aiken": {
+        "total": 106,
+        "passed": 106,
+        "failed": 0,
+        "kind": {
+          "unit": 96,
+          "property": 10
+        }
+      },
+      "aikenSeed": 20260916,
+      "propertyExecutions": 10000,
+      "vaultTemplateBytes": 15938,
+      "buildManifestSha256": "c22fd2f540a08f1e741ff9118a784178a24b2e6cb2d269ef4e0081003523bf0c",
+      "permittedExecutionModes": [
+        4,
+        8,
+        12
+      ],
+      "signedLifecycleScenarios": 8,
+      "acceptedTransactions": 52,
+      "finalSignedPlutusEvaluations": 32,
+      "compiledRejections": 6,
+      "publicationBytes": [
+        16271
+      ],
+      "parameterOnlyCrosscheck": {
+        "scope": "parameter-application-only",
+        "implementation": "ctvs2",
+        "syntheticParameters": true,
+        "networkSubmission": false,
+        "ledgerAcceptance": false,
+        "templateHash": "48c73a378246de8b116e62b3b9f4f90b26d37fe073b02640c29f4880",
+        "seed": {
+          "txId": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+          "index": "257"
+        },
+        "termsCommitment": "b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6b6",
+        "policy": "16d7387d32dc07a5cc0e5617fb44585649f0033e251e5d9d4efd73a4",
+        "normalizedScriptBytesMatch": true
+      },
+      "lifecycleApplication": {
+        "scope": "parameter-application-against-signed-lifecycle-fixture",
+        "fixture": "artifacts/integration/ctvs2/ada/settlement-lifecycle/implementation.json",
+        "fixtureSha256": "2df93d1a56204da78600dc1dffd51f3391be394c516df469cb57f6c1e366e5ab",
+        "seed": {
+          "txId": "0000000000000000000000000000000000000000000000000000000000000000",
+          "index": "0"
+        },
+        "termsHash": "54932f84915a054300a72230524c27cae035620a3d95f38e816bdb800b9dd3e6",
+        "policy": "195668d323af5075ecfb0938d6e054b412e90892dd2b08ae9b1c86c1",
+        "normalizedScriptBytesMatch": true
+      },
+      "reports": [
+        {
+          "path": "artifacts/integration/ctvs2/ada/claim-coverage/report.json",
+          "sha256": "b09ed55d70dcaca72e642eb85e3071c3df80fc3eb988a703df801bc55cec0c70"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/ada/independent-recovery/report.json",
+          "sha256": "8fbebf4604dc67205652b1ef28451be54e8f1c8acfd651d0e49e9cd4b0db888f"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/ada/settlement-guards/report.json",
+          "sha256": "97ef9ab5b5107e70fa01f74201aac498b1abfc300bf274c4a4a6739769c3aa4f"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/ada/settlement-lifecycle/report.json",
+          "sha256": "9076b1cda90c4d750dc1139d49911bbb7dabd717850df9b4e1c95aa2af029f90"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/native/claim-coverage/report.json",
+          "sha256": "72a1fe10eab7e10752558be35f31f41c8ea5e414c784436a386b9364703072c4"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/native/independent-recovery/report.json",
+          "sha256": "fc8b22c13609065eca5023e7280332cb7e0cddf43ca64736bf45e51702875633"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/native/settlement-guards/report.json",
+          "sha256": "c258b9b27124334af001b472a7ec6fd81b482043ea62e1ecde743f6cf991d378"
+        },
+        {
+          "path": "artifacts/integration/ctvs2/native/settlement-lifecycle/report.json",
+          "sha256": "b483a6d9aaea68fd38356b7605ffe1e278acefaef1d07031e74c663d9325a6b3"
+        }
+      ]
+    }
+  },
+  "sourceBinding": {
+    "algorithm": "SHA256 of sorted relative-path:SHA256(content) lines",
+    "files": 119,
+    "digest": "a8e02f3517610b72e55b56bbc1e648177b61d5df059aa56cab772239ebca3512"
+  },
+  "rawReports": [
+    {
+      "path": "artifacts/test-results/unit.json",
+      "sha256": "58fd58bc62595dcc7b2403e4c3222a6d3b5e6325c57006c86bac02900636234d"
+    },
+    {
+      "path": "artifacts/test-results/integration.json",
+      "sha256": "b77f63506524631b2996425c7a82408718a112041bcd590da55fa73f3114eaf7"
+    },
+    {
+      "path": "artifacts/coverage/coverage-summary.json",
+      "sha256": "32fd68f8f1009df7da0e92285fe3ac4cb0f82a16fd9b84fd2675fe75220f2bdf"
+    },
+    {
+      "path": "artifacts/ctvs1/aiken-tests.json",
+      "sha256": "f389c3238ad3318dc099e084d89a9849f4ca1e7478547025c1b756d82da1c443"
+    },
+    {
+      "path": "artifacts/ctvs2/aiken-tests.json",
+      "sha256": "d7c87284993c4f947346ba3643c3ba51f9047757eccd1d5ab6d2653bf6afab77"
+    }
+  ]
+}

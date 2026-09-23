@@ -1,0 +1,1859 @@
+[
+  {
+    "id": "W-001",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1",
+      "10.2"
+    ],
+    "pdf_pages": [
+      28,
+      29
+    ],
+    "requirement": "Identify the wire by bytes 43545653, integer version 2 and profile 0; economic Q values use exact integers in 0..2^63-1 and JSON amounts use decimal strings.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:21",
+      "reference/packages/protocol/src/wire/primitives.ts:59",
+      "reference/packages/protocol/src/math/integer.ts:1",
+      "reference/packages/protocol/src/data/value.ts:50",
+      "reference/packages/onchain/lib/ctvs/validation.ak:17"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:100",
+        "names": [
+          "quantity_bounds_are_exact"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:170",
+        "names": [
+          "rejects magic, version, wrong role and recursive option or scalar shapes"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data.test.ts:145",
+        "names": [
+          "preserves every Data variant without coercion"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-002",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Credential is C0[B28] for a key or C1[B28] for a script; Controller is only C0[B28], without script-controller alternatives.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:63",
+      "reference/packages/protocol/src/wire/requests.ts:28",
+      "reference/packages/onchain/lib/ctvs/wire.ak:16",
+      "reference/packages/onchain/lib/ctvs/validation.ak:262"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:355",
+        "names": [
+          "decoder_rejects_nested_wrong_credential_type_and_arity"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:528",
+        "names": [
+          "scoped_request_decoder_rejects_malformed_recovery_controller"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-003",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Options are exactly Some C0[value] or None C1[] wherever nested; extra or missing fields do not become ignored extensions.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:27",
+      "reference/packages/protocol/src/wire/primitives.ts:52",
+      "reference/packages/onchain/lib/ctvs/decode.ak:14"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "recursive extra-field rejection corpus across Terms, Config, State, Request and Claim"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "All 49 constructor append mutations in the fresh representative record corpus were rejected, including nested options. This is a finite corpus, not exhaustive enumeration.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-004",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Address is C0[Credential, Option<C0[Credential]>]; preserve payment and staking credentials and reject pointer or bootstrap address forms.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:79",
+      "reference/packages/onchain/lib/ctvs/validation.ak:64",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:67"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:161",
+        "names": [
+          "addresses_reject_pointer_and_short_credentials"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:267",
+        "names": [
+          "rejects pointer staking, wrong credentials and excessive opaque data"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-005",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Destination is C0[Address, Option<BoundedData>]; None requires NoDatum, Some requires equal inline Data, and a hash-only datum is not equivalent.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:92",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:67"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:296",
+        "names": [
+          "rejects_receiver_datum_hash_or_inline_mismatch"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:226",
+        "names": [
+          "receiver_datum_must_match_exactly"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-006",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Asset is exactly C0[] for ADA or C1[B28, bytes0..32] for a native asset, including an empty native asset name.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:99",
+      "reference/packages/onchain/lib/ctvs/validation.ak:49"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:62",
+        "names": [
+          "empty-native-name; 32-byte-native-name; 33-byte-native-name"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh probes accepted empty and 32-byte names and rejected 33 bytes. Byte lengths and constructor arities are checked independently of printable labels.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-007",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1",
+      "10.6"
+    ],
+    "pdf_pages": [
+      28,
+      29,
+      32
+    ],
+    "requirement": "OutRef is C0[B32,index], index 0..65535; output selections must also be valid in the actual transaction array.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:119",
+      "reference/packages/onchain/lib/ctvs/validation.ak:25",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:16"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:67",
+        "names": [
+          "OutRef indices 0, 65535, 65536 and -1"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:381",
+        "names": [
+          "rejects wrong arity, list type and invalid nested indices"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh scalar probes accepted 0 and 65535 and rejected 65536 and -1. Onchain output lookup additionally fails when the selected index is absent.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-008",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Settlers is Any C0[] or KeySet C1[list B28] with 1..16 lexicographically sorted unique keys.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/terms.ts:20",
+      "reference/packages/onchain/lib/ctvs/validation.ak:165"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:140",
+        "names": [
+          "key_sets_are_bounded_sorted_and_unique"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:188",
+        "names": [
+          "enforces settler key cardinality, ordering, duplicates and decoder list shape"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-009",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.1"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Network domain is a deployment convention; offchain construction must verify the chosen network rather than infer an onchain network identifier from Address Data.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/packages/planning/src/context.ts:50",
+      "reference/packages/planning/src/plan.ts:65",
+      "reference/packages/planning/src/plan.ts:87",
+      "reference/testing/fixtures/vault.ts:179"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "The planners compare caller-supplied domain/name and explicitly emit verifiedOnLedger:false. The harness chooses its isolated emulator. No public network adapter authenticates a real chain-domain binding in this implementation.",
+    "impact": "A matching caller-supplied label is not verified network identity. Current plans accurately leave this unresolved.",
+    "closure": "Supply and test a real provider/network-domain binding before advertising network deployment."
+  },
+  {
+    "id": "W-010",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.2"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Terms is C0 with exactly thirteen ordered fields, profile exactly 0 and network_domain exactly 32 bytes.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/terms.ts:44",
+      "reference/packages/protocol/src/wire/terms.ts:65",
+      "reference/packages/onchain/lib/ctvs/wire.ak:25",
+      "reference/packages/onchain/lib/ctvs/validation.ak:186"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "Terms and nested Terms in Config recursive append rejection"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:552",
+        "names": [
+          "scoped_config_decoder_rejects_extra_nested_terms_field"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Both decoders enforce exact field order and arity; the fresh corpus rejected the top-level and nested Terms extensions.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-011",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.2"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Terms fixes virtual assets at one, virtual_shares in Q+, max_backing as Option<Q>, and entry/exit fees in 0..9999.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/terms.ts:50",
+      "reference/packages/onchain/lib/ctvs/validation.ak:189",
+      "reference/packages/onchain/lib/ctvs/math.ak:12"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:132",
+        "names": [
+          "terms_reject_unknown_modes_profiles_and_invalid_cap"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:204",
+        "names": [
+          "limits quantities, aggregate reserves, fees and operation modes"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-012",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.2"
+    ],
+    "pdf_pages": [
+      29
+    ],
+    "requirement": "Terms fee_destination uses exact Destination and pause_key is Option<B28>; descriptor_hash is Option<B32> metadata with no executable custody authority.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/terms.ts:54",
+      "reference/packages/onchain/lib/ctvs/validation.ak:192",
+      "reference/packages/onchain/lib/ctvs/wire.ak:25"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:122",
+        "names": [
+          "roundtrips present options, credential families and bounded inline datum"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "Terms nested option and destination append rejection"
+        ]
+      }
+    ],
+    "evidence_level": "source",
+    "finding": "Only the committed fields reach validators. No source executes descriptor metadata or resolves a replacement script from it.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-013",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.2",
+      "10.4"
+    ],
+    "pdf_pages": [
+      29,
+      30,
+      31
+    ],
+    "requirement": "Wire Terms admits exactly mode integers 1..15 and max_batch 1..16; mode bits are 1 direct entry, 2 direct exit, 4 async entry and 8 async exit.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/terms.ts:57",
+      "reference/packages/onchain/lib/ctvs/validation.ak:197",
+      "reference/packages/onchain/lib/ctvs/wire.ak:124"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:132",
+        "names": [
+          "terms_reject_unknown_modes_profiles_and_invalid_cap"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:204",
+        "names": [
+          "limits quantities, aggregate reserves, fees and operation modes"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Shared wire accepts all specified combinations and rejects unknown bits. Deployment families impose the further advertised subset recorded in W-038.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-014",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.2"
+    ],
+    "pdf_pages": [
+      29,
+      30
+    ],
+    "requirement": "Config is C3[magic,version,policy,seed,terms_hash,Terms,storage] with exactly seven fields; positive Q storage and normalized size at most 4608.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/state.ts:17",
+      "reference/packages/protocol/src/wire/state.ts:34",
+      "reference/packages/onchain/lib/ctvs/decode.ak:91",
+      "reference/packages/onchain/lib/ctvs/validation.ak:212"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "Config recursive extra-field rejection corpus"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:442",
+        "names": [
+          "scoped_decoders_preserve_all_public_datum_tags_and_fields"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Exact seven-field shape, recursive Terms decoding, positive reserve and builtin-normalized byte cap agree.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-015",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2",
+      "10.2"
+    ],
+    "pdf_pages": [
+      14,
+      15,
+      29,
+      30
+    ],
+    "requirement": "Config commitment must match authenticated program parameters and seed, with exactly its ADA reserve and ID(1), enterprise F_lock address, inline datum and no attached reference script.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/genesis.ak:44",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:13",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:40"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:484",
+        "names": [
+          "rejects_config_at_wrong_lock"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:502",
+        "names": [
+          "rejects_config_without_identity"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:520",
+        "names": [
+          "rejects_config_with_modified_terms"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Genesis and ongoing State authentication compare seed/hK to applied parameters after validating the self-contained Config. Authentication does not rest on datum self-consistency alone.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-016",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.3"
+    ],
+    "pdf_pages": [
+      30
+    ],
+    "requirement": "State is exactly C0[magic,version,policy,hK,sequence,A,S,F,R,pause], with no extensions, mutable asset, mutable destination or epoch field; quantities are Q, R positive and pause flags 0..3.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:70",
+      "reference/packages/onchain/lib/ctvs/decode.ak:75",
+      "reference/packages/onchain/lib/ctvs/validation.ak:232",
+      "reference/packages/protocol/src/wire/state.ts:47"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:285",
+        "names": [
+          "decoder_rejects_extra_and_missing_state_fields"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "State extra-field rejection"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "The ten-field record is closed. Public State codec is structural; asset-dependent physical checks occur in authenticated state validation.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-017",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.3",
+      "10.6"
+    ],
+    "pdf_pages": [
+      30,
+      32
+    ],
+    "requirement": "Bound aggregate physical balances, not only fields: ADA State is A+F+R lovelace, native State is A+F underlying plus R lovelace; require STATE(1), no other tokens, no stake and no reference script.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:246",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:97",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:116",
+      "reference/packages/planning/src/context.ts:72"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:148",
+        "names": [
+          "state_checks_physical_sum_for_each_underlying"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:321",
+        "names": [
+          "rejects_wrong_state_value"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:535",
+        "names": [
+          "rejects_reference_script_on_state"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-018",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.3"
+    ],
+    "pdf_pages": [
+      30
+    ],
+    "requirement": "Every accounting transition increments sequence once and preserves immutable fields; ordinary actions preserve R and only explicit reserve top-up increases R.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/state_core.ak:104",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:166"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:268",
+        "names": [
+          "pause_and_topup_preserve_economics"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:336",
+        "names": [
+          "rejects_reserve_drain"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:349",
+        "names": [
+          "rejects_wrong_sequence"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Closed successor construction carries policy/hK and tracks reserve changes explicitly. Economic/action details are covered further by the CTVS-1 and CTVS-2 reviews.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-019",
+    "standard": "CTVS-2",
+    "sections": [
+      "12.1",
+      "12.2",
+      "12.5"
+    ],
+    "pdf_pages": [
+      75,
+      77
+    ],
+    "requirement": "Request is C1[magic,version,Recovery,economic_body] and Recovery is C0[policy,key Controller,refund Destination,deadline], both exact arity four; unknown outer versions and malformed recovery receive no implied rescue.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/decode.ak:104",
+      "reference/packages/onchain/lib/ctvs/validation.ak:262",
+      "reference/packages/protocol/src/wire/requests.ts:28",
+      "reference/packages/protocol/src/wire/requests.ts:89"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:407",
+        "names": [
+          "recovery_rejects_unknown_outer_version_without_touching_economics"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:167",
+        "names": [
+          "actual_vault_cancel_rejects_unknown_outer_version"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-020",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.6",
+      "10.7",
+      "12.2",
+      "12.5"
+    ],
+    "pdf_pages": [
+      32,
+      75,
+      77
+    ],
+    "requirement": "Recovery must dispatch from supported outer/recovery fields while keeping economic_body as raw Data, without imposing recipient or settlement body bounds first.",
+    "applicability": "profile0",
+    "status": "narrowed",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/decode.ak:104",
+      "reference/packages/onchain/lib/ctvs/validation.ak:269",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:78",
+      "reference/packages/protocol/src/data/codec.ts:37",
+      "reference/packages/protocol/src/data/codec.ts:122",
+      "reference/packages/protocol/src/wire/requests.ts:89"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:38",
+        "names": [
+          "large-constructor and 65-deep-economic-list CML/SDK comparison, including maxDepth128 controls"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-onchain.ak:139",
+        "names": [
+          "wire_review_large_constructor_body_remains_cancelable",
+          "wire_review_65_deep_body_remains_cancelable"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "F-W1: CML accepts a 144-byte Request with body Constr(2^53,[]) and a 197-byte Request with a 65-deep list body. Default SDK decodeData rejects both before recovery projection. Fresh maxDepth:128 control makes the 65-deep case recoverable, but the constructor safe-integer restriction remains non-configurable. Fresh compiled actual Cancel handler probes accept both. The onchain boundary is aligned; client recovery has a constructor-domain narrowing plus a configurable default-depth limitation.",
+    "impact": "SDK consumers cannot decode the large-constructor candidate through the public representation. The deep-list candidate requires an explicit decoder option override. These are client availability limits, not a demonstrated onchain lock or theft.",
+    "closure": "Keep raw economic body outside recovery decoding, or provide a recovery-specific projection with lossless constructor indices and explicit feasible resource handling. Add the exact two cross-layer regressions."
+  },
+  {
+    "id": "W-021",
+    "standard": "CTVS-2",
+    "sections": [
+      "12.2"
+    ],
+    "pdf_pages": [
+      75
+    ],
+    "requirement": "Settlement body is exactly C0[hK,kind,offered,minOutput,receiver,R,B,fee], where kind is C0[] deposit or C1[] redeem; validate positive offered/minimum, positive reserve, budget/fee Q, fee<=budget and aggregate ADA bounds before settlement.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/requests.ts:45",
+      "reference/packages/onchain/lib/ctvs/validation.ak:277",
+      "reference/packages/onchain/lib/ctvs/validation.ak:288",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:166"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:256",
+        "names": [
+          "request_funding_aggregate_and_fee_bounds"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "Request economic-body and nested receiver extra-field rejection"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Exact body decoding and limits are distinct from raw recovery. Authenticated terms/mode/exact-funding checks occur in settlement, not in the body codec.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-022",
+    "standard": "CTVS-2",
+    "sections": [
+      "12.3"
+    ],
+    "pdf_pages": [
+      76
+    ],
+    "requirement": "Claim is exactly C2[magic,version,policy,request_ref,state_ref,hK,asset,economic_quantity,receiver,carried_lovelace]; predecessor references are consumed Request and State references, never the creating Claim transaction ID.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/requests.ts:103",
+      "reference/packages/onchain/lib/ctvs/decode.ak:116",
+      "reference/packages/onchain/lib/ctvs/validation.ak:306",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:166"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:25",
+        "names": [
+          "Claim recursive extra-field rejection corpus"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:269",
+        "names": [
+          "claim_ada_aggregate_bound"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Wire shape, scalar and ADA sum bounds agree. Settlement constructs Claim from selected predecessor references and verifies actual output value; authentic issuance remains a transaction-lineage question.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-023",
+    "standard": "CTVS-2",
+    "sections": [
+      "12.3"
+    ],
+    "pdf_pages": [
+      76
+    ],
+    "requirement": "Fixed Claim delivery preserves full actual input property, including surplus, and requires no current State, Config or settler; Claim-looking data alone does not prove authentic settlement lineage.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:39",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:98",
+        "names": [
+          "delivers_all_actual_assets_across_vaults_without_state_or_config"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:114",
+        "names": [
+          "surplus_native_asset_cannot_be_used_for_submitter_change"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:128",
+        "names": [
+          "surplus_lovelace_cannot_pay_delivery_fee"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The generic Q guard authenticates delivery obligation and property, not issuer lineage. Independent async review covers settlement creation and indexer evidence.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-024",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.4",
+      "12.4"
+    ],
+    "pdf_pages": [
+      30,
+      31,
+      76
+    ],
+    "requirement": "Each redeemer is an exact three-field [magic,version,action] envelope with role tag State 0, Request 1, Claim 2 or Mint 3; action tags are scoped to that role.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/decode.ak:132",
+      "reference/packages/protocol/src/wire/decode-actions.ts:168",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.ak:48"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:312",
+        "names": [
+          "envelope_role_and_arity_are_distinct"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:576",
+        "names": [
+          "scoped_envelope_rejects_another_role"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:586",
+        "names": [
+          "scoped_envelope_rejects_extra_inner_action_field"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-025",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.4"
+    ],
+    "pdf_pages": [
+      30
+    ],
+    "requirement": "Direct action tags 0,1,2,3 are deposit,mint,withdraw,redeem, each exactly [Destination,amount,bound,stateOutput,receiverOutput]; selected outputs are distinct and quantities use positive bounded integers.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:124",
+      "reference/packages/onchain/lib/ctvs/validation.ak:360",
+      "reference/packages/protocol/src/wire/actions.ts:30",
+      "reference/packages/protocol/src/wire/decode-actions.ts:36"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:298",
+        "names": [
+          "roundtrips direct %s"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:343",
+        "names": [
+          "direct_actions_reject_shared_successor_and_receiver_output"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-026",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.4"
+    ],
+    "pdf_pages": [
+      30,
+      31
+    ],
+    "requirement": "Maintenance tags are CollectFees5[stateOutput,feeOutput], TopUp6[additionalLovelace,stateOutput], SetPause7[pauseFlags,stateOutput], with exact arities and bounded fields.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:159",
+      "reference/packages/onchain/lib/ctvs/validation.ak:372",
+      "reference/packages/protocol/src/wire/actions.ts:95",
+      "reference/packages/protocol/src/wire/decode-actions.ts:36"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:308",
+        "names": [
+          "roundtrips every maintenance, request, mint and claim action"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:268",
+        "names": [
+          "pause_and_topup_preserve_economics"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-027",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.4",
+      "12.4"
+    ],
+    "pdf_pages": [
+      31,
+      76
+    ],
+    "requirement": "Batch is C4[stateOutput,entries,rewardKey,Option<rewardOutput>]; SettleEntry C0[OutRef,claimOutput,claimTopup] is sorted by tx bytes then numeric index, unique, count 1..16 and further limited by Terms.max_batch.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:334",
+      "reference/packages/onchain/lib/ctvs/validation.ak:372",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:410",
+      "reference/packages/protocol/src/wire/actions.ts:48",
+      "reference/packages/protocol/src/wire/primitives.ts:144"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:417",
+        "names": [
+          "normalizes builder input order while rejecting unsorted semantic action Data"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:396",
+        "names": [
+          "enforces injective outputs in every action with protected output indices"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Lists carry references and external top-ups only; quotes and totals are recomputed in the batch path. Distinct outputs prevent sharing obligations.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-028",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.4",
+      "12.4"
+    ],
+    "pdf_pages": [
+      31,
+      76
+    ],
+    "requirement": "Request actions are C0[stateRef] acknowledge, C1[refundOutput] cancel, C2[refundOutput] expiry; Mint actions C0[configOutput,stateOutput] initialize and C1[stateRef] supply update, without extra fields.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:164",
+      "reference/packages/onchain/lib/ctvs/validation.ak:430",
+      "reference/packages/protocol/src/wire/decode-actions.ts:106",
+      "reference/packages/protocol/src/wire/decode-actions.ts:137"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:473",
+        "names": [
+          "scoped_envelope_decoders_preserve_role_and_actions"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/wire.test.ts:308",
+        "names": [
+          "roundtrips every maintenance, request, mint and claim action"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-029",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.4",
+      "12.4"
+    ],
+    "pdf_pages": [
+      31,
+      76
+    ],
+    "requirement": "Deliver is C0[entries], each entry C0[claimRef,receiverOutput]; entries count 1..16, sorted unique references, exhaustive consumed Q coverage, identical semantic list in every Q redeemer and unique output allocations.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:347",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69",
+      "reference/packages/protocol/src/wire/actions.ts:86"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:139",
+        "names": [
+          "same_receiver_still_requires_separate_output_allocations"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:147",
+        "names": [
+          "omitted_claim_fails_exhaustive_coverage"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/claim_test.ak:173",
+        "names": [
+          "all_claims_must_use_identical_semantic_delivery_list"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-030",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.4"
+    ],
+    "pdf_pages": [
+      31
+    ],
+    "requirement": "Batch reward key is an explicit required signer and authorized by immutable Settlers; zero fee sum requires None, positive sum selects one distinct ADA-only enterprise-key output with exact datum/reference-script form and at least the fee sum.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:417",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:456",
+      "reference/packages/protocol/src/wire/actions.ts:48"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "All reward branches are explicit in the compiled source. The wire encodes no operator-selected fee override. Transaction-level negative tests are assessed by the async review.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-031",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.5",
+      "10.7",
+      "12.5"
+    ],
+    "pdf_pages": [
+      31,
+      32,
+      77
+    ],
+    "requirement": "Decode semantic Plutus Data rather than insist on preferred original CBOR spelling; reject non-Data types and malformed/trailing bytes, retaining semantic constructor alternatives and valid extended form.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/data/codec.ts:76",
+      "reference/packages/protocol/src/data/parse.ts:35",
+      "reference/packages/onchain/lib/ctvs/decode.ak:14"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/data.test.ts:26",
+        "names": [
+          "accepts semantically equivalent constructor array spellings"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:9",
+        "names": [
+          "every proper prefix of the State fixture is incomplete"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:17",
+        "names": [
+          "requires one complete top-level item before suffix %s"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:58",
+        "names": [
+          "keeps constructor alternative $alternative distinct"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Within the public constructor domain, alternate definite/indefinite/extended forms decode semantically. The valid large-constructor exclusion in a raw recovery body is separately reported as W-020, not classified malformed CBOR.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-032",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.5"
+    ],
+    "pdf_pages": [
+      31,
+      32
+    ],
+    "requirement": "Preferred serialization uses definite empty lists, indefinite nonempty lists, definite maps in existing pair order, shortest integers and byte chunks no longer than 64; this writer is not interchangeable with generic canonical CBOR.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/data/codec.ts:45",
+      "reference/packages/protocol/src/data/codec.ts:65",
+      "reference/packages/protocol/src/data/parse.ts:17"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/data.test.ts:21",
+        "names": [
+          "accepts semantically equivalent constructor array spellings"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:99",
+        "names": [
+          "rejects an oversized definite byte leaf behind tag prefix %s"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:111",
+        "names": [
+          "serializes a 65-byte integer magnitude using bounded chunks: %s"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:419",
+        "names": [
+          "terms_builtin_serialization_and_hash_match_client_fixture"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Adapter explicitly configures map order/definiteness and chunks large integer magnitudes; source and retained fixture/builtin checks agree for covered vectors. Broader builtin-certification scope is W-046.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-033",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.5",
+      "10.7"
+    ],
+    "pdf_pages": [
+      32
+    ],
+    "requirement": "Opaque map pairs preserve their order and reject duplicate semantically equal keys, including keys encoded using different CBOR spellings; do not collapse to a dictionary or sort.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/data/bounds.ts:21",
+      "reference/packages/protocol/src/data/value.ts:1",
+      "reference/packages/onchain/lib/ctvs/validation.ak:122"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:33",
+        "names": [
+          "duplicate map keys cannot hide behind alternate constructor spellings"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:220",
+        "names": [
+          "opaque_maps_preserve_pairs_and_reject_duplicate_equal_keys"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:69",
+        "names": [
+          "Reordered opaque map changes Terms commitment"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh Terms-map probe produces distinct commitments when the same pairs change order. Existing semantic-duplicate tests preserve two keys until the opaque validator rejects them.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-034",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.6",
+      "10.7"
+    ],
+    "pdf_pages": [
+      32
+    ],
+    "requirement": "Opaque recipient Data has depth<=16 from root0, nodes<=256 including container/key/value nodes, normalized bytes<=1024, signed256 integers and constructor alternatives 0..127.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/data/bounds.ts:5",
+      "reference/packages/onchain/lib/ctvs/validation.ak:76",
+      "reference/packages/onchain/lib/ctvs/validation.ak:150"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:191",
+        "names": [
+          "opaque_depth_bound_counts_root_as_zero"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:197",
+        "names": [
+          "opaque_node_limit_includes_container"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:205",
+        "names": [
+          "opaque_constructor_tags_are_bounded"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:211",
+        "names": [
+          "opaque_integer_bounds_are_signed_256_bits"
+        ]
+      },
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:47",
+        "names": [
+          "map budgets count keys and values, and normalized byte bound includes chunk headers"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-035",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.6",
+      "12.5"
+    ],
+    "pdf_pages": [
+      32,
+      77
+    ],
+    "requirement": "Normalized record limits are State 256, Terms 4096, Config 4608, settlement Request 4096 and Claim 2048; settlement body size limits must not be imposed on raw recovery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:202",
+      "reference/packages/onchain/lib/ctvs/validation.ak:227",
+      "reference/packages/onchain/lib/ctvs/validation.ak:254",
+      "reference/packages/onchain/lib/ctvs/validation.ak:298",
+      "reference/packages/onchain/lib/ctvs/validation.ak:329",
+      "reference/packages/protocol/src/wire/requests.ts:81"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:237",
+        "names": [
+          "recovery_ignores_unsupported_and_oversized_economics"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:52",
+        "names": [
+          "bytes-over-settlement-cap SDK recovery projection"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "The named datum-size limits use normalized serialization and apply in the correct structural/settlement validators. Fresh SDK recovery projection accepts a 5000-byte body; other generic decoder narrowing remains W-020.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-036",
+    "standard": "CTVS-1",
+    "sections": [
+      "10.6"
+    ],
+    "pdf_pages": [
+      32
+    ],
+    "requirement": "Where possible, structural/resource bounds precede expensive recursive normalization, without claiming a safe transaction capacity from schema limits.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/protocol/src/data/parse.ts:27",
+      "reference/packages/protocol/src/data/parse.ts:35",
+      "reference/packages/protocol/src/data/parse.ts:39",
+      "reference/packages/protocol/src/data/bounds.ts:5",
+      "reference/packages/onchain/lib/ctvs/validation.ak:150"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/protocol/tests/data-adversarial.test.ts:132",
+        "names": [
+          "normalizes recursive parser exhaustion into an explicit resource-limit rejection"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Opaque normalization is guarded by structural traversal. Generic CBOR parsing still performs the dependency recursive scan before the adapter depth/node walk; it catches runtime stack exhaustion as a resource-limit error. A pre-parse depth budget is not established.",
+    "impact": "Fail-closed decoding is tested, but configurable depth does not bound all parser work before allocation/recursion.",
+    "closure": "Document this resource boundary and evaluate an iterative or preflight decoder before accepting adversarial large CBOR in a service."
+  },
+  {
+    "id": "W-037",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2"
+    ],
+    "pdf_pages": [
+      14,
+      15
+    ],
+    "requirement": "Compile fixed support scripts before T, bind their identities into the reviewed program and reject cycles or caller replacements; F_lock must always fail and Q must not depend on P.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/tools/lib/build.ts:42",
+      "reference/tools/lib/build.ts:51",
+      "reference/tools/lib/staging.ts:75",
+      "reference/packages/onchain/validators/config_lock.ak:4",
+      "reference/implementations/ctvs2/onchain/validators/claim.ak:6"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:182",
+        "names": [
+          "actual_config_lock_has_no_spend_or_reserve_recovery_branch"
+        ]
+      },
+      {
+        "file": "reference/tools/lib/staging.test.ts:112",
+        "names": [
+          "creates generated bindings only in the disposable destination and validates script hashes"
+        ]
+      }
+    ],
+    "evidence_level": "source",
+    "finding": "The two-pass build embeds compiled F and, for CTVS-2, Q hashes; rebuilt support hashes must remain unchanged. Inputs cannot author reserved ctvs/deployment.ak. CTVS-1 specialization omits Q as separately disclosed in W-038.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-038",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2",
+      "10.2"
+    ],
+    "pdf_pages": [
+      14,
+      15,
+      29
+    ],
+    "requirement": "The paper reference combination allows modes 1..15 and describes F,Q,T; any implementation subset must be identified rather than advertised as the entire combined construction.",
+    "applicability": "profile0",
+    "status": "narrowed",
+    "code": [
+      "reference/tools/lib/build.ts:46",
+      "reference/tools/lib/build.ts:68",
+      "reference/packages/planning/src/context.ts:25",
+      "reference/implementations/ctvs1/onchain/validators/vault.ak:16",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.ak:9"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:682",
+        "names": [
+          "ctvs1_genesis_rejects_every_asynchronous_mode"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/state_test.ak:240",
+        "names": [
+          "ctvs2_genesis_rejects_direct_and_mixed_modes"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Intentional family narrowing: CTVS-1 permits 1,2,3 and publishes F+P with claim:null; CTVS-2 permits 4,8,12 and publishes F+Q+P. Mixed direct/async mode combinations are wire-valid but rejected at either family genesis. This follows the chosen split, not a silent format reinterpretation.",
+    "impact": "Neither family alone implements every allowed mode of the paper combined reference profile. Consumers must select the advertised family; combined-mode deployments are unavailable.",
+    "closure": "Keep capability manifests explicit; either document this implementation subset as the conformance scope or provide a separately identified combined-mode build."
+  },
+  {
+    "id": "W-039",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2"
+    ],
+    "pdf_pages": [
+      14,
+      15
+    ],
+    "requirement": "Apply seed OutRef and exact 32-byte Terms commitment to the compiled multipurpose template; P is the ledger versioned script hash and must be the same mint/spend identity.",
+    "applicability": "acceptance",
+    "status": "aligned",
+    "code": [
+      "reference/tools/apply.ts:24",
+      "reference/tools/apply.ts:60",
+      "reference/tools/apply.ts:63",
+      "reference/tools/lib/build.ts:56"
+    ],
+    "tests": [
+      {
+        "file": "reference/testing/integration/compilation/parameters.test.ts:19",
+        "names": [
+          "%s CLI and Lucid agree on synthetic parameter application, without a ledger transaction"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Retained integration test independently constructs Lucid seed Data, compares normalized applied bytes and PlutusV3 hashes, and proves no parameters remain. Synthetic seed does not establish seed existence, network deployment or full transaction acceptance.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-040",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2",
+      "10.5"
+    ],
+    "pdf_pages": [
+      14,
+      32
+    ],
+    "requirement": "Compute hK=Blake2b256(bytes 435456532f48322f5445524d5300 || serialiseData(validated Terms)); preserve the 14-byte zero-terminated domain and distinguish this from raw ledger datum hashing.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/protocol/src/wire/primitives.ts:22",
+      "reference/packages/protocol/src/wire/terms.ts:85",
+      "reference/packages/onchain/lib/ctvs/validation.ak:205",
+      "reference/packages/onchain/lib/ctvs/wire.ak:200"
+    ],
+    "tests": [
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:68",
+        "names": [
+          "Terms domains are explicit14 bytes with trailing zero"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:419",
+        "names": [
+          "terms_builtin_serialization_and_hash_match_client_fixture"
+        ]
+      }
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh client hash is 3e786871c31d0ba1684920693cbb3ae53e42eca96d272280bf732e44b8844220 for the retained semantic Terms vector. Onchain hash uses the builtin and compares only after valid_terms. Exact printed hex characters are never hashed as text.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-041",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2"
+    ],
+    "pdf_pages": [
+      15
+    ],
+    "requirement": "Genesis consumes the existing seed and mints exactly ID(1),STATE(1), no SHARE or other assets; permanent identity names are fixed and additional preexisting/misallocated identities are rejected.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/genesis.ak:20",
+      "reference/packages/onchain/lib/ctvs/genesis.ak:85",
+      "reference/packages/protocol/src/wire/primitives.ts:23",
+      "reference/packages/onchain/lib/ctvs/wire.ak:194"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:592",
+        "names": [
+          "genesis_mints_only_permanent_identities"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:603",
+        "names": [
+          "genesis_requires_seed"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:608",
+        "names": [
+          "genesis_rejects_initial_share_issuance"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-042",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2"
+    ],
+    "pdf_pages": [
+      15
+    ],
+    "requirement": "Genesis creates Config at F and State at P with matching identities/hK, zero sequence/A/S/F/pause, positive exact reserves and no reference scripts; reject underlying policy P, wrong addresses and nonzero initial issuance.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/genesis.ak:44",
+      "reference/packages/onchain/lib/ctvs/genesis.ak:60",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:116"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:616",
+        "names": [
+          "genesis_rejects_nonzero_backing"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:628",
+        "names": [
+          "genesis_rejects_wrong_state_address"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:640",
+        "names": [
+          "genesis_rejects_reference_script"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/state_test.ak:222",
+        "names": [
+          "ctvs2_genesis_and_real_mint_handler_accept_async_terms"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Source implements the specified rule; cited tests exercise the relevant boundary.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-043",
+    "standard": "CTVS-1",
+    "sections": [
+      "4.2",
+      "12.1",
+      "12.2"
+    ],
+    "pdf_pages": [
+      15,
+      35,
+      36
+    ],
+    "requirement": "After genesis, only SHARE supply deltas can mint/burn and they must be coupled to the authentic selected State spend; ID/STATE never mint again or burn.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/state_core.ak:72",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:203",
+      "reference/implementations/ctvs1/onchain/validators/vault.ak:52",
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:64"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:411",
+        "names": [
+          "rejects_unrelated_mint"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:420",
+        "names": [
+          "rejects_wrong_mint_quantity"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:429",
+        "names": [
+          "rejects_wrong_mint_state_reference"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Whole mint-map equality and selected State authentication enforce the induction premise. S=N is conditional on these transaction predicates and accepted ledger history, not a formal proof claim.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-044",
+    "standard": "CTVS-1",
+    "sections": [
+      "12.3"
+    ],
+    "pdf_pages": [
+      36
+    ],
+    "requirement": "Authenticate protected role by identity before interpreting untrusted datum/action: STATE custody must only route through State and cannot become a Request refund; malformed identity quantities reject.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs1/onchain/validators/vault.ak:23",
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:25",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:105"
+    ],
+    "tests": [
+      {
+        "file": "reference/implementations/ctvs1/onchain/validators/state_test.ak:557",
+        "names": [
+          "state_identity_cannot_take_request_refund_handler"
+        ]
+      },
+      {
+        "file": "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:172",
+        "names": [
+          "actual_vault_request_rejects_state_role_before_action_interpretation"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Vault entrypoints examine STATE quantity and ID exclusion before their scoped datum/action decoders. Role routing remains independent of a request-shaped datum.",
+    "impact": "No discrepancy identified within the stated source and test scope.",
+    "closure": "Retain the cited regression coverage."
+  },
+  {
+    "id": "W-045",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10",
+      "10.4",
+      "10.7",
+      "12.1"
+    ],
+    "pdf_pages": [
+      28,
+      31,
+      32,
+      75
+    ],
+    "requirement": "Preserve the historical candidate-wire schema.json, wire.cddl and original fixture bundle byte-for-byte when claiming continuity with the stated v0.5/v0.6 wire package.",
+    "applicability": "acceptance",
+    "status": "unverified",
+    "code": [
+      "reference/tools/lib/build.ts:39",
+      "reference/packages/protocol/tests/fixtures/wire-vectors.json:1"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "The current tree includes generated CIP-57 blueprint types, semantic fixtures and exact wire source, but no authenticated original candidate-wire/schema.json or wire.cddl artifact was supplied. The source review cannot prove the paper four-file byte-preservation assertion or identity of its 22-fixture/44-comparison bundle.",
+    "impact": "Current wire conformance evidence must not be described as verification of the historical package or its publication revision check.",
+    "closure": "Obtain the exact original bundle and trusted checksums, then compare every file and independently reconcile its schema/fixtures with this implementation."
+  },
+  {
+    "id": "W-046",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.5",
+      "10.7",
+      "12.5"
+    ],
+    "pdf_pages": [
+      31,
+      32,
+      77
+    ],
+    "requirement": "Before freezing the encoding, compare exact nested decoding and commitment serialization with pinned Aiken/Plutus builtins and independent semantic expectations; local JS agreement alone is insufficient.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/packages/onchain/lib/tests/validation_test.ak:419",
+      "reference/packages/onchain/lib/tests/validation_test.ak:442",
+      "reference/packages/protocol/tests/fixtures/wire-vectors.json:1"
+    ],
+    "tests": [
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:419",
+        "names": [
+          "terms_builtin_serialization_and_hash_match_client_fixture"
+        ]
+      },
+      {
+        "file": "reference/packages/onchain/lib/tests/validation_test.ak:442",
+        "names": [
+          "scoped_decoders_preserve_all_public_datum_tags_and_fields"
+        ]
+      },
+      {
+        "file": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs:38",
+        "names": [
+          "independent CML decoding of adversarial raw economic bodies"
+        ]
+      }
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Pinned compiled builtin test covers one exact thirteen-field Terms vector and hash; scoped compiled decoders cover the record roles. This materially improves on the paper unexecuted gate, but does not certify all opaque Data/alternative encoding combinations or recover the unidentified historical fixture bundle.",
+    "impact": "A blanket builtin-certified entire WIRE-2 claim would exceed the enumerated evidence.",
+    "closure": "Add independent builtin vectors spanning every primitive and opaque serialization boundary and resolve the original-bundle provenance gate."
+  },
+  {
+    "id": "W-047",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "10.5",
+      "12.5"
+    ],
+    "pdf_pages": [
+      31,
+      77
+    ],
+    "requirement": "Keep original signed transaction bytes and IDs separate from normalized Data used for semantic commitments; do not reserialize a signed transaction while retaining its prior ID/signatures.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/serialization.ts:1",
+      "reference/testing/ledger/recorder.ts:24"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "The local harness retains signed CBOR and actual transaction identifiers separately from protocol encodeData and Terms hashes. No public indexer is implemented, so durable network indexing and rollback byte preservation remain outside this source proof.",
+    "impact": "Local retained transactions support inspection; they do not establish a production indexer preservation invariant.",
+    "closure": "Specify and test a network indexer persistence boundary if that infrastructure is included in conformance claims."
+  },
+  {
+    "id": "W-048",
+    "standard": "CTVS-1 and CTVS-2",
+    "sections": [
+      "11",
+      "11",
+      "12.2"
+    ],
+    "pdf_pages": [
+      33,
+      34,
+      35,
+      74,
+      75
+    ],
+    "requirement": "Managed valuation, debt/positions, epochs, partial fills, bearer/controller extensions or executable capability modules require an explicit separate profile; do not hide them in profile 0 fields.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:25",
+      "reference/packages/onchain/lib/ctvs/wire.ak:57",
+      "reference/packages/onchain/lib/ctvs/wire.ak:70",
+      "reference/packages/onchain/lib/ctvs/validation.ak:186"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Exact profile 0 records intentionally exclude these extensions. Raw recovery economic_body is not a generic execution-module mechanism. Managed/native integration claims require their separate economic/state mapping and actual protocol evidence.",
+    "impact": "Absence is deliberate scope, not a missing profile 0 field.",
+    "closure": "Keep extension claims excluded until a separately versioned mapping and evidence are supplied."
+  }
+]

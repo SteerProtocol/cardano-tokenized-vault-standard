@@ -1,0 +1,477 @@
+{
+  "reviewedAtUtc": "2026-09-18T16:40:51.561799+00:00",
+  "baseCommit": "75d47c90361d6f83458841b871e0f746500610e0",
+  "scope": "working tree including untracked reference sources; meeting-site submodule deletion excluded",
+  "sourceMatchesPriorCompleteGate": true,
+  "productionOrTestEdits": false,
+  "inventory": [
+    {
+      "path": "reference/packages/onchain/lib/tests/validation_test.ak",
+      "beforeLines": 602,
+      "afterLines": 630,
+      "new": false,
+      "sha256": "a3d7824b5c03bd51fbd15f2a408f377660e23b7c918037292be0584f22caca60"
+    },
+    {
+      "path": "reference/packages/integration/src/reader.ts",
+      "beforeLines": 0,
+      "afterLines": 450,
+      "new": true,
+      "sha256": "73a6a7c122f487915c4abd27d901e0d60568d47a4ade92ce2f672ab24bf46c49"
+    },
+    {
+      "path": "reference/packages/cardano/test/effects.test.ts",
+      "beforeLines": 0,
+      "afterLines": 436,
+      "new": true,
+      "sha256": "02aaec69d8838cccacd8a1764196602fbb6670c7e313c1929bdb0eac184b0fb3"
+    },
+    {
+      "path": "reference/packages/cardano/src/effects.ts",
+      "beforeLines": 0,
+      "afterLines": 412,
+      "new": true,
+      "sha256": "94b6b8c0bb3902d3f03a81e88db2cfd3076db555052ab70ac561fe300eac3143"
+    },
+    {
+      "path": "reference/testing/fixtures/vault.ts",
+      "beforeLines": 284,
+      "afterLines": 376,
+      "new": false,
+      "sha256": "cec1321e698bf19c58b8f1036b3d42174771562358c1391895e49c98218a5eff"
+    },
+    {
+      "path": "reference/testing/integration/ctvs2/reader.test.ts",
+      "beforeLines": 0,
+      "afterLines": 288,
+      "new": true,
+      "sha256": "7474a68b870a8aeace4e5dda23b6156dfde9559aa57ffd7417fc00fa0d65cab4"
+    },
+    {
+      "path": "reference/packages/integration/test/reader.test.ts",
+      "beforeLines": 0,
+      "afterLines": 272,
+      "new": true,
+      "sha256": "2c888bd7d9fe0f1968de7a1c1866067f88b7789b8d883bdca6d59232cffc2fdc"
+    },
+    {
+      "path": "reference/packages/integration/test/effects.test.ts",
+      "beforeLines": 0,
+      "afterLines": 239,
+      "new": true,
+      "sha256": "58f3852a8d032577add6c44b77d7c4240f04e2b8d546a0166346b685a86e04fe"
+    },
+    {
+      "path": "reference/packages/cardano/test/effects-fixtures.ts",
+      "beforeLines": 0,
+      "afterLines": 236,
+      "new": true,
+      "sha256": "919a9da58c60987f861c7c441d03d53f441d90e576305476894d5550fadecbdf"
+    },
+    {
+      "path": "reference/packages/cardano/src/selection.ts",
+      "beforeLines": 0,
+      "afterLines": 235,
+      "new": true,
+      "sha256": "a1b69722fcec12b67cd28384ba87f13d067f246e72fda508fa990603b2592450"
+    },
+    {
+      "path": "reference/packages/cardano/src/effects-ledger.ts",
+      "beforeLines": 0,
+      "afterLines": 215,
+      "new": true,
+      "sha256": "9b68317b0e47cf40fa896162a89784daeca9e01eaad21e4f1245d4c73e60d35c"
+    },
+    {
+      "path": "reference/packages/cardano/test/selection.test.ts",
+      "beforeLines": 0,
+      "afterLines": 196,
+      "new": true,
+      "sha256": "da0d0bbd072cf6749eed486d191936e4553b659ba03a50307ec51c2b7f770bf0"
+    },
+    {
+      "path": "reference/packages/planning/src/plan.ts",
+      "beforeLines": 186,
+      "afterLines": 188,
+      "new": false,
+      "sha256": "8f695b66733e210704c2d48e590153c60f5e2cfed3db3cd08bb3e5464457f756"
+    },
+    {
+      "path": "reference/testing/integration/ctvs2/selection.test.ts",
+      "beforeLines": 0,
+      "afterLines": 188,
+      "new": true,
+      "sha256": "e08620cf7f7d609a6400fa6a5a5ca90dec0583e963c928c5515db2f162d4ff72"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/decode-actions.ts",
+      "beforeLines": 182,
+      "afterLines": 183,
+      "new": false,
+      "sha256": "df39d84ffde806cfce43b54af56f3ecb4d4f72fdecf4b0db20f894ffc289d74d"
+    },
+    {
+      "path": "reference/packages/integration/src/project.ts",
+      "beforeLines": 0,
+      "afterLines": 180,
+      "new": true,
+      "sha256": "dfc5fab392a0de515025304893fe27d810f501117a58f3c30b6a6e12abdbb569"
+    },
+    {
+      "path": "reference/packages/protocol/src/types.ts",
+      "beforeLines": 173,
+      "afterLines": 178,
+      "new": false,
+      "sha256": "5266b5f3de4865ba2dacc81661e143511e43aff2da35018d6c79ed74cbdeb3b2"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/primitives.ts",
+      "beforeLines": 161,
+      "afterLines": 169,
+      "new": false,
+      "sha256": "199536aa56aef6046b15943fc6f13e116ec22301f9727d34ca7ada3dd5b2cf3f"
+    },
+    {
+      "path": "reference/packages/protocol/tests/data-adversarial.test.ts",
+      "beforeLines": 139,
+      "afterLines": 167,
+      "new": false,
+      "sha256": "36f7f8d5112ea096ce392c1e77652dd3dd42065edd5d4645609fe6692c90c14d"
+    },
+    {
+      "path": "reference/testing/ledger/recorder.ts",
+      "beforeLines": 151,
+      "afterLines": 161,
+      "new": false,
+      "sha256": "880ec1a0f790eff069c8ac2b60528d34f27deb344e262b32c3d9ec25d7074f11"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/batch.ts",
+      "beforeLines": 159,
+      "afterLines": 160,
+      "new": false,
+      "sha256": "9f145e541988f35db7c34cddd58605f88b9aacce31912cce9bb27474b770be76"
+    },
+    {
+      "path": "reference/packages/integration/test/fixtures.ts",
+      "beforeLines": 0,
+      "afterLines": 154,
+      "new": true,
+      "sha256": "6762fa200cb54bcf723dcd8847272ba1b5a6ac1af3119ad5b3cfe6b13da8239b"
+    },
+    {
+      "path": "reference/packages/protocol/tests/recovery-cbor.test.ts",
+      "beforeLines": 0,
+      "afterLines": 144,
+      "new": true,
+      "sha256": "5472debcba2fbebc0b1f76eaace04da21bfcbcc998bd0191837e63ba069dd0b4"
+    },
+    {
+      "path": "reference/packages/integration/test/ledger.test.ts",
+      "beforeLines": 0,
+      "afterLines": 143,
+      "new": true,
+      "sha256": "375c33186a3f83dca45a893e0202a3d4007c15d1bc23a1872280058e2d2be73b"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/requests.ts",
+      "beforeLines": 138,
+      "afterLines": 141,
+      "new": false,
+      "sha256": "1180c85692c9a77e52338ae39ffeb299d1ac5a03af1df80d16f1e6186466e059"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/codec.ts",
+      "beforeLines": 136,
+      "afterLines": 133,
+      "new": false,
+      "sha256": "99ee56524a4d3407844a2f37f7a2f38200e3aeeff00b8b5d8da5497b7423355d"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/value.ts",
+      "beforeLines": 96,
+      "afterLines": 124,
+      "new": false,
+      "sha256": "1646e6d6b38588c8fd74d4ce9e04b95844504e75f4c77d41416ea9b2fb70996e"
+    },
+    {
+      "path": "reference/testing/integration/ctvs2/lifecycle.test.ts",
+      "beforeLines": 114,
+      "afterLines": 124,
+      "new": false,
+      "sha256": "1d7c58386dbbaa6f9937d9ec81ad0e2510355917f6852716623028b1563927e4"
+    },
+    {
+      "path": "reference/packages/integration/src/ledger.ts",
+      "beforeLines": 0,
+      "afterLines": 121,
+      "new": true,
+      "sha256": "37e039ce60b9a11a13fce7afe8025b0a894657f319b94c3c23ead9b2ff7eb70f"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/test/hex-identity.test.ts",
+      "beforeLines": 0,
+      "afterLines": 115,
+      "new": true,
+      "sha256": "f2fc07827730399e34304017d39c0a5770a848bc0b5c67a5318c678de6400da0"
+    },
+    {
+      "path": "reference/packages/cardano/src/effects-witnesses.ts",
+      "beforeLines": 0,
+      "afterLines": 114,
+      "new": true,
+      "sha256": "8385b9063ac0f70e3c1809d24a0cef652100ba20f7b5feef63910133c58abe5d"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/settlement.ts",
+      "beforeLines": 92,
+      "afterLines": 102,
+      "new": false,
+      "sha256": "3c5c66dab1296b029f2d12ac39aa54c54139e0e85d1f39aaecfc103f61d552f7"
+    },
+    {
+      "path": "reference/packages/planning/test/hex-identity.test.ts",
+      "beforeLines": 0,
+      "afterLines": 95,
+      "new": true,
+      "sha256": "14da888c22e59d58d1e7e49328b6517ed9812567db912efe7cc360b69c155b98"
+    },
+    {
+      "path": "reference/packages/integration/src/identity.ts",
+      "beforeLines": 0,
+      "afterLines": 94,
+      "new": true,
+      "sha256": "56217c6a8d13233ad2d46ba687880ea5a8eaee411ff453f816272408acd73e41"
+    },
+    {
+      "path": "reference/packages/planning/src/context.ts",
+      "beforeLines": 93,
+      "afterLines": 94,
+      "new": false,
+      "sha256": "8f40a7e4c44c3c6578bf02a1220afa7f0b5aca508c5961910c6fd1ba65cf5306"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/test/recovery-cbor.test.ts",
+      "beforeLines": 0,
+      "afterLines": 93,
+      "new": true,
+      "sha256": "b5ddaca32e44ba6292291428d6e6133a4468f943f745f8de3d3e08c80d04cf4d"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/terms.ts",
+      "beforeLines": 92,
+      "afterLines": 92,
+      "new": false,
+      "sha256": "37c49c8f1b664cad2a42ffb5577389deb17d221255ea91d6a8fb3c10e3c3d147"
+    },
+    {
+      "path": "reference/packages/integration/src/types.ts",
+      "beforeLines": 0,
+      "afterLines": 87,
+      "new": true,
+      "sha256": "381ae5920a8c3b1075f80bc535d381d37bb6c945d8a679228585327c03f0059c"
+    },
+    {
+      "path": "reference/packages/integration/test/ownership.test.ts",
+      "beforeLines": 0,
+      "afterLines": 84,
+      "new": true,
+      "sha256": "664ca4913749140e5da83383520047eea5527c4360659b68ed721d1c23709d99"
+    },
+    {
+      "path": "reference/packages/cardano/src/effects-types.ts",
+      "beforeLines": 0,
+      "afterLines": 79,
+      "new": true,
+      "sha256": "76f4b47f8706a9067d3b2a57990baa9ebb877205a9ce1694b3f5f9b32dbb1785"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/recovery.ts",
+      "beforeLines": 43,
+      "afterLines": 72,
+      "new": false,
+      "sha256": "6c0fbf82012041326a673e828e26bcaf1be00bcc03da79645c1f307f4e8c5b82"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/recovery-cbor.ts",
+      "beforeLines": 0,
+      "afterLines": 68,
+      "new": true,
+      "sha256": "160475a2d81dfaf6dd93812eaaa4fffdb8a1c506083a44a019fd7c28eac02e27"
+    },
+    {
+      "path": "reference/testing/ledger/selection.ts",
+      "beforeLines": 0,
+      "afterLines": 65,
+      "new": true,
+      "sha256": "118142e1fed4e01c3592296f285c62e3a94325ee6470d369b57c83062a52fa1b"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/requests.ts",
+      "beforeLines": 49,
+      "afterLines": 49,
+      "new": false,
+      "sha256": "07218322d3b9bc503fbc6000b51c910fcd4c6a570b9a1286470c047f283cdfc4"
+    },
+    {
+      "path": "reference/testing/integration/ctvs1/effects.test.ts",
+      "beforeLines": 0,
+      "afterLines": 40,
+      "new": true,
+      "sha256": "de13ce1993a82e4d98518968d3478a7b1136efab3302ede23c72625f1e6525dc"
+    },
+    {
+      "path": "reference/packages/protocol/tests/data.property.test.ts",
+      "beforeLines": 37,
+      "afterLines": 37,
+      "new": false,
+      "sha256": "19f9f5d5f558ed5b01e330997adc3ac0ce33d31c9022d9879343ee84d15d708c"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/bounds.ts",
+      "beforeLines": 34,
+      "afterLines": 34,
+      "new": false,
+      "sha256": "b033bc02c85c03cdc2d0ae33904c025543699fa9cae75328ac470d6f2ea36a23"
+    },
+    {
+      "path": "reference/testing/ledger/selection.test.ts",
+      "beforeLines": 0,
+      "afterLines": 31,
+      "new": true,
+      "sha256": "2d00ed7580313ba15e1b261d3011f808f7cde1408cc34ed3ccdce7fe5bd1a87b"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/index.ts",
+      "beforeLines": 23,
+      "afterLines": 24,
+      "new": false,
+      "sha256": "64ebd743cde5390e48e0c63e906b8dafa06c1743c6ca707229e1d020d2aec821"
+    },
+    {
+      "path": "reference/packages/integration/src/transport.ts",
+      "beforeLines": 0,
+      "afterLines": 9,
+      "new": true,
+      "sha256": "97c53e186d4579d0317c5fc9702df56177f4d61e46497492b356987345772f3b"
+    },
+    {
+      "path": "reference/packages/integration/src/index.ts",
+      "beforeLines": 0,
+      "afterLines": 4,
+      "new": true,
+      "sha256": "67da1688182a18e4031f7ed48d538a955f04de8174f9b6719f5c976b4f987895"
+    },
+    {
+      "path": "reference/packages/cardano/src/index.ts",
+      "beforeLines": 0,
+      "afterLines": 2,
+      "new": true,
+      "sha256": "591c0ede8802fdf46fceeffe17e2d6bc6ebd9ee25c383e174411c81834f4acdd"
+    }
+  ],
+  "probes": {
+    "typescriptConsumer": {
+      "source": "import type { VaultReader } from './packages/integration/src/index.js';\ndeclare const reader: VaultReader;\ndeclare const policy: string;\nconst response = Math.random() > 0.5 ? reader.snapshot(policy) : reader.quote(policy, 'deposit', 1n);\nif (response.kind === 'snapshot') response.data.backingAssets;\nconst request = reader.request(policy, { txId: 'x', index: 0n });\nif (request.data.recoveryAvailability.status === 'known') request.data.recoveryAvailability.value;\nconst candidate = reader.candidate(policy, { txId: 'x', index: 0n });\nif (candidate.data.recovery.status === 'known') candidate.data.recovery.value.deadlinePosixMs;\n",
+      "diagnostics": [
+        {
+          "line": 5,
+          "code": 2339,
+          "message": "Property 'backingAssets' does not exist on type '{ underlying: string; quantityUnit: string; state: State; terms: Terms; backingAssets: Observation<bigint>; economicSupply: Observation<bigint>; ... 6 more ...; constructionCapacity: Observation<...>; } | { ...; }'.   Property 'backingAssets' does not exist on type '{ operation: Operation; amount: bigint; result: Observation<Quote>; availability: Observation<boolean>; pricingBasis: OutRef; ... 5 more ...; prerequisites: string[]; }'."
+        },
+        {
+          "line": 7,
+          "code": 2339,
+          "message": "Property 'value' does not exist on type '{ status: \"known\"; value: { cancel: string; expiry: string; deadlinePosixMs: bigint; fullSourceValue: Value; }; } | { status: string; reason: string; }'.   Property 'value' does not exist on type '{ status: string; reason: string; }'."
+        },
+        {
+          "line": 9,
+          "code": 18046,
+          "message": "'candidate.data.recovery.value' is of type 'unknown'."
+        }
+      ]
+    },
+    "canonicalIdentity": {
+      "numberIndex": {
+        "effects": {
+          "accepted": true,
+          "value": "1111111111111111111111111111111111111111111111111111111111111111#1"
+        },
+        "protocol": {
+          "accepted": false,
+          "error": "output index must be bigint in 0..65535"
+        }
+      },
+      "oddAssetName": {
+        "effects": {
+          "accepted": true,
+          "value": {
+            "abababababababababababababababababababababababababababab.a": "1"
+          }
+        },
+        "protocol": {
+          "accepted": false,
+          "error": "expected hexadecimal bytes"
+        }
+      }
+    },
+    "unrelatedOutputRetention": {
+      "scope": "Synthetic accepted-event structural probe, no network validation",
+      "before": {
+        "vaults": 1,
+        "requests": 0,
+        "claims": 0,
+        "utxos": 2
+      },
+      "after": {
+        "vaults": 1,
+        "requests": 0,
+        "claims": 0,
+        "utxos": 34
+      },
+      "irrelevantAdaOnlyOutputsRetained": 32
+    }
+  },
+  "freshFocusedTests": [
+    {
+      "command": "npx vitest run --project unit --project property --reporter=default packages/protocol packages/planning implementations/ctvs2/client packages/cardano/test/selection.test.ts testing/ledger/selection.test.ts",
+      "filesPassed": 18,
+      "testsPassed": 198
+    },
+    {
+      "command": "npx vitest run --project unit --reporter=default packages/cardano/test/effects.test.ts packages/integration/test",
+      "filesPassed": 5,
+      "testsPassed": 52
+    }
+  ],
+  "findings": [
+    {
+      "id": "CQ-01",
+      "priority": "P2",
+      "title": "Restrict the projection to vault data",
+      "file": "reference/packages/integration/src/project.ts",
+      "line": 148
+    },
+    {
+      "id": "CQ-02",
+      "priority": "P2",
+      "title": "Prepare once and submit the measured transaction",
+      "file": "reference/testing/ledger/selection.ts",
+      "line": 49
+    },
+    {
+      "id": "CQ-03",
+      "priority": "P2",
+      "title": "Make response kinds and observations real discriminants",
+      "file": "reference/packages/integration/src/types.ts",
+      "line": 72
+    },
+    {
+      "id": "CQ-04",
+      "priority": "P2",
+      "title": "Use one canonical Cardano normalization boundary",
+      "file": "reference/packages/cardano/src/effects-ledger.ts",
+      "line": 74
+    }
+  ]
+}

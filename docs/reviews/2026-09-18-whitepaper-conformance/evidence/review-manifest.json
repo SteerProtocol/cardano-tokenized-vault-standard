@@ -1,0 +1,759 @@
+{
+  "recordedAt": "2026-09-18T13:03:35.982288+00:00",
+  "gitHead": "75d47c90361d6f83458841b871e0f746500610e0",
+  "sourcePdfSha256": "e06e90a6eb2eb1e9ffdc90d38b7bcabd392b54b3144d78faf11c8be321054e75",
+  "trackedReferenceDiff": [],
+  "productionAndRetainedEvidenceBindings": [
+    {
+      "path": ".github/workflows/reference.yml",
+      "sha256": "602421868875d7bb7ff7880200c567d25e0a99d5a61f3c217409f3b75959a229"
+    },
+    {
+      "path": "reference/.gitignore",
+      "sha256": "9bc29afa3e69fd7893e489a12bf03da32ebe137fa96d6e9d575165e53c2d5378"
+    },
+    {
+      "path": "reference/README.md",
+      "sha256": "f2ad12d192b0d9ada4518d54c5df9dfc21b8116307d8408463ecdd7d7db5a9b6"
+    },
+    {
+      "path": "reference/VALIDATION.md",
+      "sha256": "4387c65f168f4f9d65fc31c62f7a7c7af62b7f3c91878a42186c9c6633fe6fb9"
+    },
+    {
+      "path": "reference/biome.json",
+      "sha256": "9ceab6b4f0a2f739b2ff5652f51f40f21237bbe9754200dfcf9350455d03411e"
+    },
+    {
+      "path": "reference/evidence/2026-09-16.json",
+      "sha256": "07df10ba7bcd8e9b542ff52882a0a3d17a0d6f8bf29227b2ba3548e086728924"
+    },
+    {
+      "path": "reference/implementations/ctvs1/README.md",
+      "sha256": "edeb64c63df6a302fd6e1cc4d69a2421cb59bdff718825182bcead55bd800d9a"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/README.md",
+      "sha256": "6b75ed6f10e484c395766a6fa7bb96dd5667ff70ecd355a90173e4fd0d11ec2a"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/package.json",
+      "sha256": "d6edc4058e912407e7ca6b51e1f6de1dc9aa905eedfb8fc933ae036de97a0781"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/src/direct.ts",
+      "sha256": "853b09a960ec051965c04914fd7efeb2d6a73d5bab5fd25c4e41f8ab5806eca4"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/src/genesis.ts",
+      "sha256": "0e2f19ca3dd7fb3cd7390eb1d5e4c8721298ffb2823804400d659013058c8633"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/src/index.ts",
+      "sha256": "8ef290e9d042e43572aa1d6596f89bdab450497225691859ab8c705e06a44b56"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/src/maintenance.ts",
+      "sha256": "7b2d951ae30c3269a0c97b4b0e3f4608ed93eafcd8c70f9394a9ebb286bde4e6"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/test/direct.property.test.ts",
+      "sha256": "4dde9606fe5662704f22750b3ee5278d3cd7774d16dff8e5651a283921742009"
+    },
+    {
+      "path": "reference/implementations/ctvs1/client/test/direct.test.ts",
+      "sha256": "e025021eaee6393fbb3b03834b0ce7987bdddefdf6136abdcf4fba3e8aab0f12"
+    },
+    {
+      "path": "reference/implementations/ctvs1/onchain/aiken.lock",
+      "sha256": "6ad38573bfc4d4987ef66afb832bc39e45dc1c262bff79fc8139ad804c5a8b92"
+    },
+    {
+      "path": "reference/implementations/ctvs1/onchain/aiken.toml",
+      "sha256": "d310471bda0f3169cea7511dad1a0abf3352b689cfca89f556c08d4046271196"
+    },
+    {
+      "path": "reference/implementations/ctvs1/onchain/lib/ctvs1/state.ak",
+      "sha256": "eb7cda5cea425c9c7f6a25543ee1487acdf7413475da9cfcefb9a69ed3598eb6"
+    },
+    {
+      "path": "reference/implementations/ctvs1/onchain/validators/state_test.ak",
+      "sha256": "fee744cfbcdf75a82d266742f51a018a5d35131374ba11110cadac9859166ed9"
+    },
+    {
+      "path": "reference/implementations/ctvs1/onchain/validators/vault.ak",
+      "sha256": "203c2dadf5a50ce2795889b55696c7e3dd2cfc85faf3389ac9a5a6f1d648857d"
+    },
+    {
+      "path": "reference/implementations/ctvs2/README.md",
+      "sha256": "ba76e42a16081effffaefa86e0740d34a38f581887778bedfd21e67f7991b74c"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/README.md",
+      "sha256": "b154a67c898ee39557f8453d81cb806a71db5d1bf996f3a3b5793c079eb18feb"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/package.json",
+      "sha256": "6afbb8935ee6c5d772d06cca50a9a3192c2a42d7165c7454956d24261f29ce10"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/batch.ts",
+      "sha256": "5d238bc7ac5b99019129043f7e3d4cfa780777c5ccc2e51488a56c6a04ead3ce"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/delivery.ts",
+      "sha256": "a398e03cf32ed0d0b292262cd1dc488da1bb30e02e34d7cd9b5bd85a0747bb4d"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/genesis.ts",
+      "sha256": "759b4047d4cea9912c258940c6c2b3070738a21039f220cd976892508feb3122"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/index.ts",
+      "sha256": "6f82db857461033047f752426bea4b0888bd142e8205c68b338f48dcffba1e53"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/maintenance.ts",
+      "sha256": "d8482c6a0be67a9ab75ff9619fabca456f658573eb1168a97a0240744800ab18"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/recovery.ts",
+      "sha256": "5d6c6c15d7a3b2680347f29764258ca3f53a0d5604c3fc281bc14c6db90efb57"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/requests.ts",
+      "sha256": "4d43e7ac3f430c8debc9859ca89088e812ddfc23bedda9302a6e3f838d5a686a"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/src/settlement.ts",
+      "sha256": "b1be9630571d3f5fd06e575fad8c733847f9e5f8a6f1e349cda9082ff8a997d5"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/test/recovery-delivery.test.ts",
+      "sha256": "dbf45d343fa2b1161888cdebe018f40cee52744442bbe8e323774fc52efd7b87"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/test/requests-batch.test.ts",
+      "sha256": "e7e35284546e7a101def45d27e5a8ece7614d0277573ed14d552693896c69100"
+    },
+    {
+      "path": "reference/implementations/ctvs2/client/test/settlement.property.test.ts",
+      "sha256": "1304d026ddebe72ffa6ef362449b9719a3e91898d2527e55f2e0159eff336354"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/aiken.lock",
+      "sha256": "6ad38573bfc4d4987ef66afb832bc39e45dc1c262bff79fc8139ad804c5a8b92"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/aiken.toml",
+      "sha256": "392fda3ff39b0f05cf91ce8e2080a2607e1e70730d12c90d1422774a6da83d77"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak",
+      "sha256": "ed510deeb9d16d929c57bae57ba991758bc19b08231090f86cf887e8fa536ae2"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak",
+      "sha256": "6c1ef75f6a1b61657dc5cd4452208eae3f104461869e76e7693aac4328d10bf6"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak",
+      "sha256": "c08f3edecce64ef036d6049d6376902f4faef61e3b4e5aa24bd029a1ba1393cf"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.ak",
+      "sha256": "7a297812af3d2cf099b1f9223561c8d55639d72bc238e6e7fa4f08f4e5d320a3"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/family_decode.test.ak",
+      "sha256": "ee45052373b763b75d2bde157ba1324e85206675c151ffdd89bfa60b63960622"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak",
+      "sha256": "ad586edfe6974fde65b6b20ec051243207ef87460abcbb13c7b4e04a37bd8bc2"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/claim.ak",
+      "sha256": "14f2b80ff8c9c5825a229093e73144cc6849755e49c2c2baed03df02015e8efb"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/claim_test.ak",
+      "sha256": "7d6e20596c8c347d4ebb88e60e64c4ac6d1673d545ef597712eb49a565976d93"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak",
+      "sha256": "26deca986ab001b8dd12521e0f0272e9df7aced91c09a2ab0c997dda77f4540c"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/state_test.ak",
+      "sha256": "8153107a33cf68286df03acab6ff5c148bc733715ff201e4ef60c0b111d5861d"
+    },
+    {
+      "path": "reference/implementations/ctvs2/onchain/validators/vault.ak",
+      "sha256": "b8b0f918a3ee7e17d22b169bf11493481d47202f866bdf80127238edf5115caf"
+    },
+    {
+      "path": "reference/package-lock.json",
+      "sha256": "ac1c7bc46821ed292498d423791c009d88e45234b2784af50c71ba55ae88c641"
+    },
+    {
+      "path": "reference/package.json",
+      "sha256": "d1eee3c15b3055bfd31719aef7f6d73215c83c53bc56dec15c291ff37c5b7546"
+    },
+    {
+      "path": "reference/packages/onchain/README.md",
+      "sha256": "f2517a17d99b2a9002e1040de9ff35aca90dfdd87af9d06d4dd6cc1b6ff50081"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/decode.ak",
+      "sha256": "c9f026d1a432a13866b5752a402d6c42939f8729f9da9fa5b1cef0ad6413eb83"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/genesis.ak",
+      "sha256": "72c200596391b894c34446f923e7fa5d8d701424d1edc2f3000c92e838f4d254"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/ledger.ak",
+      "sha256": "4cecb26a221e5d79b1de474c498629b78d803de2f71b21c445cf8e9a25867532"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/math.ak",
+      "sha256": "d483ac652817a851a3fc3d7abaacc20aa041f5ce9a0d6b8cf78a047e7d73f3a2"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/state_core.ak",
+      "sha256": "6d7404ccb39633601f61300ca91a5fcb8aeb41f427a76247e1dbcde8fcf7a0ae"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/testing.ak",
+      "sha256": "24b258b22a32ff622c0b5bedb44f459dbb971e0a155043fdc4d3641758cab3bd"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/validation.ak",
+      "sha256": "2549e7368266914810cf261dedec7d02b2276782de85e1f747ebdb98140a9260"
+    },
+    {
+      "path": "reference/packages/onchain/lib/ctvs/wire.ak",
+      "sha256": "e3c08c639f48fe19892adfb67f34dce83923927a7a3443c8b23758e7f5a90627"
+    },
+    {
+      "path": "reference/packages/onchain/lib/tests/math_properties.ak",
+      "sha256": "7beeabf8670ee4f0c4b5697263005b2658a80723604cabba7f171e484120fbf6"
+    },
+    {
+      "path": "reference/packages/onchain/lib/tests/validation_test.ak",
+      "sha256": "3479f1afabb2069904804cd93d7091134b0e41868e5673799a05dc93f9ac127c"
+    },
+    {
+      "path": "reference/packages/onchain/test-provenance.json",
+      "sha256": "0290f5ad54c9ee4322787852038489d26a5c9d0e5bd229648390790d3f4cc1db"
+    },
+    {
+      "path": "reference/packages/onchain/validators/config_lock.ak",
+      "sha256": "0b07dcf24cb825849dbc6e70edde801b0f8fdd20e91e3a5489a9335b30eb0246"
+    },
+    {
+      "path": "reference/packages/planning/README.md",
+      "sha256": "b340332cd6adf345480de24a303ad9842962895a8af28059d3b6ea379d1fe0c1"
+    },
+    {
+      "path": "reference/packages/planning/package.json",
+      "sha256": "e48908787c7edc9aacfedbf1fafd13254409d1333d753d248d571a0a356b9b89"
+    },
+    {
+      "path": "reference/packages/planning/src/context.ts",
+      "sha256": "7f7b4c46ffd3e3df8a9b8942941f235cfebb1c53e46e27fb6f1a6d74482430d8"
+    },
+    {
+      "path": "reference/packages/planning/src/genesis.ts",
+      "sha256": "010609efeef6bfbb72bbfb6aff2905b959826e42427fc2b85ffef76ca2e1256b"
+    },
+    {
+      "path": "reference/packages/planning/src/index.ts",
+      "sha256": "5181c88efb510aeced2e08aac7730fbcf15223613ad9f3366b678f11cc0fbf82"
+    },
+    {
+      "path": "reference/packages/planning/src/maintenance.ts",
+      "sha256": "aad698492eeb6fc01c3adf2f52d392aa2277aee78804d9c291d3db52555877ea"
+    },
+    {
+      "path": "reference/packages/planning/src/plan.ts",
+      "sha256": "564933eb349c0f902ac07239926fda06801c8df3e5ac3345ef5af49d27c7ca2e"
+    },
+    {
+      "path": "reference/packages/planning/src/types.ts",
+      "sha256": "fb245a14f46f8839d6eb95feea3ffa7d0e88fc78b84ef410252cedeedb095661"
+    },
+    {
+      "path": "reference/packages/planning/src/value.ts",
+      "sha256": "0887e537d656940492db2aa5221bc30300ef64e84b6016fa7c943148507150e7"
+    },
+    {
+      "path": "reference/packages/planning/test/context.test.ts",
+      "sha256": "2c45f0e08cae374a456e9aab1df0b78c8cdfdd0837762ba3be89026d27298ab7"
+    },
+    {
+      "path": "reference/packages/planning/test/fixtures.ts",
+      "sha256": "90bc1b05432a44cab79e4043c40dd6de67a7c0e041d6fe7d08481e3d5210653c"
+    },
+    {
+      "path": "reference/packages/planning/test/plan.test.ts",
+      "sha256": "67ad9febef235dbc16f0baa1b0e7d588dfda1b4fbc4a5f72371aaf4a5cffa39d"
+    },
+    {
+      "path": "reference/packages/planning/test/value.property.test.ts",
+      "sha256": "7dcdcec5d1afadd6e996d939c0075de965a4cc69a46fe7d9a065a44d16c24bc9"
+    },
+    {
+      "path": "reference/packages/protocol/README.md",
+      "sha256": "26ae2254bf1698744522f4f8bc8423e9bebdd2bd501faef3cbb99890b026033e"
+    },
+    {
+      "path": "reference/packages/protocol/package.json",
+      "sha256": "68088210e04470ff47a588ebaa28a3ca38b898eb5f8014cd3a8ca22522fd0339"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/bounds.ts",
+      "sha256": "882e00902282ef2d42f397a06672e804a4dd014676549d81ed264f5373750e6f"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/codec.ts",
+      "sha256": "648082af15c90acc6df2d4bb2809b539626c09a98b747c567907a1d60ab0a808"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/index.ts",
+      "sha256": "4a5993eddca47f690b7c5fd3eff181e8afb53ae085f59c1ce76bacbe14b19b78"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/parse.ts",
+      "sha256": "36e80b061914463f1c59c86093c25324caa63f1dde1b37d90d259e753c731b67"
+    },
+    {
+      "path": "reference/packages/protocol/src/data/value.ts",
+      "sha256": "d6de0a8edf78a9a97fceb54fa8e1e14914eb50f7293c632a9322a8685eaca81e"
+    },
+    {
+      "path": "reference/packages/protocol/src/hash.ts",
+      "sha256": "cd09e3a14a20e968d4fb443281b4af9c8d43388bd3a63c8a1602d3824e3d7528"
+    },
+    {
+      "path": "reference/packages/protocol/src/index.ts",
+      "sha256": "5353e5480170ce2770395fcbc305136f06be0963a6622bc19a2e46503ba63dcf"
+    },
+    {
+      "path": "reference/packages/protocol/src/math/index.ts",
+      "sha256": "9f05679532077a30cdd7b74c6803343444c845496e44f8d3478589138ca931eb"
+    },
+    {
+      "path": "reference/packages/protocol/src/math/integer.ts",
+      "sha256": "29c9b39b29fb4ab1a956f80527e02bef9573b432c0074b857b37e53c3033d57e"
+    },
+    {
+      "path": "reference/packages/protocol/src/math/limits.ts",
+      "sha256": "42c2715407237587aae0c1b53848b0283eaa93753a41d667b9487c5b0c1d952b"
+    },
+    {
+      "path": "reference/packages/protocol/src/math/quotes.ts",
+      "sha256": "798ca2d56d9deb984fbd4f1f6646f6d9b8e8457619d2f8e2bb61b4f5fd137253"
+    },
+    {
+      "path": "reference/packages/protocol/src/math/transition.ts",
+      "sha256": "706588064638cdc2e9beb9e2c3e29d421c5ed26c6b2cd3975c03eec64d73e024"
+    },
+    {
+      "path": "reference/packages/protocol/src/types.ts",
+      "sha256": "a81da8b40695da913b3816a1d4bccc21a06ea48e98e386379561895f0251461a"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/actions.ts",
+      "sha256": "9faafe29bb9930b94c07387026c2ad6c95d13e61c80ff0506818f2ab3ca79826"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/decode-actions.ts",
+      "sha256": "65cc3d1b57df5c9b1b99778c1dab0baf82a020226182598d3c222edad0952d4a"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/index.ts",
+      "sha256": "b545557601fdc17d8df85a6fd48e497dcf269b2db88e96d168ecb12e7c4fcf84"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/primitives.ts",
+      "sha256": "68f5e18b8bd2b17b4c504344828ab016b1182b52e29e389d21654d8d2092b127"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/requests.ts",
+      "sha256": "6042f01892238b0e54619e1cc3d697fd5d9345b63fd5a84f5b711f65a8781e86"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/state.ts",
+      "sha256": "381d6291e33d44aeda3c82f842dac3210dc32e18f33bac9ede313e647ae36b94"
+    },
+    {
+      "path": "reference/packages/protocol/src/wire/terms.ts",
+      "sha256": "343c0274aa326e405d724a645a689a7d201cee8b836b07ce9fe7873106a23643"
+    },
+    {
+      "path": "reference/packages/protocol/tests/data-adversarial.test.ts",
+      "sha256": "8f5e2458b50d2ce489c0e19390f70de29eac7a47e60c1b52ba557f526a72bbc0"
+    },
+    {
+      "path": "reference/packages/protocol/tests/data.property.test.ts",
+      "sha256": "84e5326ed6bb8076c11035a41cf140d2cb7e58eac3f293f76bcbda37849ad703"
+    },
+    {
+      "path": "reference/packages/protocol/tests/data.test.ts",
+      "sha256": "a2585b9aa9ee6b43de5a498e95065bc6ef557c2b221768e9a15c7c8d1a8cf436"
+    },
+    {
+      "path": "reference/packages/protocol/tests/fixtures/blake2b256.json",
+      "sha256": "2645be881b3dac16b1367102f0b0212a4444ea4864e260a9e8ed07df815087e1"
+    },
+    {
+      "path": "reference/packages/protocol/tests/fixtures/example.ts",
+      "sha256": "de6bdbac187c40a3bc2ce0bf6b9233352c347963de1dcfe1574f1a1a05a0651f"
+    },
+    {
+      "path": "reference/packages/protocol/tests/fixtures/wire-vectors.json",
+      "sha256": "ab6e60cb6154e90b7d6bc65cc5718e1b607efe720814375936dca7acff5bf671"
+    },
+    {
+      "path": "reference/packages/protocol/tests/math.property.test.ts",
+      "sha256": "3a5c0e62892138ddcc04dbf3f2f5d1b7cb8f492c0f58d62b459c2409feb71ad1"
+    },
+    {
+      "path": "reference/packages/protocol/tests/math.test.ts",
+      "sha256": "04dab670bc005f14f0d807733d2de91211a24f85641b606a5f8bfcff848bb9ee"
+    },
+    {
+      "path": "reference/packages/protocol/tests/wire.test.ts",
+      "sha256": "b2efac680f4b1e29a82210a789919b924d0f9cc10bdd5d980a10977f6ac90074"
+    },
+    {
+      "path": "reference/testing/README.md",
+      "sha256": "4d0f6741a94f927dde95f8df8460d9d51cb610df4bd96c09c9b0e06cea2b4604"
+    },
+    {
+      "path": "reference/testing/fixtures/requests.ts",
+      "sha256": "163032a26747952f2d130f3602654dcf77020056d0b462e9530826623e49edcd"
+    },
+    {
+      "path": "reference/testing/fixtures/vault.ts",
+      "sha256": "7570aab69abfa80f92a9fe61af3c7f2662a809d39940e0ee664e583308576d18"
+    },
+    {
+      "path": "reference/testing/integration/compilation/parameters.test.ts",
+      "sha256": "c2ea310a23bba14ded803ea1eaa8e0a47976f5b32e8f974fa8b3aa41197bd3c3"
+    },
+    {
+      "path": "reference/testing/integration/ctvs1/lifecycle.test.ts",
+      "sha256": "0cb019f2e8921a4977ca2de5968f030653e46428625147bbfff78ef4f460373b"
+    },
+    {
+      "path": "reference/testing/integration/ctvs2/guards.test.ts",
+      "sha256": "d8e95fb4de6912b4a777b07ab520178c4c5c624b8eb5f52b8aa747dc6b460f9e"
+    },
+    {
+      "path": "reference/testing/integration/ctvs2/lifecycle.test.ts",
+      "sha256": "3a6129a19a4c4c283639052dcd11aa69d2771f42b11427369e9ba5d76918690d"
+    },
+    {
+      "path": "reference/testing/ledger/builder.ts",
+      "sha256": "1b58e5d55b6a51dcaa260ad061986ae8067f5c3c5407eccfd8d56b4ac2709e07"
+    },
+    {
+      "path": "reference/testing/ledger/evaluator.test.ts",
+      "sha256": "00d8f1d51a823028d08c7e64d1f73f5a261bac104a365d6576ecc33e7458b31b"
+    },
+    {
+      "path": "reference/testing/ledger/evaluator.ts",
+      "sha256": "5c03032ca30742fdcbea30cfc9e5ff98b96e20c8f7e8f804f10d4afa6f5234b3"
+    },
+    {
+      "path": "reference/testing/ledger/outputs.test.ts",
+      "sha256": "c450db2c4b917b17f0bb3829c6df059ff580ea29dcc4a6ab65ad196d4686e15e"
+    },
+    {
+      "path": "reference/testing/ledger/outputs.ts",
+      "sha256": "22a53c6bbb27dde8c36fe90535667fb317981ac4981e19421c1572add47ec393"
+    },
+    {
+      "path": "reference/testing/ledger/recorder.ts",
+      "sha256": "51abda492e63d2ae79539f41266ff8a91111d23e0d5f6c43ade63e5d2e3e6a3c"
+    },
+    {
+      "path": "reference/testing/ledger/serialization.ts",
+      "sha256": "8322ad709d8da3f1a6a77cf496b2fb913e434f84fc702c3aa601a3de865c709c"
+    },
+    {
+      "path": "reference/testing/package.json",
+      "sha256": "49e9574f77f21f56a96c31125780c8bd6e459c3c8cf2cdea5e310f6649acbeac"
+    },
+    {
+      "path": "reference/testing/setup/property.ts",
+      "sha256": "90b4db4642104cf60eac8b0023acf32ee9971763b3276bdd426bc714e4ed0587"
+    },
+    {
+      "path": "reference/tools/apply.ts",
+      "sha256": "dd1623dd5012e73d33096dba0bfa621a54918710b86358c6879e5be170da1bea"
+    },
+    {
+      "path": "reference/tools/build.ts",
+      "sha256": "7b78f6d419849de20274d5eb0d89af8d34290fb23b884816ba191f2a96b6dbd7"
+    },
+    {
+      "path": "reference/tools/check-onchain.ts",
+      "sha256": "2eed8123dea532e6a52b0454afab156c7b05d9a7b2cc4c955de89bee176cb5b3"
+    },
+    {
+      "path": "reference/tools/format-onchain.ts",
+      "sha256": "c4c216ba27e868fd3e25e856487be95299c13b765d6759890fca504f3ddf5a4a"
+    },
+    {
+      "path": "reference/tools/lib/build.ts",
+      "sha256": "2eace3b3fa46b4e5bdc92cc1206bf35180b798e51b11e706cb4c30ef31c3f0c5"
+    },
+    {
+      "path": "reference/tools/lib/project.ts",
+      "sha256": "392c6cbb08684caa436f81ed49952da058faf5a16c90598a7dbf3181fe7083e7"
+    },
+    {
+      "path": "reference/tools/lib/staging.test.ts",
+      "sha256": "1c624e12253d77031aad51cc4a8f9c1e329da09c093c6059cef0eb67bd4a51f7"
+    },
+    {
+      "path": "reference/tools/lib/staging.ts",
+      "sha256": "794107dca798c4c03cfc9b327f8f322d59a5e001b1e00b0e986b29f05dc52ed8"
+    },
+    {
+      "path": "reference/tsconfig.json",
+      "sha256": "72b376ff4571c7d0a389334ae641a773d04818056a06bf391a21028be37d45d3"
+    },
+    {
+      "path": "reference/vitest.config.ts",
+      "sha256": "4a4e95c1331bd60b4678144aad28657ff8216f31564e8a55b16588b12b48d163"
+    }
+  ],
+  "reviewBindings": [
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/README.md",
+      "sha256": "5d2b3e098c85d3f3b3fa33e12fcd0733b78d29aa9dd2932ace95a5f95957dfa5",
+      "bytes": 24754
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/REPRODUCE.md",
+      "sha256": "d15356f2fcf6a2c4308c7d0a9d68d4868c32bd18cf2e698c304b21c15403d538",
+      "bytes": 6104
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/ctvs1.md",
+      "sha256": "12fc5a83b787a5189b2b826e412c88cf05cb35db614386f7798dafb301eb5ec6",
+      "bytes": 62147
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/ctvs1.requirements.json",
+      "sha256": "a279e62d07bbc69bcab3806e6ab5a6e33f6c557b4daf0f53c9fef908716e4806",
+      "bytes": 85617
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/ctvs2.md",
+      "sha256": "6c45309248c3773901db6720606789dcf2358740c5f948f8eb3acf4b39602bbd",
+      "bytes": 72009
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/ctvs2.requirements.json",
+      "sha256": "24f5fae75c38e1fed33c59269304f0ee4b94fd5cb6e8fbea203aff16681e7e3f",
+      "bytes": 113647
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-check.log",
+      "sha256": "88b577a6e3805a5c62eb516b2a671015d6a2f8754f2627b0ea004a2c22f05c5d",
+      "bytes": 7823
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-summary.json",
+      "sha256": "dd4b6d68a5efcbd6039e998a767adbf623ced301a4031a723e4a2245582594d9",
+      "bytes": 3030
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/c2-client-replay.log",
+      "sha256": "1d40a4c2cf53c644f7bd3fb37f8ead982d7b03e4c0a8ab74bdcf2eb53d6be7a5",
+      "bytes": 770
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/c2-semantic-replay.log",
+      "sha256": "9d8bbabd0a334d24b387bd8492025974054ef7aff17623b2021fc6f46751839e",
+      "bytes": 824
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/delivery-capacity.json",
+      "sha256": "76a452e732e0955d3d56563fa9cf31b71d2aab1c6a77e2b58a6c814233d2fc0c",
+      "bytes": 24696
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/delivery-capacity.log",
+      "sha256": "5e02d4c64a959d7d5264046108417773381d28f2d16a0003443733252d5fdc17",
+      "bytes": 21084
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/generated-artifact-manifest.json",
+      "sha256": "5607e5f9b55c825ad557998d9df15a27cda735833013070dc89fd2546ee42d82",
+      "bytes": 120364
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/integration-probes.json",
+      "sha256": "489d9c245c7bf734e527eec0dd3425679225f715a35661b051b8ab3cb413a4c9",
+      "bytes": 23547
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/integration-probes.log",
+      "sha256": "ea6fe041001d4692cc0e606b256dcc10990e1ad2e7b4eba9c4eceb321de3f181",
+      "bytes": 18480
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/inventory-check.json",
+      "sha256": "1bf78ab3b61babdb291bb322385e2064a5c7c4d143c0c4200e455411076e2e03",
+      "bytes": 461
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/protocol-parameters.json",
+      "sha256": "414cd8268c1b6cd396e40f1a37602e944801825da98907dc430abc03d0943f10",
+      "bytes": 13111
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/evidence/wire-client-replay.log",
+      "sha256": "efa2b21ae494a955a7b83b1cc9bdb1ab17528fab715b2bf6602ba1e2f710e37d",
+      "bytes": 10827
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/integration-and-evidence.md",
+      "sha256": "125e3a9de51226e180a2c9047dec9a90be226fe1b2876a774e010107e56da78c",
+      "bytes": 13481
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/integration.requirements.json",
+      "sha256": "0b2b47567b5afbfa386b7543f529548bcf4e1d844c79cbda48139b7bd6437504",
+      "bytes": 33606
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/assemble-review.py",
+      "sha256": "bf7a2d9bc2d23d14e59bb3cc433c4d3a4b67331028ec1252a0fac20efe60e62f",
+      "bytes": 4643
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-economics.result.json",
+      "sha256": "e84b3d9e5adcb4e95a7716d35e328b9f8e66419ec891f9ecb54492077a3f89a6",
+      "bytes": 533
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-economics.ts",
+      "sha256": "097fcea450c87271f283ab396d4602eeab1adefc34692a69a1e268e5dce7ef36",
+      "bytes": 8131
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-onchain.ak",
+      "sha256": "48d368d22a564e89cefa8303b2035333f6be4476e0dba8cf330c3454279cb7d3",
+      "bytes": 6620
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-onchain.result.json",
+      "sha256": "be764656a28f8bfc6b925d6e051eae5a30e0a0471be2bbb24fb7f4050b10c36a",
+      "bytes": 7398
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-onchain.stderr.log",
+      "sha256": "c62e44f0845846480fc1899b12f90339512bdf44febedc2c2d7257a69c534df4",
+      "bytes": 495
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c1-run-onchain.py",
+      "sha256": "1f5c4e64e5bc1187fc39883085429f06ec96c77dee793a0fcfa50d14b1b6adc4",
+      "bytes": 1477
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-client-boundaries.result.json",
+      "sha256": "1d40a4c2cf53c644f7bd3fb37f8ead982d7b03e4c0a8ab74bdcf2eb53d6be7a5",
+      "bytes": 770
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-client-boundaries.ts",
+      "sha256": "e0176c9e403a73ecdc5ec4e37d8aacb27be014642aed013dbf0ee02d0f58e53e",
+      "bytes": 3075
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.result.json",
+      "sha256": "9d8bbabd0a334d24b387bd8492025974054ef7aff17623b2021fc6f46751839e",
+      "bytes": 824
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts",
+      "sha256": "fb38259f52a699d8301de07a132f07e15bd7f0e25a8b07ee82c792fc9be5d29d",
+      "bytes": 4036
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/delivery-capacity.ts",
+      "sha256": "e2dfec59184e31f32f01c868c7149e9761da4b8f5c6b4d788b1a8b009c71a4b3",
+      "bytes": 4137
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/integration-probes.ts",
+      "sha256": "59ea2b9a71d9893b9ec112e0f2c0474298f9114f5438bd7eb48ca1631220b32f",
+      "bytes": 5917
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.json",
+      "sha256": "d71b793121e78f068a86417e3dd7b75fdc825931be118fe40ede41d243b25837",
+      "bytes": 11242
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-client-probe.mjs",
+      "sha256": "903157809799b5684f8648cc5e8bcb610e329fde71d313c8eb332749d110e1af",
+      "bytes": 4788
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-onchain-results.json",
+      "sha256": "f8fbf740d105ba61dbe925c4f92908d0a7163b00632208c0ec52210b6c5960d8",
+      "bytes": 925
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-onchain-source-bindings.json",
+      "sha256": "24f870e38bae7e5016d19de5a21f5ba230ad1d2e5e1461470ee814ea3ee5a326",
+      "bytes": 3575
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-onchain.ak",
+      "sha256": "b2396c3736676382331894db11b29312379c2cc3251a2fe767b370db65c231e5",
+      "bytes": 4435
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-onchain.stderr",
+      "sha256": "b8aa3fa03c219b8cfa1fb2f7fbd5b1f74865be0d90eb9fec5211176852e98a01",
+      "bytes": 483
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/probes/wire-run-onchain.py",
+      "sha256": "2ae6ba589622c3e8b4579fdd34658148ca0207cef3fd6e8dbe97141afe5448ad",
+      "bytes": 3005
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/requirements.csv",
+      "sha256": "51376450a8f9db73052c2287d38eeec45846d8fee980be5d2c0eb56b702b0087",
+      "bytes": 207926
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/requirements.json",
+      "sha256": "e55dfc8e467c5368c733130ffbe16866f6c731c1395f78b0e4f96dbdd1aaf961",
+      "bytes": 296497
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/wire-identity.md",
+      "sha256": "efb0e2fea921cc6ea20327c7b0ae50774cab5062fad84c95547c210799ea3d7f",
+      "bytes": 15572
+    },
+    {
+      "path": "docs/reviews/2026-09-18-whitepaper-conformance/wire-identity.requirements.json",
+      "sha256": "e0617099acadbe056a22bd74bb3455e55e897e49b4d3d084e60f21539af04616",
+      "bytes": 69834
+    }
+  ],
+  "note": "Bindings establish reviewed files and artifacts; they do not establish standard conformance or network acceptance."
+}

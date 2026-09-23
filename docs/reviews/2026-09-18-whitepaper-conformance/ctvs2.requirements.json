@@ -1,0 +1,2828 @@
+[
+  {
+    "id": "C2-001",
+    "standard": "CTVS-2",
+    "sections": [
+      "1.2",
+      "2.3",
+      "2.4"
+    ],
+    "pdf_pages": [
+      50,
+      51,
+      52
+    ],
+    "requirement": "Reuse the shared economics while allowing asynchronous-only entry and exit independently.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:9",
+      "reference/packages/planning/src/context.ts:25"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:222 (ctvs2_genesis_and_real_mint_handler_accept_async_terms)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Async-only modes 4, 8, 12 are implemented with shared accounting.",
+    "impact": "",
+    "closure": "Retain one signed lifecycle for each single-direction mode; current signed fixtures use both directions."
+  },
+  {
+    "id": "C2-002",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.4"
+    ],
+    "pdf_pages": [
+      52
+    ],
+    "requirement": "Reference mode bits can express the advertised enabled directions; do not silently ignore bits.",
+    "applicability": "profile0",
+    "status": "narrowed",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:9",
+      "reference/packages/planning/src/context.ts:44"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:240 (ctvs2_genesis_rejects_direct_and_mixed_modes)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "CTVS-2 rejects every direct or mixed direct/async mask despite the shared wire allowing 1..15. This is an explicit family subset.",
+    "impact": "One vault cannot support direct entry with async exit or another mixed mode combination.",
+    "closure": "Document the supported subset in conformance claims or separately implement mixed modes."
+  },
+  {
+    "id": "C2-003",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.1",
+      "4.4"
+    ],
+    "pdf_pages": [
+      51,
+      58
+    ],
+    "requirement": "Keep funding owner, controller, receiver, settler and pauser as separate powers.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:49",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:71",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:270",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:418",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:157"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:124 (cancellation_requires_controller_signatory)",
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Distinct keys/destinations are enforced by their respective branches; controller is not assumed to be receiver.",
+    "impact": "",
+    "closure": "Add a full signed trace using five distinct roles; existing fixtures reuse some keys."
+  },
+  {
+    "id": "C2-004",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.2",
+      "2.4"
+    ],
+    "pdf_pages": [
+      51,
+      52
+    ],
+    "requirement": "Support immutable open-signing-key and sorted authorized-key-set settlement policies.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:418",
+      "reference/packages/onchain/lib/ctvs/validation.ak:169"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:573 (settler_keyset_is_enforced)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "AnySettler accepts a signing reward key; KeySet additionally checks immutable membership.",
+    "impact": "",
+    "closure": "Add signed success with an authorized key and signed rejection with an unauthorized key under KeySet."
+  },
+  {
+    "id": "C2-005",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.4",
+      "14.4"
+    ],
+    "pdf_pages": [
+      52,
+      81
+    ],
+    "requirement": "Require explicit reward-key signatory membership, including zero-fee batches, with actual ledger witnesses separately checked.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:418",
+      "reference/implementations/ctvs2/client/src/batch.ts:142",
+      "reference/testing/ledger/recorder.ts:86"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:442 (batch_requires_settler_explicit_signature_even_for_zero_reward)",
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Explicit signatories and actual signature witnesses are distinct checks.",
+    "impact": "",
+    "closure": "Retain signed zero-reward authorization coverage in addition to predicate coverage."
+  },
+  {
+    "id": "C2-006",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.4"
+    ],
+    "pdf_pages": [
+      52
+    ],
+    "requirement": "Authorized-key identity depends on credential bytes, not the textual spelling of hexadecimal.",
+    "applicability": "profile0",
+    "status": "contradiction",
+    "code": [
+      "reference/implementations/ctvs2/client/src/batch.ts:54",
+      "reference/implementations/ctvs2/client/src/batch.ts:55",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:421"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-client-boundaries.ts:22 (settler hex normalization)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "The SDK encodes lower/uppercase keys identically but compares KeySet membership using case-sensitive string includes. Uppercase spelling of an authorized key is falsely rejected.",
+    "impact": "An otherwise permitted batch cannot be planned for semantically identical authorized key bytes.",
+    "closure": "Normalize byte identities before membership checks and retain a lowercase/uppercase regression. This is an SDK false rejection, not a custody bypass."
+  },
+  {
+    "id": "C2-007",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.3",
+      "4.2"
+    ],
+    "pdf_pages": [
+      51,
+      52,
+      56
+    ],
+    "requirement": "Profile 0 supports exact gross-asset deposits and exact-share redemptions, full fill only.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:210",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/packages/protocol/src/wire/requests.ts:45"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:29 (port: creation records a funded candidate without State spend or self-reference)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Only the two request kinds are decoded; quoted offered quantity must equal actual escrow value.",
+    "impact": "",
+    "closure": "Add compiled rejection for an attempted partial-fill remainder output with altered claimed quantities."
+  },
+  {
+    "id": "C2-008",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.1",
+      "13.1"
+    ],
+    "pdf_pages": [
+      53,
+      78
+    ],
+    "requirement": "The chain consumption of a request selects settlement, cancellation or expiry, and consumption of a claim selects delivery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:19",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:87",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:42 (recovers unsupported economics with controller cancellation and permissionless expiry)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Branches are tied to actual spending-purpose references; no offchain selection authority exists.",
+    "impact": "",
+    "closure": "Add same-request cancellation-versus-settlement competing transaction traces on a ledger."
+  },
+  {
+    "id": "C2-009",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.2",
+      "4.1"
+    ],
+    "pdf_pages": [
+      53,
+      56
+    ],
+    "requirement": "Creating a deposit Request must not change backing or supply.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:28",
+      "reference/implementations/ctvs2/client/src/requests.ts:30",
+      "reference/implementations/ctvs2/client/src/requests.ts:42"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:29 (port: creation records a funded candidate without State spend or self-reference)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Creation has no State input and no mint; it funds a separate output and labels pending deposit participation.",
+    "impact": "",
+    "closure": "Add a signed explicit before/after State read for ordinary request creation, rather than inferring from transaction shape."
+  },
+  {
+    "id": "C2-010",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.2",
+      "13.2"
+    ],
+    "pdf_pages": [
+      53,
+      78
+    ],
+    "requirement": "Deposit settlement admits net underlying, accrues fee and issues already-participating shares to a funded Claim.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:225",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:260",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:470"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The participation cutover is encoded by State and mint changes during Batch, not delivery.",
+    "impact": "",
+    "closure": "Add a signed delayed-delivery trace across an intervening independent State transition."
+  },
+  {
+    "id": "C2-011",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.3",
+      "4.1"
+    ],
+    "pdf_pages": [
+      54,
+      56
+    ],
+    "requirement": "Redemption request creation locks existing participating shares without burning or reducing supply.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:30",
+      "reference/implementations/ctvs2/client/src/requests.ts:45",
+      "reference/packages/planning/src/value.ts:24"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:29 (port: creation records a funded candidate without State spend or self-reference)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The planner locks SHARE and carries its participation label; mint is empty.",
+    "impact": "",
+    "closure": "Add signed request-creation assertions proving supply remains unchanged before settlement."
+  },
+  {
+    "id": "C2-012",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.3",
+      "13.2"
+    ],
+    "pdf_pages": [
+      54,
+      78
+    ],
+    "requirement": "Redemption settlement extinguishes shares and fixes a funded net-asset claim outside remaining backing.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:236",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:247",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:476"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "State debits gross assets, fee accrues, claim contains net underlying and supply burns at settlement.",
+    "impact": "",
+    "closure": "Add a signed delayed-redemption-claim delivery across later vault activity."
+  },
+  {
+    "id": "C2-013",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.2",
+      "3.3",
+      "7.3"
+    ],
+    "pdf_pages": [
+      53,
+      54,
+      63
+    ],
+    "requirement": "Delivery only relocates property and must not reprice, mint or consume accounting State.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:96",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:98",
+      "reference/implementations/ctvs2/client/src/delivery.ts:29"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:98 (delivers_all_actual_assets_across_vaults_without_state_or_config)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:205 (delivery_cannot_mint_even_unrelated_assets)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Q reads claim inputs and fixed destinations; no live vault data or conversion is referenced.",
+    "impact": "",
+    "closure": "No contract change identified; separately obtain node-backed acceptance."
+  },
+  {
+    "id": "C2-014",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.4",
+      "7.1"
+    ],
+    "pdf_pages": [
+      55,
+      63
+    ],
+    "requirement": "Legitimate settlement claims must hold the exact promised asset and quantity plus positive carried ADA.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:288",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:297"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:454 (batch_rejects_missing_gross_claim_when_net_mint_is_zero)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Claim datum and complete Value are exact outputs derived from economics.",
+    "impact": "",
+    "closure": "Add independent compiled negative vectors for wrong asset, one-unit economic underpayment, one-unit ADA deficit and unexplained creation surplus."
+  },
+  {
+    "id": "C2-015",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.5"
+    ],
+    "pdf_pages": [
+      55
+    ],
+    "requirement": "Economic-history verification must include balances, supply, fees and claim quantities rather than phase labels alone.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/settlement.ts:66",
+      "reference/implementations/ctvs2/client/src/batch.ts:76"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts:39 (section 3.5 economic histories)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Both printed histories reproduce their distinct arithmetic outcomes. No full state-space lifecycle model or independent reachable-history explorer is present.",
+    "impact": "Phase-correct traces do not establish arbitrary economic-history correctness.",
+    "closure": "Retain an economic-state model and compare full traces; prove chosen initial states reachable for each implementation family."
+  },
+  {
+    "id": "C2-016",
+    "standard": "CTVS-2",
+    "sections": [
+      "3.6"
+    ],
+    "pdf_pages": [
+      55
+    ],
+    "requirement": "Do not put authoritative pending queue counts in independently updated State, or close/sweep merely because supply is zero.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/wire.ak:70",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:13"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:298 (ctvs2_state_handler_rejects_all_direct_action_tags)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "State has fixed accounting fields and no queue count or close action. This cited test establishes family dispatch only, not an async residual lifecycle.",
+    "impact": "",
+    "closure": "Add async last-redemption/residual rebootstrap and unsupported close-action regressions."
+  },
+  {
+    "id": "C2-017",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.1"
+    ],
+    "pdf_pages": [
+      56
+    ],
+    "requirement": "Request identity is the originating output reference learned after construction, not a self-referential datum transaction hash.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:13",
+      "reference/implementations/ctvs2/client/src/requests.ts:47",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:265"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:29 (port: creation records a funded candidate without State spend or self-reference)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Identity remains external until construction, then Batch commits predecessor references.",
+    "impact": "",
+    "closure": "Keep authenticity and indexing requirements distinct from this representation check."
+  },
+  {
+    "id": "C2-018",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.1",
+      "3.6"
+    ],
+    "pdf_pages": [
+      55,
+      56
+    ],
+    "requirement": "Candidate creation is not authenticated controller origination, capacity reservation or admission; no request NFT is required.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:14",
+      "reference/implementations/ctvs2/client/src/requests.ts:46",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:167"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:29 (port: creation records a funded candidate without State spend or self-reference)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Planner explicitly labels candidate attribution and settlement validates the consumed output. No NFT is added.",
+    "impact": "",
+    "closure": "Provider disclosure and authenticated origin views remain the separate integration review."
+  },
+  {
+    "id": "C2-019",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.2",
+      "8.1",
+      "13.6"
+    ],
+    "pdf_pages": [
+      56,
+      66,
+      79
+    ],
+    "requirement": "Dispatch through supported Recovery before downcasting economic_body, including unknown economics and oversized settlement bodies.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:85",
+      "reference/packages/onchain/lib/ctvs/decode.ak:104"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:137 (actual_vault_cancel_dispatch_recovers_unsupported_oversized_body_and_surplus)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:118 (cancellation_does_not_decode_bad_success_receiver_or_fee_budget)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Economic_body remains raw Data for Cancel and ExpiryRefund.",
+    "impact": "",
+    "closure": "Add a property over arbitrary raw bodies at the actual vault endpoint, bounded only by transaction feasibility."
+  },
+  {
+    "id": "C2-020",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.2",
+      "8.1"
+    ],
+    "pdf_pages": [
+      56,
+      66
+    ],
+    "requirement": "Unknown outer version, malformed recovery, invalid refund or unsupported controller is not promised recovery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:56",
+      "reference/packages/onchain/lib/ctvs/validation.ak:262"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:167 (actual_vault_cancel_rejects_unknown_outer_version)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Exact Recovery decoding and destination validation fail closed; unknown version has actual endpoint coverage.",
+    "impact": "",
+    "closure": "Add actual endpoint regressions for malformed controller, malformed refund and wrong recovery arity, beyond codec tests."
+  },
+  {
+    "id": "C2-021",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.2",
+      "5.6"
+    ],
+    "pdf_pages": [
+      56,
+      60
+    ],
+    "requirement": "Settlement must check vault, Terms, direction, positive input/minimum, funding, budget and full completion.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:174",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:194",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:275"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:186 (eligibility rejects expired, underfunded, wrong-terms and sub-minimum requests)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:590 (unsupported_economics_are_rejected_by_batch_single_decode)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "All predicates appear in the covered-request path; a supported Recovery alone cannot authorize settlement.",
+    "impact": "",
+    "closure": "Expand compiled negative cases for each predicate independently; current SDK negatives are not compiled evidence."
+  },
+  {
+    "id": "C2-022",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.3"
+    ],
+    "pdf_pages": [
+      57
+    ],
+    "requirement": "Native deposits contain exactly offered underlying and storage plus execution budget, with no other native asset.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/packages/planning/src/value.ts:24"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Closed request Value is compared exactly for native deposits.",
+    "impact": "",
+    "closure": "Add compiled extra-asset and one-unit underfunding negatives for native deposit requests."
+  },
+  {
+    "id": "C2-023",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.3"
+    ],
+    "pdf_pages": [
+      57
+    ],
+    "requirement": "ADA deposits contain offered ADA plus storage plus execution budget, without counting reserves as backing.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:178",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:89"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "ADA components are summed into physical value while pricing only body.offered.",
+    "impact": "",
+    "closure": "Add compiled reserve-as-economic-input and combined-ADA overflow negatives."
+  },
+  {
+    "id": "C2-024",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.3"
+    ],
+    "pdf_pages": [
+      57
+    ],
+    "requirement": "Redemption escrow contains exact pre-existing SHARE and storage plus budget.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:245",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Economic input asset is policy SHARE and quantity is the full offered amount.",
+    "impact": "",
+    "closure": "Add compiled wrong-SHARE-policy/name and surplus-SHARE request cases."
+  },
+  {
+    "id": "C2-025",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.3",
+      "7.1"
+    ],
+    "pdf_pages": [
+      57,
+      63
+    ],
+    "requirement": "Carry storage plus unused execution budget minus exact fee plus external top-up to the successful receiver through Claim.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:260",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:271"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:430 (external_claim_topup_is_carried_without_buying_shares)",
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:66 (port: per-request fee, carried ADA, reward signer and both acknowledgment links)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Carried amount is explicit in Claim and its exact physical Value.",
+    "impact": "",
+    "closure": "Add a compiled theft case that lowers carried ADA while raising settler reward, with balanced aggregate value."
+  },
+  {
+    "id": "C2-026",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.3",
+      "14.1"
+    ],
+    "pdf_pages": [
+      57,
+      58,
+      80
+    ],
+    "requirement": "The exact per-request settler fee cannot exceed budget or be chosen by the executor.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:280",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:232",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:466"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:66 (port: per-request fee, carried ADA, reward signer and both acknowledgment links)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The fee comes only from immutable RequestBody and is summed per request.",
+    "impact": "",
+    "closure": "Add compiled invalid-budget and fee-increase attempts with otherwise valid transaction allocations."
+  },
+  {
+    "id": "C2-027",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.4"
+    ],
+    "pdf_pages": [
+      58
+    ],
+    "requirement": "Controller cancellation requires the committed key, which may differ from owner and receiver.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:49",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:71"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:124 (cancellation_requires_controller_signatory)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The controller is read from Recovery; refund is independently fixed.",
+    "impact": "",
+    "closure": "Add signed cancellation with distinct funding, controller and refund keys plus absent-controller rejection."
+  },
+  {
+    "id": "C2-028",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.5",
+      "3.6"
+    ],
+    "pdf_pages": [
+      55,
+      58
+    ],
+    "requirement": "Protected STATE/ID assets select or reject State dispatch before untrusted Request data can route custody to refund.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:31",
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:34",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:57"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:190 (request_shaped_state_cannot_use_recovery)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Actual input tokens precede Request decoding; State quantity must be exactly one.",
+    "impact": "",
+    "closure": "Add actual vault-endpoint tests for request-shaped STATE and unexpected ID, rather than only direct recovery helper."
+  },
+  {
+    "id": "C2-029",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.5"
+    ],
+    "pdf_pages": [
+      58
+    ],
+    "requirement": "Reject attached reference scripts on protected Request and Claim inputs and created outputs.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:29",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:196",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:296",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:53"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:240 (reference_script_on_delivery_output_is_rejected)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Every protected path has an explicit None reference-script condition.",
+    "impact": "",
+    "closure": "Retain separate negative tests on source Request, source Claim and created Claim, not only delivery output."
+  },
+  {
+    "id": "C2-030",
+    "standard": "CTVS-2",
+    "sections": [
+      "4.5",
+      "8.1"
+    ],
+    "pdf_pages": [
+      58,
+      66
+    ],
+    "requirement": "Extra request assets invalidate settlement but all actual assets remain preserved by supported recovery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:74"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:135 (cancellation_preserves_unexpected_asset)",
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:137 (actual_vault_cancel_dispatch_recovers_unsupported_oversized_body_and_surplus)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Settlement uses exact Value equality; refund uses a pointwise lower bound across source assets.",
+    "impact": "",
+    "closure": "Add one paired compiled fixture that fails settlement due only to surplus and succeeds recovery unchanged."
+  },
+  {
+    "id": "C2-031",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.1"
+    ],
+    "pdf_pages": [
+      58
+    ],
+    "requirement": "Price every covered request against the same authenticated pre-settlement State, not a sequentially updated balance.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:215",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:238",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:351"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:417 (mixed_batch_uses_one_old_snapshot_despite_rounding)",
+      "reference/implementations/ctvs2/client/test/settlement.property.test.ts:8 (batch permutations keep one snapshot and allocate every request exactly once)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "old State and immutable Terms are reused through all entries.",
+    "impact": "",
+    "closure": "Add a balanced signed mixed deposit/redemption batch with rounding-sensitive quantities."
+  },
+  {
+    "id": "C2-032",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.1"
+    ],
+    "pdf_pages": [
+      58
+    ],
+    "requirement": "Deposit fees round up on gross input and issued shares round down on net assets using authenticated virtual balances.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/math.ak:17",
+      "reference/packages/onchain/lib/ctvs/math.ak:21",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:215"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:64 (deposit_quote_preserves_gross_assets_and_rounds_against_dilution)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Code implements ceil(d*b/(10000+b)) then floor((d-fee)*(S+Vs)/(A+1)).",
+    "impact": "",
+    "closure": "Preserve independently expected edge vectors including rates 0 and 9999 and minimal positive outcomes."
+  },
+  {
+    "id": "C2-033",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.1"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Redemption gross assets round down, fees round up on gross assets and payout is gross less fee.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/math.ak:44",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:238"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:80 (redeem_quote_preserves_gross_assets_and_never_debits_more_than_backing)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Code implements the printed floor and ceiling formula.",
+    "impact": "",
+    "closure": "Retain independently expected edge vectors across virtual-share magnitudes and fee boundaries."
+  },
+  {
+    "id": "C2-034",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.1",
+      "14.1"
+    ],
+    "pdf_pages": [
+      59,
+      80
+    ],
+    "requirement": "Round each request economic fee separately rather than charging a rounded aggregate.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:215",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:238",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:231",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:254"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Each quote is computed within accumulate before fee totals are summed.",
+    "impact": "",
+    "closure": "Add a split-versus-unsplit example where aggregate rounding differs, at both SDK and compiled levels."
+  },
+  {
+    "id": "C2-035",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.1",
+      "5.6"
+    ],
+    "pdf_pages": [
+      59,
+      60
+    ],
+    "requirement": "Every included request must have positive economic input/result and satisfy its minimum output.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/validation.ak:278",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:276",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:280"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:186 (eligibility rejects expired, underfunded, wrong-terms and sub-minimum requests)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Positive gross, net, shares and request minimum are explicit. The SDK rejection test does not exercise compiled failure.",
+    "impact": "",
+    "closure": "Add compiled zero-output and sub-minimum balanced negative transactions."
+  },
+  {
+    "id": "C2-036",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.2"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Successor backing adds net deposits and subtracts gross redemptions.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:476",
+      "reference/implementations/ctvs2/client/src/batch.ts:74"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:161 (mixed_snapshot_accounting_preserves_underlying_and_supply)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Formula is implemented exactly, including per-request fees outside backing.",
+    "impact": "",
+    "closure": "Include an adversarial successor with correct supply but wrong backing in compiled tests."
+  },
+  {
+    "id": "C2-037",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.2"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Successor supply adds gross issued shares and subtracts redeemed shares; accrued fees add entry and exit fees.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:477",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:478",
+      "reference/implementations/ctvs2/client/src/batch.ts:80"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:161 (mixed_snapshot_accounting_preserves_underlying_and_supply)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Gross totals remain separately accumulated before successor composition.",
+    "impact": "",
+    "closure": "Add altered-supply and altered-fee successor rejection cases tied to actual State endpoint."
+  },
+  {
+    "id": "C2-038",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.2",
+      "6.4"
+    ],
+    "pdf_pages": [
+      59,
+      61
+    ],
+    "requirement": "Native SHARE mint equals net issuance; all other minting is forbidden and nonzero mint is state-coupled.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:450",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:72",
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:83"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:191 (zero_net_batch_runs_state_and_both_request_handlers)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Whole mint Value is exact, and nonzero mint has a purpose-bound UpdateSupply back-link.",
+    "impact": "",
+    "closure": "Add signed nonzero mixed batch and compiled unrelated-policy/name mint negatives."
+  },
+  {
+    "id": "C2-039",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.2"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Physical underlying change equals gross deposits less net payouts, keeping State reserve unchanged.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:479",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:97",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:186"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:161 (mixed_snapshot_accounting_preserves_underlying_and_supply)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Exact State and Claim Values plus economic equations enforce the partition under ledger conservation.",
+    "impact": "",
+    "closure": "A full ledger proof still requires the ledger conservation premise; add independent balanced-theft vectors."
+  },
+  {
+    "id": "C2-040",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.3",
+      "5.6"
+    ],
+    "pdf_pages": [
+      59,
+      60
+    ],
+    "requirement": "Bound nonnegative successor balances and participating aggregate economic/physical amounts, including offsetting gross flows.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:436",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:482",
+      "reference/packages/onchain/lib/ctvs/validation.ak:234"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:147 (port: gross issuance overflow cannot be concealed by same-transaction redemption)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:585 (claim_topup_aggregate_must_fit_quantity_bound)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Both gross totals and successor fields are bounded, so netting cannot hide overflow.",
+    "impact": "",
+    "closure": "Add compiled gross-issued and gross-redeemed overflow cases; existing gross-issued negative is SDK-only."
+  },
+  {
+    "id": "C2-041",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.3"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Apply max_backing to the final balance, allowing atomic deposit/redemption offsets.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:482",
+      "reference/implementations/ctvs2/client/src/batch.ts:83"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:124 (deposit and redemption price against one old State, with only final-balance cap enforcement)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "No undocumented gross deposit cap replaces the final-balance cap.",
+    "impact": "",
+    "closure": "Add compiled final-cap offset success and over-cap rejection; SDK evidence alone is limited."
+  },
+  {
+    "id": "C2-042",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.3"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Gross redeemed shares must not exceed old participating supply, even if new issues offset the final supply.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:450",
+      "reference/implementations/ctvs2/client/src/batch.ts:72"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:543 (gross_redemptions_cannot_exceed_old_supply_even_if_deposits_offset)",
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:169 (aggregate extinction requires pre-existing participating shares)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The old supply bound is checked on burned total rather than final net supply.",
+    "impact": "",
+    "closure": "No source discrepancy identified; signed mixed zero-net evidence remains a separate gate."
+  },
+  {
+    "id": "C2-043",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.3",
+      "5.5"
+    ],
+    "pdf_pages": [
+      59,
+      60
+    ],
+    "requirement": "Atomic physical netting is allowed but every request must still receive a fully funded Claim.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:297",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:451"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:191 (zero_net_batch_runs_state_and_both_request_handlers)",
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:210 (zero_net_batch_rejects_missing_gross_claim)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "No mint-policy invocation is needed for zero net, but State and Requests still validate both gross obligations.",
+    "impact": "",
+    "closure": "Build a real signed zero-net mixed transaction; current retained zero-net evidence is native endpoint/context testing."
+  },
+  {
+    "id": "C2-044",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.4"
+    ],
+    "pdf_pages": [
+      59
+    ],
+    "requirement": "Deterministic reference ordering is not global FIFO or an all-request fairness promise.",
+    "applicability": "informative",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:344",
+      "reference/implementations/ctvs2/client/src/batch.ts:57"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Only selected consumed requests are ordered. No global queue proof or FIFO selection exists.",
+    "impact": "",
+    "closure": "Keep provider disclosures explicit; do not advertise stronger fairness from these guards."
+  },
+  {
+    "id": "C2-045",
+    "standard": "CTVS-2",
+    "sections": [
+      "5.6",
+      "6.4"
+    ],
+    "pdf_pages": [
+      60,
+      61
+    ],
+    "requirement": "Batch entries carry references, output indices and external top-ups only; recompute every economic number.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:167",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:215",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:238"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "The validator derives quotes from authenticated Terms and RequestBody, not caller-supplied totals.",
+    "impact": "",
+    "closure": "Add a mutation corpus around all economic source fields to demonstrate rejection for stale or changed commitments."
+  },
+  {
+    "id": "C2-046",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.1",
+      "6.2"
+    ],
+    "pdf_pages": [
+      60
+    ],
+    "requirement": "Request acknowledgments require the actual ordinary State input and its StateSpend Batch redeemer.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:95",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:99",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:106"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:548 (request_acknowledgment_requires_real_consumed_state)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:561 (request_acknowledgment_matches_actual_batch_branch)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Reference-only State fails and the redeemer is looked up by Spend(state_ref).",
+    "impact": "",
+    "closure": "Add retained negatives for real State spent by Pause and TopUpReserve; the positive Batch test does not cover these substitutions."
+  },
+  {
+    "id": "C2-047",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.2"
+    ],
+    "pdf_pages": [
+      60
+    ],
+    "requirement": "Every Request must acknowledge the same exact State reference and Cancel cannot count as settlement acknowledgment.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:185",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:203"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:468 (batch_rejects_cancellation_as_acknowledgment)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "AcknowledgeBatch is pattern matched in the State Batch path and its state_ref compared.",
+    "impact": "",
+    "closure": "Add a wrong-but-existing State reference negative alongside the Cancel substitution."
+  },
+  {
+    "id": "C2-048",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.3"
+    ],
+    "pdf_pages": [
+      61
+    ],
+    "requirement": "Cover every consumed P Request exactly once before filtering on economic eligibility.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:308",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:416",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:351"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:492 (batch_rejects_omitted_consumed_request)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:649 (batch_traversal_rejects_state_substituted_for_request_at_equal_count)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Count all P inputs other than authentic State, then validate each unique resolved entry.",
+    "impact": "",
+    "closure": "Add an extra malformed P input omitted from entries, proving invalid candidates cannot be filtered away."
+  },
+  {
+    "id": "C2-049",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.3"
+    ],
+    "pdf_pages": [
+      61
+    ],
+    "requirement": "Entry references are unique, ordered by transaction bytes/index, nonempty and bounded by both max_batch and 16.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:344",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:410"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:615 (batch_traversal_rejects_duplicate_request_with_distinct_claims)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:632 (batch_traversal_rejects_reverse_request_order)",
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:215 (settler authority, batch count and paused direction are independently enforced)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Strict increasing ordering yields uniqueness, and all entries resolve actual input references.",
+    "impact": "",
+    "closure": "Add actual State endpoint tests at counts 0, 1, 16, 17 and max_batch below the structural maximum."
+  },
+  {
+    "id": "C2-050",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.4"
+    ],
+    "pdf_pages": [
+      61
+    ],
+    "requirement": "State, every Claim and positive reward use distinct in-range output indices, even for identical receivers.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:403",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:350",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:16"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:505 (batch_rejects_shared_claim_index)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:666 (batch_traversal_rejects_claim_and_state_output_collision)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:683 (batch_traversal_rejects_reward_and_state_output_collision)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Allocated indices include State and reward before Claims are added.",
+    "impact": "",
+    "closure": "Add Claim-versus-reward collision and out-of-range output mutations as separate compiled regressions."
+  },
+  {
+    "id": "C2-051",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.4",
+      "7.1"
+    ],
+    "pdf_pages": [
+      61,
+      63
+    ],
+    "requirement": "Each Claim binds consumed Request/State refs, vault, Terms, correct result asset/amount, receiver and carried ADA.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:261",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:295"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:66 (port: per-request fee, carried ADA, reward signer and both acknowledgment links)",
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The expected Claim datum is constructed from authenticated sources and compared structurally.",
+    "impact": "",
+    "closure": "Add independent wrong-ref, wrong-Terms, wrong-asset and wrong-amount compiled negatives, not just recipient mutation."
+  },
+  {
+    "id": "C2-052",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.4",
+      "6.4"
+    ],
+    "pdf_pages": [
+      52,
+      62
+    ],
+    "requirement": "Zero total request fees require no reward output.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:456",
+      "reference/implementations/ctvs2/client/src/batch.ts:105"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:412 (zero_net_mint_batch_still_settles_both_gross_obligations)",
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:93 (port: zero-net mint retains both gross obligations and deterministic reference order)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "None is mandatory when total rewards are zero; SDK disallows reward top-up in that case.",
+    "impact": "",
+    "closure": "Add compiled zero-fee Some(reward_index) rejection."
+  },
+  {
+    "id": "C2-053",
+    "standard": "CTVS-2",
+    "sections": [
+      "2.4",
+      "6.4"
+    ],
+    "pdf_pages": [
+      52,
+      62
+    ],
+    "requirement": "Positive total fees require one ADA-only reward at the signing key enterprise address, NoDatum, no script, value at least exact fees.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:459",
+      "reference/implementations/ctvs2/client/src/batch.ts:108"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:430 (external_claim_topup_is_carried_without_buying_shares)",
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:66 (port: per-request fee, carried ADA, reward signer and both acknowledgment links)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "All reward address/datum/value predicates appear in the positive branch.",
+    "impact": "",
+    "closure": "Add compiled wrong-key, underpayment, extra-token, datum and reference-script negatives; happy path alone is not predicate coverage."
+  },
+  {
+    "id": "C2-054",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.5"
+    ],
+    "pdf_pages": [
+      62
+    ],
+    "requirement": "Settlement permits one vault State, its Requests and key funding, rejecting foreign scripts or concurrent Q delivery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:316",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:318",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:105"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Input scan rejects script credentials other than P; unique_state enforces one STATE-bearing input.",
+    "impact": "",
+    "closure": "Add signed/compiled foreign-script, second-vault State and concurrent Q input negatives."
+  },
+  {
+    "id": "C2-055",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.5",
+      "7.2",
+      "8.1"
+    ],
+    "pdf_pages": [
+      62,
+      63,
+      66
+    ],
+    "requirement": "Reject withdrawals including zero, certificates, votes, proposals and treasury fields on protected operations.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/ledger.ak:39",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:58",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:417",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:96"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:214 (delivery_rejects_zero_withdrawal)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Shared allowed_purposes explicitly closes every listed field for all branches.",
+    "impact": "",
+    "closure": "Run a branch-by-field mutation matrix; only a subset of auxiliary fields has dedicated retained tests."
+  },
+  {
+    "id": "C2-056",
+    "standard": "CTVS-2",
+    "sections": [
+      "6.5",
+      "7.2"
+    ],
+    "pdf_pages": [
+      62,
+      63
+    ],
+    "requirement": "Receiving scripts retain exact destinations/datums; producing an output does not execute its spending guard.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/ledger.ak:67",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:56"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:253 (claim_can_deliver_to_script_with_exact_inline_datum_without_spending_it)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:226 (receiver_datum_must_match_exactly)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Full Address and NoDatum/InlineDatum variants are matched without pretending recipient execution occurred.",
+    "impact": "",
+    "closure": "Add signed delivery to key-stake and script-stake destination combinations; real recipient reuse is outside profile 0."
+  },
+  {
+    "id": "C2-057",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.1"
+    ],
+    "pdf_pages": [
+      63
+    ],
+    "requirement": "Claim storage is positive and ADA claim physical value is economic lovelace plus carried lovelace.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:288",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:290",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:89"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Positive carried reserve and summed ADA quantity are validated before exact output comparison.",
+    "impact": "",
+    "closure": "Add compiled zero reserve and maximum aggregate ADA boundary regressions."
+  },
+  {
+    "id": "C2-058",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2"
+    ],
+    "pdf_pages": [
+      63
+    ],
+    "requirement": "Deliver 1..16 Claims at one common Q with one identical semantic delivery list on every Claim input.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:49",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:88"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:173 (all_claims_must_use_identical_semantic_delivery_list)",
+      "reference/testing/integration/ctvs2/guards.test.ts:38 (requires all actual Q inputs to agree on one complete delivery list)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/delivery-capacity.ts:15 (signed delivery capacity sweep; root-executed)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Each input redeemer is compared to the same expected Data and full Q input domain is covered. Root-executed signed delivery samples accept 1, 4 and 5 Claims for key and script512 recipients; 6 through 8 exceed memory and 16 exceeds builder size limits.",
+    "impact": "",
+    "closure": "Add compiled cardinality 0/17 negatives. Retain the signed size-16 failure as measured shape-specific feasibility evidence, then benchmark reference-script and target-node variants rather than treating 16 as a throughput promise."
+  },
+  {
+    "id": "C2-059",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2"
+    ],
+    "pdf_pages": [
+      63
+    ],
+    "requirement": "Delivery references are unique and exhaustive, and outputs are injectively allocated.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:91",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:95"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:147 (omitted_claim_fails_exhaustive_coverage)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:165 (duplicate_claim_reference_fails)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:139 (same_receiver_still_requires_separate_output_allocations)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Strict ref ordering, exact count/membership and unique indices jointly close omission and output reuse.",
+    "impact": "",
+    "closure": "Retain equivalent semantic CBOR list-spelling cases separately in wire review."
+  },
+  {
+    "id": "C2-060",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2",
+      "9.9"
+    ],
+    "pdf_pages": [
+      63,
+      70
+    ],
+    "requirement": "Each delivery preserves every actual input asset including surplus ADA/tokens, never funding fees from Claim property.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:60",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:79"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:114 (surplus_native_asset_cannot_be_used_for_submitter_change)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:128 (surplus_lovelace_cannot_pay_delivery_fee)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Pointwise actual-value preservation is independent of declared economic minimum.",
+    "impact": "",
+    "closure": "Add a signed surplus Claim delivery whose fee comes from a distinct submitter wallet."
+  },
+  {
+    "id": "C2-061",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2"
+    ],
+    "pdf_pages": [
+      63
+    ],
+    "requirement": "Delivery may include Claims from different vaults sharing Q without state/config/settler dependencies.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:35",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:98",
+      "reference/implementations/ctvs2/client/src/delivery.ts:23"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:98 (delivers_all_actual_assets_across_vaults_without_state_or_config)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Q payment script defines the domain; no equality constraint on Claim.vault_policy binds the delivery set.",
+    "impact": "",
+    "closure": "Add a signed two-real-vault Claim delivery; current cross-vault test uses constructed contexts."
+  },
+  {
+    "id": "C2-062",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2",
+      "14.1"
+    ],
+    "pdf_pages": [
+      63,
+      80
+    ],
+    "requirement": "Delivery has no protocol reward, unrelated mint or foreign script-input family.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:96",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:100"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:205 (delivery_cannot_mint_even_unrelated_assets)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:191 (unrelated_script_input_is_rejected)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Full input property must reach destinations; only external funds may become change/fee.",
+    "impact": "",
+    "closure": "No source discrepancy identified; caller-funded donations are not protocol rewards."
+  },
+  {
+    "id": "C2-063",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.3"
+    ],
+    "pdf_pages": [
+      64
+    ],
+    "requirement": "Funded look-alikes at Q preserve property but must not automatically be treated as authentic vault claims.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:47",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:54",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:60"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Q intentionally validates shape and preservation, not settlement lineage. There is no Claim NFT or State dependence.",
+    "impact": "",
+    "closure": "The integration-layer reviewer owns authentic lineage and claimable classification; do not infer them from this guard."
+  },
+  {
+    "id": "C2-064",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2",
+      "7.3"
+    ],
+    "pdf_pages": [
+      63,
+      64
+    ],
+    "requirement": "A supported Claim at the common Q guard can be independently delivered.",
+    "applicability": "profile0",
+    "status": "narrowed",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:35",
+      "reference/implementations/ctvs2/client/src/delivery.ts:24",
+      "reference/packages/planning/src/context.ts:63"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-client-boundaries.ts:40 (same Q with staking credential)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "SDK accepts only enterprise Q source addresses, whereas Q groups any input with its payment script hash. Probe reproduces SDK rejection of the same Q with a staking credential.",
+    "impact": "Voluntarily funded supported look-alikes at base Q addresses need a custom builder. Genuine Batch Claims remain enterprise and are unaffected.",
+    "closure": "Either widen the Claim-specific client source check to match Q or explicitly document enterprise-only client support. No compiled staked-Q probe was run."
+  },
+  {
+    "id": "C2-065",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.2",
+      "8.1",
+      "14.4"
+    ],
+    "pdf_pages": [
+      63,
+      66,
+      81
+    ],
+    "requirement": "Externally funded additions may raise refund or delivery value while preserving the entire source property.",
+    "applicability": "profile0",
+    "status": "narrowed",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/ledger.ak:79",
+      "reference/implementations/ctvs2/client/src/recovery.ts:39",
+      "reference/implementations/ctvs2/client/src/delivery.ts:26"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:275 (externally_funded_delivery_topups_are_permitted)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-client-boundaries.ts:45 (recovery and delivery top-up surface)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "The validators permit >= source value. Public refund/delivery options provide no top-up argument and emit exact source Value.",
+    "impact": "Minimum-ADA adjustment after protocol changes or voluntary top-ups requires caller-authored plan edits; the default testing builder refuses silent increases.",
+    "closure": "Expose explicit external top-ups in these planners or document and validate the manual-plan route."
+  },
+  {
+    "id": "C2-066",
+    "standard": "CTVS-2",
+    "sections": [
+      "7.4",
+      "7.5",
+      "11.3",
+      "13.7"
+    ],
+    "pdf_pages": [
+      64,
+      65,
+      74,
+      79
+    ],
+    "requirement": "Direct-at-settlement is a separate explicitly consented native variant, not an alternative spend of existing profile 0 Requests.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:294",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:295",
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Only funded Claim creation is implemented; no alternative disposal branch can be selected.",
+    "impact": "The optional native variant is unavailable, as permitted by the profile boundary.",
+    "closure": "A future implementation needs its own profile/mapping, consent, encoding and acceptance evidence; do not retrofit old Request interpretation."
+  },
+  {
+    "id": "C2-067",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.1"
+    ],
+    "pdf_pages": [
+      66
+    ],
+    "requirement": "Cancel/refund consumes exactly one Request plus external key funding, no State, other script family or mint.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:59",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:60"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:177 (cancellation_cannot_consume_a_second_request)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:190 (request_shaped_state_cannot_use_recovery)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "The source is the only permitted script input and identity tokens cannot ride other inputs.",
+    "impact": "",
+    "closure": "Add independent foreign-script, identity-on-key-input, unrelated-mint and forbidden-purpose recovery negatives."
+  },
+  {
+    "id": "C2-068",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.1"
+    ],
+    "pdf_pages": [
+      66
+    ],
+    "requirement": "Refund the immutable full destination and every actual asset, including storage, budget and unexplained surplus.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:73",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:74"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:137 (actual_vault_cancel_dispatch_recovers_unsupported_oversized_body_and_surplus)",
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:42 (recovers unsupported economics with controller cancellation and permissionless expiry)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "No fee is removed and no current State is needed.",
+    "impact": "",
+    "closure": "Add exact refund-datum/staking-credential mutation tests and compiled under-refund of ADA as well as native surplus."
+  },
+  {
+    "id": "C2-069",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.1"
+    ],
+    "pdf_pages": [
+      66
+    ],
+    "requirement": "Controller cancellation remains valid after expiry and does not require settler authorization.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:68",
+      "reference/implementations/ctvs2/client/src/recovery.ts:33"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/recovery-delivery.test.ts:17 (port: unsupported economics can be canceled and all surplus property is preserved)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Cancel branch checks controller only and does not compare deadline.",
+    "impact": "",
+    "closure": "Add actual endpoint and signed after-deadline controller cancellation, beyond the SDK regression."
+  },
+  {
+    "id": "C2-070",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.1",
+      "8.2"
+    ],
+    "pdf_pages": [
+      66,
+      67
+    ],
+    "requirement": "Permissionless expiry requires the entire interval at or after deadline and no controller signer.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:50",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:69"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:151 (expiry_boundary_is_permissionless_at_deadline)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:166 (expiry_straddling_deadline_rejected)",
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:42 (recovers unsupported economics with controller cancellation and permissionless expiry)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "lower >= deadline is checked and local signed expiry uses a different funding wallet.",
+    "impact": "",
+    "closure": "Obtain pinned node-backed slot/POSIX boundary evidence."
+  },
+  {
+    "id": "C2-071",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.2"
+    ],
+    "pdf_pages": [
+      67
+    ],
+    "requirement": "Supported validity ranges are finite nonempty lower-inclusive upper-exclusive intervals.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:23",
+      "reference/packages/planning/src/context.ts:84"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:209 (expiry_infinite_interval_rejected)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:220 (empty_interval_rejected)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Both finite bounds, inclusivity flags and strict lower<upper are required.",
+    "impact": "",
+    "closure": "Add lower-open and upper-closed representation negatives and target-ledger slot conversion checks."
+  },
+  {
+    "id": "C2-072",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.2"
+    ],
+    "pdf_pages": [
+      67
+    ],
+    "requirement": "Settlement must fit wholly before the deadline, allowing upper==deadline and rejecting straddling ranges.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:200",
+      "reference/implementations/ctvs2/client/src/settlement.ts:54"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:531 (settlement_upper_bound_at_deadline_is_valid)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:519 (batch_rejects_deadline_straddling_interval)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Comparison uses interval upper, not wall-clock time.",
+    "impact": "",
+    "closure": "Add signed boundary cases at non-slot-aligned deadlines under target network slot configuration."
+  },
+  {
+    "id": "C2-073",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.2",
+      "13.1"
+    ],
+    "pdf_pages": [
+      67,
+      78
+    ],
+    "requirement": "Only one competing cancel/settle transition can survive per accepted history.",
+    "applicability": "acceptance",
+    "status": "unverified",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:87",
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:19"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "Out-reference consumption gives the intended no-double-spend premise, but no retained competing cancellation/settlement transaction race exists.",
+    "impact": "The paper A-09 race evidence is not satisfied by isolated successful paths.",
+    "closure": "Construct both valid candidates against one Request, accept either order, reject the loser, then test rollback/replacement history."
+  },
+  {
+    "id": "C2-074",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.3"
+    ],
+    "pdf_pages": [
+      68
+    ],
+    "requirement": "Entry pause blocks deposit settlement only; exit pause blocks redemption settlement only.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:214",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:237",
+      "reference/implementations/ctvs2/client/src/settlement.ts:58"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts:54 (section 8.3 SDK directional pause matrix)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "All eight direction/pause combinations pass the review SDK probe; source predicates match. Existing retained compiled corpus does not cover the full matrix.",
+    "impact": "",
+    "closure": "Add compiled and signed checks for all direction/pause combinations, including unaffected-direction successes."
+  },
+  {
+    "id": "C2-075",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.3"
+    ],
+    "pdf_pages": [
+      68
+    ],
+    "requirement": "Candidate request creation may remain possible while paused and is not admission.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:15",
+      "reference/implementations/ctvs2/client/src/requests.ts:41"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts:54 (section 8.3 SDK directional pause matrix)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Creation checks enabled mode but does not inspect pause; the probe confirms all pause values permit creation.",
+    "impact": "",
+    "closure": "Add provider pause/likely-execution disclosure in the required read contract; planner alone does not expose it."
+  },
+  {
+    "id": "C2-076",
+    "standard": "CTVS-2",
+    "sections": [
+      "8.3"
+    ],
+    "pdf_pages": [
+      68
+    ],
+    "requirement": "Pause must not disable existing cancellation, expiry refund or funded-claim delivery.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:39",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69",
+      "reference/implementations/ctvs2/client/src/recovery.ts:20",
+      "reference/implementations/ctvs2/client/src/delivery.ts:15"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "These paths have no live State/Config dependency and cannot read pause flags.",
+    "impact": "",
+    "closure": "Add a signed trace that pauses both directions, then cancels, expires and delivers pre-existing objects."
+  },
+  {
+    "id": "C2-077",
+    "standard": "CTVS-2",
+    "sections": [
+      "9.1",
+      "9.2",
+      "9.3",
+      "9.4",
+      "9.5"
+    ],
+    "pdf_pages": [
+      68,
+      69,
+      70
+    ],
+    "requirement": "The printed mixed example must preserve exact backing, supply, fees, mint and per-Request Claim allocations.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/batch.ts:74",
+      "reference/implementations/ctvs2/client/src/batch.ts:91"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts:24 (section 9 mixed snapshot example)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Public SDK reproduces A=S=1099500, F=2000, net mint 99500, claims 100000/50000/50000, carried 2 M each, reward 3 M.",
+    "impact": "",
+    "closure": "Retain this as an independently expected fixture and build a full signed version with measured fees/reserves, not the illustrative fixed network fee."
+  },
+  {
+    "id": "C2-078",
+    "standard": "CTVS-2",
+    "sections": [
+      "9.6",
+      "9.7",
+      "9.8",
+      "9.9",
+      "9.10"
+    ],
+    "pdf_pages": [
+      70,
+      71
+    ],
+    "requirement": "The independent delivery, invalid-economics refund, surplus and zero-net examples must preserve their distinct economic meanings.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:85",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:60",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:79"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:137 (actual_vault_cancel_dispatch_recovers_unsupported_oversized_body_and_surplus)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:128 (surplus_lovelace_cannot_pay_delivery_fee)",
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:191 (zero_net_batch_runs_state_and_both_request_handlers)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Equivalent examples are represented across distinct tests; the exact printed numeric set is not all replayed as signed transactions.",
+    "impact": "",
+    "closure": "Retain a paper-example corpus with separate expected arithmetic and exact signed trace results."
+  },
+  {
+    "id": "C2-079",
+    "standard": "CTVS-2",
+    "sections": [
+      "9.11",
+      "10.1",
+      "10.2",
+      "10.4",
+      "10.5"
+    ],
+    "pdf_pages": [
+      71,
+      72,
+      73
+    ],
+    "requirement": "Managed NAV, lending/ALM deployment, report sequencing, liabilities and real protocol authorization require their own implementation.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:13",
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No managed State, NAV reporter or strategy adapter exists in profile 0.",
+    "impact": "Reference validation makes no claim about invested-vault support or recovery from downstream protocols.",
+    "closure": "Implement and independently verify one pinned managed lifecycle before advertising managed conformance."
+  },
+  {
+    "id": "C2-080",
+    "standard": "CTVS-2",
+    "sections": [
+      "10.3",
+      "11.1"
+    ],
+    "pdf_pages": [
+      72,
+      73,
+      74
+    ],
+    "requirement": "Pending assets cannot be deployed downstream while still advertised as freely refundable escrow.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:87",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:297"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No in-flight transition exists; allowed Request spends are fixed recovery or full funded settlement.",
+    "impact": "",
+    "closure": "Add a negative attempt to spend a pending Request into an arbitrary strategy output; integration disclosures must remain explicit."
+  },
+  {
+    "id": "C2-081",
+    "standard": "CTVS-2",
+    "sections": [
+      "11.1"
+    ],
+    "pdf_pages": [
+      74
+    ],
+    "requirement": "Epoch pricing, partial fills, unfunded tickets, transferable Claims and arbitrary routes are deferred extensions.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:210",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:56",
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "These features are absent and no optional request field enables them.",
+    "impact": "",
+    "closure": "Require distinct reviewed ownership/recovery, encoding and complete allocation before any future extension."
+  },
+  {
+    "id": "C2-082",
+    "standard": "CTVS-2",
+    "sections": [
+      "11.2"
+    ],
+    "pdf_pages": [
+      74
+    ],
+    "requirement": "Native inventory accounting needs a separate authenticated issuance/extinction mapping; profile 0 remains mint/burn.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/state_core.ak:72",
+      "reference/implementations/ctvs2/client/src/batch.ts:116"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Only coupled native mint/burn is implemented; no inventory adapter is advertised.",
+    "impact": "",
+    "closure": "Do not infer inventory support from zero-net batch handling."
+  },
+  {
+    "id": "C2-083",
+    "standard": "CTVS-2",
+    "sections": [
+      "11.4"
+    ],
+    "pdf_pages": [
+      74
+    ],
+    "requirement": "Existing Terms, fees, destinations and funded-claim property cannot silently change through governance or migration.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/state_core.ak:39",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:199",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:49",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:13"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)",
+      "reference/implementations/ctvs2/onchain/validators/lifecycle_test.ak:182 (actual_config_lock_has_no_spend_or_reserve_recovery_branch)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Immutable commitment and exact claims are enforced; there is no governance/migration action.",
+    "impact": "",
+    "closure": "Add stale/mutated Terms and funded-claim repricing negatives independently of existing recipient tests."
+  },
+  {
+    "id": "C2-084",
+    "standard": "CTVS-2",
+    "sections": [
+      "13.2",
+      "13.3"
+    ],
+    "pdf_pages": [
+      78
+    ],
+    "requirement": "Batch conservation and rounding must not dilute adjusted price under unchanged external valuation.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/onchain/lib/ctvs/math.ak:21",
+      "reference/packages/onchain/lib/ctvs/math.ak:44",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:470"
+    ],
+    "tests": [
+      "reference/packages/onchain/lib/tests/math_properties.ak:161 (mixed_snapshot_accounting_preserves_underlying_and_supply)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Conservation and single-operation rounding properties exist. The cited mixed property checks conservation but does not directly assert equation 13 for arbitrary multi-request batches.",
+    "impact": "The general batch non-dilution statement lacks a direct retained property/refinement proof.",
+    "closure": "Add independent multi-request equation 13 and non-dilution properties over feasible bounded batches."
+  },
+  {
+    "id": "C2-085",
+    "standard": "CTVS-2",
+    "sections": [
+      "13.4",
+      "13.5"
+    ],
+    "pdf_pages": [
+      79
+    ],
+    "requirement": "Funded Claim delivery must remain independent of later solvency, controller and original settler, subject to actual construction feasibility.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69",
+      "reference/implementations/ctvs2/client/src/delivery.ts:15"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:98 (delivers_all_actual_assets_across_vaults_without_state_or_config)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Q has no mutable-vault dependencies; source accepts key funding from anyone.",
+    "impact": "",
+    "closure": "Add signed third-party delivery with controller/settler absent and intervening State activity; network inclusion is not guaranteed."
+  },
+  {
+    "id": "C2-086",
+    "standard": "CTVS-2",
+    "sections": [
+      "13.6"
+    ],
+    "pdf_pages": [
+      79
+    ],
+    "requirement": "Recovery noninterference, complete branch coupling and exclusive delivery must hold together with economics for the same covered sources.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:85",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:185",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:416",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:49",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:93"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:468 (batch_rejects_cancellation_as_acknowledgment)",
+      "reference/testing/integration/ctvs2/guards.test.ts:38 (requires all actual Q inputs to agree on one complete delivery list)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Relevant predicates are implemented jointly rather than as disconnected semantic helpers.",
+    "impact": "",
+    "closure": "A complete refinement argument and broader balanced adversarial corpus are still absent."
+  },
+  {
+    "id": "C2-087",
+    "standard": "CTVS-2",
+    "sections": [
+      "14.1"
+    ],
+    "pdf_pages": [
+      80
+    ],
+    "requirement": "Keep economic asset fees, execution reward, budget, storage and externally funded transaction costs distinct; recovery/delivery have zero protocol reward.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/batch.ts:150",
+      "reference/implementations/ctvs2/client/src/requests.ts:35",
+      "reference/implementations/ctvs2/client/src/recovery.ts:39",
+      "reference/implementations/ctvs2/client/src/delivery.ts:26"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/client/test/requests-batch.test.ts:66 (port: per-request fee, carried ADA, reward signer and both acknowledgment links)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Planner effects separate asset fees and settler reward; exact property preservation forbids paying recovery fee from escrow.",
+    "impact": "",
+    "closure": "Expose those distinctions in a user-facing response contract; current plans mark network fee unknown."
+  },
+  {
+    "id": "C2-088",
+    "standard": "CTVS-2",
+    "sections": [
+      "14.2",
+      "14.4"
+    ],
+    "pdf_pages": [
+      80,
+      81
+    ],
+    "requirement": "Benchmark increasing batch sizes, worst-case destinations, witnesses and actual parameter limits before release.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/VALIDATION.md:49",
+      "reference/VALIDATION.md:71",
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/integration-probes.json:15",
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/delivery-capacity.json:1"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/integration-probes.ts:20 (batch resource sweep; root-executed)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/delivery-capacity.ts:15 (signed delivery capacity sweep; root-executed)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "New root-executed local signed probes cover ADA/native backing with key or 512-byte script-datum receivers. Sizes 1, 2, 4, 5, 6, 7 pass in every sampled shape; size 8 fails the 14 M memory ceiling. The script/native 7-request case uses 13,898,477 memory. This is a restricted deposit-only sample, not worst-case capacity certification; 16 was not attempted after 8 failed. Separate native-share Claim delivery samples to key or script512 recipients accept 1, 4 and 5 Claims; 6, 7 and 8 fail the 14M memory ceiling. Size 16 fails builder size before signed evaluation: 18,324 bytes for key recipients and 26,964 for script512. The adapter attaches Q.",
+    "impact": "The structural caps of 16 are not demonstrated executable capacity. Eight ordinary sampled Requests exceed local memory; six sampled Claims exceed memory and sixteen exceed builder size with Q attached.",
+    "closure": "Retain these measurements and extend to mixed/redeem batches, maximum allowed datum/credential/key/integer/asset shapes, reference-script delivery and target-node parameters. Do not treat sampled maxima 7 and 5 as universal safe capacities."
+  },
+  {
+    "id": "C2-089",
+    "standard": "CTVS-2",
+    "sections": [
+      "14.2"
+    ],
+    "pdf_pages": [
+      80
+    ],
+    "requirement": "Reject excessive supported request/destination data before an SDK user locks funds.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:18",
+      "reference/packages/protocol/src/wire/requests.ts:81",
+      "reference/packages/onchain/lib/ctvs/validation.ak:158"
+    ],
+    "tests": [
+      "reference/packages/protocol/tests/wire.test.ts:235 (keeps cancellation recovery available for unsupported and oversized economic bodies)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "SDK creation validates supported bounded data; raw third-party output creation remains unrestricted by a spending script.",
+    "impact": "",
+    "closure": "Do not advertise all schema-valid outputs as necessarily resource-feasible; measure complete supported transactions."
+  },
+  {
+    "id": "C2-090",
+    "standard": "CTVS-2",
+    "sections": [
+      "14.4",
+      "15.3"
+    ],
+    "pdf_pages": [
+      81,
+      82
+    ],
+    "requirement": "Evaluate actual signed transaction bytes and required witnesses with real context instead of promoting synthetic semantic inputs to ledger proof.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/recorder.ts:49",
+      "reference/testing/ledger/evaluator.ts:127"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Local signed CBOR is checked, including witnesses, declared budgets and actual Plutus execution. Full cardano-node phase 1 is not exercised.",
+    "impact": "Local acceptance cannot establish public-network acceptance or every ledger prerequisite.",
+    "closure": "Run equivalent node-backed traces with a named era and parameter snapshot."
+  },
+  {
+    "id": "C2-091",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-01"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate multiple independent request creations without consuming State.",
+    "applicability": "acceptance",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:30",
+      "reference/testing/integration/ctvs2/guards.test.ts:40"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:38 (requires all actual Q inputs to agree on one complete delivery list)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Two funded deposit Requests precede one settlement in the signed local fixture.",
+    "impact": "",
+    "closure": "Add concurrent independent wallets and explicit unchanged State reference assertions."
+  },
+  {
+    "id": "C2-092",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-02"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate ADA/native/share funding partitions and malformed request rejection.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:174",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:590 (unsupported_economics_are_rejected_by_batch_single_decode)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Both backing assets and both request kinds execute locally; malformed economic constructor is rejected natively.",
+    "impact": "",
+    "closure": "Complete the compiled malformed-value and each-field matrix; do not substitute SDK rejection for script rejection."
+  },
+  {
+    "id": "C2-093",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-03"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate actual controller key witnesses separately from capability extension guards.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/recorder.ts:65",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:71"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:42 (recovers unsupported economics with controller cancellation and permissionless expiry)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Positive controller cancellation and another-wallet expiry have signatures; missing-controller negative is a predicate test.",
+    "impact": "",
+    "closure": "Add cryptographic missing/incorrect controller witness rejection through node-backed validation; capability profile remains out of scope."
+  },
+  {
+    "id": "C2-094",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-04"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate full-only settlement rejects omitted sources, duplicate refs and hidden remainder.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:281",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:416"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:492 (batch_rejects_omitted_consumed_request)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:615 (batch_traversal_rejects_duplicate_request_with_distinct_claims)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Omission and duplicate cases exist; no dedicated balanced hidden-remainder transaction is retained.",
+    "impact": "",
+    "closure": "Add compiled partial-fill/remainder attempts and complete signed rejection evidence."
+  },
+  {
+    "id": "C2-095",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-05"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate mixed snapshot pricing, wrong checkpoint rejection and per-request fee rounding.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:199",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:215",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:238"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:417 (mixed_batch_uses_one_old_snapshot_despite_rounding)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/c2-semantic-examples.ts:24 (section 9 mixed snapshot example)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Mixed arithmetic is covered; no signed mixed wrong-State-basis corpus or split-fee-versus-aggregate compiled fixture is retained.",
+    "impact": "",
+    "closure": "Add those three independently expected economic vectors at the transaction layer."
+  },
+  {
+    "id": "C2-096",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-06"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate gross supply conservation and zero-net mint without relying on mint-policy execution.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:450",
+      "reference/packages/onchain/lib/ctvs/state_core.ak:79"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:191 (zero_net_batch_runs_state_and_both_request_handlers)",
+      "reference/implementations/ctvs2/onchain/validators/state_test.ak:210 (zero_net_batch_rejects_missing_gross_claim)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Native entrypoint contexts establish gross checks; no retained signed mixed zero-net transaction exists.",
+    "impact": "",
+    "closure": "Construct and submit a zero-net batch from authentic prior Requests with final signed evaluation."
+  },
+  {
+    "id": "C2-097",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-07"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate same-receiver allocation, repeated-index rejection and no overlapping reserves.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:350",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:95"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:505 (batch_rejects_shared_claim_index)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:139 (same_receiver_still_requires_separate_output_allocations)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Repeated indices are tested in settlement and delivery. Full reserve-overlap mutation coverage remains incomplete.",
+    "impact": "",
+    "closure": "Add balanced reserve theft and Claim/reward collision transaction vectors."
+  },
+  {
+    "id": "C2-098",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-08"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate exact funded immutable Claims, including wrong asset/quantity/datum rejection and no delivery repricing/mint.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:295",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:297",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:97"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:205 (delivery_cannot_mint_even_unrelated_assets)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Recipient and mint negatives exist; independent wrong asset/quantity and all credential/datum shapes are not all retained.",
+    "impact": "",
+    "closure": "Add the missing compiled field/value mutation matrix and delayed-delivery history."
+  },
+  {
+    "id": "C2-099",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-09"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate exact deadline boundaries and cancellation/settlement races.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:23",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:69",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:200"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:531 (settlement_upper_bound_at_deadline_is_valid)",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:151 (expiry_boundary_is_permissionless_at_deadline)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Boundary predicate tests and one local expiry trace exist; races and node-backed slot conversion do not.",
+    "impact": "",
+    "closure": "Add competing spends and target-node interval edge tests."
+  },
+  {
+    "id": "C2-100",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-10"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate unauthorized operators fail and authorized operators cannot violate economics.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:418",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.ak:275"
+    ],
+    "tests": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/async.test.ak:573 (settler_keyset_is_enforced)",
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "KeySet membership negative is native context; signed economic recipient mutation and missing required signer are rejected.",
+    "impact": "",
+    "closure": "Add fully signed authorized-KeySet economic attack and unauthorized-KeySet transaction cases."
+  },
+  {
+    "id": "C2-101",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-11"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate fixed delivery with controller/batcher offline and multi-Claim output uniqueness.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/claim.ak:69"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:38 (requires all actual Q inputs to agree on one complete delivery list)",
+      "reference/implementations/ctvs2/onchain/validators/claim_test.ak:139 (same_receiver_still_requires_separate_output_allocations)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "No signer is required by Q; signed multi-Claim success exists, but a distinct third-party delivery/offline-role scenario is not retained.",
+    "impact": "",
+    "closure": "Use another wallet to deliver authentic Claims while all original roles are absent."
+  },
+  {
+    "id": "C2-102",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-12"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Managed NAV/liability conformance needs stale-report, overlap and post-report-flow evidence.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No managed profile is claimed or implemented.",
+    "impact": "",
+    "closure": "Keep this requirement open for a future managed mapping rather than marking it passed by direct-custody tests."
+  },
+  {
+    "id": "C2-103",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-13"
+    ],
+    "pdf_pages": [
+      81
+    ],
+    "requirement": "Demonstrate settlement rollback, delivery-only rollback and competing replacement histories.",
+    "applicability": "acceptance",
+    "status": "missing",
+    "code": [
+      "reference/VALIDATION.md:72"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "No production lifecycle indexer or retained rollback/replay corpus exists.",
+    "impact": "Authenticated async history cannot yet be reconstructed robustly across reorganizations.",
+    "closure": "Implement coherent lifecycle projection and branch-replay tests; detailed interface review belongs to the root integration report."
+  },
+  {
+    "id": "C2-104",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-14"
+    ],
+    "pdf_pages": [
+      82
+    ],
+    "requirement": "Demonstrate measured worst-case batches, datums, reserves, fees and witnesses.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/VALIDATION.md:49",
+      "reference/VALIDATION.md:71",
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/integration-probes.json:15",
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/delivery-capacity.json:1"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/integration-probes.ts:20 (batch resource sweep; root-executed)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/delivery-capacity.ts:15 (signed delivery capacity sweep; root-executed)"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "New root-executed local signed probes cover ADA/native backing with key or 512-byte script-datum receivers. Sizes 1, 2, 4, 5, 6, 7 pass in every sampled shape; size 8 fails the 14 M memory ceiling. The script/native 7-request case uses 13,898,477 memory. This is a restricted deposit-only sample, not worst-case capacity certification; 16 was not attempted after 8 failed. Separate native-share Claim delivery samples to key or script512 recipients accept 1, 4 and 5 Claims; 6, 7 and 8 fail the 14M memory ceiling. Size 16 fails builder size before signed evaluation: 18,324 bytes for key recipients and 26,964 for script512. The adapter attaches Q.",
+    "impact": "The structural caps of 16 are not demonstrated executable capacity. Eight ordinary sampled Requests exceed local memory; six sampled Claims exceed memory and sixteen exceed builder size with Q attached.",
+    "closure": "Retain these measurements and extend to mixed/redeem batches, maximum allowed datum/credential/key/integer/asset shapes, reference-script delivery and target-node parameters. Do not treat sampled maxima 7 and 5 as universal safe capacities."
+  },
+  {
+    "id": "C2-105",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.1 A-15",
+      "15.5"
+    ],
+    "pdf_pages": [
+      82,
+      83
+    ],
+    "requirement": "Two independent decoders, builders and indexers must agree on authenticated transaction histories.",
+    "applicability": "acceptance",
+    "status": "missing",
+    "code": [
+      "reference/VALIDATION.md:69",
+      "reference/VALIDATION.md:70",
+      "reference/VALIDATION.md:72"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "There is one public planning implementation and one local Lucid ledger adapter; CLI parameter comparison is not an independent transaction builder or indexer.",
+    "impact": "Independent interoperability acceptance is not closed.",
+    "closure": "A separate author/toolchain must reconstruct real histories and effects without calling these builders."
+  },
+  {
+    "id": "C2-106",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.2",
+      "16",
+      "Appendix A"
+    ],
+    "pdf_pages": [
+      82,
+      83,
+      84,
+      85
+    ],
+    "requirement": "Historical publication/model/wire evidence and preserved source-bundle claims must not be promoted into new execution certification.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/VALIDATION.md:7",
+      "reference/VALIDATION.md:55"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Current validation differentiates local execution from historic evidence. Original candidate-wire and assurance register artifacts remain unavailable.",
+    "impact": "Exact historical fixture reconciliation and evidence-register closure cannot be claimed.",
+    "closure": "Obtain the referenced source bundle and compare its byte-level fixtures and requirement registers independently."
+  },
+  {
+    "id": "C2-107",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.3",
+      "13.6"
+    ],
+    "pdf_pages": [
+      79,
+      82
+    ],
+    "requirement": "Prove a real-transaction projection from ledger prerequisites plus compiled acceptance to all applicable CTVS requirements, with intended negative failure reasons.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/onchain/validators/vault.ak:19",
+      "reference/testing/ledger/recorder.ts:129"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:9 (rejects rewritten Claim recipients and missing settler authorization)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Entry points inspect actual contexts and negative tests must reach evaluator, but reaching an evaluator failure alone does not identify its precise semantic predicate. No complete refinement proof exists.",
+    "impact": "Passing examples and high TypeScript coverage do not establish universal soundness.",
+    "closure": "Record predicate-specific counterexamples/traces and provide independent model-to-validator refinement evidence."
+  },
+  {
+    "id": "C2-108",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.4"
+    ],
+    "pdf_pages": [
+      82,
+      83
+    ],
+    "requirement": "Execute the full declared acceptance trace including authenticated deployment, requests, mixed/zero-net settlement, script destinations, recovery, maintenance and external interoperability.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14",
+      "reference/testing/integration/ctvs2/guards.test.ts:38",
+      "reference/VALIDATION.md:55"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:14 (settles deposits and redemptions into authenticated funded Claims)",
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:42 (recovers unsupported economics with controller cancellation and permissionless expiry)",
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/delivery-capacity.ts:15 (signed delivery to script512 recipient; root-executed)"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Local ADA/native sequential lifecycle, maintenance, recovery and multi-Claim paths exist; new root probes add deposit-only batch sizes through 7 and final Claim delivery to key and script512 receivers through 5. The async family deliberately lacks direct deposit. Signed mixed zero-net, node-backed, independent-builder and rollback portions remain open.",
+    "impact": "The combined trace printed in the paper cannot be completed inside this single async-only family.",
+    "closure": "State the family-specific trace substitution explicitly and complete all remaining applicable acceptance legs."
+  },
+  {
+    "id": "C2-109",
+    "standard": "CTVS-2",
+    "sections": [
+      "15.5",
+      "2.5"
+    ],
+    "pdf_pages": [
+      53,
+      83
+    ],
+    "requirement": "Script-controlled protocol users and real managed integrations need their actual guards and successor tests.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Sending to a script destination is supported but does not demonstrate that script-controller capability or managed integration.",
+    "impact": "",
+    "closure": "Implement real pinned integrations before making those separately scoped claims."
+  }
+]

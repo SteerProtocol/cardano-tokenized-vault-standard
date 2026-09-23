@@ -1,0 +1,14 @@
+{
+  "name": "@ctvs/protocol",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@harmoniclabs/plutus-data": "2.0.1",
+    "@noble/hashes": "2.4.0",
+    "@harmoniclabs/cbor": "2.0.2"
+  }
+}

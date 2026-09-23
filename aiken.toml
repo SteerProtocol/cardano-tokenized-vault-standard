@@ -1,0 +1,16 @@
+name = "steer/cardano-vault-standard"
+version = "0.1.0"
+compiler = "v1.1.22"
+plutus = "v3"
+license = "Apache-2.0"
+description = "Planning prototype for a Cardano-native tokenized vault standard"
+
+[repository]
+user = "steer"
+project = "cardano-vault-standard"
+platform = "github"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v3.1.0"
+source = "github"

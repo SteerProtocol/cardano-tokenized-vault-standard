@@ -1,0 +1,217 @@
+{
+  "scope": "Local signed Claim delivery; no node or public-network acceptance",
+  "results": [
+    {
+      "size": 1,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-1-key",
+      "accepted": true,
+      "bytes": 5221,
+      "fee": "434562",
+      "measuredExecutionUnits": {
+        "memory": "562399",
+        "steps": "235863068"
+      }
+    },
+    {
+      "size": 4,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-4-key",
+      "accepted": true,
+      "bytes": 6322,
+      "fee": "1128521",
+      "measuredExecutionUnits": {
+        "memory": "7779544",
+        "steps": "3413196572"
+      }
+    },
+    {
+      "size": 5,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-5-key",
+      "accepted": true,
+      "bytes": 6865,
+      "fee": "1567500",
+      "measuredExecutionUnits": {
+        "memory": "12365541",
+        "steps": "5500236513"
+      }
+    },
+    {
+      "size": 6,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-6-key",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[4] execution went over budget Mem -3323 CPU 3745941125\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[4] execution went over budget\n            Mem -3323\n            CPU 3745941125\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "1d57b0b6c8cc84c5b45bf4d6bc82d2490c24c735b431ea8bbaca5d68151cb10e",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[4] execution went over budget\n          Mem -3323\n          CPU 3745941125"
+        }
+      ]
+    },
+    {
+      "size": 7,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-7-key",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[4] execution went over budget Mem -1956 CPU 3699959150\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[4] execution went over budget\n            Mem -1956\n            CPU 3699959150\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "00a3cd3b101b97b45f9d31a6147af740f6e81e3da73d8a058299a714f083a123",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[4] execution went over budget\n          Mem -1956\n          CPU 3699959150"
+        }
+      ]
+    },
+    {
+      "size": 8,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-8-key",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[3] execution went over budget Mem -4078 CPU 3679591878\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[3] execution went over budget\n            Mem -4078\n            CPU 3679591878\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "c932f7111966a7f4e89cc113a45cde9697dd9f24a5af195c020089cd345c988e",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[3] execution went over budget\n          Mem -4078\n          CPU 3679591878"
+        }
+      ]
+    },
+    {
+      "size": 16,
+      "underlying": "native-share-claims",
+      "recipient": "key",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-16-key",
+      "accepted": false,
+      "error": "(FiberFailure) RunTimeError: Error: Max transaction size of 16384 exceeded. Found: 18324\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:711:44)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:169:18)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1200:44)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Failure (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1200:32)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34)\n    at FiberRuntime.evaluateEffect (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:950:27)\n    at FiberRuntime.evaluateMessageWhileSuspended (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:918:14) {\n  [cause]: Error: Max transaction size of 16384 exceeded. Found: 18324\n      at __wbg_Error_ef53bc310eb298a0 (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@anastasia-labs/cardano-multiplatform-lib-nodejs/cardano_multiplatform_lib.js:34101:25)\n      at wasm://wasm/00c2c9fe:wasm-function[8202]:0x2c82ad\n      at wasm://wasm/00c2c9fe:wasm-function[5087]:0x203cbb\n      at wasm://wasm/00c2c9fe:wasm-function[4913]:0x1fe8fa\n      at wasm://wasm/00c2c9fe:wasm-function[5996]:0x253540\n      at TransactionBuilder.min_fee (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@anastasia-labs/cardano-multiplatform-lib-nodejs/cardano_multiplatform_lib.js:28131:26)\n      at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1438:37)\n}",
+      "evaluations": []
+    },
+    {
+      "size": 1,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-1-script512",
+      "accepted": true,
+      "bytes": 5761,
+      "fee": "463457",
+      "measuredExecutionUnits": {
+        "memory": "584813",
+        "steps": "289146734"
+      }
+    },
+    {
+      "size": 4,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-4-script512",
+      "accepted": true,
+      "bytes": 8482,
+      "fee": "1305721",
+      "measuredExecutionUnits": {
+        "memory": "8138168",
+        "steps": "4265735228"
+      }
+    },
+    {
+      "size": 5,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-5-script512",
+      "accepted": true,
+      "bytes": 9565,
+      "fee": "1804824",
+      "measuredExecutionUnits": {
+        "memory": "12832435",
+        "steps": "6770468715"
+      }
+    },
+    {
+      "size": 6,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-6-script512",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[5] execution went over budget Mem -557 CPU 2620650137\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[5] execution went over budget\n            Mem -557\n            CPU 2620650137\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "0a5ee36578670cf3792b8fea77d8256571a308141394b68cfcb675daf15a3e41",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[5] execution went over budget\n          Mem -557\n          CPU 2620650137"
+        }
+      ]
+    },
+    {
+      "size": 7,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-7-script512",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[4] execution went over budget Mem -422 CPU 2574908180\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[4] execution went over budget\n            Mem -422\n            CPU 2574908180\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "e2067c5010c7f9873e0cc6234497072d8cb3e5f594f51fdf6493af1f28387056",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[4] execution went over budget\n          Mem -422\n          CPU 2574908180"
+        }
+      ]
+    },
+    {
+      "size": 8,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-8-script512",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[3] execution went over budget Mem -4338 CPU 2666141341\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[3] execution went over budget\n            Mem -4338\n            CPU 2666141341\n}",
+      "evaluations": [
+        {
+          "stage": "review-delivery",
+          "phase": "construction",
+          "cborSha256": "2122f955fae7da4b4d50b2ab543fbff9d90042f0dfab4a676cbe0c6fbafa9daf",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[3] execution went over budget\n          Mem -4338\n          CPU 2666141341"
+        }
+      ]
+    },
+    {
+      "size": 16,
+      "underlying": "native-share-claims",
+      "recipient": "script512",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-delivery-16-script512",
+      "accepted": false,
+      "error": "(FiberFailure) RunTimeError: Error: Max transaction size of 16384 exceeded. Found: 26964\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:711:44)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:169:18)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1200:44)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Failure (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1200:32)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34)\n    at FiberRuntime.evaluateEffect (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:950:27)\n    at FiberRuntime.evaluateMessageWhileSuspended (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:918:14) {\n  [cause]: Error: Max transaction size of 16384 exceeded. Found: 26964\n      at __wbg_Error_ef53bc310eb298a0 (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@anastasia-labs/cardano-multiplatform-lib-nodejs/cardano_multiplatform_lib.js:34101:25)\n      at wasm://wasm/00c2c9fe:wasm-function[8202]:0x2c82ad\n      at wasm://wasm/00c2c9fe:wasm-function[5087]:0x203cbb\n      at wasm://wasm/00c2c9fe:wasm-function[4913]:0x1fe8fa\n      at wasm://wasm/00c2c9fe:wasm-function[5996]:0x253540\n      at TransactionBuilder.min_fee (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@anastasia-labs/cardano-multiplatform-lib-nodejs/cardano_multiplatform_lib.js:28131:26)\n      at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1438:37)\n}",
+      "evaluations": []
+    }
+  ]
+}

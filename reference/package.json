@@ -1,0 +1,47 @@
+{
+  "name": "@ctvs/reference-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^22.13.0 || ^24.0.0 || >=26.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "implementations/*/client",
+    "testing"
+  ],
+  "scripts": {
+    "build": "node --import tsx tools/build.ts",
+    "build:ctvs1": "node --import tsx tools/build.ts ctvs1",
+    "build:ctvs2": "node --import tsx tools/build.ts ctvs2",
+    "apply": "node --import tsx tools/apply.ts",
+    "typecheck": "tsc --noEmit",
+    "format": "eslint . --fix --max-warnings=0 && biome format --write .",
+    "format:check": "biome format . && eslint . --max-warnings=0",
+    "lint": "biome lint --error-on-warnings . && eslint . --max-warnings=0",
+    "lint:fix": "biome lint --write --error-on-warnings . && eslint . --fix --max-warnings=0",
+    "fix": "eslint . --fix --max-warnings=0 && biome check --write --error-on-warnings .",
+    "check:typescript": "npm run typecheck && biome ci --error-on-warnings . && eslint . --max-warnings=0",
+    "format:onchain:check": "node --import tsx tools/format-onchain.ts",
+    "test": "vitest run --project unit --project property --outputFile.junit=artifacts/test-results/unit.xml --outputFile.json=artifacts/test-results/unit.json",
+    "test:watch": "vitest --project unit --project property",
+    "test:coverage": "vitest run --project unit --project property --coverage --outputFile.junit=artifacts/test-results/unit.xml --outputFile.json=artifacts/test-results/unit.json",
+    "test:integration": "vitest run --project integration --outputFile.junit=artifacts/test-results/integration.xml --outputFile.json=artifacts/test-results/integration.json",
+    "test:onchain": "node --import tsx tools/check-onchain.ts",
+    "check": "npm run check:typescript && npm run format:onchain:check && npm run test:coverage && npm run test:onchain && npm run test:integration"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@ctvs/protocol": "0.1.0",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "22.20.3",
+    "@typescript-eslint/parser": "8.70.0",
+    "@vitest/coverage-v8": "5.0.1",
+    "eslint": "10.10.0",
+    "fast-check": "4.10.1",
+    "tsx": "4.23.13",
+    "typescript": "5.9.3",
+    "vitest": "5.0.1"
+  }
+}

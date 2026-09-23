@@ -1,0 +1,17 @@
+{
+  "scope": "read-only arithmetic and public-planner probes",
+  "results": [
+    {
+      "name": "section 9 mixed snapshot example",
+      "observation": "Exact paper State, net mint, three claim quantities, carried reserves and reward reproduced by public SDK. This is not a balanced signed ledger transaction."
+    },
+    {
+      "name": "section 3.5 economic histories",
+      "observation": "The distinct paper histories reproduce distinct final backing and asset claims. The example starting state is supplied, not proved reachable from this async-only genesis."
+    },
+    {
+      "name": "section 8.3 SDK directional pause matrix",
+      "observation": "8 direction/pause combinations matched; candidate creation remained available. Contract pause-matrix execution is not established by this SDK probe."
+    }
+  ]
+}

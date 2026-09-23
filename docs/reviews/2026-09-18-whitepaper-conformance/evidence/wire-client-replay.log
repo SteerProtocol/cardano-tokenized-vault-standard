@@ -1,0 +1,486 @@
+{
+  "scope": "wire-identity isolated offchain probes; not ledger acceptance",
+  "findings": [
+    {
+      "name": "terms: recursive extra-field rejection corpus",
+      "accepted": true,
+      "detail": {
+        "cases": 11,
+        "unexpectedAcceptances": [],
+        "outcomes": [
+          {
+            "path": [],
+            "accepted": false
+          },
+          {
+            "path": [
+              2
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              4
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              7
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              7,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              7,
+              0,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              7,
+              0,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              7,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              9
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              12
+            ],
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "config: recursive extra-field rejection corpus",
+      "accepted": true,
+      "detail": {
+        "cases": 13,
+        "unexpectedAcceptances": [],
+        "outcomes": [
+          {
+            "path": [],
+            "accepted": false
+          },
+          {
+            "path": [
+              3
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              2
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              4
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              7
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              7,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              7,
+              0,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              7,
+              0,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              7,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              8
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              9
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              5,
+              12
+            ],
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "state: recursive extra-field rejection corpus",
+      "accepted": true,
+      "detail": {
+        "cases": 1,
+        "unexpectedAcceptances": [],
+        "outcomes": [
+          {
+            "path": [],
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "request: recursive extra-field rejection corpus",
+      "accepted": true,
+      "detail": {
+        "cases": 15,
+        "unexpectedAcceptances": [],
+        "outcomes": [
+          {
+            "path": [],
+            "accepted": false
+          },
+          {
+            "path": [
+              2
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              2
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              2,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              2,
+              0,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              2,
+              0,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              2,
+              2,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              4
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              4,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              4,
+              0,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              4,
+              0,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              3,
+              4,
+              1
+            ],
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "claim: recursive extra-field rejection corpus",
+      "accepted": true,
+      "detail": {
+        "cases": 9,
+        "unexpectedAcceptances": [],
+        "outcomes": [
+          {
+            "path": [],
+            "accepted": false
+          },
+          {
+            "path": [
+              3
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              4
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              6
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8,
+              0,
+              0
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8,
+              0,
+              1
+            ],
+            "accepted": false
+          },
+          {
+            "path": [
+              8,
+              1
+            ],
+            "accepted": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "large-constructor: CML accepts small Request CBOR",
+      "accepted": true,
+      "detail": {
+        "byteLength": 144,
+        "rawCbor": "d87a9f444354565302d8799f581c11111111111111111111111111111111111111111111111111111111d8799f581c22222222222222222222222222222222222222222222222222222222ffd8799fd8799fd8799f581c22222222222222222222222222222222222222222222222222222222ffd87a80ffd87a80ff1a001e8480ffd866821b002000000000000080ff",
+        "reencodedBytes": 144
+      }
+    },
+    {
+      "name": "large-constructor: SDK recovery from raw Request CBOR",
+      "accepted": false,
+      "error": "RangeError: constructor index exceeds safe integer"
+    },
+    {
+      "name": "65-deep-economic-list: CML accepts small Request CBOR",
+      "accepted": true,
+      "detail": {
+        "byteLength": 197,
+        "rawCbor": "d87a9f444354565302d8799f581c11111111111111111111111111111111111111111111111111111111d8799f581c22222222222222222222222222222222222222222222222222222222ffd8799fd8799fd8799f581c22222222222222222222222222222222222222222222222222222222ffd87a80ffd87a80ff1a001e8480ff818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818181818100ff",
+        "reencodedBytes": 197
+      }
+    },
+    {
+      "name": "65-deep-economic-list: SDK recovery from raw Request CBOR",
+      "accepted": false,
+      "error": "RangeError: CBOR structural budget exceeded"
+    },
+    {
+      "name": "bytes-over-settlement-cap: SDK recovery projection ignores body",
+      "accepted": true,
+      "detail": {
+        "controller": "22222222222222222222222222222222222222222222222222222222"
+      }
+    },
+    {
+      "name": "unsupported-constructor: SDK recovery projection ignores body",
+      "accepted": true,
+      "detail": {
+        "controller": "22222222222222222222222222222222222222222222222222222222"
+      }
+    },
+    {
+      "name": "empty-native-name",
+      "accepted": true,
+      "detail": "11111111111111111111111111111111111111111111111111111111."
+    },
+    {
+      "name": "32-byte-native-name",
+      "accepted": true,
+      "detail": "11111111111111111111111111111111111111111111111111111111.abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "name": "33-byte-native-name",
+      "accepted": false,
+      "error": "RangeError: asset name exceeds 32 bytes"
+    },
+    {
+      "name": "OutRef index 0",
+      "accepted": true,
+      "detail": "5555555555555555555555555555555555555555555555555555555555555555#0"
+    },
+    {
+      "name": "OutRef index 65535",
+      "accepted": true,
+      "detail": "5555555555555555555555555555555555555555555555555555555555555555#65535"
+    },
+    {
+      "name": "OutRef index 65536",
+      "accepted": false,
+      "error": "RangeError: output index must be bigint in 0..65535"
+    },
+    {
+      "name": "OutRef index -1",
+      "accepted": false,
+      "error": "RangeError: output index must be bigint in 0..65535"
+    },
+    {
+      "name": "Terms domains are explicit 14 bytes with trailing zero",
+      "accepted": true,
+      "detail": {
+        "hex": "435456532f48322f5445524d5300",
+        "bytes": 14,
+        "hash": "3e786871c31d0ba1684920693cbb3ae53e42eca96d272280bf732e44b8844220"
+      }
+    },
+    {
+      "name": "Reordered opaque map changes Terms commitment",
+      "accepted": true,
+      "detail": {
+        "orderedHash": "0128714e093cf3900538579f86daceed6d5c285eacc1675fced72021762d03b0",
+        "reorderedHash": "b88cf1a6a512bcb9c0de7d195bf0e6b8803202d8c13dd1932ddc40e8bc7c601f",
+        "distinct": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "scope": "read-only SDK boundary probes",
+  "results": [
+    {
+      "name": "settler hex normalization",
+      "observation": "Identical credential bytes are accepted in lowercase but rejected as unauthorized when rewardKey is uppercase."
+    },
+    {
+      "name": "same Q with staking credential",
+      "observation": "SDK accepts enterprise Q input but rejects the same Q payment script with a staking credential. Onchain acceptance is established by source review, not this TypeScript probe."
+    },
+    {
+      "name": "recovery and delivery top-up surface",
+      "observation": "Default protected outputs preserve exactly input value. Public option types expose no receiver top-up argument; larger outputs require caller-authored plan changes."
+    }
+  ]
+}

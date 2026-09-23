@@ -1,0 +1,44 @@
+name: Reference implementations
+
+on:
+  push:
+    paths: ["reference/**", ".github/workflows/reference.yml"]
+  pull_request:
+    paths: ["reference/**", ".github/workflows/reference.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: reference-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: reference
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22.20.0"
+          cache: npm
+          cache-dependency-path: reference/package-lock.json
+      - uses: aiken-lang/setup-aiken@6c34dba56aaf48922bdb18943d5de25608297650 # v1
+        with:
+          version: v1.1.22
+      - name: Install locked dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Typecheck, formatting, lint, coverage, onchain properties, and signed integration
+        run: npm run check
+      - name: Preserve coverage and execution evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: reference-validation
+          path: reference/artifacts/
+          retention-days: 14

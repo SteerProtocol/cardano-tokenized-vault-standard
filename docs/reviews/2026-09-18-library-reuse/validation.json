@@ -1,0 +1,92 @@
+{
+  "recordedAtUtc": "2026-09-18T17:03:58.222757+00:00",
+  "scope": "Library reuse and shared Cardano asset/reference conversions; no dependency or onchain changes",
+  "baseCommit": "75d47c90361d6f83458841b871e0f746500610e0",
+  "referenceSourceDigest": {
+    "sha256": "74cb4c67581be77907886c677a30a3a546cffbc9ee50512eaf38ae95803a103b",
+    "fileCount": 168,
+    "algorithm": "SHA256 of sorted unique git ls-files --cached --others --exclude-standard reference records, each SHA256(file) + two spaces + path + newline"
+  },
+  "checks": [
+    {
+      "command": "AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run check",
+      "exitCode": 1,
+      "result": "Typecheck, lint and onchain formatting passed; three existing property tests exceeded 5000 ms"
+    },
+    {
+      "command": "npm run test:coverage -- --maxWorkers=4",
+      "exitCode": 0
+    },
+    {
+      "command": "AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run test:onchain",
+      "exitCode": 0
+    },
+    {
+      "command": "AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run test:integration",
+      "exitCode": 0
+    }
+  ],
+  "typescript": {
+    "numTotalTests": 312,
+    "numPassedTests": 312,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "aiken": {
+    "ctvs1": {
+      "total": 85,
+      "passed": 85,
+      "failed": 0,
+      "kind": {
+        "unit": 76,
+        "property": 9
+      }
+    },
+    "ctvs2": {
+      "total": 108,
+      "passed": 108,
+      "failed": 0,
+      "kind": {
+        "unit": 98,
+        "property": 10
+      }
+    }
+  },
+  "integration": {
+    "numTotalTests": 31,
+    "numPassedTests": 31,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "productionTypeScriptCoverage": {
+    "lines": {
+      "total": 1555,
+      "covered": 1535,
+      "skipped": 0,
+      "pct": 98.71
+    },
+    "statements": {
+      "total": 1752,
+      "covered": 1708,
+      "skipped": 0,
+      "pct": 97.48
+    },
+    "branches": {
+      "total": 1285,
+      "covered": 1211,
+      "skipped": 0,
+      "pct": 94.24
+    },
+    "functions": {
+      "total": 314,
+      "covered": 307,
+      "skipped": 0,
+      "pct": 97.77
+    }
+  },
+  "logSha256": "40afa20af17bdf48b814c026ed48b52198bb855eb21a046eb481eb6efe044b1d",
+  "limitations": [
+    "Aiken family counts include overlapping shared checks",
+    "No node-backed or public-network acceptance established"
+  ]
+}

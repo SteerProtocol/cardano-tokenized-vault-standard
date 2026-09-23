@@ -1,0 +1,622 @@
+{
+  "baselineTestCount": 122,
+  "preservedTestCount": 122,
+  "newUniqueTestCount": 23,
+  "notes": [
+    "Every original named case remains in canonical source. Shared tests run in both family projects.",
+    "Fixtures now authenticate immutable mode 3 for CTVS1 and mode 12 for CTVS2.",
+    "capability_variant_rejects_unsupported_terms now tests supported WIRE mode 12 against CTVS1; unknown WIRE bits remain covered by terms_reject_unknown_modes_profiles_and_invalid_cap."
+  ],
+  "tests": [
+    {
+      "name": "actual_config_lock_has_no_spend_or_reserve_recovery_branch",
+      "original": "aiken/validators/lifecycle_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/lifecycle_test.ak"]
+    },
+    {
+      "name": "actual_vault_cancel_dispatch_recovers_unsupported_oversized_body_and_surplus",
+      "original": "aiken/validators/lifecycle_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/lifecycle_test.ak"]
+    },
+    {
+      "name": "actual_vault_cancel_rejects_unknown_outer_version",
+      "original": "aiken/validators/lifecycle_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/lifecycle_test.ak"]
+    },
+    {
+      "name": "actual_vault_expiry_dispatch_needs_no_controller_signature_or_current_state",
+      "original": "aiken/validators/lifecycle_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/lifecycle_test.ak"]
+    },
+    {
+      "name": "actual_vault_request_rejects_state_role_before_action_interpretation",
+      "original": "aiken/validators/lifecycle_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/lifecycle_test.ak"]
+    },
+    {
+      "name": "addresses_reject_pointer_and_short_credentials",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "all_claims_must_use_identical_semantic_delivery_list",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "batch_rejects_cancellation_as_acknowledgment",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "batch_rejects_deadline_straddling_interval",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "batch_rejects_missing_gross_claim_when_net_mint_is_zero",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "batch_rejects_omitted_consumed_request",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "batch_rejects_shared_claim_index",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "batch_requires_settler_explicit_signature_even_for_zero_reward",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "cancellation_cannot_consume_a_second_request",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "cancellation_does_not_decode_bad_success_receiver_or_fee_budget",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "cancellation_preserves_unexpected_asset",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "cancellation_recovers_unsupported_economic_constructor_and_all_surplus",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "cancellation_requires_controller_signatory",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "capability_variant_accepts_supported_genesis",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "capability_variant_rejects_unsupported_terms",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "claim_ada_aggregate_bound",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "claim_can_deliver_to_script_with_exact_inline_datum_without_spending_it",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "claim_spend_entrypoint_decodes_exact_role_and_delivers",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "claim_topup_aggregate_must_fit_quantity_bound",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "decoder_keeps_recovery_body_raw",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "decoder_rejects_extra_and_missing_state_fields",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "decoder_rejects_malformed_envelope_and_unknown_action_tag",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "decoder_rejects_nested_wrong_credential_type_and_arity",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "delivers_all_actual_assets_across_vaults_without_state_or_config",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "delivery_cannot_mint_even_unrelated_assets",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "delivery_lists_require_sorted_unique_references",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "delivery_rejects_zero_withdrawal",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "direct_actions_reject_shared_successor_and_receiver_output",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "duplicate_claim_reference_fails",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "empty_interval_rejected",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "envelope_role_and_arity_are_distinct",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "exact_mint_and_withdraw_apply_rounding",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "expiry_boundary_is_permissionless_at_deadline",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "expiry_infinite_interval_rejected",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "expiry_straddling_deadline_rejected",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "external_claim_topup_is_carried_without_buying_shares",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "externally_funded_delivery_topups_are_permitted",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "genesis_mints_only_permanent_identities",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "genesis_rejects_initial_share_issuance",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "genesis_rejects_nonzero_backing",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "genesis_rejects_reference_script",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "genesis_rejects_wrong_state_address",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "genesis_requires_seed",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "gross_redemptions_cannot_exceed_old_supply_even_if_deposits_offset",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "integer_preview_rounding_fixture",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "key_sets_are_bounded_sorted_and_unique",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "malformed_recovery_is_not_rescuable_by_supported_outer_version",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "mixed_batch_uses_one_old_snapshot_despite_rounding",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "omitted_claim_fails_exhaustive_coverage",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "opaque_constructor_tags_are_bounded",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "opaque_depth_bound_counts_root_as_zero",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "opaque_integer_bounds_are_signed_256_bits",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "opaque_maps_preserve_pairs_and_reject_duplicate_equal_keys",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "opaque_node_limit_includes_container",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "opaque_normalized_size_counts_cbor_overhead",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "pause_and_topup_preserve_economics",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "quantity_bounds_are_exact",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "receiver_datum_must_match_exactly",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "recovery_ignores_unsupported_and_oversized_economics",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "recovery_rejects_unknown_outer_version_without_touching_economics",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "reference_script_on_delivery_output_is_rejected",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "rejects_config_at_wrong_lock",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_config_with_modified_terms",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_config_without_identity",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_foreign_script_input",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_minimum_above_quote",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_receiver_datum_hash_or_inline_mismatch",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_reference_script_on_state",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_reserve_drain",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_reused_state_payment_index",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_treasury_fields",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_unauthorized_pause",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_underpaid_shares",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_unrelated_mint",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_wrong_mint_quantity",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_wrong_mint_state_reference",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_wrong_receiver",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_wrong_sequence",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_wrong_state_value",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_zero_economic_output",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "rejects_zero_withdrawal_hook",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "request_acknowledgment_matches_actual_batch_branch",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "request_acknowledgment_requires_real_consumed_state",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "request_funding_aggregate_and_fee_bounds",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "request_shaped_state_cannot_use_recovery",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "residual_backing_remains_after_full_redemption",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "reverse_order_fails_deterministic_list_rule",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "same_receiver_still_requires_separate_output_allocations",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "scoped_config_decoder_rejects_extra_nested_terms_field",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_decoder_rejects_non_constructor_data",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_decoders_preserve_all_public_datum_tags_and_fields",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_envelope_decoders_preserve_role_and_actions",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_envelope_rejects_another_role",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_envelope_rejects_extra_inner_action_field",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_request_decoder_rejects_malformed_recovery_controller",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_state_decoder_rejects_extra_field",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_state_decoder_rejects_missing_field",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "scoped_state_decoder_rejects_wrong_role",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "settlement_upper_bound_at_deadline_is_valid",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "settler_keyset_is_enforced",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "state_checks_physical_sum_for_each_underlying",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "state_identity_cannot_take_request_refund_handler",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "surplus_lovelace_cannot_pay_delivery_fee",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "surplus_native_asset_cannot_be_used_for_submitter_change",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "terms_builtin_serialization_and_hash_match_client_fixture",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "terms_reject_unknown_modes_profiles_and_invalid_cap",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "unrelated_script_input_is_rejected",
+      "original": "aiken/validators/claim_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/claim_test.ak"]
+    },
+    {
+      "name": "unsupported_economics_are_rejected_by_batch_single_decode",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    },
+    {
+      "name": "valid_terms_and_config_commitment",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "whitepaper_ada_deposit_separates_reserves",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "whitepaper_deposit_real_mint_handler",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "whitepaper_native_deposit_and_real_spend_handler",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "whitepaper_redeem_and_fee_collection",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs1/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "wrong_config_commitment_is_rejected",
+      "original": "aiken/lib/tests/validation_test.ak",
+      "canonical": ["packages/onchain/lib/tests/validation_test.ak"]
+    },
+    {
+      "name": "zero_net_batch_rejects_missing_gross_claim",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "zero_net_batch_runs_state_and_both_request_handlers",
+      "original": "aiken/validators/state_test.ak",
+      "canonical": ["implementations/ctvs2/onchain/validators/state_test.ak"]
+    },
+    {
+      "name": "zero_net_mint_batch_still_settles_both_gross_obligations",
+      "original": "aiken/lib/ctvs2/async.test.ak",
+      "canonical": ["implementations/ctvs2/onchain/lib/ctvs2/async.test.ak"]
+    }
+  ]
+}

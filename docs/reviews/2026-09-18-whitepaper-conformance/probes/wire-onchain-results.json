@@ -1,0 +1,46 @@
+{
+  "seed": 20260918,
+  "summary": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "kind": {
+      "unit": 2,
+      "property": 0
+    }
+  },
+  "modules": [
+    {
+      "name": "wire_review",
+      "summary": {
+        "total": 2,
+        "passed": 2,
+        "failed": 0,
+        "kind": {
+          "unit": 2,
+          "property": 0
+        }
+      },
+      "tests": [
+        {
+          "title": "wire_review_large_constructor_body_remains_cancelable",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 877830,
+            "cpu": 291102315
+          }
+        },
+        {
+          "title": "wire_review_65_deep_body_remains_cancelable",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 1033652,
+            "cpu": 344401776
+          }
+        }
+      ]
+    }
+  ]
+}

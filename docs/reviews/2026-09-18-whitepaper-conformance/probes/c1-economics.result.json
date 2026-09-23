@@ -1,0 +1,16 @@
+{
+  "probe": "C1 independent equation and boundary comparison",
+  "recordedAt": "2026-09-18T12:53:13.375Z",
+  "passed": true,
+  "counts": {
+    "quoteComparisons": 183678,
+    "transitionComparisons": 367356,
+    "conversionComparisons": 2352,
+    "maximumComparisons": 4032,
+    "largeBoundaryComparisons": 2560,
+    "adjustedPriceComparisons": 94204,
+    "roundTripComparisons": 39954
+  },
+  "scope": "Pure TypeScript economics only. No ledger, signatures, public network, or formal completeness claim.",
+  "counterexamples": []
+}

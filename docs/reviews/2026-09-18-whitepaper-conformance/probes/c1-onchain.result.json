@@ -1,0 +1,216 @@
+{
+  "seed": 20260918,
+  "summary": {
+    "total": 16,
+    "passed": 16,
+    "failed": 0,
+    "kind": {
+      "unit": 16,
+      "property": 0
+    }
+  },
+  "modules": [
+    {
+      "name": "review/c1_probe",
+      "summary": {
+        "total": 16,
+        "passed": 16,
+        "failed": 0,
+        "kind": {
+          "unit": 16,
+          "property": 0
+        }
+      },
+      "tests": [
+        {
+          "title": "c1_fee_collection_is_permissionless_while_fully_paused",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 1943773,
+            "cpu": 833838634
+          }
+        },
+        {
+          "title": "c1_fee_collection_rejects_native_underpayment",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1690530,
+            "cpu": 735848274
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n        ledger.economic_payment(\n          ledger.output(tx, fee_output),\n          terms.fee_destination,\n          terms.underlying,\n          f,\n        )"
+          ]
+        },
+        {
+          "title": "c1_fee_collection_rejects_native_overpayment",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1690530,
+            "cpu": 735848274
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n        ledger.economic_payment(\n          ledger.output(tx, fee_output),\n          terms.fee_destination,\n          terms.underlying,\n          f,\n        )"
+          ]
+        },
+        {
+          "title": "c1_fee_collection_rejects_zero_liability",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1605384,
+            "cpu": 713786741
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect f > 0 && state_output != fee_output"
+          ]
+        },
+        {
+          "title": "c1_zero_topup_rejected",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 801305,
+            "cpu": 341397519
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect ledger.allowed_purposes(tx) && valid_action(action)"
+          ]
+        },
+        {
+          "title": "c1_topup_cannot_add_backing",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1665510,
+            "cpu": 751898627
+          }
+        },
+        {
+          "title": "c1_disabled_pause_key_rejects_even_when_key_named",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1585552,
+            "cpu": 697837520
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect Some(key) = terms.pause_key"
+          ]
+        },
+        {
+          "title": "c1_entry_pause_blocks_exact_share_mint",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1732480,
+            "cpu": 754267331
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect and {\n      validation.positive_q(quote.gross),\n      validation.positive_q(quote.net),\n      validation.positive_q(quote.shares),\n      validation.q(quote.fee),\n      receiver_output != state_output,\n      if entering {\n        terms.execution_modes % 2 == 1 && pause_flags % 2 == 0\n      } else {\n        terms.execution_modes / 2 % 2 == 1 && pause_flags / 2 == 0\n      },\n    }"
+          ]
+        },
+        {
+          "title": "c1_exit_pause_does_not_block_exact_share_mint",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 2136238,
+            "cpu": 909044132
+          }
+        },
+        {
+          "title": "c1_exact_share_mint_rejects_bound_one_unit_too_small",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1690404,
+            "cpu": 741438469
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect quote.gross <= max_assets"
+          ]
+        },
+        {
+          "title": "c1_exit_pause_blocks_exact_asset_withdrawal",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1731939,
+            "cpu": 753314196
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect and {\n      validation.positive_q(quote.gross),\n      validation.positive_q(quote.net),\n      validation.positive_q(quote.shares),\n      validation.q(quote.fee),\n      receiver_output != state_output,\n      if entering {\n        terms.execution_modes % 2 == 1 && pause_flags % 2 == 0\n      } else {\n        terms.execution_modes / 2 % 2 == 1 && pause_flags / 2 == 0\n      },\n    }"
+          ]
+        },
+        {
+          "title": "c1_entry_pause_does_not_block_exact_asset_withdrawal",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 2129465,
+            "cpu": 907423549
+          }
+        },
+        {
+          "title": "c1_exact_asset_withdrawal_rejects_bound_one_unit_too_small",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1689862,
+            "cpu": 740353404
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect quote.shares <= max_shares"
+          ]
+        },
+        {
+          "title": "c1_receiver_cannot_include_unrelated_native_token",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1838233,
+            "cpu": 793940362
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n    ledger.economic_payment(\n      ledger.output(tx, receiver_output),\n      receiver,\n      payout_asset,\n      payout,\n    )"
+          ]
+        },
+        {
+          "title": "c1_receiver_cannot_attach_reference_script",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 1775385,
+            "cpu": 773341301
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n    ledger.economic_payment(\n      ledger.output(tx, receiver_output),\n      receiver,\n      payout_asset,\n      payout,\n    )"
+          ]
+        },
+        {
+          "title": "c1_extra_reference_does_not_change_validated_quote",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 2167184,
+            "cpu": 918090358
+          }
+        }
+      ]
+    }
+  ]
+}

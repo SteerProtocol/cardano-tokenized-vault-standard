@@ -1,0 +1,16 @@
+{
+  "name": "@ctvs/test-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@ctvs/cardano": "0.1.0",
+    "@ctvs/ctvs1": "0.1.0",
+    "@ctvs/ctvs2": "0.1.0",
+    "@ctvs/integration": "0.1.0",
+    "@ctvs/planning": "0.1.0",
+    "@ctvs/protocol": "0.1.0",
+    "@lucid-evolution/lucid": "0.6.4",
+    "@lucid-evolution/uplc": "0.2.23"
+  }
+}

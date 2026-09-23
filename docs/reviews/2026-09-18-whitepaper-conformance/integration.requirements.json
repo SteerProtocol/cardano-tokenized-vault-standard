@@ -1,0 +1,851 @@
+[
+  {
+    "id": "I-001",
+    "standard": "Common",
+    "sections": "CTVS-1 1.3, 2.1-2.4",
+    "pdf_pages": [
+      6,
+      7,
+      8
+    ],
+    "requirement": "Disclose exact profile and distinguish read, direct, async and extension conformance.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/README.md:3",
+      "reference/README.md:5",
+      "reference/packages/planning/src/types.ts:104"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Family/profile/wire and modes are documented; no machine-readable common conformance/disposition response exists.",
+    "impact": "Consumers lack the complete declared conformance boundary.",
+    "closure": "Publish operation-specific conformance and evidence fields, qualifying the broad README claim."
+  },
+  {
+    "id": "I-002",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2",
+    "pdf_pages": [
+      37
+    ],
+    "requirement": "Expose the common CTVS-INTEGRATION-0.6 semantic response contract.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/packages/planning/src/types.ts:104",
+      "reference/packages/planning/src/plan.ts:49"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Only CTVS-REFERENCE-PLAN-1 transaction intents exist; no standard response adapter or response.schema.json.",
+    "impact": "Applications still need custom interpretation.",
+    "closure": "Implement and test the required semantic envelopes; reconcile the original schema bundle."
+  },
+  {
+    "id": "I-003",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2",
+    "pdf_pages": [
+      37
+    ],
+    "requirement": "Every response carries schema/kind/network/chain point/vault/implementation/conformance/evidence/verification disposition.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/planning/src/types.ts:104",
+      "reference/packages/planning/src/plan.ts:55"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Plans include supplied network and build bindings, but not the complete required envelope or verified evidence.",
+    "impact": "A plausible plan is not an authenticated response.",
+    "closure": "Bind each response to verified source references and an explicit conformance/disposition record."
+  },
+  {
+    "id": "I-004",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2",
+    "pdf_pages": [
+      37
+    ],
+    "requirement": "Represent known, unknown, unsupported, stale and not_applicable distinctly; never fabricate missing values.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/protocol/src/types.ts:117",
+      "reference/packages/planning/src/types.ts:127"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Intent placeholders remain unknown and not ready, but there is no common quantity/status union; DepositLimit uses known/unavailable.",
+    "impact": "Consumers cannot apply one status interpretation across snapshots, limits and requests.",
+    "closure": "Define shared value-state types and test zero versus missing, unsupported and stale data."
+  },
+  {
+    "id": "I-005",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2",
+    "pdf_pages": [
+      37
+    ],
+    "requirement": "Serialize unsigned quantities as decimal strings and assets using explicit identities.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/planning/src/plan.ts:168",
+      "reference/packages/planning/src/value.ts:1",
+      "reference/packages/protocol/src/wire/primitives.ts:1"
+    ],
+    "tests": [
+      "reference/packages/planning/test/plan.test.ts:1"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Plan JSON converts bigint to decimal strings and uses explicit asset identifiers.",
+    "impact": "Current intent serialization avoids floating-point amount loss.",
+    "closure": "Retain this behavior in the common response adapter."
+  },
+  {
+    "id": "I-006",
+    "standard": "Common",
+    "sections": "CTVS-1 13.1, 13.3",
+    "pdf_pages": [
+      37,
+      38
+    ],
+    "requirement": "Resolve authenticated deployment, Terms and State from one coherent chain history and point.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/packages/planning/src/types.ts:8",
+      "reference/packages/planning/src/context.ts:40"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Chain point and deployment are supplied by caller; checks establish shape/consistency only.",
+    "impact": "No trustworthy snapshot or stale/forked-reference detection service.",
+    "closure": "Implement provider resolution pinned to a chain point plus genesis/script/Config authentication."
+  },
+  {
+    "id": "I-007",
+    "standard": "Common",
+    "sections": "CTVS-1 13.1",
+    "pdf_pages": [
+      37
+    ],
+    "requirement": "Support share-to-vault discovery with verified network and implementation identity.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/packages/planning/src/types.ts:9"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No reader/discovery API is present in the public packages.",
+    "impact": "Wallets cannot authenticate a vault from its share asset using this SDK alone.",
+    "closure": "Add authenticated reverse discovery with spoofed-label and wrong-network tests."
+  },
+  {
+    "id": "I-008",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2-13.3",
+    "pdf_pages": [
+      37,
+      38
+    ],
+    "requirement": "Read-only estimates and unconstructed plans must not be marked executable or ready.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/packages/planning/src/plan.ts:65",
+      "reference/packages/planning/src/plan.ts:87",
+      "reference/packages/protocol/src/math/quotes.ts:59"
+    ],
+    "tests": [
+      "reference/packages/planning/test/plan.test.ts:1"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Plans explicitly set verifiedOnLedger=false, signed=false and submitReady=false; previews say execution unchecked.",
+    "impact": "Unresolved construction is not silently advertised as executable.",
+    "closure": "Preserve this distinction when adding a verified builder."
+  },
+  {
+    "id": "I-009",
+    "standard": "Common",
+    "sections": "CTVS-1 13.2-13.3",
+    "pdf_pages": [
+      37,
+      38
+    ],
+    "requirement": "Publish complete snapshot backing, supply, excluded fees, liquidity, status, capabilities and pricing sources.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/packages/protocol/src/types.ts:45",
+      "reference/packages/protocol/src/math/quotes.ts:1"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "State records and math primitives exist, but no complete snapshot response or liquidity/status projection exists.",
+    "impact": "Integrators must reconstruct views and trust boundaries themselves.",
+    "closure": "Build snapshot views from authenticated ledger state with explicit provenance."
+  },
+  {
+    "id": "I-010",
+    "standard": "Common",
+    "sections": "CTVS-1 13.3",
+    "pdf_pages": [
+      38
+    ],
+    "requirement": "A quote binds its calculation to State/source evidence without implying rate reservation.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/protocol/src/math/quotes.ts:59",
+      "reference/implementations/ctvs1/client/src/direct.ts:29",
+      "reference/implementations/ctvs2/client/src/batch.ts:40"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Pure previews contain numbers and exact_at_snapshot; plans include input references, and Batch has pricingBasis. There is no complete standalone authenticated quote response.",
+    "impact": "A detached preview cannot establish the ledger basis of its price.",
+    "closure": "Return quote evidence/expiry/prerequisites separately from mathematical preview results."
+  },
+  {
+    "id": "I-011",
+    "standard": "Common",
+    "sections": "CTVS-1 6.4, 13.3",
+    "pdf_pages": [
+      19,
+      20,
+      38
+    ],
+    "requirement": "Report economic minimum/maximum separately from construction limits and distinguish reasons for unavailability.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/protocol/src/math/limits.ts:5",
+      "reference/packages/protocol/src/types.ts:117"
+    ],
+    "tests": [
+      "reference/packages/protocol/tests/math.property.test.ts:92"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "maxDeposit implements an economic upper bound with constructionLimit unknown; no complete minimum/maximum response across all operations.",
+    "impact": "Arithmetic capacity can be mistaken for a transaction construction limit.",
+    "closure": "Add complete semantic limit reporting, including unknown/unsupported where no proved algorithm exists."
+  },
+  {
+    "id": "I-012",
+    "standard": "Common",
+    "sections": "CTVS-1 13.3; CTVS-2 14.1",
+    "pdf_pages": [
+      38,
+      80
+    ],
+    "requirement": "Classify protocol fees, execution reward, refundable/carry storage, network fees and external top-ups separately.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/packages/protocol/src/types.ts:101",
+      "reference/implementations/ctvs2/client/src/batch.ts:145",
+      "reference/packages/planning/src/plan.ts:102"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Economics and planned values separate several partitions; network fee/collateral remain unknown and no common quote classification ties all units/recipients/accrual points together.",
+    "impact": "A consuming application must add fee interpretation.",
+    "closure": "Implement typed fee categories and reconciliation checks over quote and final effects."
+  },
+  {
+    "id": "I-013",
+    "standard": "Common",
+    "sections": "CTVS-1 13.4",
+    "pdf_pages": [
+      38
+    ],
+    "requirement": "Keep quotes, authorized requests and accepted realized results as separate records.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:9",
+      "reference/testing/ledger/recorder.ts:101"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Intent and local transaction artifacts are separate; no public realized-result projection exists.",
+    "impact": "Local test records are not a interoperable transaction history API.",
+    "closure": "Define authenticated realized records with actual gross/net effects and origin references."
+  },
+  {
+    "id": "I-014",
+    "standard": "Common",
+    "sections": "CTVS-1 13.4",
+    "pdf_pages": [
+      38
+    ],
+    "requirement": "Verify complete approved effects before signing, including change, funding, fees and collateral exposure.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/outputs.ts:8",
+      "reference/testing/ledger/recorder.ts:44",
+      "reference/packages/planning/src/plan.ts:102"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/integration-probes.ts:58"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh probe appended an unplanned 50 ADA payout to a separate generated wallet; recorder signed and accepted it while planned protected outputs remained exact.",
+    "impact": "The test adapter is not a complete wallet-intent verifier. No vault theft occurred; extra funds came from funding inputs.",
+    "closure": "Define final approved effects and verify all non-protected effects before requesting a signature."
+  },
+  {
+    "id": "I-015",
+    "standard": "Common",
+    "sections": "CTVS-1 13.4; CTVS-2 14.4",
+    "pdf_pages": [
+      38,
+      81
+    ],
+    "requirement": "Preserve signed transaction bytes and IDs; do not reserialize and reuse signatures.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/testing/ledger/recorder.ts:52",
+      "reference/testing/ledger/evaluator.ts:179"
+    ],
+    "tests": [
+      "reference/testing/ledger/evaluator.test.ts:109"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Recorder saves the signed bytes, checks witnesses against their transaction hash and submits the same signed transaction object.",
+    "impact": "Current local signing path retains the signed artifact.",
+    "closure": "Expand noncanonical transaction encoding tests independently; current test does not prove every library serialization behavior."
+  },
+  {
+    "id": "I-016",
+    "standard": "Common",
+    "sections": "CTVS-1 13.4; CTVS-2 12.7",
+    "pdf_pages": [
+      38,
+      78
+    ],
+    "requirement": "Rollback must reverse status and quantities, including settlement and delivery-only rollback.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/VALIDATION.md:72"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No production indexer, rollback journal or competing-history replay implementation.",
+    "impact": "Wallet ownership/claimable status cannot be kept correct through forks by this code alone.",
+    "closure": "Implement reversible history projection with settlement rollback, delivery rollback and competing branch tests."
+  },
+  {
+    "id": "I-017",
+    "standard": "Common",
+    "sections": "CTVS-1 13.4; CTVS-2 12.7",
+    "pdf_pages": [
+      38,
+      78
+    ],
+    "requirement": "Separate liquid shares, redemption escrow, issued-undelivered shares, pending deposits and fixed claims.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:9",
+      "reference/testing/fixtures/requests.ts:71"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Request planners describe participation; no aggregate authenticated ownership projection maintains all buckets.",
+    "impact": "Consumer accounting could double-count pending and claimable property.",
+    "closure": "Add bucket-preserving lifecycle projection and conservation checks through rollback."
+  },
+  {
+    "id": "I-018",
+    "standard": "Common",
+    "sections": "CTVS-2 12.6-12.7",
+    "pdf_pages": [
+      77,
+      78
+    ],
+    "requirement": "Authenticate claimable status from actual funded property and accepted settlement lineage.",
+    "applicability": "profile0",
+    "status": "missing",
+    "code": [
+      "reference/implementations/ctvs2/client/src/delivery.ts:1",
+      "reference/testing/fixtures/requests.ts:71"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Local tests verify known request/State references, but public delivery planning accepts a Claim candidate without authenticating its origin.",
+    "impact": "A deliverable look-alike must not be represented as a vault liability.",
+    "closure": "Implement lineage authentication separately from valid Claim delivery and test funded look-alikes."
+  },
+  {
+    "id": "I-019",
+    "standard": "Common",
+    "sections": "CTVS-2 12.6",
+    "pdf_pages": [
+      77
+    ],
+    "requirement": "Expose original/current request references, authority, destinations, bounds, deadlines, delivery form and recovery availability.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/requests.ts:9",
+      "reference/implementations/ctvs2/client/src/recovery.ts:20"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "These fields largely exist in wire records and planner inputs; there is no complete read response or recovery availability classification.",
+    "impact": "Applications cannot use a standard request inspection interface.",
+    "closure": "Build request/claim readers with exact distinctions for unknown envelope, unsupported controller, invalid economics, pause and liquidity."
+  },
+  {
+    "id": "I-020",
+    "standard": "Common",
+    "sections": "CTVS-2 12.6",
+    "pdf_pages": [
+      77
+    ],
+    "requirement": "Do not populate realized output values from pending estimates.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/batch.ts:145",
+      "reference/testing/ledger/recorder.ts:101"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Plans describe proposed effects and local artifacts record accepted effects, but realized lifecycle response API is absent.",
+    "impact": "The required public distinction has no implementation to validate.",
+    "closure": "Keep estimate fields and evidence-backed realized fields structurally separate in lifecycle responses."
+  },
+  {
+    "id": "I-021",
+    "standard": "Common",
+    "sections": "CTVS-1 13.5, 15.5; CTVS-2 15.5",
+    "pdf_pages": [
+      38,
+      41,
+      83
+    ],
+    "requirement": "A separate builder constructs from authenticated public rules and data without calling the first implementation.",
+    "applicability": "acceptance",
+    "status": "unverified",
+    "code": [
+      "reference/testing/ledger/builder.ts:19",
+      "reference/testing/integration/compilation/parameters.test.ts:21"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "Only one transaction construction adapter exists. CLI/Lucid agreement checks parameter application, not independently constructed transaction histories.",
+    "impact": "S-10 and A-15 remain open.",
+    "closure": "Use an independently implemented builder and compare accepted/rejected full transactions."
+  },
+  {
+    "id": "I-022",
+    "standard": "Common",
+    "sections": "CTVS-1 15.1 S-09; CTVS-2 15.5 A-15",
+    "pdf_pages": [
+      40,
+      83
+    ],
+    "requirement": "Independent decoders/indexers agree on bytes, economic interpretation, origin and rollback.",
+    "applicability": "acceptance",
+    "status": "unverified",
+    "code": [
+      "reference/packages/protocol/src/data/codec.ts:1",
+      "reference/packages/onchain/lib/ctvs/decode.ak:1"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "TS/Aiken implementations and limited CML probes exist, but no independent external corpus or second lifecycle indexer.",
+    "impact": "Two languages by the same authors do not meet the independent integration gate.",
+    "closure": "Obtain externally authored vectors and an independent history/rollback implementation."
+  },
+  {
+    "id": "I-023",
+    "standard": "Common",
+    "sections": "CTVS-1 14, 15.4; CTVS-2 14.4",
+    "pdf_pages": [
+      39,
+      41,
+      81
+    ],
+    "requirement": "Pin compiler, dependencies, evaluator, ledger parameters and source identities in evidence.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/package-lock.json:1",
+      "reference/tools/lib/build.ts:28",
+      "reference/testing/fixtures/vault.ts:146"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-summary.json:1"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Compiler/libraries and local parameter snapshots are pinned and fresh build hashes saved; no actual cardano-node version or target network run.",
+    "impact": "Evidence is reproducible locally, not a network acceptance record.",
+    "closure": "Retain current bindings and add node implementation/network parameter identities."
+  },
+  {
+    "id": "I-024",
+    "standard": "Common",
+    "sections": "CTVS-1 14, 14.1; CTVS-2 14.4",
+    "pdf_pages": [
+      39,
+      81
+    ],
+    "requirement": "Calculate actual output minimum ADA and explicitly replan when top-ups change size.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/builder.ts:56",
+      "reference/testing/ledger/outputs.ts:28"
+    ],
+    "tests": [
+      "reference/testing/ledger/outputs.test.ts:41"
+    ],
+    "evidence_level": "retained_test",
+    "finding": "Lucid balances actual local outputs; verifier rejects implicit protected-value changes. No public reserve calculation/replanning service is present.",
+    "impact": "A mathematically valid intent may not construct at the stated reserves.",
+    "closure": "Expose bounded reserve/fee iteration for actual target parameters without changing approved economics."
+  },
+  {
+    "id": "I-025",
+    "standard": "Common",
+    "sections": "CTVS-1 14",
+    "pdf_pages": [
+      39
+    ],
+    "requirement": "Handle stale State and reference-script inputs by refreshing authenticated state without weakening bounds.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/builder.ts:26",
+      "reference/packages/planning/src/context.ts:72"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Missing inputs fail; no contention retry/rebuild loop or reference-script availability monitor.",
+    "impact": "Consumer must implement stale-reference recovery.",
+    "closure": "Add authenticated rebuild with preserved bound/destination and changed-state tests."
+  },
+  {
+    "id": "I-026",
+    "standard": "Common",
+    "sections": "CTVS-1 14.1; CTVS-2 14.2, 14.4",
+    "pdf_pages": [
+      39,
+      80,
+      81
+    ],
+    "requirement": "Benchmark increasing batch sizes and worst-case destinations; structural cap is not throughput.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/implementations/ctvs2/client/src/batch.ts:58",
+      "reference/testing/fixtures/vault.ts:172"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/probes/integration-probes.ts:18"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh four-shape sweep: 7 requests pass; 8 fail local 14m memory budget. Tested n=1,2,4,5,6,7,8 for ADA/native and key/script512 receivers. No n=3 or n=16 run; no global maximum proved.",
+    "impact": "maxBatch=16 and a valid intent do not imply constructible settlement.",
+    "closure": "Add resource estimation/adaptive selection plus worst-case mixed/redemption/max-datum/key-count/quantity sweeps."
+  },
+  {
+    "id": "I-027",
+    "standard": "Common",
+    "sections": "CTVS-1 15.3; CTVS-2 15.3",
+    "pdf_pages": [
+      41,
+      82
+    ],
+    "requirement": "Define soundness projection from real transaction/ledger context to semantic requirements.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/evaluator.ts:95",
+      "reference/packages/onchain/lib/ctvs/ledger.ak:1"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Compiled handlers inspect actual Aiken contexts and signed fixtures run, but there is no complete refinement artifact/proof covering every field and branch.",
+    "impact": "Passing local examples cannot establish universal refinement.",
+    "closure": "Publish field-by-field projection and adversarial transaction corpus against compiled handlers."
+  },
+  {
+    "id": "I-028",
+    "standard": "Common",
+    "sections": "CTVS-1 15.3-15.4; CTVS-2 15.3-15.4",
+    "pdf_pages": [
+      41,
+      82,
+      83
+    ],
+    "requirement": "Demonstrate constructive ledger-accepted success for every advertised supported operation.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/integration/ctvs1/lifecycle.test.ts:41",
+      "reference/testing/integration/ctvs2/lifecycle.test.ts:1"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-summary.json:1"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "26 signed local scenarios and 2 parameter-only cases pass; node-backed acceptance and full configuration/destination matrix are absent.",
+    "impact": "Selected local success does not clear full S-10/A-15.",
+    "closure": "Run target-node positive traces for all advertised operation/configuration paths."
+  },
+  {
+    "id": "I-029",
+    "standard": "Common",
+    "sections": "CTVS-1 15.3-15.4; CTVS-2 15.3-15.4",
+    "pdf_pages": [
+      41,
+      82,
+      83
+    ],
+    "requirement": "Negative cases fail for intended semantic reasons without phase-1 invalidity masking missing guards.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/recorder.ts:129",
+      "reference/testing/integration/ctvs1/lifecycle.test.ts:88",
+      "reference/testing/integration/ctvs2/guards.test.ts:10"
+    ],
+    "tests": [],
+    "evidence_level": "retained_test",
+    "finding": "Harness requires a compiled evaluator failure; many source tests use expected failure, without a complete minimal-mutation/intended-branch attribution corpus.",
+    "impact": "An unrelated failing guard could hide an absent target check.",
+    "closure": "Pair each negative case with positive control and minimal balanced mutation; record intended failing obligation."
+  },
+  {
+    "id": "I-030",
+    "standard": "Common",
+    "sections": "CTVS-1 3.4, 15.1 S-07; CTVS-2 A-03,A-10",
+    "pdf_pages": [
+      12,
+      40,
+      81
+    ],
+    "requirement": "Validate actual cryptographic witnesses and explicit required signatories.",
+    "applicability": "acceptance",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/recorder.ts:65",
+      "reference/testing/ledger/builder.ts:68"
+    ],
+    "tests": [
+      "reference/testing/integration/ctvs2/guards.test.ts:34"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Fresh signed traces validate signatures and required signer presence; local matrix mainly uses open settlement, with finite-set authority covered below full node-backed scope.",
+    "impact": "Witness correctness is evidenced locally, not across every authority configuration.",
+    "closure": "Add node-backed finite-set/multiple-key and negative witness traces."
+  },
+  {
+    "id": "I-031",
+    "standard": "Common",
+    "sections": "CTVS-1 15.1 S-11",
+    "pdf_pages": [
+      40
+    ],
+    "requirement": "Validate declared and actual execution budgets against full transaction limits.",
+    "applicability": "acceptance",
+    "status": "aligned",
+    "code": [
+      "reference/testing/ledger/evaluator.ts:117",
+      "reference/testing/ledger/evaluator.ts:127"
+    ],
+    "tests": [
+      "reference/testing/ledger/evaluator.test.ts:129",
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-summary.json:1"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Both aggregate measured and declared budgets and per-redeemer declarations are checked; final signed CBOR is re-evaluated.",
+    "impact": "Budget checks hold for exercised local contexts.",
+    "closure": "Retain harness regression tests; extend target parameter validation."
+  },
+  {
+    "id": "I-032",
+    "standard": "Common",
+    "sections": "CTVS-1 15.4; CTVS-2 15.4",
+    "pdf_pages": [
+      41,
+      83
+    ],
+    "requirement": "Retain full bytes, resolved context, witnesses, fees, collateral/reserves and execution evidence.",
+    "applicability": "profile0",
+    "status": "partial",
+    "code": [
+      "reference/testing/ledger/recorder.ts:101",
+      "reference/testing/ledger/recorder.ts:141"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Signed bytes, resolved inputs, fees, witnesses, cost models, slots and budgets are retained; collateral/minimum-ADA details are embedded in bytes/context rather than independently verified complete effect reports.",
+    "impact": "Audit artifacts are useful but not the complete required effect/parameter verification.",
+    "closure": "Add decoded collateral/return/minimum-ADA and network evidence with independent verification."
+  },
+  {
+    "id": "I-033",
+    "standard": "Common",
+    "sections": "CTVS-1 15.2; CTVS-2 15.2",
+    "pdf_pages": [
+      40,
+      41,
+      82
+    ],
+    "requirement": "Distinguish historical publication evidence from fresh compiled evidence.",
+    "applicability": "informative",
+    "status": "aligned",
+    "code": [
+      "reference/VALIDATION.md:3",
+      "reference/VALIDATION.md:7"
+    ],
+    "tests": [
+      "docs/reviews/2026-09-18-whitepaper-conformance/evidence/baseline-summary.json:1"
+    ],
+    "evidence_level": "executed_probe",
+    "finding": "Paper says compiled gates were blocked at its baseline; current compiled suites and local signed lifecycles now pass. This changes evidence status, not normative behavior.",
+    "impact": "The paper historical status is older than the implementation.",
+    "closure": "Update an evidence appendix with exact revision and remaining node/integration gates."
+  },
+  {
+    "id": "I-034",
+    "standard": "Common",
+    "sections": "CTVS-1 10.7,15.2; CTVS-2 12.5,15.2",
+    "pdf_pages": [
+      32,
+      40,
+      77,
+      82
+    ],
+    "requirement": "Reconcile the original wire source bundle and historical evidence against implementation.",
+    "applicability": "acceptance",
+    "status": "unverified",
+    "code": [
+      "reference/VALIDATION.md:7"
+    ],
+    "tests": [],
+    "evidence_level": "external_gate",
+    "finding": "Referenced candidate-wire, original integration schema, historical requirement/projection bundle are not present in the inspected supplied repository/material.",
+    "impact": "PDF-derived fixtures cannot establish byte-for-byte historical preservation.",
+    "closure": "Obtain the exact publication bundle, record hashes, and run source/schema/vector reconciliation."
+  },
+  {
+    "id": "I-035",
+    "standard": "Common",
+    "sections": "CTVS-1 11; CTVS-2 10",
+    "pdf_pages": [
+      33,
+      34,
+      35,
+      72,
+      73
+    ],
+    "requirement": "Managed NAV needs position/liability/valuation/liquidity evidence and exact accepted State basis.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No managed profile is claimed or implemented; direct custody keeps all backing in State.",
+    "impact": "Absence is an explicit extension limit, not a profile-0 math defect.",
+    "closure": "A managed implementation needs a separately specified and tested complete lifecycle."
+  },
+  {
+    "id": "I-036",
+    "standard": "Common",
+    "sections": "CTVS-1 7.5; CTVS-2 4.4",
+    "pdf_pages": [
+      21,
+      58
+    ],
+    "requirement": "Script-controlled authority requires purpose/domain/input/successor proof.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Current profile uses key roles; receiving a payment at a script is not script-controller support.",
+    "impact": "Do not transfer key-controller test evidence to script-controller claims.",
+    "closure": "Specify a separate authority profile and validate an actual script-owned lifecycle."
+  },
+  {
+    "id": "I-037",
+    "standard": "Common",
+    "sections": "CTVS-1 11.3; CTVS-2 11.1-11.2",
+    "pdf_pages": [
+      34,
+      74
+    ],
+    "requirement": "Additional fee, inventory, partial-fill and pricing variants require explicit semantics and evidence.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Only fixed markup entry/exit fees, native mint/burn and full-fill snapshot settlement are implemented.",
+    "impact": "Missing variants are not defects against this chosen profile.",
+    "closure": "Require versioned extension definitions and separate acceptance matrices."
+  },
+  {
+    "id": "I-038",
+    "standard": "Common",
+    "sections": "CTVS-1 2.5; CTVS-2 2.5",
+    "pdf_pages": [
+      8,
+      9,
+      52
+    ],
+    "requirement": "A native protocol claiming execution conformance supplies a reviewed mapping, implementation identity and independent evidence.",
+    "applicability": "extension",
+    "status": "out_of_scope",
+    "code": [
+      "reference/README.md:74"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "No native-protocol mapping or reviewed third-party integration is implemented or claimed.",
+    "impact": "This reference implementation does not certify an incumbent protocol.",
+    "closure": "Build one concrete mapping with full operation/recovery evidence before making such a claim."
+  },
+  {
+    "id": "I-039",
+    "standard": "Common",
+    "sections": "CTVS-1 2.2,4.4; CTVS-2 11.4",
+    "pdf_pages": [
+      7,
+      16,
+      74
+    ],
+    "requirement": "Preserve outstanding rights during migration/closure; profile0 has no terminal sweep.",
+    "applicability": "profile0",
+    "status": "aligned",
+    "code": [
+      "reference/implementations/ctvs1/onchain/lib/ctvs1/state.ak:16",
+      "reference/implementations/ctvs2/onchain/lib/ctvs2/state.ak:13"
+    ],
+    "tests": [],
+    "evidence_level": "source",
+    "finding": "Immutable Terms and enumerated actions provide no migration, closure or reserve-sweep action.",
+    "impact": "Permanent one-sided lifecycle risks remain possible under currently permitted modes.",
+    "closure": "Keep future migration/closure proof separate; resolve proposed lifecycle admission policy explicitly."
+  }
+]

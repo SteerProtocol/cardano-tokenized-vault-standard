@@ -1,0 +1,479 @@
+{
+  "environment": "Local Lucid Emulator and compiled Plutus evaluator; no cardano-node acceptance",
+  "recordedAt": "2026-09-18T12:44:00.434Z",
+  "results": [
+    {
+      "probe": "unplanned-output",
+      "accepted": true,
+      "plannedProtectedOutputs": 2,
+      "additionalRecipient": "separate generated publisher wallet",
+      "additionalLovelace": "50000000",
+      "explanation": "Protected-output checking is narrower than complete user-approved effects checking; not a vault accounting violation.",
+      "artifactDirectory": "reference/artifacts/integration/ctvs1/ada/review-unplanned-output"
+    },
+    {
+      "probe": "batch-resources",
+      "size": 1,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-1-key",
+      "accepted": true,
+      "bytes": 1458,
+      "fee": "792760",
+      "measuredExecutionUnits": {
+        "memory": "3739533",
+        "steps": "1624907007"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 2,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-2-key",
+      "accepted": true,
+      "bytes": 1946,
+      "fee": "930970",
+      "measuredExecutionUnits": {
+        "memory": "5072882",
+        "steps": "2176962179"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 4,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-4-key",
+      "accepted": true,
+      "bytes": 2922,
+      "fee": "1230518",
+      "measuredExecutionUnits": {
+        "memory": "8006484",
+        "steps": "3388266333"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 8,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-8-key",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Mint[0] execution went over budget Mem -4475 CPU 4159670061\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n        Mint[0] execution went over budget\n            Mem -4475\n            CPU 4159670061\n}",
+      "evaluations": [
+        {
+          "stage": "review-batch",
+          "phase": "construction",
+          "cborSha256": "6ec9e9adc3b9ef7b28d4634bd7faea60affca2fc3c7e15447684ca6a10270e46",
+          "accepted": false,
+          "error": "failed script execution\n      Mint[0] execution went over budget\n          Mem -4475\n          CPU 4159670061"
+        }
+      ]
+    },
+    {
+      "probe": "batch-resources",
+      "size": 5,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-5-key",
+      "accepted": true,
+      "bytes": 3410,
+      "fee": "1394555",
+      "measuredExecutionUnits": {
+        "memory": "9634787",
+        "steps": "4062495089"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 6,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-6-key",
+      "accepted": true,
+      "bytes": 3898,
+      "fee": "1563838",
+      "measuredExecutionUnits": {
+        "memory": "11327418",
+        "steps": "4758005477"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 7,
+      "underlying": "ada",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-7-key",
+      "accepted": true,
+      "bytes": 4388,
+      "fee": "1754114",
+      "measuredExecutionUnits": {
+        "memory": "13235913",
+        "steps": "5570716806"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 1,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-1-script512",
+      "accepted": true,
+      "bytes": 1990,
+      "fee": "820911",
+      "measuredExecutionUnits": {
+        "memory": "3754690",
+        "steps": "1678560884"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 2,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-2-script512",
+      "accepted": true,
+      "bytes": 3010,
+      "fee": "985317",
+      "measuredExecutionUnits": {
+        "memory": "5083924",
+        "steps": "2272576361"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 4,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-4-script512",
+      "accepted": true,
+      "bytes": 5050,
+      "fee": "1343532",
+      "measuredExecutionUnits": {
+        "memory": "8071006",
+        "steps": "3605459318"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 8,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-8-script512",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Mint[0] execution went over budget Mem -7740 CPU 3768085741\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n        Mint[0] execution went over budget\n            Mem -7740\n            CPU 3768085741\n}",
+      "evaluations": [
+        {
+          "stage": "review-batch",
+          "phase": "construction",
+          "cborSha256": "ac9dbe5e3382962da38f77a3e7b38bd272f9b0ba7dce072ee3b75d8688c1b07d",
+          "accepted": false,
+          "error": "failed script execution\n      Mint[0] execution went over budget\n          Mem -7740\n          CPU 3768085741"
+        }
+      ]
+    },
+    {
+      "probe": "batch-resources",
+      "size": 5,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-5-script512",
+      "accepted": true,
+      "bytes": 6070,
+      "fee": "1536111",
+      "measuredExecutionUnits": {
+        "memory": "9717172",
+        "steps": "4336594367"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 6,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-6-script512",
+      "accepted": true,
+      "bytes": 7090,
+      "fee": "1736438",
+      "measuredExecutionUnits": {
+        "memory": "11453406",
+        "steps": "5103126032"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 7,
+      "underlying": "ada",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/ada/review-batch-7-script512",
+      "accepted": true,
+      "bytes": 8112,
+      "fee": "1946245",
+      "measuredExecutionUnits": {
+        "memory": "13295284",
+        "steps": "5915364221"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 1,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-1-key",
+      "accepted": true,
+      "bytes": 1589,
+      "fee": "811216",
+      "measuredExecutionUnits": {
+        "memory": "3884926",
+        "steps": "1684578039"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 2,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-2-key",
+      "accepted": true,
+      "bytes": 2077,
+      "fee": "949332",
+      "measuredExecutionUnits": {
+        "memory": "5221426",
+        "steps": "2232820507"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 4,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-4-key",
+      "accepted": true,
+      "bytes": 3053,
+      "fee": "1268241",
+      "measuredExecutionUnits": {
+        "memory": "8390626",
+        "steps": "3524111942"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 8,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-8-key",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[8] execution went over budget Mem -4126 CPU 4198377445\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[8] execution went over budget\n            Mem -4126\n            CPU 4198377445\n}",
+      "evaluations": [
+        {
+          "stage": "review-batch",
+          "phase": "construction",
+          "cborSha256": "6646ece911be04a7ba2525dbed0651788a1e4f107a66041942a25103700ff618",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[8] execution went over budget\n          Mem -4126\n          CPU 4198377445"
+        }
+      ]
+    },
+    {
+      "probe": "batch-resources",
+      "size": 5,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-5-key",
+      "accepted": true,
+      "bytes": 3541,
+      "fee": "1431735",
+      "measuredExecutionUnits": {
+        "memory": "10014694",
+        "steps": "4194191803"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 6,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-6-key",
+      "accepted": true,
+      "bytes": 4029,
+      "fee": "1619682",
+      "measuredExecutionUnits": {
+        "memory": "11930256",
+        "steps": "4970164583"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 7,
+      "underlying": "native",
+      "recipient": "key",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-7-key",
+      "accepted": true,
+      "bytes": 4519,
+      "fee": "1799152",
+      "measuredExecutionUnits": {
+        "memory": "13735784",
+        "steps": "5715391976"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 1,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-1-script512",
+      "accepted": true,
+      "bytes": 2121,
+      "fee": "835877",
+      "measuredExecutionUnits": {
+        "memory": "3857625",
+        "steps": "1723802125"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 2,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-2-script512",
+      "accepted": true,
+      "bytes": 3141,
+      "fee": "1004813",
+      "measuredExecutionUnits": {
+        "memory": "5243952",
+        "steps": "2334973307"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 4,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-4-script512",
+      "accepted": true,
+      "bytes": 5181,
+      "fee": "1372093",
+      "measuredExecutionUnits": {
+        "memory": "8350644",
+        "steps": "3697859146"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 8,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-8-script512",
+      "accepted": false,
+      "error": "(FiberFailure) EvaluatorError: \"failed script execution Spend[9] execution went over budget Mem -5776 CPU 3812065201\"\n    at evaluatorError (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:792:3)\n    at wrapEvaluatorCause (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1767:7)\n    at catch (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/@lucid-evolution/lucid/src/tx-builder/internal/CompleteTxBuilder.ts:1821:25)\n    at /Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/core-effect.ts:1683:29\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:41)\n    at body (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/Utils.ts:786:14)\n    at FiberRuntime.Sync (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1161:31)\n    at <anonymous> (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1398:53)\n    at Object.f (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/tracer.ts:101:19)\n    at FiberRuntime.runLoop (/Users/derekbarrera/Development/SteerProtocol/cardano-vault-standard/reference/node_modules/effect/src/internal/fiberRuntime.ts:1384:34) {\n  [cause]: Error: failed script execution\n       Spend[9] execution went over budget\n            Mem -5776\n            CPU 3812065201\n}",
+      "evaluations": [
+        {
+          "stage": "review-batch",
+          "phase": "construction",
+          "cborSha256": "b2ea6b3d20aff952179f7ad1a437cb9fb46c2ef9738b9fd5de216de162a8858e",
+          "accepted": false,
+          "error": "failed script execution\n     Spend[9] execution went over budget\n          Mem -5776\n          CPU 3812065201"
+        }
+      ]
+    },
+    {
+      "probe": "batch-resources",
+      "size": 5,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-5-script512",
+      "accepted": true,
+      "bytes": 6201,
+      "fee": "1569205",
+      "measuredExecutionUnits": {
+        "memory": "10059327",
+        "steps": "4441841372"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 6,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-6-script512",
+      "accepted": true,
+      "bytes": 7221,
+      "fee": "1785304",
+      "measuredExecutionUnits": {
+        "memory": "11990046",
+        "steps": "5271468029"
+      }
+    },
+    {
+      "probe": "batch-resources",
+      "size": 7,
+      "underlying": "native",
+      "recipient": "script512",
+      "planConstructed": true,
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "artifactDirectory": "reference/artifacts/integration/ctvs2/native/review-batch-7-script512",
+      "accepted": true,
+      "bytes": 8243,
+      "fee": "1999471",
+      "measuredExecutionUnits": {
+        "memory": "13898477",
+        "steps": "6090915614"
+      }
+    }
+  ]
+}

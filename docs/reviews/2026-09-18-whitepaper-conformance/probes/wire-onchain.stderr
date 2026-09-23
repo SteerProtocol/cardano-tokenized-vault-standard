@@ -1,0 +1,5 @@
+    Compiling steer/ctvs2-reference 0.1.0 (/var/folders/ts/c_n4l6mx4j7dbzs9_g4n7w_r0000gn/T/ctvs-wire-review-12b0riu2)
+    Compiling aiken-lang/stdlib v3.1.0 (/var/folders/ts/c_n4l6mx4j7dbzs9_g4n7w_r0000gn/T/ctvs-wire-review-12b0riu2/build/packages/aiken-lang-stdlib)
+    Compiling aiken-lang/fuzz v2.2.0 (/var/folders/ts/c_n4l6mx4j7dbzs9_g4n7w_r0000gn/T/ctvs-wire-review-12b0riu2/build/packages/aiken-lang-fuzz)
+   Collecting test *wire_review* across all modules
+      Testing ...

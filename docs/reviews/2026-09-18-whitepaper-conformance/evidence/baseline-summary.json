@@ -1,0 +1,115 @@
+{
+  "reviewDate": "2026-09-18",
+  "recordedAt": "2026-09-18T12:45:58.976455+00:00",
+  "gitHead": "75d47c90361d6f83458841b871e0f746500610e0",
+  "sourcePdf": "/Users/derekbarrera/Downloads/CTVS-Whitepapers-v0.6.3-Illustrated-Combined.pdf",
+  "sourcePdfSha256": "e06e90a6eb2eb1e9ffdc90d38b7bcabd392b54b3144d78faf11c8be321054e75",
+  "command": "AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run check",
+  "cwd": "reference",
+  "exitCode": 0,
+  "node": "v26.7.0",
+  "npm": "11.19.0",
+  "aiken": "aiken v1.1.22+39d6b04",
+  "typescript": {
+    "numTotalTests": 185,
+    "numPassedTests": 185,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "integration": {
+    "numTotalTests": 28,
+    "numPassedTests": 28,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "coverage": {
+    "lines": {
+      "total": 787,
+      "covered": 784,
+      "skipped": 0,
+      "pct": 99.61
+    },
+    "statements": {
+      "total": 885,
+      "covered": 879,
+      "skipped": 0,
+      "pct": 99.32
+    },
+    "functions": {
+      "total": 174,
+      "covered": 174,
+      "skipped": 0,
+      "pct": 100
+    },
+    "branches": {
+      "total": 701,
+      "covered": 690,
+      "skipped": 0,
+      "pct": 98.43
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "families": {
+    "ctvs1": {
+      "summary": {
+        "total": 83,
+        "passed": 83,
+        "failed": 0,
+        "kind": {
+          "unit": 74,
+          "property": 9
+        }
+      },
+      "buildManifestSha256": "269c1438c84a854f925ab8b4c2afe26354bb2e3cf3d21b91dce1e476620a472d",
+      "blueprintSha256": "7a491b32045fa711c26b56e60b5e9ffa50280a6e05072084a55fd36c099e1768",
+      "vault": {
+        "templateHash": "f53a4e8753c81aa5d9755718d6461a9cffc89d124abf77a473af5355",
+        "compiledBytes": 12018,
+        "sha256": "a1e18f000262ea203bb1ea03ec61c90b899a9fe2be0dfd78d6449acdc0f550f9"
+      },
+      "permittedExecutionModes": [
+        1,
+        2,
+        3
+      ]
+    },
+    "ctvs2": {
+      "summary": {
+        "total": 106,
+        "passed": 106,
+        "failed": 0,
+        "kind": {
+          "unit": 96,
+          "property": 10
+        }
+      },
+      "buildManifestSha256": "c22fd2f540a08f1e741ff9118a784178a24b2e6cb2d269ef4e0081003523bf0c",
+      "blueprintSha256": "a181d094693f37634a1441df519635da5b17a52b6ad5e0d56e60c6d6f2033ea5",
+      "vault": {
+        "templateHash": "48c73a378246de8b116e62b3b9f4f90b26d37fe073b02640c29f4880",
+        "compiledBytes": 15938,
+        "sha256": "f51c270d6ec0c6907d7ae9939b25d64ba9f9f7e118162b798c57259c6f6abdd9"
+      },
+      "permittedExecutionModes": [
+        4,
+        8,
+        12
+      ]
+    }
+  },
+  "networkSubmission": false,
+  "cardanoNodeAcceptance": false,
+  "remoteCiVerified": false,
+  "productionSourceChanges": false,
+  "preexistingUntracked": [
+    "LIMITATIONS.MD"
+  ],
+  "baselineLogSha256": "88b577a6e3805a5c62eb516b2a671015d6a2f8754f2627b0ea004a2c22f05c5d"
+}

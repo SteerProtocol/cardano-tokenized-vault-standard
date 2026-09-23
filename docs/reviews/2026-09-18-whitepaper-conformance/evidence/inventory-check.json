@@ -1,0 +1,22 @@
+{
+  "scope": "Review artifact integrity only, not a conformance score",
+  "requirements": 272,
+  "groups": {
+    "ctvs1": 76,
+    "ctvs2": 109,
+    "wire-identity": 48,
+    "integration": 39
+  },
+  "status_counts": {
+    "aligned": 189,
+    "narrowed": 6,
+    "out_of_scope": 12,
+    "unverified": 8,
+    "partial": 47,
+    "missing": 9,
+    "contradiction": 1
+  },
+  "checked_source_test_anchors": 1114,
+  "checked_local_markdown_links": 269,
+  "issues": []
+}

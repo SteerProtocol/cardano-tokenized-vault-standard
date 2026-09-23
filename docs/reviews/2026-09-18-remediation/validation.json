@@ -1,0 +1,99 @@
+{
+  "recordedAtUtc": "2026-09-18T15:26:57.946368+00:00",
+  "command": "AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run check",
+  "exitCode": 0,
+  "baseCommit": "75d47c90361d6f83458841b871e0f746500610e0",
+  "sourceState": "working tree with five-finding remediation; no commit or publication",
+  "referenceSourceDigest": {
+    "sha256": "044849e3cdba76da79e25d4371f9da985ddd6301d62f4cfd54434d660211ee36",
+    "fileCount": 166,
+    "algorithm": "SHA256 of sorted unique git ls-files --cached --others --exclude-standard reference records, each SHA256(file) + two spaces + path + newline"
+  },
+  "environment": {
+    "node": "v26.7.0",
+    "npm": "11.19.0",
+    "aiken": "v1.1.22+39d6b04",
+    "stdlib": "v3.1.0",
+    "fuzz": "v2.2.0",
+    "plutus": "V3"
+  },
+  "typescript": {
+    "numTotalTests": 288,
+    "numPassedTests": 288,
+    "numFailedTests": 0,
+    "numPendingTests": 0
+  },
+  "aiken": {
+    "ctvs1": {
+      "passed": 85,
+      "failed": 0,
+      "unit": 76,
+      "property": 9
+    },
+    "ctvs2": {
+      "passed": 108,
+      "failed": 0,
+      "unit": 98,
+      "property": 10
+    },
+    "sharedChecksOverlap": true
+  },
+  "integration": {
+    "numTotalTests": 31,
+    "numPassedTests": 31,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "signedLocalScenarios": 29,
+    "parameterOnlyChecks": 2
+  },
+  "productionTypeScriptCoverage": {
+    "lines": {
+      "total": 1562,
+      "covered": 1534,
+      "skipped": 0,
+      "pct": 98.2
+    },
+    "statements": {
+      "total": 1757,
+      "covered": 1699,
+      "skipped": 0,
+      "pct": 96.69
+    },
+    "functions": {
+      "total": 313,
+      "covered": 306,
+      "skipped": 0,
+      "pct": 97.76
+    },
+    "branches": {
+      "total": 1280,
+      "covered": 1198,
+      "skipped": 0,
+      "pct": 93.59
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "coverageThresholds": {
+    "lines": 90,
+    "statements": 90,
+    "functions": 90,
+    "branches": 85
+  },
+  "newThirdPartyDependencyVersions": [],
+  "log": {
+    "path": "check.log",
+    "sha256": "81ebed10a5d2a42ce51ee50a86cc919ef577f22cb870241ccdec1ce5fc3fd683"
+  },
+  "boundaries": [
+    "Trusted accepted-block feed supplies consensus/header/network acceptance",
+    "Local signed replay uses synthetic block points, not cardano-node rollback",
+    "In-memory reference journal requires external persistence and earlier replay beyond its intersection",
+    "Historical external response.schema.json unavailable; semantic envelope only",
+    "Node/public-network acceptance, independent interoperability and external audit remain unverified"
+  ]
+}

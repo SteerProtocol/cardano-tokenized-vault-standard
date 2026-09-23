@@ -1,0 +1,132 @@
+{
+  "recordedAtUtc": "2026-09-18T17:56:53.259401+00:00",
+  "scope": "Behavior-preserving structural lint refactors across 28 TypeScript source, test and tooling files",
+  "baseCommit": "75d47c90361d6f83458841b871e0f746500610e0",
+  "referenceSourceDigest": {
+    "sha256": "05e144dc7f59c168a314c0129fe66d87c0f00883853c032f4b2bb3a3a363175e",
+    "fileCount": 172,
+    "algorithm": "SHA256 of sorted unique git ls-files --cached --others --exclude-standard reference records, each SHA256(file) + two spaces + path + newline"
+  },
+  "checks": [
+    {
+      "command": "VITEST_MAX_WORKERS=4 AIKEN=/tmp/ctvs-reference/aiken-aarch64-apple-darwin/aiken npm run check",
+      "exitCode": 0,
+      "log": "check.log",
+      "logSha256": "7b594b82849190e282b6cea2d3a4cd23d1d79de0b5ff7d4e3cbd0cfe73f54682"
+    },
+    {
+      "command": "npm run check:typescript && VITEST_MAX_WORKERS=4 npm run test:coverage",
+      "exitCode": 0,
+      "reason": "Rechecked the TypeScript layer after the independent-review validation-order correction",
+      "log": "post-review.log",
+      "logSha256": "89d40f1cbb7d7d7bfddd4cb495eb8809949b8290b96c88cf11f16d80b70c7f0c"
+    }
+  ],
+  "structuralLint": {
+    "before": {
+      "diagnostics": 38,
+      "files": 28,
+      "complexity": 16,
+      "max-lines-per-function": 22,
+      "max-depth": 0
+    },
+    "after": {
+      "filesChecked": 112,
+      "errors": 0,
+      "warnings": 0
+    },
+    "limits": {
+      "complexity": 15,
+      "max-depth": 4,
+      "max-lines-per-function": 100,
+      "skipBlankLines": true,
+      "skipComments": true
+    }
+  },
+  "unchanged": {
+    "lintAndTestConfiguration": true,
+    "dependencies": true,
+    "onchainSource": true
+  },
+  "testInventories": {
+    "unit": {
+      "count": 312,
+      "unchanged": true,
+      "sha256": "bdb982ba0fa180a66d6db54d8091b1733302e5b9980c75edbf4394fd2a8c42ee"
+    },
+    "integration": {
+      "count": 31,
+      "unchanged": true,
+      "sha256": "e87843877b48eb16bd3a72cbad2c1b9edeefba672bd6d2352c30b1491a5c8f63"
+    },
+    "registrations": {
+      "count": 196,
+      "unchanged": true,
+      "sha256": "3b7c424fb9fd7fb329b74f685e2ba4f3c4d911086b0b42b24bc1572805044956"
+    }
+  },
+  "typescript": {
+    "numTotalTests": 312,
+    "numPassedTests": 312,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "aiken": {
+    "ctvs1": {
+      "total": 85,
+      "passed": 85,
+      "failed": 0,
+      "kind": {
+        "unit": 76,
+        "property": 9
+      }
+    },
+    "ctvs2": {
+      "total": 108,
+      "passed": 108,
+      "failed": 0,
+      "kind": {
+        "unit": 98,
+        "property": 10
+      }
+    }
+  },
+  "integration": {
+    "numTotalTests": 31,
+    "numPassedTests": 31,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "numTodoTests": 0
+  },
+  "productionTypeScriptCoverage": {
+    "lines": {
+      "total": 1599,
+      "covered": 1581,
+      "skipped": 0,
+      "pct": 98.87
+    },
+    "statements": {
+      "total": 1809,
+      "covered": 1764,
+      "skipped": 0,
+      "pct": 97.51
+    },
+    "branches": {
+      "total": 1283,
+      "covered": 1208,
+      "skipped": 0,
+      "pct": 94.15
+    },
+    "functions": {
+      "total": 349,
+      "covered": 342,
+      "skipped": 0,
+      "pct": 97.99
+    }
+  },
+  "limitations": [
+    "Aiken family counts include overlapping shared checks",
+    "No node-backed or public-network acceptance established"
+  ]
+}
