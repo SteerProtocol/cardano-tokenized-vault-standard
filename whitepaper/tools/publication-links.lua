@@ -8,3 +8,10 @@ function Link(el)
   end
   return el
 end
+
+-- Keep each reference anchor on the page where its numbered entry starts.
+function Div(el)
+  if FORMAT:match('latex') and el.identifier:match('^ctvs%d+%-ref%-%d+$') then
+    return {pandoc.RawBlock('latex', '\\Needspace{5\\baselineskip}'), el}
+  end
+end
