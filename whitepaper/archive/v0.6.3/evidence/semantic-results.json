@@ -1,0 +1,253 @@
+{
+  "status": "SEMANTIC_CHECKS_PASS__IMPLEMENTATION_RELEASE_BLOCKED",
+  "draft": "semantic-model assurance candidate, not frozen CTVS wire version",
+  "baseline_rerun": {
+    "status": "PASS",
+    "action_quotes": 600000,
+    "candidate_batches": 30000,
+    "abstract_value_balances": 10
+  },
+  "new_unittest_cases": 85,
+  "new_unittest_failures": 0,
+  "new_unittest_errors": 0,
+  "rational_quote_oracle_samples": 2000,
+  "limit_search_exhaustive_configurations": 384,
+  "targeted_predicate_omissions_detected": 10,
+  "rounding_sensitive_lifecycle": {
+    "status": "PASS_FINITE_MODEL",
+    "request_count": 3,
+    "distinct_full_states": 96,
+    "distinct_phase_labels": 64,
+    "transitions_explored": 213,
+    "infeasible_settlement_subsets": 0,
+    "phase_classes_with_multiple_economic_states": [
+      {
+        "phases": [
+          1,
+          0,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          0,
+          1,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          1,
+          1,
+          1
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          3,
+          1,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          1,
+          3,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          0,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          1,
+          0,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          0,
+          2,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          0,
+          1,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          1,
+          1
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          1,
+          2,
+          1
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          1,
+          1,
+          2
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          3,
+          2,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          3,
+          1,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          3,
+          1
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          1,
+          3,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          0,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          0,
+          2,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          2,
+          1
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          2,
+          1,
+          2
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          1,
+          2,
+          2
+        ],
+        "distinct_economic_states": 3
+      },
+      {
+        "phases": [
+          3,
+          2,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          3,
+          2
+        ],
+        "distinct_economic_states": 2
+      },
+      {
+        "phases": [
+          2,
+          2,
+          2
+        ],
+        "distinct_economic_states": 3
+      }
+    ],
+    "visited_key": [
+      "phases",
+      "assets",
+      "shares",
+      "fees",
+      "claim_quantities"
+    ],
+    "exclusions": [
+      "unbounded lifecycle",
+      "actual ledger UTxO transitions",
+      "Aiken or Plutus",
+      "cryptography",
+      "changing NAV",
+      "resource constraints"
+    ]
+  },
+  "highest_new_evidence": "E2: selected semantic transaction predicates over a projected context",
+  "release_blockers": [
+    "Compiled factory/state/request/claim and minting branches",
+    "Exact recursive PlutusData/CBOR and independent decoding",
+    "Real Plutus ScriptContext evaluation and schema refinement",
+    "Complete ledger transactions, collateral, minimum ADA, fees, and execution budgets",
+    "Script-controller/capability authorization and real downstream managed-profile integration",
+    "Independent builders, indexers, rollback replay, and external review"
+  ],
+  "not_claimed": [
+    "Cryptographic signature validation",
+    "Aiken compilation",
+    "Plutus acceptance",
+    "Cardano ledger acceptance",
+    "Resource feasibility",
+    "Trustworthy NAV",
+    "Unbounded formal proof",
+    "Production security"
+  ],
+  "publication_note": "Recorded result snapshot carried forward from the source evidence. Labels are publication aliases; no new security, compiler, builtin, ledger, or integration run is claimed for document revision 0.5."
+}

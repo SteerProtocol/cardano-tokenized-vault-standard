@@ -1,0 +1,1098 @@
+{
+  "profile": "CTVS-WIRE-2 candidate",
+  "definitions": {
+    "Credential": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "key_hash",
+              "kind": "bytes",
+              "min_bytes": 28,
+              "max_bytes": 28
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "script_hash",
+              "kind": "bytes",
+              "min_bytes": 28,
+              "max_bytes": 28
+            }
+          ]
+        }
+      ]
+    },
+    "StakeReference": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 1,
+      "fields": [
+        {
+          "name": "credential",
+          "type_ref": "Credential"
+        }
+      ]
+    },
+    "Address": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 2,
+      "fields": [
+        {
+          "name": "payment",
+          "type_ref": "Credential"
+        },
+        {
+          "name": "stake",
+          "kind": "sum",
+          "variants": [
+            {
+              "kind": "constructor",
+              "tag": 0,
+              "arity": 1,
+              "fields": [
+                {
+                  "name": "value",
+                  "type_ref": "StakeReference"
+                }
+              ]
+            },
+            {
+              "kind": "constructor",
+              "tag": 1,
+              "arity": 0,
+              "fields": []
+            }
+          ]
+        }
+      ]
+    },
+    "Destination": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 2,
+      "fields": [
+        {
+          "name": "address",
+          "type_ref": "Address"
+        },
+        {
+          "name": "inline_datum",
+          "kind": "sum",
+          "variants": [
+            {
+              "kind": "constructor",
+              "tag": 0,
+              "arity": 1,
+              "fields": [
+                {
+                  "name": "value",
+                  "type_ref": "BoundedData"
+                }
+              ]
+            },
+            {
+              "kind": "constructor",
+              "tag": 1,
+              "arity": 0,
+              "fields": []
+            }
+          ]
+        }
+      ]
+    },
+    "Asset": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 0,
+          "fields": []
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 2,
+          "fields": [
+            {
+              "name": "policy",
+              "kind": "bytes",
+              "min_bytes": 28,
+              "max_bytes": 28
+            },
+            {
+              "name": "name",
+              "kind": "bytes",
+              "min_bytes": 0,
+              "max_bytes": 32
+            }
+          ]
+        }
+      ]
+    },
+    "OutRef": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 2,
+      "fields": [
+        {
+          "name": "transaction_id",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "output_index",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "65535"
+        }
+      ]
+    },
+    "KeyController": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 1,
+      "fields": [
+        {
+          "name": "key_hash",
+          "kind": "bytes",
+          "min_bytes": 28,
+          "max_bytes": 28
+        }
+      ]
+    },
+    "SettlerPolicy": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 0,
+          "fields": []
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "key_hashes",
+              "kind": "list",
+              "min_items": 1,
+              "max_items": 16,
+              "items": {
+                "kind": "bytes",
+                "min_bytes": 28,
+                "max_bytes": 28
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "Terms": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 13,
+      "fields": [
+        {
+          "name": "profile",
+          "literal": "0",
+          "encoding": "integer"
+        },
+        {
+          "name": "network_domain",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "underlying",
+          "type_ref": "Asset"
+        },
+        {
+          "name": "virtual_shares",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "max_backing",
+          "kind": "sum",
+          "variants": [
+            {
+              "kind": "constructor",
+              "tag": 0,
+              "arity": 1,
+              "fields": [
+                {
+                  "name": "value",
+                  "kind": "integer",
+                  "minimum": "0",
+                  "maximum": "9223372036854775807"
+                }
+              ]
+            },
+            {
+              "kind": "constructor",
+              "tag": 1,
+              "arity": 0,
+              "fields": []
+            }
+          ]
+        },
+        {
+          "name": "entry_bps",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9999"
+        },
+        {
+          "name": "exit_bps",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9999"
+        },
+        {
+          "name": "fee_destination",
+          "type_ref": "Destination"
+        },
+        {
+          "name": "pause_key",
+          "kind": "sum",
+          "variants": [
+            {
+              "kind": "constructor",
+              "tag": 0,
+              "arity": 1,
+              "fields": [
+                {
+                  "name": "value",
+                  "kind": "bytes",
+                  "min_bytes": 28,
+                  "max_bytes": 28
+                }
+              ]
+            },
+            {
+              "kind": "constructor",
+              "tag": 1,
+              "arity": 0,
+              "fields": []
+            }
+          ]
+        },
+        {
+          "name": "settlers",
+          "type_ref": "SettlerPolicy"
+        },
+        {
+          "name": "execution_modes",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "15"
+        },
+        {
+          "name": "max_batch",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "16"
+        },
+        {
+          "name": "descriptor_hash",
+          "kind": "sum",
+          "variants": [
+            {
+              "kind": "constructor",
+              "tag": 0,
+              "arity": 1,
+              "fields": [
+                {
+                  "name": "value",
+                  "kind": "bytes",
+                  "min_bytes": 32,
+                  "max_bytes": 32
+                }
+              ]
+            },
+            {
+              "kind": "constructor",
+              "tag": 1,
+              "arity": 0,
+              "fields": []
+            }
+          ]
+        }
+      ]
+    },
+    "Config": {
+      "kind": "constructor",
+      "tag": 3,
+      "arity": 7,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "vault_policy",
+          "kind": "bytes",
+          "min_bytes": 28,
+          "max_bytes": 28
+        },
+        {
+          "name": "seed",
+          "type_ref": "OutRef"
+        },
+        {
+          "name": "terms_hash",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "terms",
+          "type_ref": "Terms"
+        },
+        {
+          "name": "storage_lovelace",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        }
+      ]
+    },
+    "State": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 10,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "vault_policy",
+          "kind": "bytes",
+          "min_bytes": 28,
+          "max_bytes": 28
+        },
+        {
+          "name": "terms_hash",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "sequence",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "backing_assets",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "economic_supply",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "accrued_fees",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "storage_lovelace",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "pause_flags",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "3"
+        }
+      ]
+    },
+    "Recovery": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 4,
+      "fields": [
+        {
+          "name": "vault_policy",
+          "kind": "bytes",
+          "min_bytes": 28,
+          "max_bytes": 28
+        },
+        {
+          "name": "controller",
+          "type_ref": "KeyController"
+        },
+        {
+          "name": "refund",
+          "type_ref": "Destination"
+        },
+        {
+          "name": "deadline_posix_ms",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        }
+      ]
+    },
+    "RequestKind": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 0,
+          "fields": []
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 0,
+          "fields": []
+        }
+      ]
+    },
+    "RequestBody": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 8,
+      "fields": [
+        {
+          "name": "terms_hash",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "kind",
+          "type_ref": "RequestKind"
+        },
+        {
+          "name": "offered",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "minimum_output",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "receiver",
+          "type_ref": "Destination"
+        },
+        {
+          "name": "storage_lovelace",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "execution_budget",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "settler_fee",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        }
+      ]
+    },
+    "Request": {
+      "kind": "constructor",
+      "tag": 1,
+      "arity": 4,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "recovery",
+          "type_ref": "Recovery"
+        },
+        {
+          "name": "economic_body",
+          "type_ref": "UninterpretedData"
+        }
+      ]
+    },
+    "Claim": {
+      "kind": "constructor",
+      "tag": 2,
+      "arity": 10,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "vault_policy",
+          "kind": "bytes",
+          "min_bytes": 28,
+          "max_bytes": 28
+        },
+        {
+          "name": "request_ref",
+          "type_ref": "OutRef"
+        },
+        {
+          "name": "state_ref",
+          "type_ref": "OutRef"
+        },
+        {
+          "name": "terms_hash",
+          "kind": "bytes",
+          "min_bytes": 32,
+          "max_bytes": 32
+        },
+        {
+          "name": "asset",
+          "type_ref": "Asset"
+        },
+        {
+          "name": "economic_quantity",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        },
+        {
+          "name": "receiver",
+          "type_ref": "Destination"
+        },
+        {
+          "name": "carried_lovelace",
+          "kind": "integer",
+          "minimum": "1",
+          "maximum": "9223372036854775807"
+        }
+      ]
+    },
+    "SettleEntry": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 3,
+      "fields": [
+        {
+          "name": "request_ref",
+          "type_ref": "OutRef"
+        },
+        {
+          "name": "claim_output",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "65535"
+        },
+        {
+          "name": "claim_topup",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "9223372036854775807"
+        }
+      ]
+    },
+    "DeliverEntry": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 2,
+      "fields": [
+        {
+          "name": "claim_ref",
+          "type_ref": "OutRef"
+        },
+        {
+          "name": "receiver_output",
+          "kind": "integer",
+          "minimum": "0",
+          "maximum": "65535"
+        }
+      ]
+    },
+    "StateAction": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 5,
+          "fields": [
+            {
+              "name": "receiver",
+              "type_ref": "Destination"
+            },
+            {
+              "name": "gross_assets",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "min_shares",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "receiver_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 5,
+          "fields": [
+            {
+              "name": "receiver",
+              "type_ref": "Destination"
+            },
+            {
+              "name": "target_shares",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "max_assets",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "receiver_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 2,
+          "arity": 5,
+          "fields": [
+            {
+              "name": "receiver",
+              "type_ref": "Destination"
+            },
+            {
+              "name": "net_assets",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "max_shares",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "receiver_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 3,
+          "arity": 5,
+          "fields": [
+            {
+              "name": "receiver",
+              "type_ref": "Destination"
+            },
+            {
+              "name": "shares",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "min_assets",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "receiver_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 4,
+          "arity": 4,
+          "fields": [
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "entries",
+              "kind": "list",
+              "min_items": 1,
+              "max_items": 16,
+              "items": {
+                "type_ref": "SettleEntry"
+              }
+            },
+            {
+              "name": "reward_key",
+              "kind": "bytes",
+              "min_bytes": 28,
+              "max_bytes": 28
+            },
+            {
+              "name": "reward_output",
+              "kind": "sum",
+              "variants": [
+                {
+                  "kind": "constructor",
+                  "tag": 0,
+                  "arity": 1,
+                  "fields": [
+                    {
+                      "name": "value",
+                      "kind": "integer",
+                      "minimum": "0",
+                      "maximum": "65535"
+                    }
+                  ]
+                },
+                {
+                  "kind": "constructor",
+                  "tag": 1,
+                  "arity": 0,
+                  "fields": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 5,
+          "arity": 2,
+          "fields": [
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "fee_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 6,
+          "arity": 2,
+          "fields": [
+            {
+              "name": "additional_lovelace",
+              "kind": "integer",
+              "minimum": "1",
+              "maximum": "9223372036854775807"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 7,
+          "arity": 2,
+          "fields": [
+            {
+              "name": "pause_flags",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "3"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        }
+      ]
+    },
+    "RequestAction": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "state_ref",
+              "type_ref": "OutRef"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "refund_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 2,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "refund_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        }
+      ]
+    },
+    "ClaimAction": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 1,
+      "fields": [
+        {
+          "name": "entries",
+          "kind": "list",
+          "min_items": 1,
+          "max_items": 16,
+          "items": {
+            "type_ref": "DeliverEntry"
+          }
+        }
+      ]
+    },
+    "MintAction": {
+      "kind": "sum",
+      "variants": [
+        {
+          "kind": "constructor",
+          "tag": 0,
+          "arity": 2,
+          "fields": [
+            {
+              "name": "config_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            },
+            {
+              "name": "state_output",
+              "kind": "integer",
+              "minimum": "0",
+              "maximum": "65535"
+            }
+          ]
+        },
+        {
+          "kind": "constructor",
+          "tag": 1,
+          "arity": 1,
+          "fields": [
+            {
+              "name": "state_ref",
+              "type_ref": "OutRef"
+            }
+          ]
+        }
+      ]
+    },
+    "StateRedeemer": {
+      "kind": "constructor",
+      "tag": 0,
+      "arity": 3,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "action",
+          "type_ref": "StateAction"
+        }
+      ]
+    },
+    "RequestRedeemer": {
+      "kind": "constructor",
+      "tag": 1,
+      "arity": 3,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "action",
+          "type_ref": "RequestAction"
+        }
+      ]
+    },
+    "ClaimRedeemer": {
+      "kind": "constructor",
+      "tag": 2,
+      "arity": 3,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "action",
+          "type_ref": "ClaimAction"
+        }
+      ]
+    },
+    "MintRedeemer": {
+      "kind": "constructor",
+      "tag": 3,
+      "arity": 3,
+      "fields": [
+        {
+          "name": "magic",
+          "literal": "43545653",
+          "encoding": "hex"
+        },
+        {
+          "name": "wire_version",
+          "literal": "2",
+          "encoding": "integer"
+        },
+        {
+          "name": "action",
+          "type_ref": "MintAction"
+        }
+      ]
+    }
+  }
+}

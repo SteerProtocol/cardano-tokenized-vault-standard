@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="890px" version="1.1" viewBox="0 0 1480 890" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="890" width="1480" x="0" y="0"/>
+  <g id="background-panels">
+    <rect fill="#FFFFFF" height="520" rx="20" stroke="#CEDBE6" stroke-width="1.3" width="660" x="48" y="170"/>
+    <rect fill="#FFFFFF" height="520" rx="20" stroke="#CEDBE6" stroke-width="1.3" width="660" x="772" y="170"/>
+  </g>
+  <g id="connectors">
+    <path d="M 321 318 L 358.0 318.0 Q 374 318 374.0 334.0 L 374.0 381.0 Q 374 397 390.0 397.0 L 445 397" fill="none" marker-end="url(#arrow-red)" stroke="#A15564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 321 520 L 382.0 520.0 Q 398 520 398.0 504.0 L 398.0 478.0 Q 398 462 414.0 462.0 L 445 462" fill="none" marker-end="url(#arrow-red)" stroke="#A15564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 1045 318 L 1169 318" fill="none" marker-end="url(#arrow-green)" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 1045 520 L 1169 520" fill="none" marker-end="url(#arrow-green)" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="245" x="76" y="254"/>
+    <rect fill="url(#fill-red)" height="132" rx="18" stroke="#C39299" stroke-width="1.8" width="245" x="76" y="252"/>
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="245" x="76" y="456"/>
+    <rect fill="url(#fill-red)" height="132" rx="18" stroke="#C39299" stroke-width="1.8" width="245" x="76" y="454"/>
+    <rect fill="#EDF1F5" height="156" opacity="0.35" rx="18" width="235" x="445" y="354"/>
+    <rect fill="url(#fill-red)" height="156" rx="18" stroke="#C39299" stroke-width="1.8" width="235" x="445" y="352"/>
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="245" x="800" y="254"/>
+    <rect fill="url(#fill-green)" height="132" rx="18" stroke="#78A88F" stroke-width="1.8" width="245" x="800" y="252"/>
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="245" x="800" y="456"/>
+    <rect fill="url(#fill-green)" height="132" rx="18" stroke="#78A88F" stroke-width="1.8" width="245" x="800" y="454"/>
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="235" x="1169" y="254"/>
+    <rect fill="url(#fill-green)" height="132" rx="18" stroke="#78A88F" stroke-width="1.8" width="235" x="1169" y="252"/>
+    <rect fill="#EDF1F5" height="132" opacity="0.35" rx="18" width="235" x="1169" y="456"/>
+    <rect fill="url(#fill-green)" height="132" rx="18" stroke="#78A88F" stroke-width="1.8" width="235" x="1169" y="454"/>
+    <rect fill="url(#fill-slate)" height="112" rx="18" stroke="#9CAEBD" stroke-width="1.5" width="1384" x="48" y="734"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(72,746) scale(0.7083333333333334)">
+      <circle cx="24" cy="24" r="18"/>
+      <circle cx="24" cy="14" r="1"/>
+      <path d="M 24 21 V 34"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-1  /  REFERENCE-PROFILE PAYMENT ALLOCATION</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">Every protected obligation needs its own value</text>
+    <text fill="#A15564" font-family="Liberation Sans" font-size="26" font-weight="700" text-anchor="start" x="76" y="208">REJECTED: payment reused</text>
+    <text fill="#32765B" font-family="Liberation Sans" font-size="26" font-weight="700" text-anchor="start" x="800" y="208">REQUIRED PATTERN: distinct outputs</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="104" y="294.0">Obligation A</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="104" y="334.0">10 UNIT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="104" y="496.0">Obligation B</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="104" y="536.0">10 UNIT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="473" y="394.0">Output 0</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="26" font-weight="400" text-anchor="start" x="473" y="434.0">10 UNIT</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="26" font-weight="400" text-anchor="start" x="473" y="469.36">Same receiver</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="828" y="294.0">Obligation A</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="828" y="334.0">10 UNIT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="828" y="496.0">Obligation B</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="828" y="536.0">10 UNIT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="1197" y="294.0">Output 0</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="1197" y="334.0">10 UNIT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="1197" y="496.0">Output 1</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="27" font-weight="400" text-anchor="start" x="1197" y="536.0">10 UNIT</text>
+    <text fill="#A15564" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="middle" x="378" y="642">20 owed  ≠  10 funded</text>
+    <text fill="#32765B" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="middle" x="1102" y="642">20 owed  =  20 funded</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="122" y="771">Same receiver is allowed. Reusing protected value is not.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="23" font-weight="400" text-anchor="start" x="76" y="812.0">Each allocation must still match its amount, full destination and datum, within the closed transaction family.</text>
+  </g>
+</svg>

@@ -1,0 +1,1015 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CTVS integration response candidate 0.6",
+  "description": "Off-chain semantic response envelope. Shape validation does not authenticate evidence or enforce ledger semantics.",
+  "type": "object",
+  "properties": {
+    "schema_revision": {
+      "const": "CTVS-INTEGRATION-0.6"
+    },
+    "kind": {
+      "enum": [
+        "snapshot",
+        "quote",
+        "request",
+        "build_effects"
+      ]
+    },
+    "network": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chain_point": {
+      "type": "object",
+      "properties": {
+        "slot": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "block_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "slot",
+        "block_hash"
+      ],
+      "additionalProperties": false
+    },
+    "vault_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementation": {
+      "$ref": "#/$defs/binding"
+    },
+    "conformance_claims": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "read",
+          "direct_execution",
+          "request_execution"
+        ]
+      },
+      "minItems": 0
+    },
+    "verification": {
+      "enum": [
+        "illustrative",
+        "unverified",
+        "identity_verified",
+        "mapping_verified"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "body": {}
+  },
+  "required": [
+    "schema_revision",
+    "kind",
+    "network",
+    "chain_point",
+    "vault_id",
+    "implementation",
+    "conformance_claims",
+    "verification",
+    "evidence_refs",
+    "body"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "asset": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "ada"
+              ]
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "native"
+              ]
+            },
+            "policy_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{56}$"
+            },
+            "asset_name": {
+              "type": "string",
+              "pattern": "^(?:[0-9a-f]{2}){0,32}$"
+            }
+          },
+          "required": [
+            "kind",
+            "policy_id",
+            "asset_name"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "outref": {
+      "type": "object",
+      "properties": {
+        "transaction_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "output_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        }
+      },
+      "required": [
+        "transaction_id",
+        "output_index"
+      ],
+      "additionalProperties": false
+    },
+    "credential": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "key",
+            "script"
+          ]
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{56}$"
+        }
+      },
+      "required": [
+        "kind",
+        "hash"
+      ],
+      "additionalProperties": false
+    },
+    "destination": {
+      "type": "object",
+      "properties": {
+        "payment": {
+          "$ref": "#/$defs/credential"
+        },
+        "stake": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/credential"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "datum": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "none"
+                  ]
+                }
+              },
+              "required": [
+                "kind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "inline"
+                  ]
+                },
+                "data_cbor": {
+                  "type": "string",
+                  "pattern": "^(?:[0-9a-f]{2})+$"
+                }
+              },
+              "required": [
+                "kind",
+                "data_cbor"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "payment",
+        "stake",
+        "datum"
+      ],
+      "additionalProperties": false
+    },
+    "quantity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "known"
+              ]
+            },
+            "units": {
+              "enum": [
+                "underlying_base_units",
+                "share_base_units",
+                "lovelace"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          },
+          "required": [
+            "status",
+            "units",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "unknown",
+                "unsupported",
+                "stale",
+                "not_applicable"
+              ]
+            },
+            "units": {
+              "enum": [
+                "underlying_base_units",
+                "share_base_units",
+                "lovelace"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "units",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "binding": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "reference"
+              ]
+            },
+            "wire": {
+              "enum": [
+                "CTVS-WIRE-2"
+              ]
+            },
+            "wire_version": {
+              "const": 2
+            },
+            "profile": {
+              "const": 0
+            },
+            "script_hashes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{56}$"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "kind",
+            "wire",
+            "wire_version",
+            "profile",
+            "script_hashes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "native"
+              ]
+            },
+            "mapping_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mapping_version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mapping_commitment": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "script_hashes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{56}$"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "kind",
+            "mapping_id",
+            "mapping_version",
+            "mapping_commitment",
+            "script_hashes"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "basis": {
+      "type": "object",
+      "properties": {
+        "calculation_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "terms_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outref"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "calculation_id",
+        "terms_ref",
+        "source_refs"
+      ],
+      "additionalProperties": false
+    },
+    "caps": {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "deposit",
+              "mint",
+              "withdraw",
+              "redeem",
+              "request_deposit",
+              "request_redeem",
+              "cancel",
+              "expire_refund",
+              "deliver"
+            ]
+          },
+          "minItems": 1
+        },
+        "async_delivery": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "funded_claim",
+              "delivery_at_settlement"
+            ]
+          },
+          "minItems": 0
+        },
+        "settlement_permission": {
+          "enum": [
+            "permissionless",
+            "authorized",
+            "not_applicable",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "operations",
+        "async_delivery",
+        "settlement_permission"
+      ],
+      "additionalProperties": false
+    },
+    "charge": {
+      "type": "object",
+      "properties": {
+        "economic_fee": {
+          "$ref": "#/$defs/quantity"
+        },
+        "execution_fee": {
+          "$ref": "#/$defs/quantity"
+        },
+        "protected_storage": {
+          "$ref": "#/$defs/quantity"
+        },
+        "network_fee_estimate": {
+          "$ref": "#/$defs/quantity"
+        },
+        "external_topup": {
+          "$ref": "#/$defs/quantity"
+        }
+      },
+      "required": [
+        "economic_fee",
+        "execution_fee",
+        "protected_storage",
+        "network_fee_estimate",
+        "external_topup"
+      ],
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "underlying": {
+          "$ref": "#/$defs/asset"
+        },
+        "share": {
+          "$ref": "#/$defs/asset"
+        },
+        "backing": {
+          "$ref": "#/$defs/quantity"
+        },
+        "economic_supply": {
+          "$ref": "#/$defs/quantity"
+        },
+        "accrued_fee_assets": {
+          "$ref": "#/$defs/quantity"
+        },
+        "liquid_assets": {
+          "$ref": "#/$defs/quantity"
+        },
+        "vault_status": {
+          "enum": [
+            "active",
+            "entry_paused",
+            "exit_paused",
+            "both_paused",
+            "insolvent",
+            "unknown"
+          ]
+        },
+        "capabilities": {
+          "$ref": "#/$defs/caps"
+        },
+        "pricing_basis": {
+          "$ref": "#/$defs/basis"
+        }
+      },
+      "required": [
+        "underlying",
+        "share",
+        "backing",
+        "economic_supply",
+        "accrued_fee_assets",
+        "liquid_assets",
+        "vault_status",
+        "capabilities",
+        "pricing_basis"
+      ],
+      "additionalProperties": false
+    },
+    "quote": {
+      "type": "object",
+      "properties": {
+        "underlying": {
+          "$ref": "#/$defs/asset"
+        },
+        "share": {
+          "$ref": "#/$defs/asset"
+        },
+        "operation": {
+          "enum": [
+            "deposit",
+            "mint",
+            "withdraw",
+            "redeem",
+            "request_deposit",
+            "request_redeem"
+          ]
+        },
+        "quote_kind": {
+          "enum": [
+            "conversion",
+            "exact_at_snapshot",
+            "indicative",
+            "unknown_future"
+          ]
+        },
+        "input": {
+          "$ref": "#/$defs/quantity"
+        },
+        "output": {
+          "$ref": "#/$defs/quantity"
+        },
+        "user_bound": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "minimum_shares",
+                "minimum_assets",
+                "maximum_assets",
+                "maximum_shares"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "pricing_basis": {
+          "$ref": "#/$defs/basis"
+        },
+        "economic_minimum": {
+          "$ref": "#/$defs/quantity"
+        },
+        "economic_maximum": {
+          "$ref": "#/$defs/quantity"
+        },
+        "construction_limit": {
+          "$ref": "#/$defs/quantity"
+        },
+        "charges": {
+          "$ref": "#/$defs/charge"
+        },
+        "execution_status": {
+          "enum": [
+            "requires_fresh_build",
+            "paused",
+            "unavailable_liquidity",
+            "unsupported",
+            "unknown",
+            "illustrative_only"
+          ]
+        },
+        "expiry": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "underlying",
+        "share",
+        "operation",
+        "quote_kind",
+        "input",
+        "output",
+        "user_bound",
+        "pricing_basis",
+        "economic_minimum",
+        "economic_maximum",
+        "construction_limit",
+        "charges",
+        "execution_status",
+        "expiry",
+        "prerequisites"
+      ],
+      "additionalProperties": false
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "origin": {
+          "$ref": "#/$defs/outref"
+        },
+        "source_ref": {
+          "$ref": "#/$defs/outref"
+        },
+        "terms_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycle": {
+          "enum": [
+            "pending_escrow",
+            "claimable",
+            "delivered",
+            "settled_delivered",
+            "refunded",
+            "unsupported"
+          ]
+        },
+        "participation": {
+          "enum": [
+            "nonparticipating_assets",
+            "participating_shares",
+            "fixed_assets",
+            "not_applicable",
+            "unknown"
+          ]
+        },
+        "offered_asset": {
+          "$ref": "#/$defs/asset"
+        },
+        "offered_quantity": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "minimum_output": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "controller": {
+          "type": "string",
+          "minLength": 1
+        },
+        "execution_authority": {
+          "type": "string",
+          "minLength": 1
+        },
+        "receiver": {
+          "$ref": "#/$defs/destination"
+        },
+        "refund_destination": {
+          "$ref": "#/$defs/destination"
+        },
+        "deadline": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$"
+        },
+        "delivery_mode": {
+          "enum": [
+            "funded_claim",
+            "delivery_at_settlement"
+          ]
+        },
+        "recovery": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": [
+                "supported",
+                "unavailable",
+                "unknown",
+                "unsupported"
+              ]
+            },
+            "conditions": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "conditions"
+          ],
+          "additionalProperties": false
+        },
+        "charges": {
+          "$ref": "#/$defs/charge"
+        },
+        "pricing_basis": {
+          "$ref": "#/$defs/basis"
+        },
+        "realized_quantity": {
+          "$ref": "#/$defs/quantity"
+        },
+        "result_outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outref"
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "origin",
+        "source_ref",
+        "terms_ref",
+        "lifecycle",
+        "participation",
+        "offered_asset",
+        "offered_quantity",
+        "minimum_output",
+        "controller",
+        "execution_authority",
+        "receiver",
+        "refund_destination",
+        "deadline",
+        "delivery_mode",
+        "recovery",
+        "charges",
+        "pricing_basis",
+        "realized_quantity",
+        "result_outputs"
+      ],
+      "additionalProperties": false
+    },
+    "effects": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approved_bound": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outref"
+          },
+          "minItems": 1
+        },
+        "reference_inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/outref"
+          },
+          "minItems": 0
+        },
+        "mint": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "$ref": "#/$defs/asset"
+              },
+              "quantity": {
+                "type": "string",
+                "pattern": "^-?(0|[1-9][0-9]*)$"
+              }
+            },
+            "required": [
+              "asset",
+              "quantity"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "output_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "destination": {
+                "$ref": "#/$defs/destination"
+              },
+              "value": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "asset": {
+                      "$ref": "#/$defs/asset"
+                    },
+                    "quantity": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$"
+                    }
+                  },
+                  "required": [
+                    "asset",
+                    "quantity"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 1
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "output_index",
+              "destination",
+              "value",
+              "role"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "change_output_indices": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 0
+        },
+        "network_fee": {
+          "$ref": "#/$defs/quantity"
+        },
+        "collateral_exposure": {
+          "$ref": "#/$defs/quantity"
+        },
+        "required_authorities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 0
+        },
+        "validity_interval": {
+          "type": "object",
+          "properties": {
+            "lower": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            },
+            "upper": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$"
+            }
+          },
+          "required": [
+            "lower",
+            "upper"
+          ],
+          "additionalProperties": false
+        },
+        "construction_status": {
+          "enum": [
+            "illustrative_only",
+            "requires_build",
+            "built_requires_verification"
+          ]
+        },
+        "effect_summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "operation",
+        "approved_bound",
+        "inputs",
+        "reference_inputs",
+        "mint",
+        "outputs",
+        "change_output_indices",
+        "network_fee",
+        "collateral_exposure",
+        "required_authorities",
+        "validity_interval",
+        "construction_status",
+        "effect_summary"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "snapshot"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "$ref": "#/$defs/snapshot"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "quote"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "$ref": "#/$defs/quote"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "request"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "$ref": "#/$defs/request"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "build_effects"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "body": {
+            "$ref": "#/$defs/effects"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 # Cardano Tokenized Vault Standard
 
-Two reference implementations of the supplied CTVS v0.6.3 whitepaper, using WIRE-2 and profile 0:
+The [CTVS whitepapers](whitepaper/README.md) describe the proposed standard. The [combined PDF](whitepaper/output/CTVS-Whitepapers-Combined.pdf) contains CTVS-1, covering synchronous vault operations and accounting, followed by CTVS-2, covering asynchronous requests, settlement, and claims. The whitepaper directory also contains the editable sources, figures, and historical publication checks.
+
+This repository also contains two reference implementations of the whitepapers' WIRE-2, profile 0 candidate:
 
 - [CTVS-1](reference/implementations/ctvs1/README.md): synchronous deposit, mint, withdraw and redeem.
 - [CTVS-2](reference/implementations/ctvs2/README.md): asynchronous requests, batch settlement, recovery and funded-claim delivery.
@@ -20,6 +22,7 @@ npm run check
 
 | Directory | Purpose |
 | --- | --- |
+| [`whitepaper/`](whitepaper/README.md) | Proposed standard, published PDFs, editable sources, figures, and historical publication checks |
 | `reference/implementations/ctvs1/` | Independent synchronous contract project and client |
 | `reference/implementations/ctvs2/` | Independent asynchronous contract project and client |
 | `reference/packages/` | Shared onchain predicates, TypeScript protocol and planning primitives |

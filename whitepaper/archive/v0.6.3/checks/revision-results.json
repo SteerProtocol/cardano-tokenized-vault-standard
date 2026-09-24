@@ -1,0 +1,32 @@
+{
+  "document_revision": "0.6",
+  "date": "2026-09-11",
+  "status": "PASS",
+  "test_methods": 16,
+  "failures": 0,
+  "errors": 0,
+  "subchecks": {
+    "arithmetic_tuples": 4800,
+    "budget_tuples": 8976,
+    "positive_response_examples": 5,
+    "negative_response_examples": 12,
+    "balanced_transactions": 12
+  },
+  "evidence_scope": "Publication/source preservation, off-chain example schema, and bounded arithmetic only.",
+  "historical_suites_rerun": false,
+  "reference_wire_changed": false,
+  "new_native_delivery_implemented": false,
+  "implementation_release": "BLOCKED",
+  "not_tested": [
+    "compiled validators",
+    "Plutus builtin serialization",
+    "real signatures",
+    "ledger acceptance",
+    "minimum ADA",
+    "execution units",
+    "native protocol integration",
+    "independent audit",
+    "production indexer rollback",
+    "unbounded correctness"
+  ]
+}

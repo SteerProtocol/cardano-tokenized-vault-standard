@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="995px" version="1.1" viewBox="0 0 1480 995" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="995" width="1480" x="0" y="0"/>
+  <g id="background-panels"/>
+  <g id="connectors">
+    <path d="M 442 373 L 544 373" fill="none" marker-end="url(#arrow-sand)" stroke="#947331" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 938 373 L 1040 373" fill="none" marker-end="url(#arrow-green)" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 245 509 L 245 637" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 741 509 L 741 637" fill="none" marker-end="url(#arrow-red)" stroke="#A15564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="268" opacity="0.35" rx="18" width="394" x="48" y="243"/>
+    <rect fill="url(#fill-purple)" height="268" rx="18" stroke="#A18BBE" stroke-width="1.8" width="394" x="48" y="241"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,257) scale(0.8333333333333334)">
+      <path d="M 14 21 V 13 C 14 0 34 0 34 13 V 21 M 9 21 H 39 V 43 H 9 Z M 24 29 V 35"/>
+      <circle cx="24" cy="29" r="2"/>
+    </g>
+    <rect fill="#EDF1F5" height="268" opacity="0.35" rx="18" width="394" x="544" y="243"/>
+    <rect fill="url(#fill-sand)" height="268" rx="18" stroke="#C7AD74" stroke-dasharray="8 6" stroke-width="1.8" width="394" x="544" y="241"/>
+    <g fill="none" stroke="#947331" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(569,257) scale(0.8333333333333334)">
+      <path d="M 24 6 L 44 17 L 24 28 L 4 17 Z M 6 26 L 24 37 L 42 26 M 6 35 L 24 46 L 42 35"/>
+    </g>
+    <rect fill="#EDF1F5" height="268" opacity="0.35" rx="18" width="392" x="1040" y="243"/>
+    <rect fill="url(#fill-green)" height="268" rx="18" stroke="#78A88F" stroke-width="1.8" width="392" x="1040" y="241"/>
+    <g fill="none" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1065,257) scale(0.8333333333333334)">
+      <path d="M 24 4 L 43 14 V 35 L 24 45 L 5 35 V 14 Z M 5 14 L 24 25 L 43 14 M 24 25 V 45 M 15 9 L 33 19"/>
+    </g>
+    <rect fill="#EDF1F5" height="205" opacity="0.35" rx="18" width="394" x="48" y="639"/>
+    <rect fill="url(#fill-blue)" height="205" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="394" x="48" y="637"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,653) scale(0.8333333333333334)">
+      <path d="M 6 14 H 39 V 40 H 6 Z M 6 14 L 34 6 V 14 M 30 23 H 43 V 33 H 30 Z"/>
+      <circle cx="35" cy="28" r="1"/>
+    </g>
+    <rect fill="#EDF1F5" height="205" opacity="0.35" rx="18" width="394" x="544" y="639"/>
+    <rect fill="url(#fill-red)" height="205" rx="18" stroke="#C39299" stroke-width="1.8" width="394" x="544" y="637"/>
+    <g fill="none" stroke="#A15564" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(569,653) scale(0.8333333333333334)">
+      <circle cx="12" cy="8" r="4"/>
+      <circle cx="36" cy="40" r="4"/>
+      <circle cx="12" cy="40" r="4"/>
+      <path d="M 12 12 V 36 M 12 23 H 26 Q 36 23 36 33 V 36"/>
+    </g>
+    <rect fill="#EDF1F5" height="205" opacity="0.35" rx="18" width="392" x="1040" y="639"/>
+    <rect fill="url(#fill-slate)" height="205" rx="18" stroke="#9CAEBD" stroke-width="1.8" width="392" x="1040" y="637"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1065,653) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-2  /  MANAGED EXTENSION BOUNDARY • NOT A DIRECT CUSTODY PROFILE WORKFLOW</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">Committed downstream is no longer pending escrow</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="132" y="283.0">Pending escrow</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="323.0">Property remains at request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="357.0">guard.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="391.0">Fixed cancellation / expiry</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="425.0">rights.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="459.0">Not share backing.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="628" y="283.0">Accepted / in-flight</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="572" y="323.0">Assets committed</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="572" y="357.0">downstream.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="572" y="391.0">Exposure and failure rights</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="572" y="425.0">change.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="572" y="459.0">Not automatically refundable.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="1124" y="283.0">Funded result</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="1068" y="323.0">Shares issued or assets fixed.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="1068" y="357.0">Economic cutover is explicit.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="1068" y="391.0">Delivery rights are defined.</text>
+    <text fill="#947331" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="493" y="348">accept</text>
+    <text fill="#32765B" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="989" y="348">settle</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="132" y="679.0">Fixed refund</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="719.0">Only while property remains</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="751.64">PendingEscrow under the</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="784.28">declared profile.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="628" y="679.0">Failure / unwind</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="719.0">Who bears the loss?</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="751.64">What can be cancelled?</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="784.28">Which on-chain right recovers</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="816.92">value?</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="1124" y="679.0">Required extension</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="1124" y="709.24">rules</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="749.24">Custody and valuation</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="781.88">Interim ownership and losses</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="814.52">Actual recovery permissions</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="360" y="581">cancel / expire</text>
+    <text fill="#A15564" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="808" y="581">failure</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="middle" x="740" y="894.0">An operator notice or timeout cannot reverse a completed investment or manufacture liquidity.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="middle" x="740" y="927.5">The extension must specify the rights at every intermediate state.</text>
+  </g>
+</svg>

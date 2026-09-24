@@ -1,0 +1,93 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.76in,top=0.79in,bottom=0.77in,headheight=15pt,headsep=18pt,footskip=25pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont[Scale=0.84]{DejaVu Sans Mono}
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage[table]{xcolor}
+\definecolor{Ink}{HTML}{183444}
+\definecolor{LinkBlue}{HTML}{195C90}
+\definecolor{Muted}{HTML}{5B6971}
+\definecolor{Soft}{HTML}{EDF2F5}
+\definecolor{Rule}{HTML}{B9C9D2}
+\usepackage{graphicx,booktabs,longtable,array,calc,float,caption,placeins}
+\graphicspath{{figures/}}
+\captionsetup{font=small,labelfont=bf,textfont=it,justification=raggedright,singlelinecheck=false,skip=6pt}
+\setlength{\intextsep}{10pt}
+\setlength{\textfloatsep}{12pt}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\small\renewcommand{\arraystretch}{1.14}}
+\setlength{\LTpre}{8pt}
+\setlength{\LTpost}{9pt}
+\setlength{\tabcolsep}{5pt}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,fontsize=\small,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere,fontsize=\small,frame=single,rulecolor=\color{Rule},framesep=7pt}
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+\usepackage{titlesec,needspace}
+\titleformat{\section}{\sffamily\bfseries\Large\color{Ink}}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\bfseries\normalsize\color{Ink}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{21pt}{10pt}
+\titlespacing*{\subsection}{0pt}{14pt}{6pt}
+\pretocmd{\section}{\Needspace{9\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{5.5\baselineskip}}{}{}
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\scriptsize\color{Muted}$shorttitle$ / CARDANO TOKENIZED VAULT STANDARDS}
+\fancyhead[R]{\sffamily\scriptsize\color{Muted}TECHNICAL WHITEPAPER}
+\fancyfoot[L]{\sffamily\scriptsize\color{Muted}CTVS WHITEPAPER / $date$}
+\fancyfoot[R]{\sffamily\scriptsize\color{Muted}\thepage\ /\ \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+\usepackage{xurl,seqsplit}
+\usepackage[unicode=true,bookmarksopen=true,colorlinks=true,linkcolor=Ink,urlcolor=LinkBlue,citecolor=Ink]{hyperref}
+\hypersetup{pdftitle={$shorttitle$: $title$},pdfauthor={Prepared for Steer Protocol},pdfsubject={Cardano tokenized vault standard proposal; reference implementation linked with dated local validation}}
+\urlstyle{same}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4.5pt}
+\linespread{1.025}
+\emergencystretch=2em
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+\allowdisplaybreaks[1]
+\newcommand{\passthrough}[1]{#1}
+\newcounter{none}
+\begin{document}
+\begin{titlepage}
+\thispagestyle{empty}
+{\sffamily\small\bfseries\color{Muted}STEER PROTOCOL / TECHNICAL WHITEPAPER SERIES}\par
+\vspace{0.55in}
+{\sffamily\bfseries\fontsize{43}{48}\selectfont\color{Ink}$shorttitle$}\par
+\vspace{0.16in}
+{\sffamily\bfseries\fontsize{27}{33}\selectfont\color{Ink}\raggedright $coverlineone$\\$coverlinetwo$}\par
+\vspace{0.20in}
+{\large\color{Muted}$tagline$}\par
+\vspace{0.40in}
+{\sffamily $subtitle$ / $date$}\par
+\vspace{0.17in}
+Prepared for Steer Protocol and ecosystem review.\par
+Companion: $companion$.\par
+\vfill
+\noindent\colorbox{Soft}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\vspace{9pt}\hspace{8pt}\begin{minipage}{\dimexpr\textwidth-24pt\relax}
+{\sffamily\bfseries\color{Ink}Publication and evidence status}\par
+The reference encoding is CTVS-WIRE-2, wire integer 2, Direct Custody Profile (wire profile ID 0).\par
+\end{minipage}\vspace{9pt}}}\par
+\vspace{0.20in}
+{\small A proposed standard, not an adopted CIP or frozen deployed interface.}\par
+\vspace{0.12in}
+{\sffamily\scriptsize\bfseries BASELINE REPOSITORY COMMIT}\par
+{\ttfamily\small f5f782de9ba6a7bf6cbb8213995a31734888559c}\par
+\end{titlepage}
+\setcounter{page}{2}
+$body$
+\end{document}

@@ -1,0 +1,96 @@
+[
+  {
+    "id": "ctvs1-f01-native-mapping",
+    "status": "retained approved image",
+    "format": "raster image in PDF",
+    "source": "/mnt/data/ctvs_1_conformance_block_diagram.png",
+    "sha256": "cb6f149f66cc235030ad5b1397fc43b0c86b38c10de73c94b69e4edeab088d3e"
+  },
+  {
+    "id": "ctvs1-f02-object-model",
+    "status": "retained approved image",
+    "format": "raster image in PDF",
+    "source": "/mnt/data/ctvs_1_object_model_diagram.png",
+    "sha256": "801535015ef611ee5abe3c06f05da03928a4cd0b6d3008e96686f2390c72f2bd"
+  },
+  {
+    "id": "ctvs1-f03-genesis-flow",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "5bb609b56d5046830df479eb59ed2cbf5145bd199a846615228e7ed69904525d"
+  },
+  {
+    "id": "ctvs1-f04-protected-obligations",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "17f208bafbe7074c19c8843097f687391026ce4087b27f50a2b3c216a596da9f"
+  },
+  {
+    "id": "ctvs1-f05-direct-operation-anatomy",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "cf99129ee056b26a74a5f70bd9ee0456a1606b2c478733105a65b83439c554be"
+  },
+  {
+    "id": "ctvs1-f06-ada-accounting-partitions",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "499d94046431459ac9f5461a85ff21805aea5b514172af10dc1e8e5328bf4cf5"
+  },
+  {
+    "id": "ctvs1-f07-managed-accounting-boundary",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "0a73fb6ec82a580d1724b8b5635551aed84334dc3fa4e2b6c53fa3040267eba1"
+  },
+  {
+    "id": "ctvs2-f01-lifecycle-cutover",
+    "status": "retained approved image",
+    "format": "raster image in PDF",
+    "source": "/mnt/data/ctvs_2_async_request_lifecycle_flowchart.png",
+    "sha256": "8640525652b85c253e1fa1f7cb82176b2cad439bfd8bf3a97d26140faf340568"
+  },
+  {
+    "id": "ctvs2-f02-request-creation-envelope",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "5d55aa3d1150578f5b88b7dacd04344475d9708c55cd6dd02c5dbe1d5698c6a1"
+  },
+  {
+    "id": "ctvs2-f03-two-way-acknowledgment",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "7272269a6c08111794dcec4e46760cc71e9fe8ce8c9579b1721539d18bff3d57"
+  },
+  {
+    "id": "ctvs2-f04-settlement-anatomy",
+    "status": "retained approved image",
+    "format": "raster image in PDF",
+    "source": "/mnt/data/ctvs_2_settlement_anatomy_diagram.png",
+    "sha256": "30d2ec76567a3c805966a67320e0e2a764c01f11b5784486a8f4444067971293"
+  },
+  {
+    "id": "ctvs2-f05-delivery-variants",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "a37a468cafe646ff4c62f9168b7d9232f24cd947c098c3aa3aadc43cec855f94"
+  },
+  {
+    "id": "ctvs2-f06-recovery-flow",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "d83d51b6e1063b7d54961f460db0cc3c222e8ac3a6df5415884d1b61170a9e93"
+  },
+  {
+    "id": "ctvs2-f07-zero-net-mint",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "b663ae1ac2cc4d28dac71c48505a9d4e2cbe540e8187b10f2e552e3a56f71441"
+  },
+  {
+    "id": "ctvs2-f08-inflight-boundary",
+    "status": "new polished vector",
+    "format": "SVG and PDF",
+    "sha256": "d90e1cf466e255ceee93d6c11d9d78a0082200ba83d6aa89b5326e43c9a2a27a"
+  }
+]

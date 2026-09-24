@@ -1,0 +1,60 @@
+; CTVS candidate CDDL. Constructor tags and arities, not full ledger validation.
+; Both definite and indefinite lists are accepted at the Data level.
+; Byte leaves >64 are chunked in Plutus wire encoding; see normative prose.
+; Generic Data recursion, unique map keys, hashes and semantic constraints
+; are checked separately; this CDDL has not been run through a CDDL engine.
+
+Credential = #6.121([key_hash: bytes .size (28..28)]) / #6.122([script_hash: bytes .size (28..28)])
+
+StakeReference = #6.121([credential: Credential])
+
+Address = #6.121([payment: Credential, stake: #6.121([value: StakeReference]) / #6.122([])])
+
+Destination = #6.121([address: Address, inline_datum: #6.121([value: BoundedData]) / #6.122([])])
+
+Asset = #6.121([]) / #6.122([policy: bytes .size (28..28), name: bytes .size (0..32)])
+
+OutRef = #6.121([transaction_id: bytes .size (32..32), output_index: 0..65535])
+
+KeyController = #6.121([key_hash: bytes .size (28..28)])
+
+SettlerPolicy = #6.121([]) / #6.122([key_hashes: [ 1*16 bytes .size (28..28) ]])
+
+Terms = #6.121([profile: 0, network_domain: bytes .size (32..32), underlying: Asset, virtual_shares: 1..9223372036854775807, max_backing: #6.121([value: 0..9223372036854775807]) / #6.122([]), entry_bps: 0..9999, exit_bps: 0..9999, fee_destination: Destination, pause_key: #6.121([value: bytes .size (28..28)]) / #6.122([]), settlers: SettlerPolicy, execution_modes: 1..15, max_batch: 1..16, descriptor_hash: #6.121([value: bytes .size (32..32)]) / #6.122([])])
+
+Config = #6.124([magic: h'43545653', wire_version: 2, vault_policy: bytes .size (28..28), seed: OutRef, terms_hash: bytes .size (32..32), terms: Terms, storage_lovelace: 1..9223372036854775807])
+
+State = #6.121([magic: h'43545653', wire_version: 2, vault_policy: bytes .size (28..28), terms_hash: bytes .size (32..32), sequence: 0..9223372036854775807, backing_assets: 0..9223372036854775807, economic_supply: 0..9223372036854775807, accrued_fees: 0..9223372036854775807, storage_lovelace: 1..9223372036854775807, pause_flags: 0..3])
+
+Recovery = #6.121([vault_policy: bytes .size (28..28), controller: KeyController, refund: Destination, deadline_posix_ms: 1..9223372036854775807])
+
+RequestKind = #6.121([]) / #6.122([])
+
+RequestBody = #6.121([terms_hash: bytes .size (32..32), kind: RequestKind, offered: 1..9223372036854775807, minimum_output: 1..9223372036854775807, receiver: Destination, storage_lovelace: 1..9223372036854775807, execution_budget: 0..9223372036854775807, settler_fee: 0..9223372036854775807])
+
+Request = #6.122([magic: h'43545653', wire_version: 2, recovery: Recovery, economic_body: UninterpretedData])
+
+Claim = #6.123([magic: h'43545653', wire_version: 2, vault_policy: bytes .size (28..28), request_ref: OutRef, state_ref: OutRef, terms_hash: bytes .size (32..32), asset: Asset, economic_quantity: 1..9223372036854775807, receiver: Destination, carried_lovelace: 1..9223372036854775807])
+
+SettleEntry = #6.121([request_ref: OutRef, claim_output: 0..65535, claim_topup: 0..9223372036854775807])
+
+DeliverEntry = #6.121([claim_ref: OutRef, receiver_output: 0..65535])
+
+StateAction = #6.121([receiver: Destination, gross_assets: 1..9223372036854775807, min_shares: 1..9223372036854775807, state_output: 0..65535, receiver_output: 0..65535]) / #6.122([receiver: Destination, target_shares: 1..9223372036854775807, max_assets: 1..9223372036854775807, state_output: 0..65535, receiver_output: 0..65535]) / #6.123([receiver: Destination, net_assets: 1..9223372036854775807, max_shares: 1..9223372036854775807, state_output: 0..65535, receiver_output: 0..65535]) / #6.124([receiver: Destination, shares: 1..9223372036854775807, min_assets: 1..9223372036854775807, state_output: 0..65535, receiver_output: 0..65535]) / #6.125([state_output: 0..65535, entries: [ 1*16 SettleEntry ], reward_key: bytes .size (28..28), reward_output: #6.121([value: 0..65535]) / #6.122([])]) / #6.126([state_output: 0..65535, fee_output: 0..65535]) / #6.127([additional_lovelace: 1..9223372036854775807, state_output: 0..65535]) / #6.1280([pause_flags: 0..3, state_output: 0..65535])
+
+RequestAction = #6.121([state_ref: OutRef]) / #6.122([refund_output: 0..65535]) / #6.123([refund_output: 0..65535])
+
+ClaimAction = #6.121([entries: [ 1*16 DeliverEntry ]])
+
+MintAction = #6.121([config_output: 0..65535, state_output: 0..65535]) / #6.122([state_ref: OutRef])
+
+StateRedeemer = #6.121([magic: h'43545653', wire_version: 2, action: StateAction])
+
+RequestRedeemer = #6.122([magic: h'43545653', wire_version: 2, action: RequestAction])
+
+ClaimRedeemer = #6.123([magic: h'43545653', wire_version: 2, action: ClaimAction])
+
+MintRedeemer = #6.124([magic: h'43545653', wire_version: 2, action: MintAction])
+
+BoundedData = UninterpretedData ; recipient limits are additional predicates
+UninterpretedData = any ; actual values MUST be ledger-valid Plutus Data, not arbitrary CBOR

@@ -1,0 +1,3638 @@
+[
+  {
+    "id": "ctvs1-f03-genesis-flow",
+    "width": 1480,
+    "height": 1010,
+    "labels": [
+      {
+        "text": "CTVS-1  /  REFERENCE PROFILE 0",
+        "x0": 552.640625,
+        "y0": 20,
+        "x1": 927.359375,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Acyclic genesis & identity creation",
+        "x0": 409.25,
+        "y0": 56,
+        "x1": 1070.75,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "INPUTS",
+        "x0": 48,
+        "y0": 155,
+        "x1": 130.0,
+        "y1": 181.25,
+        "size": 21
+      },
+      {
+        "text": "BUILD",
+        "x0": 535,
+        "y0": 155,
+        "x1": 603.171875,
+        "y1": 181.25,
+        "size": 21
+      },
+      {
+        "text": "ONE-TIME TRANSACTION",
+        "x0": 1040,
+        "y0": 155,
+        "x1": 1320.328125,
+        "y1": 181.25,
+        "size": 21
+      },
+      {
+        "text": "Seed output r0",
+        "x0": 132,
+        "y0": 224.0,
+        "x1": 328.0625,
+        "y1": 259.0,
+        "size": 28
+      },
+      {
+        "text": "Existing UTxO",
+        "x0": 76,
+        "y0": 268.0,
+        "x1": 229.359375,
+        "y1": 298.0,
+        "size": 24
+      },
+      {
+        "text": "Consumed once at genesis",
+        "x0": 76,
+        "y0": 300.64,
+        "x1": 366.8125,
+        "y1": 330.64,
+        "size": 24
+      },
+      {
+        "text": "Terms K",
+        "x0": 132,
+        "y0": 424.0,
+        "x1": 241.96875,
+        "y1": 459.0,
+        "size": 28
+      },
+      {
+        "text": "Assets, fees, modes, roles",
+        "x0": 76,
+        "y0": 468.0,
+        "x1": 357.46875,
+        "y1": 498.0,
+        "size": 24
+      },
+      {
+        "text": "Commitment hK",
+        "x0": 76,
+        "y0": 500.64,
+        "x1": 248.0625,
+        "y1": 530.64,
+        "size": 24
+      },
+      {
+        "text": "No self-dependent hash",
+        "x0": 76,
+        "y0": 533.28,
+        "x1": 330.8125,
+        "y1": 563.28,
+        "size": 24
+      },
+      {
+        "text": "Parameterize T",
+        "x0": 619,
+        "y0": 289.0,
+        "x1": 818.234375,
+        "y1": 324.0,
+        "size": 28
+      },
+      {
+        "text": "Compile F_lock and Q_claim",
+        "x0": 563,
+        "y0": 333.0,
+        "x1": 869.75,
+        "y1": 363.0,
+        "size": 24
+      },
+      {
+        "text": "first.",
+        "x0": 563,
+        "y0": 365.64,
+        "x1": 608.34375,
+        "y1": 395.64,
+        "size": 24
+      },
+      {
+        "text": "Apply r0 and hK to T.",
+        "x0": 563,
+        "y0": 398.28,
+        "x1": 785.375,
+        "y1": 428.28,
+        "size": 24
+      },
+      {
+        "text": "Derive policy / script hash P.",
+        "x0": 563,
+        "y0": 430.92,
+        "x1": 862.6875,
+        "y1": 460.92,
+        "size": 24
+      },
+      {
+        "text": "Genesis mint",
+        "x0": 1124,
+        "y0": 223.0,
+        "x1": 1306.125,
+        "y1": 259.25,
+        "size": 29
+      },
+      {
+        "text": "Consume r0.",
+        "x0": 1068,
+        "y0": 268.0,
+        "x1": 1205.390625,
+        "y1": 298.0,
+        "size": 24
+      },
+      {
+        "text": "Mint ID(1) and STATE(1).",
+        "x0": 1068,
+        "y0": 300.64,
+        "x1": 1336.546875,
+        "y1": 330.64,
+        "size": 24
+      },
+      {
+        "text": "Mint no SHARE.",
+        "x0": 1068,
+        "y0": 333.28,
+        "x1": 1242.75,
+        "y1": 363.28,
+        "size": 24
+      },
+      {
+        "text": "Reject extra policy assets.",
+        "x0": 1068,
+        "y0": 365.92,
+        "x1": 1346.765625,
+        "y1": 395.92,
+        "size": 24
+      },
+      {
+        "text": "r0",
+        "x0": 460.078125,
+        "y0": 239,
+        "x1": 479.921875,
+        "y1": 265.25,
+        "size": 21
+      },
+      {
+        "text": "hK",
+        "x0": 461.0,
+        "y0": 530,
+        "x1": 489.0,
+        "y1": 556.25,
+        "size": 21
+      },
+      {
+        "text": "P",
+        "x0": 971.0,
+        "y0": 307,
+        "x1": 985.0,
+        "y1": 333.25,
+        "size": 21
+      },
+      {
+        "text": "Config at F_lock",
+        "x0": 132,
+        "y0": 697.0,
+        "x1": 365.34375,
+        "y1": 734.5,
+        "size": 30
+      },
+      {
+        "text": "ID(1) \u2022 Terms K and hK \u2022 exact reserve",
+        "x0": 76,
+        "y0": 742.0,
+        "x1": 504.40625,
+        "y1": 773.25,
+        "size": 25
+      },
+      {
+        "text": "State at P",
+        "x0": 856,
+        "y0": 697.0,
+        "x1": 992.703125,
+        "y1": 734.5,
+        "size": 30
+      },
+      {
+        "text": "STATE(1) \u2022 A = S = F = 0 \u2022 positive reserve",
+        "x0": 800,
+        "y0": 742.0,
+        "x1": 1273.0625,
+        "y1": 773.25,
+        "size": 25
+      },
+      {
+        "text": "After genesis: only SHARE may change, coupled to an authentic State transition.",
+        "x0": 310.421875,
+        "y0": 897.0,
+        "x1": 1169.578125,
+        "y1": 927.0,
+        "size": 24
+      },
+      {
+        "text": "ID and STATE cannot be minted again or burned. Compiled deployment proof remains required.",
+        "x0": 231.515625,
+        "y0": 929.16,
+        "x1": 1248.484375,
+        "y1": 959.16,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        210,
+        412,
+        366,
+        "Seed output r0"
+      ],
+      [
+        48,
+        410,
+        412,
+        610,
+        "Terms K"
+      ],
+      [
+        535,
+        275,
+        917,
+        585,
+        "Parameterize T"
+      ],
+      [
+        1040,
+        210,
+        1432,
+        498,
+        "Genesis mint"
+      ],
+      [
+        48,
+        685,
+        708,
+        861,
+        "Config at F_lock"
+      ],
+      [
+        772,
+        685,
+        1432,
+        861,
+        "State at P"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            412,
+            288
+          ],
+          [
+            475,
+            288
+          ],
+          [
+            475,
+            338
+          ],
+          [
+            535,
+            338
+          ]
+        ],
+        "label": "r0"
+      },
+      {
+        "points": [
+          [
+            412,
+            510
+          ],
+          [
+            475,
+            510
+          ],
+          [
+            475,
+            465
+          ],
+          [
+            535,
+            465
+          ]
+        ],
+        "label": "hK"
+      },
+      {
+        "points": [
+          [
+            917,
+            353
+          ],
+          [
+            1040,
+            353
+          ]
+        ],
+        "label": "P"
+      },
+      {
+        "points": [
+          [
+            1176,
+            498
+          ],
+          [
+            1176,
+            633
+          ],
+          [
+            378,
+            633
+          ],
+          [
+            378,
+            685
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            1276,
+            498
+          ],
+          [
+            1276,
+            656
+          ],
+          [
+            1102,
+            656
+          ],
+          [
+            1102,
+            685
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 24
+  },
+  {
+    "id": "ctvs1-f04-protected-obligations",
+    "width": 1480,
+    "height": 890,
+    "labels": [
+      {
+        "text": "CTVS-1  /  REFERENCE-PROFILE PAYMENT ALLOCATION",
+        "x0": 430.453125,
+        "y0": 20,
+        "x1": 1049.546875,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Every protected obligation needs its own value",
+        "x0": 294.1796875,
+        "y0": 56,
+        "x1": 1185.8203125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "REJECTED: payment reused",
+        "x0": 76,
+        "y0": 182,
+        "x1": 429.921875,
+        "y1": 214.5,
+        "size": 26
+      },
+      {
+        "text": "REQUIRED PATTERN: distinct outputs",
+        "x0": 800,
+        "y0": 182,
+        "x1": 1274.171875,
+        "y1": 214.5,
+        "size": 26
+      },
+      {
+        "text": "Obligation A",
+        "x0": 104,
+        "y0": 267.0,
+        "x1": 263.5,
+        "y1": 300.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 104,
+        "y0": 307.0,
+        "x1": 204.53125,
+        "y1": 340.75,
+        "size": 27
+      },
+      {
+        "text": "Obligation B",
+        "x0": 104,
+        "y0": 469.0,
+        "x1": 264.5,
+        "y1": 502.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 104,
+        "y0": 509.0,
+        "x1": 204.53125,
+        "y1": 542.75,
+        "size": 27
+      },
+      {
+        "text": "Output 0",
+        "x0": 473,
+        "y0": 367.0,
+        "x1": 583.984375,
+        "y1": 400.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 473,
+        "y0": 408.0,
+        "x1": 569.78125,
+        "y1": 440.5,
+        "size": 26
+      },
+      {
+        "text": "Same receiver",
+        "x0": 473,
+        "y0": 443.36,
+        "x1": 640.578125,
+        "y1": 475.86,
+        "size": 26
+      },
+      {
+        "text": "Obligation A",
+        "x0": 828,
+        "y0": 267.0,
+        "x1": 987.5,
+        "y1": 300.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 828,
+        "y0": 307.0,
+        "x1": 928.53125,
+        "y1": 340.75,
+        "size": 27
+      },
+      {
+        "text": "Obligation B",
+        "x0": 828,
+        "y0": 469.0,
+        "x1": 988.5,
+        "y1": 502.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 828,
+        "y0": 509.0,
+        "x1": 928.53125,
+        "y1": 542.75,
+        "size": 27
+      },
+      {
+        "text": "Output 0",
+        "x0": 1197,
+        "y0": 267.0,
+        "x1": 1307.984375,
+        "y1": 300.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 1197,
+        "y0": 307.0,
+        "x1": 1297.53125,
+        "y1": 340.75,
+        "size": 27
+      },
+      {
+        "text": "Output 1",
+        "x0": 1197,
+        "y0": 469.0,
+        "x1": 1307.984375,
+        "y1": 502.75,
+        "size": 27
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 1197,
+        "y0": 509.0,
+        "x1": 1297.53125,
+        "y1": 542.75,
+        "size": 27
+      },
+      {
+        "text": "20 owed  \u2260  10 funded",
+        "x0": 223.078125,
+        "y0": 612,
+        "x1": 532.921875,
+        "y1": 649.5,
+        "size": 30
+      },
+      {
+        "text": "20 owed  =  20 funded",
+        "x0": 946.5546875,
+        "y0": 612,
+        "x1": 1257.4453125,
+        "y1": 649.5,
+        "size": 30
+      },
+      {
+        "text": "Same receiver is allowed. Reusing protected value is not.",
+        "x0": 122,
+        "y0": 744,
+        "x1": 857.265625,
+        "y1": 777.75,
+        "size": 27
+      },
+      {
+        "text": "Each allocation must still match its amount, full destination and datum, within the closed transaction family.",
+        "x0": 76,
+        "y0": 789.0,
+        "x1": 1157.3125,
+        "y1": 817.75,
+        "size": 23
+      }
+    ],
+    "cards": [
+      [
+        76,
+        252,
+        321,
+        384,
+        "Obligation A"
+      ],
+      [
+        76,
+        454,
+        321,
+        586,
+        "Obligation B"
+      ],
+      [
+        445,
+        352,
+        680,
+        508,
+        "Output 0"
+      ],
+      [
+        800,
+        252,
+        1045,
+        384,
+        "Obligation A"
+      ],
+      [
+        800,
+        454,
+        1045,
+        586,
+        "Obligation B"
+      ],
+      [
+        1169,
+        252,
+        1404,
+        384,
+        "Output 0"
+      ],
+      [
+        1169,
+        454,
+        1404,
+        586,
+        "Output 1"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            321,
+            318
+          ],
+          [
+            374,
+            318
+          ],
+          [
+            374,
+            397
+          ],
+          [
+            445,
+            397
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            321,
+            520
+          ],
+          [
+            398,
+            520
+          ],
+          [
+            398,
+            462
+          ],
+          [
+            445,
+            462
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            1045,
+            318
+          ],
+          [
+            1169,
+            318
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            1045,
+            520
+          ],
+          [
+            1169,
+            520
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 23
+  },
+  {
+    "id": "ctvs1-f05-direct-operation-anatomy",
+    "width": 1480,
+    "height": 1110,
+    "labels": [
+      {
+        "text": "CTVS-1  /  WORKED EXAMPLES 1 AND 2",
+        "x0": 521.6796875,
+        "y0": 20,
+        "x1": 958.3203125,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Deposit and redeem: opposite supply effects",
+        "x0": 319.8046875,
+        "y0": 56,
+        "x1": 1160.1953125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "1  DEPOSIT 101,000 UNIT",
+        "x0": 76,
+        "y0": 186,
+        "x1": 388.046875,
+        "y1": 218.5,
+        "size": 26
+      },
+      {
+        "text": "Fee-exclusive admission; then share issuance",
+        "x0": 76,
+        "y0": 224,
+        "x1": 525.984375,
+        "y1": 251.5,
+        "size": 22
+      },
+      {
+        "text": "2  REDEEM 50,500 SHARE",
+        "x0": 800,
+        "y0": 186,
+        "x1": 1125.09375,
+        "y1": 218.5,
+        "size": 26
+      },
+      {
+        "text": "Uses the deposit\u2019s successor state",
+        "x0": 800,
+        "y0": 224,
+        "x1": 1138.296875,
+        "y1": 251.5,
+        "size": 22
+      },
+      {
+        "text": "Consumed inputs",
+        "x0": 160,
+        "y0": 292.0,
+        "x1": 413.34375,
+        "y1": 329.5,
+        "size": 30
+      },
+      {
+        "text": "State: A = S = 1,000,000; F = 0",
+        "x0": 104,
+        "y0": 338.0,
+        "x1": 432.9375,
+        "y1": 368.0,
+        "size": 24
+      },
+      {
+        "text": "User: 101,000 UNIT + 6,000,000 lovelace",
+        "x0": 104,
+        "y0": 370.64,
+        "x1": 545.78125,
+        "y1": 400.64,
+        "size": 24
+      },
+      {
+        "text": "Consumed inputs",
+        "x0": 884,
+        "y0": 292.0,
+        "x1": 1137.34375,
+        "y1": 329.5,
+        "size": 30
+      },
+      {
+        "text": "State: A = S = 1,100,000; F = 1,000",
+        "x0": 828,
+        "y0": 338.0,
+        "x1": 1203.640625,
+        "y1": 368.0,
+        "size": 24
+      },
+      {
+        "text": "Holder: 50,500 SHARE + 5,000,000 lovelace",
+        "x0": 828,
+        "y0": 370.64,
+        "x1": 1303.609375,
+        "y1": 400.64,
+        "size": 24
+      },
+      {
+        "text": "Recompute & enforce bounds",
+        "x0": 160,
+        "y0": 516.0,
+        "x1": 586.734375,
+        "y1": 553.5,
+        "size": 30
+      },
+      {
+        "text": "Entry fee: 1,000 UNIT",
+        "x0": 104,
+        "y0": 562.0,
+        "x1": 336.109375,
+        "y1": 592.0,
+        "size": 24
+      },
+      {
+        "text": "Backing +100,000; issue 100,000 SHARE",
+        "x0": 104,
+        "y0": 594.64,
+        "x1": 548.9375,
+        "y1": 624.64,
+        "size": 24
+      },
+      {
+        "text": "Minimum: 99,900 SHARE",
+        "x0": 104,
+        "y0": 627.28,
+        "x1": 377.453125,
+        "y1": 657.28,
+        "size": 24
+      },
+      {
+        "text": "Recompute & enforce bounds",
+        "x0": 884,
+        "y0": 516.0,
+        "x1": 1310.734375,
+        "y1": 553.5,
+        "size": 30
+      },
+      {
+        "text": "Gross debit: 50,500; exit fee: 500 UNIT",
+        "x0": 828,
+        "y0": 562.0,
+        "x1": 1244.203125,
+        "y1": 592.0,
+        "size": 24
+      },
+      {
+        "text": "Pay 50,000 UNIT; extinguish 50,500 SHARE",
+        "x0": 828,
+        "y0": 594.64,
+        "x1": 1300.25,
+        "y1": 624.64,
+        "size": 24
+      },
+      {
+        "text": "Minimum: 49,900 UNIT",
+        "x0": 828,
+        "y0": 627.28,
+        "x1": 1074.734375,
+        "y1": 657.28,
+        "size": 24
+      },
+      {
+        "text": "Created outputs",
+        "x0": 160,
+        "y0": 772.0,
+        "x1": 390.015625,
+        "y1": 809.5,
+        "size": 30
+      },
+      {
+        "text": "State: 1,101,000 UNIT",
+        "x0": 104,
+        "y0": 818.0,
+        "x1": 342.796875,
+        "y1": 848.0,
+        "size": 24
+      },
+      {
+        "text": "Receiver: 100,000 SHARE",
+        "x0": 104,
+        "y0": 850.64,
+        "x1": 388.140625,
+        "y1": 880.64,
+        "size": 24
+      },
+      {
+        "text": "Created outputs",
+        "x0": 884,
+        "y0": 772.0,
+        "x1": 1114.015625,
+        "y1": 809.5,
+        "size": 30
+      },
+      {
+        "text": "State: 1,051,000 UNIT",
+        "x0": 828,
+        "y0": 818.0,
+        "x1": 1066.796875,
+        "y1": 848.0,
+        "size": 24
+      },
+      {
+        "text": "Receiver: 50,000 UNIT",
+        "x0": 828,
+        "y0": 850.64,
+        "x1": 1072.078125,
+        "y1": 880.64,
+        "size": 24
+      },
+      {
+        "text": "Fees remain separate from share backing.",
+        "x0": 122,
+        "y0": 989,
+        "x1": 662.21875,
+        "y1": 1022.75,
+        "size": 27
+      },
+      {
+        "text": "UNIT and SHARE amounts are base units. State reserves, output ADA, funder change and network fees remain separately",
+        "x0": 76,
+        "y0": 1034.0,
+        "x1": 1326.171875,
+        "y1": 1062.75,
+        "size": 23
+      },
+      {
+        "text": "accounted for in Section 9.",
+        "x0": 76,
+        "y0": 1064.82,
+        "x1": 348.40625,
+        "y1": 1093.57,
+        "size": 23
+      }
+    ],
+    "cards": [
+      [
+        76,
+        280,
+        680,
+        448,
+        "Consumed inputs"
+      ],
+      [
+        800,
+        280,
+        1404,
+        448,
+        "Consumed inputs"
+      ],
+      [
+        76,
+        504,
+        680,
+        704,
+        "Recompute & enforce bounds"
+      ],
+      [
+        800,
+        504,
+        1404,
+        704,
+        "Recompute & enforce bounds"
+      ],
+      [
+        76,
+        760,
+        680,
+        910,
+        "Created outputs"
+      ],
+      [
+        800,
+        760,
+        1404,
+        910,
+        "Created outputs"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            378,
+            448
+          ],
+          [
+            378,
+            504
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            378,
+            704
+          ],
+          [
+            378,
+            760
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            1102,
+            448
+          ],
+          [
+            1102,
+            504
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            1102,
+            704
+          ],
+          [
+            1102,
+            760
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 23
+  },
+  {
+    "id": "ctvs1-f06-ada-accounting-partitions",
+    "width": 1480,
+    "height": 1050,
+    "labels": [
+      {
+        "text": "CTVS-1  /  WORKED EXAMPLE 3 \u2022 ALL ADA VALUES IN LOVELACE",
+        "x0": 379.9921875,
+        "y0": 20,
+        "x1": 1100.0078125,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "ADA: backing, fees and reserves are not interchangeable",
+        "x0": 196.3046875,
+        "y0": 56,
+        "x1": 1283.6953125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "BEFORE DEPOSIT",
+        "x0": 76,
+        "y0": 183,
+        "x1": 305.6875,
+        "y1": 215.5,
+        "size": 26
+      },
+      {
+        "text": "AFTER DEPOSIT",
+        "x0": 800,
+        "y0": 183,
+        "x1": 1008.0,
+        "y1": 215.5,
+        "size": 26
+      },
+      {
+        "text": "103,000,000",
+        "x0": 80,
+        "y0": 221,
+        "x1": 324.65625,
+        "y1": 276.0,
+        "size": 44
+      },
+      {
+        "text": "113,100,000",
+        "x0": 804,
+        "y0": 221,
+        "x1": 1046.234375,
+        "y1": 276.0,
+        "size": 44
+      },
+      {
+        "text": "Total State UTxO value",
+        "x0": 80,
+        "y0": 279,
+        "x1": 326.765625,
+        "y1": 309.0,
+        "size": 24
+      },
+      {
+        "text": "Total State UTxO value",
+        "x0": 804,
+        "y0": 279,
+        "x1": 1050.765625,
+        "y1": 309.0,
+        "size": 24
+      },
+      {
+        "text": "Backing A",
+        "x0": 80,
+        "y0": 352,
+        "x1": 191.1875,
+        "y1": 383.25,
+        "size": 25
+      },
+      {
+        "text": "100,000,000",
+        "x0": 514.234375,
+        "y0": 349,
+        "x1": 670.0,
+        "y1": 384.0,
+        "size": 28
+      },
+      {
+        "text": "Accrued fees F",
+        "x0": 80,
+        "y0": 413,
+        "x1": 248.15625,
+        "y1": 444.25,
+        "size": 25
+      },
+      {
+        "text": "0",
+        "x0": 654.421875,
+        "y0": 410,
+        "x1": 670.0,
+        "y1": 445.0,
+        "size": 28
+      },
+      {
+        "text": "Storage reserve R",
+        "x0": 80,
+        "y0": 474,
+        "x1": 282.90625,
+        "y1": 505.25,
+        "size": 25
+      },
+      {
+        "text": "3,000,000",
+        "x0": 545.390625,
+        "y0": 471,
+        "x1": 670.0,
+        "y1": 506.0,
+        "size": 28
+      },
+      {
+        "text": "Backing A",
+        "x0": 804,
+        "y0": 352,
+        "x1": 915.1875,
+        "y1": 383.25,
+        "size": 25
+      },
+      {
+        "text": "110,000,000",
+        "x0": 1239.78125,
+        "y0": 349,
+        "x1": 1394.0,
+        "y1": 384.0,
+        "size": 28
+      },
+      {
+        "text": "Accrued fees F",
+        "x0": 804,
+        "y0": 413,
+        "x1": 972.15625,
+        "y1": 444.25,
+        "size": 25
+      },
+      {
+        "text": "100,000",
+        "x0": 1292.75,
+        "y0": 410,
+        "x1": 1394.0,
+        "y1": 445.0,
+        "size": 28
+      },
+      {
+        "text": "Storage reserve R",
+        "x0": 804,
+        "y0": 474,
+        "x1": 1006.90625,
+        "y1": 505.25,
+        "size": 25
+      },
+      {
+        "text": "3,000,000",
+        "x0": 1269.390625,
+        "y0": 471,
+        "x1": 1394.0,
+        "y1": 506.0,
+        "size": 28
+      },
+      {
+        "text": "User funds 15,100,000 lovelace",
+        "x0": 132,
+        "y0": 602.0,
+        "x1": 573.9375,
+        "y1": 639.5,
+        "size": 30
+      },
+      {
+        "text": "Gross deposit 10,100,000 = 10,000,000 new backing + 100,000 fee. The remaining 5,000,000 funds the allocations",
+        "x0": 76,
+        "y0": 647.0,
+        "x1": 1348.96875,
+        "y1": 678.25,
+        "size": 25
+      },
+      {
+        "text": "below.",
+        "x0": 76,
+        "y0": 681.0,
+        "x1": 146.890625,
+        "y1": 712.25,
+        "size": 25
+      },
+      {
+        "text": "Share-output reserve",
+        "x0": 72,
+        "y0": 790,
+        "x1": 303.375,
+        "y1": 818.75,
+        "size": 23
+      },
+      {
+        "text": "2,000,000",
+        "x0": 72,
+        "y0": 824,
+        "x1": 232.109375,
+        "y1": 869.0,
+        "size": 36
+      },
+      {
+        "text": "Receiver also gets 10,000,000 SHARE",
+        "x0": 72,
+        "y0": 868,
+        "x1": 433.734375,
+        "y1": 894.25,
+        "size": 21
+      },
+      {
+        "text": "Funder change",
+        "x0": 544,
+        "y0": 790,
+        "x1": 708.859375,
+        "y1": 818.75,
+        "size": 23
+      },
+      {
+        "text": "2,600,000",
+        "x0": 544,
+        "y0": 824,
+        "x1": 704.109375,
+        "y1": 869.0,
+        "size": 36
+      },
+      {
+        "text": "Outside the vault\u2019s backing",
+        "x0": 544,
+        "y0": 868,
+        "x1": 794.5,
+        "y1": 894.25,
+        "size": 21
+      },
+      {
+        "text": "Network fee",
+        "x0": 1016,
+        "y0": 790,
+        "x1": 1146.390625,
+        "y1": 818.75,
+        "size": 23
+      },
+      {
+        "text": "400,000",
+        "x0": 1016,
+        "y0": 824,
+        "x1": 1146.09375,
+        "y1": 869.0,
+        "size": 36
+      },
+      {
+        "text": "Illustrative\u2014not a network estimate",
+        "x0": 1016,
+        "y0": 868,
+        "x1": 1342.703125,
+        "y1": 894.25,
+        "size": 21
+      },
+      {
+        "text": "118,100,000 in  =  113,100,000 + 2,000,000 + 2,600,000 + 400,000 out",
+        "x0": 312.9140625,
+        "y0": 954,
+        "x1": 1167.0859375,
+        "y1": 987.75,
+        "size": 27
+      },
+      {
+        "text": "Reserve R is unchanged; output storage does not buy extra shares.",
+        "x0": 380.46875,
+        "y0": 999,
+        "x1": 1099.53125,
+        "y1": 1029.0,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        590,
+        1432,
+        734,
+        "User funds 15,100,000 lovelace"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            708,
+            263
+          ],
+          [
+            772,
+            263
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 25
+  },
+  {
+    "id": "ctvs1-f07-managed-accounting-boundary",
+    "width": 1480,
+    "height": 955,
+    "labels": [
+      {
+        "text": "CTVS-1  /  MANAGED EXTENSION \u2022 OUTSIDE REFERENCE PROFILE 0",
+        "x0": 363.109375,
+        "y0": 20,
+        "x1": 1116.890625,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Managed backing is not the same as available liquidity",
+        "x0": 216.1796875,
+        "y0": 56,
+        "x1": 1263.8203125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "Custody evidence",
+        "x0": 132,
+        "y0": 258.0,
+        "x1": 380.1875,
+        "y1": 294.25,
+        "size": 29
+      },
+      {
+        "text": "Idle underlying",
+        "x0": 76,
+        "y0": 301.0,
+        "x1": 245.0625,
+        "y1": 333.5,
+        "size": 26
+      },
+      {
+        "text": "Authenticated positions",
+        "x0": 76,
+        "y0": 336.36,
+        "x1": 344.765625,
+        "y1": 368.86,
+        "size": 26
+      },
+      {
+        "text": "Restricted assets",
+        "x0": 76,
+        "y0": 371.72,
+        "x1": 275.359375,
+        "y1": 404.22,
+        "size": 26
+      },
+      {
+        "text": "Actual downstream rights",
+        "x0": 76,
+        "y0": 407.08,
+        "x1": 367.828125,
+        "y1": 439.58,
+        "size": 26
+      },
+      {
+        "text": "Valuation &",
+        "x0": 628,
+        "y0": 258.0,
+        "x1": 785.9375,
+        "y1": 294.25,
+        "size": 29
+      },
+      {
+        "text": "liabilities",
+        "x0": 628,
+        "y0": 290.48,
+        "x1": 752.125,
+        "y1": 326.73,
+        "size": 29
+      },
+      {
+        "text": "Pinned position set",
+        "x0": 572,
+        "y0": 334.48,
+        "x1": 783.28125,
+        "y1": 365.73,
+        "size": 25
+      },
+      {
+        "text": "Debt and accrued fees",
+        "x0": 572,
+        "y0": 368.48,
+        "x1": 823.609375,
+        "y1": 399.73,
+        "size": 25
+      },
+      {
+        "text": "Accepted state-basis report",
+        "x0": 572,
+        "y0": 402.48,
+        "x1": 876.390625,
+        "y1": 433.73,
+        "size": 25
+      },
+      {
+        "text": "Reporter trust disclosed",
+        "x0": 572,
+        "y0": 436.48,
+        "x1": 836.046875,
+        "y1": 467.73,
+        "size": 25
+      },
+      {
+        "text": "Backing A",
+        "x0": 1124,
+        "y0": 214.0,
+        "x1": 1264.734375,
+        "y1": 250.25,
+        "size": 29
+      },
+      {
+        "text": "Recognized net equity",
+        "x0": 1068,
+        "y0": 259.0,
+        "x1": 1305.453125,
+        "y1": 289.0,
+        "size": 24
+      },
+      {
+        "text": "No double counting",
+        "x0": 1068,
+        "y0": 291.64,
+        "x1": 1274.78125,
+        "y1": 321.64,
+        "size": 24
+      },
+      {
+        "text": "Deficits remain explicit",
+        "x0": 1068,
+        "y0": 324.28,
+        "x1": 1306.71875,
+        "y1": 354.28,
+        "size": 24
+      },
+      {
+        "text": "Liquidity L",
+        "x0": 1124,
+        "y0": 486.0,
+        "x1": 1270.625,
+        "y1": 522.25,
+        "size": 29
+      },
+      {
+        "text": "What can actually be paid",
+        "x0": 1068,
+        "y0": 531.0,
+        "x1": 1342.796875,
+        "y1": 561.0,
+        "size": 24
+      },
+      {
+        "text": "Available underlying",
+        "x0": 1068,
+        "y0": 563.64,
+        "x1": 1282.328125,
+        "y1": 593.64,
+        "size": 24
+      },
+      {
+        "text": "Authorized unwind path",
+        "x0": 1068,
+        "y0": 596.28,
+        "x1": 1318.8125,
+        "y1": 626.28,
+        "size": 24
+      },
+      {
+        "text": "Bind absolute NAV to its exact accounting-state basis",
+        "x0": 132,
+        "y0": 734.0,
+        "x1": 847.390625,
+        "y1": 769.0,
+        "size": 28
+      },
+      {
+        "text": "Otherwise use only a separately specified and proved cash-flow bridge; a stale absolute report cannot silently overwrite",
+        "x0": 76,
+        "y0": 778.0,
+        "x1": 1340.59375,
+        "y1": 808.0,
+        "size": 24
+      },
+      {
+        "text": "intervening flows.",
+        "x0": 76,
+        "y0": 810.64,
+        "x1": 261.40625,
+        "y1": 840.64,
+        "size": 24
+      },
+      {
+        "text": "A signature identifies the reporter\u2014it does not establish truthful value.",
+        "x0": 370.46875,
+        "y0": 879.0,
+        "x1": 1109.53125,
+        "y1": 909.0,
+        "size": 24
+      },
+      {
+        "text": "Positive backing does not guarantee immediate exit. Managed conformance still needs a real integration.",
+        "x0": 183.7109375,
+        "y0": 911.16,
+        "x1": 1296.2890625,
+        "y1": 941.16,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        245,
+        442,
+        562,
+        "Custody evidence"
+      ],
+      [
+        544,
+        245,
+        938,
+        562,
+        "Valuation & liabilities"
+      ],
+      [
+        1040,
+        201,
+        1432,
+        398,
+        "Backing A"
+      ],
+      [
+        1040,
+        473,
+        1432,
+        670,
+        "Liquidity L"
+      ],
+      [
+        48,
+        720,
+        1432,
+        860,
+        "Bind absolute NAV to its exact accounting-state basis"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            442,
+            400
+          ],
+          [
+            544,
+            400
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            938,
+            351
+          ],
+          [
+            990,
+            351
+          ],
+          [
+            990,
+            299
+          ],
+          [
+            1040,
+            299
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            938,
+            456
+          ],
+          [
+            990,
+            456
+          ],
+          [
+            990,
+            571
+          ],
+          [
+            1040,
+            571
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 24
+  },
+  {
+    "id": "ctvs2-f02-request-creation-envelope",
+    "width": 1480,
+    "height": 1010,
+    "labels": [
+      {
+        "text": "CTVS-2  /  REFERENCE PROFILE 0 \u2022 INDEPENDENT REQUEST CREATION",
+        "x0": 343.2734375,
+        "y0": 20,
+        "x1": 1136.7265625,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "One request, two deliberately separate validation paths",
+        "x0": 211.0703125,
+        "y0": 56,
+        "x1": 1268.9296875,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "User inputs",
+        "x0": 132,
+        "y0": 218.0,
+        "x1": 291.53125,
+        "y1": 254.25,
+        "size": 29
+      },
+      {
+        "text": "Offered assets or shares",
+        "x0": 76,
+        "y0": 263.0,
+        "x1": 338.359375,
+        "y1": 293.0,
+        "size": 24
+      },
+      {
+        "text": "Storage + execution budget",
+        "x0": 76,
+        "y0": 295.64,
+        "x1": 370.203125,
+        "y1": 325.64,
+        "size": 24
+      },
+      {
+        "text": "Create request",
+        "x0": 628,
+        "y0": 218.0,
+        "x1": 831.0625,
+        "y1": 254.25,
+        "size": 29
+      },
+      {
+        "text": "Create an independent UTxO.",
+        "x0": 572,
+        "y0": 263.0,
+        "x1": 892.15625,
+        "y1": 293.0,
+        "size": 24
+      },
+      {
+        "text": "Return user change.",
+        "x0": 572,
+        "y0": 295.64,
+        "x1": 789.453125,
+        "y1": 325.64,
+        "size": 24
+      },
+      {
+        "text": "Request UTxO",
+        "x0": 1124,
+        "y0": 218.0,
+        "x1": 1323.8125,
+        "y1": 254.25,
+        "size": 29
+      },
+      {
+        "text": "Stable identity: originating",
+        "x0": 1068,
+        "y0": 263.0,
+        "x1": 1342.8125,
+        "y1": 293.0,
+        "size": 24
+      },
+      {
+        "text": "transaction output reference",
+        "x0": 1068,
+        "y0": 295.64,
+        "x1": 1366.84375,
+        "y1": 325.64,
+        "size": 24
+      },
+      {
+        "text": "ACCOUNTING STATE IS NOT CONSUMED",
+        "x0": 122.921875,
+        "y0": 429,
+        "x1": 521.078125,
+        "y1": 454.0,
+        "size": 20
+      },
+      {
+        "text": "SUPPORTED OUTER VERSION  +  RECOVERY  +  ECONOMIC BODY",
+        "x0": 351.203125,
+        "y0": 468,
+        "x1": 1128.796875,
+        "y1": 498.0,
+        "size": 24
+      },
+      {
+        "text": "Stable Recovery envelope",
+        "x0": 132,
+        "y0": 552.0,
+        "x1": 503.859375,
+        "y1": 589.5,
+        "size": 30
+      },
+      {
+        "text": "Vault binding and controller",
+        "x0": 76,
+        "y0": 597.0,
+        "x1": 377.15625,
+        "y1": 628.25,
+        "size": 25
+      },
+      {
+        "text": "Fixed refund destination and datum",
+        "x0": 76,
+        "y0": 631.0,
+        "x1": 468.0,
+        "y1": 662.25,
+        "size": 25
+      },
+      {
+        "text": "Deadline",
+        "x0": 76,
+        "y0": 665.0,
+        "x1": 174.671875,
+        "y1": 696.25,
+        "size": 25
+      },
+      {
+        "text": "Read before economic downcasting",
+        "x0": 76,
+        "y0": 699.0,
+        "x1": 473.515625,
+        "y1": 730.25,
+        "size": 25
+      },
+      {
+        "text": "Settlement-only economic body",
+        "x0": 856,
+        "y0": 552.0,
+        "x1": 1309.390625,
+        "y1": 589.5,
+        "size": 30
+      },
+      {
+        "text": "Terms, operation and offered quantity",
+        "x0": 800,
+        "y0": 597.0,
+        "x1": 1213.796875,
+        "y1": 628.25,
+        "size": 25
+      },
+      {
+        "text": "Minimum output and success receiver",
+        "x0": 800,
+        "y0": 631.0,
+        "x1": 1219.6875,
+        "y1": 662.25,
+        "size": 25
+      },
+      {
+        "text": "Storage, budget and exact settler fee",
+        "x0": 800,
+        "y0": 665.0,
+        "x1": 1210.125,
+        "y1": 696.25,
+        "size": 25
+      },
+      {
+        "text": "Validate the complete economic intent",
+        "x0": 800,
+        "y0": 699.0,
+        "x1": 1220.6875,
+        "y1": 730.25,
+        "size": 25
+      },
+      {
+        "text": "Creation does not change backing or supply, reserve capacity, or prove settlement eligibility.",
+        "x0": 253.109375,
+        "y0": 887.0,
+        "x1": 1226.890625,
+        "y1": 917.0,
+        "size": 24
+      },
+      {
+        "text": "Unsupported economics can remain refundable only when the outer Recovery envelope is valid.",
+        "x0": 230.421875,
+        "y0": 919.16,
+        "x1": 1249.578125,
+        "y1": 949.16,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        205,
+        440,
+        383,
+        "User inputs"
+      ],
+      [
+        544,
+        205,
+        936,
+        383,
+        "Create request"
+      ],
+      [
+        1040,
+        205,
+        1432,
+        383,
+        "Request UTxO"
+      ],
+      [
+        48,
+        540,
+        708,
+        844,
+        "Stable Recovery envelope"
+      ],
+      [
+        772,
+        540,
+        1432,
+        844,
+        "Settlement-only economic body"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            440,
+            293
+          ],
+          [
+            544,
+            293
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            936,
+            293
+          ],
+          [
+            1040,
+            293
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 24
+  },
+  {
+    "id": "ctvs2-f03-two-way-acknowledgment",
+    "width": 1480,
+    "height": 940,
+    "labels": [
+      {
+        "text": "CTVS-2  /  REFERENCE PROFILE 0 \u2022 REQUEST / STATE COUPLING",
+        "x0": 379.78125,
+        "y0": 20,
+        "x1": 1100.21875,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Settlement requires agreement in both directions",
+        "x0": 272.359375,
+        "y0": 56,
+        "x1": 1207.640625,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "Consumed Request",
+        "x0": 132,
+        "y0": 251.0,
+        "x1": 413.734375,
+        "y1": 288.5,
+        "size": 30
+      },
+      {
+        "text": "RequestSpend:",
+        "x0": 76,
+        "y0": 296.0,
+        "x1": 248.375,
+        "y1": 327.25,
+        "size": 25
+      },
+      {
+        "text": "Acknowledge(state_ref)",
+        "x0": 76,
+        "y0": 330.0,
+        "x1": 338.671875,
+        "y1": 361.25,
+        "size": 25
+      },
+      {
+        "text": "",
+        "x0": 76,
+        "y0": 364.0,
+        "x1": 76.0,
+        "y1": 395.25,
+        "size": 25
+      },
+      {
+        "text": "Points to the actual consumed State",
+        "x0": 76,
+        "y0": 398.0,
+        "x1": 476.34375,
+        "y1": 429.25,
+        "size": 25
+      },
+      {
+        "text": "and its StateSpend(Batch) action.",
+        "x0": 76,
+        "y0": 432.0,
+        "x1": 448.53125,
+        "y1": 463.25,
+        "size": 25
+      },
+      {
+        "text": "Consumed State",
+        "x0": 960,
+        "y0": 251.0,
+        "x1": 1196.71875,
+        "y1": 288.5,
+        "size": 30
+      },
+      {
+        "text": "StateSpend:",
+        "x0": 904,
+        "y0": 296.0,
+        "x1": 1041.640625,
+        "y1": 327.25,
+        "size": 25
+      },
+      {
+        "text": "Batch(entries)",
+        "x0": 904,
+        "y0": 330.0,
+        "x1": 1059.640625,
+        "y1": 361.25,
+        "size": 25
+      },
+      {
+        "text": "",
+        "x0": 904,
+        "y0": 364.0,
+        "x1": 904.0,
+        "y1": 395.25,
+        "size": 25
+      },
+      {
+        "text": "Checks every consumed Request",
+        "x0": 904,
+        "y0": 398.0,
+        "x1": 1277.84375,
+        "y1": 429.25,
+        "size": 25
+      },
+      {
+        "text": "and its matching acknowledgment.",
+        "x0": 904,
+        "y0": 432.0,
+        "x1": 1287.609375,
+        "y1": 463.25,
+        "size": 25
+      },
+      {
+        "text": "must name this State",
+        "x0": 634.4140625,
+        "y0": 281,
+        "x1": 845.5859375,
+        "y1": 307.25,
+        "size": 21
+      },
+      {
+        "text": "must cover this",
+        "x0": 662.4140625,
+        "y0": 495,
+        "x1": 817.5859375,
+        "y1": 521.25,
+        "size": 21
+      },
+      {
+        "text": "Request",
+        "x0": 698.578125,
+        "y0": 522,
+        "x1": 781.421875,
+        "y1": 548.25,
+        "size": 21
+      },
+      {
+        "text": "Complete, unique coverage\u2014not a batcher\u2019s assertion",
+        "x0": 132,
+        "y0": 643.0,
+        "x1": 908.859375,
+        "y1": 680.5,
+        "size": 30
+      },
+      {
+        "text": "Unique entry references + exact set equality with all consumed Requests.",
+        "x0": 76,
+        "y0": 688.0,
+        "x1": 889.765625,
+        "y1": 719.25,
+        "size": 25
+      },
+      {
+        "text": "Price and validate the same covered set; every protected output remains separately allocated.",
+        "x0": 76,
+        "y0": 722.0,
+        "x1": 1115.703125,
+        "y1": 753.25,
+        "size": 25
+      },
+      {
+        "text": "Referencing State is insufficient. Pause or reserve top-up is not Batch.",
+        "x0": 367.3515625,
+        "y0": 838.0,
+        "x1": 1112.6484375,
+        "y1": 868.0,
+        "size": 24
+      },
+      {
+        "text": "An omitted request, duplicate entry, or Cancel branch cannot count as acknowledgment.",
+        "x0": 272.640625,
+        "y0": 870.16,
+        "x1": 1207.359375,
+        "y1": 900.16,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        239,
+        604,
+        573,
+        "Consumed Request"
+      ],
+      [
+        876,
+        239,
+        1432,
+        573,
+        "Consumed State"
+      ],
+      [
+        48,
+        631,
+        1432,
+        799,
+        "Complete, unique coverage\u2014not a batcher\u2019s assertion"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            604,
+            341
+          ],
+          [
+            876,
+            341
+          ]
+        ],
+        "label": "must name this State"
+      },
+      {
+        "points": [
+          [
+            876,
+            478
+          ],
+          [
+            604,
+            478
+          ]
+        ],
+        "label": "must cover this Request"
+      }
+    ],
+    "min_body_size": 24
+  },
+  {
+    "id": "ctvs2-f05-delivery-variants",
+    "width": 1480,
+    "height": 985,
+    "labels": [
+      {
+        "text": "CTVS-2  /  PROFILE 0 AND A SEPARATE NATIVE SEMANTIC VARIANT",
+        "x0": 366.0703125,
+        "y0": 20,
+        "x1": 1113.9296875,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Two delivery paths, one economic cutover",
+        "x0": 339.2421875,
+        "y0": 56,
+        "x1": 1140.7578125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "A  REFERENCE PROFILE 0 \u2014 FUNDED CLAIM",
+        "x0": 76,
+        "y0": 189,
+        "x1": 648.484375,
+        "y1": 221.5,
+        "size": 26
+      },
+      {
+        "text": "Request",
+        "x0": 160,
+        "y0": 264.0,
+        "x1": 270.5,
+        "y1": 299.0,
+        "size": 28
+      },
+      {
+        "text": "Profile-0 consent",
+        "x0": 104,
+        "y0": 308.0,
+        "x1": 284.09375,
+        "y1": 338.0,
+        "size": 24
+      },
+      {
+        "text": "Consumed in settlement",
+        "x0": 104,
+        "y0": 340.64,
+        "x1": 362.78125,
+        "y1": 370.64,
+        "size": 24
+      },
+      {
+        "text": "Funded claim",
+        "x0": 626,
+        "y0": 263.0,
+        "x1": 812.9375,
+        "y1": 299.25,
+        "size": 29
+      },
+      {
+        "text": "100,000 SHARE + 2,000,000",
+        "x0": 570,
+        "y0": 308.0,
+        "x1": 880.21875,
+        "y1": 338.0,
+        "size": 24
+      },
+      {
+        "text": "lovelace",
+        "x0": 570,
+        "y0": 340.64,
+        "x1": 658.03125,
+        "y1": 370.64,
+        "size": 24
+      },
+      {
+        "text": "Shares already participate",
+        "x0": 570,
+        "y0": 373.28,
+        "x1": 848.8125,
+        "y1": 403.28,
+        "size": 24
+      },
+      {
+        "text": "Final receiver",
+        "x0": 1164,
+        "y0": 264.0,
+        "x1": 1344.59375,
+        "y1": 299.0,
+        "size": 28
+      },
+      {
+        "text": "Exact destination and",
+        "x0": 1108,
+        "y0": 308.0,
+        "x1": 1337.46875,
+        "y1": 338.0,
+        "size": 24
+      },
+      {
+        "text": "datum",
+        "x0": 1108,
+        "y0": 340.64,
+        "x1": 1174.703125,
+        "y1": 370.64,
+        "size": 24
+      },
+      {
+        "text": "No repricing or mint",
+        "x0": 1108,
+        "y0": 373.28,
+        "x1": 1317.40625,
+        "y1": 403.28,
+        "size": 24
+      },
+      {
+        "text": "settle",
+        "x0": 443.578125,
+        "y0": 291,
+        "x1": 498.421875,
+        "y1": 317.25,
+        "size": 21
+      },
+      {
+        "text": "deliver later",
+        "x0": 950.078125,
+        "y0": 291,
+        "x1": 1067.921875,
+        "y1": 317.25,
+        "size": 21
+      },
+      {
+        "text": "B  NATIVE SEMANTIC VARIANT \u2014 DIRECT AT SETTLEMENT",
+        "x0": 76,
+        "y0": 517,
+        "x1": 823.234375,
+        "y1": 549.5,
+        "size": 26
+      },
+      {
+        "text": "Request",
+        "x0": 160,
+        "y0": 592.0,
+        "x1": 270.5,
+        "y1": 627.0,
+        "size": 28
+      },
+      {
+        "text": "Explicit direct-delivery",
+        "x0": 104,
+        "y0": 636.0,
+        "x1": 336.0625,
+        "y1": 666.0,
+        "size": 24
+      },
+      {
+        "text": "consent and variant",
+        "x0": 104,
+        "y0": 668.64,
+        "x1": 313.453125,
+        "y1": 698.64,
+        "size": 24
+      },
+      {
+        "text": "binding",
+        "x0": 104,
+        "y0": 701.28,
+        "x1": 181.375,
+        "y1": 731.28,
+        "size": 24
+      },
+      {
+        "text": "Settlement",
+        "x0": 626,
+        "y0": 591.0,
+        "x1": 774.25,
+        "y1": 627.25,
+        "size": 29
+      },
+      {
+        "text": "Same quote, fees and supply",
+        "x0": 570,
+        "y0": 636.0,
+        "x1": 880.859375,
+        "y1": 666.0,
+        "size": 24
+      },
+      {
+        "text": "change",
+        "x0": 570,
+        "y0": 668.64,
+        "x1": 648.71875,
+        "y1": 698.64,
+        "size": 24
+      },
+      {
+        "text": "No intermediate Claim UTxO",
+        "x0": 570,
+        "y0": 701.28,
+        "x1": 876.734375,
+        "y1": 731.28,
+        "size": 24
+      },
+      {
+        "text": "Final receiver",
+        "x0": 1164,
+        "y0": 592.0,
+        "x1": 1344.59375,
+        "y1": 627.0,
+        "size": 28
+      },
+      {
+        "text": "100,000 SHARE",
+        "x0": 1108,
+        "y0": 636.0,
+        "x1": 1284.109375,
+        "y1": 666.0,
+        "size": 24
+      },
+      {
+        "text": "2,000,000 lovelace",
+        "x0": 1108,
+        "y0": 668.64,
+        "x1": 1309.453125,
+        "y1": 698.64,
+        "size": 24
+      },
+      {
+        "text": "consume",
+        "x0": 424.9140625,
+        "y0": 619,
+        "x1": 517.0859375,
+        "y1": 645.25,
+        "size": 21
+      },
+      {
+        "text": "pay now",
+        "x0": 967.0078125,
+        "y0": 619,
+        "x1": 1050.9921875,
+        "y1": 645.25,
+        "size": 21
+      },
+      {
+        "text": "A native variant cannot reinterpret an existing profile-0 request.",
+        "x0": 122,
+        "y0": 850,
+        "x1": 935.671875,
+        "y1": 883.75,
+        "size": 27
+      },
+      {
+        "text": "It needs its own reviewed consent, encoding and transaction rules. Both routes change economic participation at settlement\u2014not",
+        "x0": 76,
+        "y0": 895.0,
+        "x1": 1388.0625,
+        "y1": 923.75,
+        "size": 23
+      },
+      {
+        "text": "at later claim delivery.",
+        "x0": 76,
+        "y0": 925.82,
+        "x1": 296.734375,
+        "y1": 954.57,
+        "size": 23
+      }
+    ],
+    "cards": [
+      [
+        76,
+        250,
+        400,
+        427,
+        "Request"
+      ],
+      [
+        542,
+        250,
+        938,
+        427,
+        "Funded claim"
+      ],
+      [
+        1080,
+        250,
+        1404,
+        427,
+        "Final receiver"
+      ],
+      [
+        76,
+        578,
+        400,
+        755,
+        "Request"
+      ],
+      [
+        542,
+        578,
+        938,
+        755,
+        "Settlement"
+      ],
+      [
+        1080,
+        578,
+        1404,
+        755,
+        "Final receiver"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            400,
+            335
+          ],
+          [
+            542,
+            335
+          ]
+        ],
+        "label": "settle"
+      },
+      {
+        "points": [
+          [
+            938,
+            335
+          ],
+          [
+            1080,
+            335
+          ]
+        ],
+        "label": "deliver later"
+      },
+      {
+        "points": [
+          [
+            400,
+            663
+          ],
+          [
+            542,
+            663
+          ]
+        ],
+        "label": "consume"
+      },
+      {
+        "points": [
+          [
+            938,
+            663
+          ],
+          [
+            1080,
+            663
+          ]
+        ],
+        "label": "pay now"
+      }
+    ],
+    "min_body_size": 23
+  },
+  {
+    "id": "ctvs2-f06-recovery-flow",
+    "width": 1480,
+    "height": 1025,
+    "labels": [
+      {
+        "text": "CTVS-2  /  REFERENCE PROFILE 0 \u2022 FIXED FULL-VALUE REFUND",
+        "x0": 385.3828125,
+        "y0": 20,
+        "x1": 1094.6171875,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Recovery can succeed when settlement cannot",
+        "x0": 299.4921875,
+        "y0": 56,
+        "x1": 1180.5078125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "Actual Request",
+        "x0": 132,
+        "y0": 244.0,
+        "x1": 343.09375,
+        "y1": 280.25,
+        "size": 29
+      },
+      {
+        "text": "value",
+        "x0": 132,
+        "y0": 276.48,
+        "x1": 206.15625,
+        "y1": 312.73,
+        "size": 29
+      },
+      {
+        "text": "101,000 UNIT",
+        "x0": 76,
+        "y0": 318.48,
+        "x1": 244.09375,
+        "y1": 352.23,
+        "size": 27
+      },
+      {
+        "text": "3,500,000 lovelace",
+        "x0": 76,
+        "y0": 355.20000000000005,
+        "x1": 302.671875,
+        "y1": 388.95000000000005,
+        "size": 27
+      },
+      {
+        "text": "7 EXTRA",
+        "x0": 76,
+        "y0": 391.92,
+        "x1": 188.5625,
+        "y1": 425.67,
+        "size": 27
+      },
+      {
+        "text": "Decode Recovery",
+        "x0": 628,
+        "y0": 244.0,
+        "x1": 871.375,
+        "y1": 280.25,
+        "size": 29
+      },
+      {
+        "text": "first",
+        "x0": 628,
+        "y0": 276.48,
+        "x1": 682.78125,
+        "y1": 312.73,
+        "size": 29
+      },
+      {
+        "text": "Supported outer version",
+        "x0": 572,
+        "y0": 320.48,
+        "x1": 838.890625,
+        "y1": 351.73,
+        "size": 25
+      },
+      {
+        "text": "Vault, controller, fixed refund",
+        "x0": 572,
+        "y0": 354.48,
+        "x1": 887.0625,
+        "y1": 385.73,
+        "size": 25
+      },
+      {
+        "text": "Deadline",
+        "x0": 572,
+        "y0": 388.48,
+        "x1": 670.671875,
+        "y1": 419.73,
+        "size": 25
+      },
+      {
+        "text": "Invalid economics",
+        "x0": 1124,
+        "y0": 244.0,
+        "x1": 1375.4375,
+        "y1": 280.25,
+        "size": 29
+      },
+      {
+        "text": "Unsupported C(99, [])",
+        "x0": 1068,
+        "y0": 289.0,
+        "x1": 1298.78125,
+        "y1": 319.0,
+        "size": 24
+      },
+      {
+        "text": "Settlement must reject.",
+        "x0": 1068,
+        "y0": 321.64,
+        "x1": 1313.453125,
+        "y1": 351.64,
+        "size": 24
+      },
+      {
+        "text": "This does not alone block",
+        "x0": 1068,
+        "y0": 354.28,
+        "x1": 1340.125,
+        "y1": 384.28,
+        "size": 24
+      },
+      {
+        "text": "refund.",
+        "x0": 1068,
+        "y0": 386.92,
+        "x1": 1142.71875,
+        "y1": 416.92,
+        "size": 24
+      },
+      {
+        "text": "External fee funding",
+        "x0": 132,
+        "y0": 606.0,
+        "x1": 410.78125,
+        "y1": 642.25,
+        "size": 29
+      },
+      {
+        "text": "Pays the network fee and any",
+        "x0": 76,
+        "y0": 651.0,
+        "x1": 392.1875,
+        "y1": 681.0,
+        "size": 24
+      },
+      {
+        "text": "required output top-up.",
+        "x0": 76,
+        "y0": 683.64,
+        "x1": 318.828125,
+        "y1": 713.64,
+        "size": 24
+      },
+      {
+        "text": "No request asset is retained.",
+        "x0": 76,
+        "y0": 716.28,
+        "x1": 381.484375,
+        "y1": 746.28,
+        "size": 24
+      },
+      {
+        "text": "Controller OR expiry",
+        "x0": 628,
+        "y0": 607.0,
+        "x1": 901.875,
+        "y1": 642.0,
+        "size": 28
+      },
+      {
+        "text": "Controller key may cancel.",
+        "x0": 572,
+        "y0": 651.0,
+        "x1": 854.765625,
+        "y1": 681.0,
+        "size": 24
+      },
+      {
+        "text": "Anyone may refund when the",
+        "x0": 572,
+        "y0": 683.64,
+        "x1": 884.1875,
+        "y1": 713.64,
+        "size": 24
+      },
+      {
+        "text": "whole interval is at/after expiry.",
+        "x0": 572,
+        "y0": 716.28,
+        "x1": 899.6875,
+        "y1": 746.28,
+        "size": 24
+      },
+      {
+        "text": "Fixed full-value",
+        "x0": 1124,
+        "y0": 606.0,
+        "x1": 1335.125,
+        "y1": 642.25,
+        "size": 29
+      },
+      {
+        "text": "refund",
+        "x0": 1124,
+        "y0": 638.48,
+        "x1": 1214.21875,
+        "y1": 674.73,
+        "size": 29
+      },
+      {
+        "text": "101,000 UNIT \u2022 7 EXTRA",
+        "x0": 1068,
+        "y0": 683.48,
+        "x1": 1338.75,
+        "y1": 713.48,
+        "size": 24
+      },
+      {
+        "text": "3,500,000 lovelace",
+        "x0": 1068,
+        "y0": 716.12,
+        "x1": 1269.453125,
+        "y1": 746.12,
+        "size": 24
+      },
+      {
+        "text": "Exact destination and datum",
+        "x0": 1068,
+        "y0": 748.76,
+        "x1": 1370.84375,
+        "y1": 778.76,
+        "size": 24
+      },
+      {
+        "text": "refund branch",
+        "x0": 775.421875,
+        "y0": 522,
+        "x1": 916.578125,
+        "y1": 548.25,
+        "size": 21
+      },
+      {
+        "text": "No current State, NAV, open pause flag or batcher is required.",
+        "x0": 122,
+        "y0": 857,
+        "x1": 912.703125,
+        "y1": 890.75,
+        "size": 27
+      },
+      {
+        "text": "Unknown outer versions, malformed Recovery or invalid destinations have no universal rescue promise. Full-value preservation is",
+        "x0": 76,
+        "y0": 902.0,
+        "x1": 1394.234375,
+        "y1": 930.75,
+        "size": 23
+      },
+      {
+        "text": "not unconditional liveness.",
+        "x0": 76,
+        "y0": 932.82,
+        "x1": 345.859375,
+        "y1": 961.57,
+        "size": 23
+      }
+    ],
+    "cards": [
+      [
+        48,
+        231,
+        442,
+        472,
+        "Actual Request value"
+      ],
+      [
+        544,
+        231,
+        938,
+        472,
+        "Decode Recovery first"
+      ],
+      [
+        1040,
+        231,
+        1432,
+        472,
+        "Invalid economics"
+      ],
+      [
+        48,
+        593,
+        442,
+        783,
+        "External fee funding"
+      ],
+      [
+        544,
+        593,
+        938,
+        783,
+        "Controller OR expiry"
+      ],
+      [
+        1040,
+        593,
+        1432,
+        803,
+        "Fixed full-value refund"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            442,
+            351
+          ],
+          [
+            544,
+            351
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            938,
+            351
+          ],
+          [
+            1040,
+            351
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            741,
+            472
+          ],
+          [
+            741,
+            593
+          ]
+        ],
+        "label": "refund branch"
+      },
+      {
+        "points": [
+          [
+            938,
+            688
+          ],
+          [
+            1040,
+            688
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 23
+  },
+  {
+    "id": "ctvs2-f07-zero-net-mint",
+    "width": 1480,
+    "height": 900,
+    "labels": [
+      {
+        "text": "CTVS-2  /  ONE-TO-ONE SNAPSHOT \u2022 ZERO FEES",
+        "x0": 471.9765625,
+        "y0": 20,
+        "x1": 1008.0234375,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Zero net mint does not mean zero obligations",
+        "x0": 307.7265625,
+        "y0": 56,
+        "x1": 1172.2734375,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "CONSUMED REQUESTS",
+        "x0": 48,
+        "y0": 160,
+        "x1": 299.84375,
+        "y1": 186.25,
+        "size": 21
+      },
+      {
+        "text": "GROSS ECONOMIC EFFECTS",
+        "x0": 544,
+        "y0": 160,
+        "x1": 853.140625,
+        "y1": 186.25,
+        "size": 21
+      },
+      {
+        "text": "FUNDED RESULTS",
+        "x0": 1040,
+        "y0": 160,
+        "x1": 1236.28125,
+        "y1": 186.25,
+        "size": 21
+      },
+      {
+        "text": "Deposit request",
+        "x0": 132,
+        "y0": 245.0,
+        "x1": 358.71875,
+        "y1": 282.5,
+        "size": 30
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 76,
+        "y0": 287.0,
+        "x1": 180.265625,
+        "y1": 322.0,
+        "size": 28
+      },
+      {
+        "text": "Issue +10 SHARE",
+        "x0": 628,
+        "y0": 245.0,
+        "x1": 877.3125,
+        "y1": 282.5,
+        "size": 30
+      },
+      {
+        "text": "Backing +10 UNIT",
+        "x0": 572,
+        "y0": 291.0,
+        "x1": 767.40625,
+        "y1": 321.0,
+        "size": 24
+      },
+      {
+        "text": "Participating shares +10",
+        "x0": 572,
+        "y0": 323.64,
+        "x1": 830.140625,
+        "y1": 353.64,
+        "size": 24
+      },
+      {
+        "text": "Depositor claim",
+        "x0": 1124,
+        "y0": 246.0,
+        "x1": 1341.5625,
+        "y1": 282.25,
+        "size": 29
+      },
+      {
+        "text": "10 SHARE",
+        "x0": 1068,
+        "y0": 290.0,
+        "x1": 1188.875,
+        "y1": 321.25,
+        "size": 25
+      },
+      {
+        "text": "Already participating",
+        "x0": 1068,
+        "y0": 324.0,
+        "x1": 1294.53125,
+        "y1": 355.25,
+        "size": 25
+      },
+      {
+        "text": "Redemption request",
+        "x0": 132,
+        "y0": 492.0,
+        "x1": 402.765625,
+        "y1": 527.0,
+        "size": 28
+      },
+      {
+        "text": "10 pre-existing SHARE",
+        "x0": 76,
+        "y0": 534.0,
+        "x1": 343.296875,
+        "y1": 566.5,
+        "size": 26
+      },
+      {
+        "text": "Extinguish 10 SHARE",
+        "x0": 628,
+        "y0": 493.0,
+        "x1": 905.59375,
+        "y1": 526.75,
+        "size": 27
+      },
+      {
+        "text": "Backing \u221210 UNIT",
+        "x0": 572,
+        "y0": 536.0,
+        "x1": 767.40625,
+        "y1": 566.0,
+        "size": 24
+      },
+      {
+        "text": "Participating shares \u221210",
+        "x0": 572,
+        "y0": 568.64,
+        "x1": 830.140625,
+        "y1": 598.64,
+        "size": 24
+      },
+      {
+        "text": "Redeemer claim",
+        "x0": 1124,
+        "y0": 491.0,
+        "x1": 1346.4375,
+        "y1": 527.25,
+        "size": 29
+      },
+      {
+        "text": "10 UNIT",
+        "x0": 1068,
+        "y0": 535.0,
+        "x1": 1161.078125,
+        "y1": 566.25,
+        "size": 25
+      },
+      {
+        "text": "Fixed allocated assets",
+        "x0": 1068,
+        "y0": 569.0,
+        "x1": 1315.375,
+        "y1": 600.25,
+        "size": 25
+      },
+      {
+        "text": "10 issued \u2212 10 extinguished = 0 net SHARE mint",
+        "x0": 316.4375,
+        "y0": 695,
+        "x1": 1163.5625,
+        "y1": 741.25,
+        "size": 37
+      },
+      {
+        "text": "A = S = 1,000 before and after. Both economic exchanges still occur.",
+        "x0": 361.1953125,
+        "y0": 757,
+        "x1": 1118.8046875,
+        "y1": 788.25,
+        "size": 25
+      },
+      {
+        "text": "State and Request handlers must enforce both gross effects, exact claims and value conservation,",
+        "x0": 217.9453125,
+        "y0": 820.0,
+        "x1": 1262.0546875,
+        "y1": 850.0,
+        "size": 24
+      },
+      {
+        "text": "even when no minting-policy invocation occurs for SHARE.",
+        "x0": 427.1953125,
+        "y0": 852.16,
+        "x1": 1052.8046875,
+        "y1": 882.16,
+        "size": 24
+      }
+    ],
+    "cards": [
+      [
+        48,
+        233,
+        442,
+        402,
+        "Deposit request"
+      ],
+      [
+        544,
+        233,
+        938,
+        402,
+        "Issue +10 SHARE"
+      ],
+      [
+        1040,
+        233,
+        1432,
+        402,
+        "Depositor claim"
+      ],
+      [
+        48,
+        478,
+        442,
+        647,
+        "Redemption request"
+      ],
+      [
+        544,
+        478,
+        938,
+        647,
+        "Extinguish 10 SHARE"
+      ],
+      [
+        1040,
+        478,
+        1432,
+        647,
+        "Redeemer claim"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            442,
+            318
+          ],
+          [
+            544,
+            318
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            938,
+            318
+          ],
+          [
+            1040,
+            318
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            442,
+            563
+          ],
+          [
+            544,
+            563
+          ]
+        ],
+        "label": null
+      },
+      {
+        "points": [
+          [
+            938,
+            563
+          ],
+          [
+            1040,
+            563
+          ]
+        ],
+        "label": null
+      }
+    ],
+    "min_body_size": 24
+  },
+  {
+    "id": "ctvs2-f08-inflight-boundary",
+    "width": 1480,
+    "height": 995,
+    "labels": [
+      {
+        "text": "CTVS-2  /  MANAGED EXTENSION BOUNDARY \u2022 NOT A PROFILE-0 WORKFLOW",
+        "x0": 312.71875,
+        "y0": 20,
+        "x1": 1167.28125,
+        "y1": 45.0,
+        "size": 20
+      },
+      {
+        "text": "Committed downstream is no longer pending escrow",
+        "x0": 236.2421875,
+        "y0": 56,
+        "x1": 1243.7578125,
+        "y1": 112.25,
+        "size": 45
+      },
+      {
+        "text": "Pending escrow",
+        "x0": 132,
+        "y0": 254.0,
+        "x1": 354.40625,
+        "y1": 290.25,
+        "size": 29
+      },
+      {
+        "text": "Property remains at request",
+        "x0": 76,
+        "y0": 298.0,
+        "x1": 384.546875,
+        "y1": 329.25,
+        "size": 25
+      },
+      {
+        "text": "guard.",
+        "x0": 76,
+        "y0": 332.0,
+        "x1": 146.90625,
+        "y1": 363.25,
+        "size": 25
+      },
+      {
+        "text": "Fixed cancellation / expiry",
+        "x0": 76,
+        "y0": 366.0,
+        "x1": 363.65625,
+        "y1": 397.25,
+        "size": 25
+      },
+      {
+        "text": "rights.",
+        "x0": 76,
+        "y0": 400.0,
+        "x1": 144.09375,
+        "y1": 431.25,
+        "size": 25
+      },
+      {
+        "text": "Not share backing.",
+        "x0": 76,
+        "y0": 434.0,
+        "x1": 284.484375,
+        "y1": 465.25,
+        "size": 25
+      },
+      {
+        "text": "Accepted / in-flight",
+        "x0": 628,
+        "y0": 254.0,
+        "x1": 889.03125,
+        "y1": 290.25,
+        "size": 29
+      },
+      {
+        "text": "Assets committed",
+        "x0": 572,
+        "y0": 298.0,
+        "x1": 769.3125,
+        "y1": 329.25,
+        "size": 25
+      },
+      {
+        "text": "downstream.",
+        "x0": 572,
+        "y0": 332.0,
+        "x1": 715.140625,
+        "y1": 363.25,
+        "size": 25
+      },
+      {
+        "text": "Exposure and failure rights",
+        "x0": 572,
+        "y0": 366.0,
+        "x1": 869.4375,
+        "y1": 397.25,
+        "size": 25
+      },
+      {
+        "text": "change.",
+        "x0": 572,
+        "y0": 400.0,
+        "x1": 660.984375,
+        "y1": 431.25,
+        "size": 25
+      },
+      {
+        "text": "Not automatically refundable.",
+        "x0": 572,
+        "y0": 434.0,
+        "x1": 895.84375,
+        "y1": 465.25,
+        "size": 25
+      },
+      {
+        "text": "Funded result",
+        "x0": 1124,
+        "y0": 254.0,
+        "x1": 1315.75,
+        "y1": 290.25,
+        "size": 29
+      },
+      {
+        "text": "Shares issued or assets fixed.",
+        "x0": 1068,
+        "y0": 298.0,
+        "x1": 1401.5625,
+        "y1": 329.25,
+        "size": 25
+      },
+      {
+        "text": "Economic cutover is explicit.",
+        "x0": 1068,
+        "y0": 332.0,
+        "x1": 1382.03125,
+        "y1": 363.25,
+        "size": 25
+      },
+      {
+        "text": "Delivery rights are defined.",
+        "x0": 1068,
+        "y0": 366.0,
+        "x1": 1365.40625,
+        "y1": 397.25,
+        "size": 25
+      },
+      {
+        "text": "accept",
+        "x0": 459.7421875,
+        "y0": 327,
+        "x1": 526.2578125,
+        "y1": 353.25,
+        "size": 21
+      },
+      {
+        "text": "settle",
+        "x0": 961.578125,
+        "y0": 327,
+        "x1": 1016.421875,
+        "y1": 353.25,
+        "size": 21
+      },
+      {
+        "text": "Fixed refund",
+        "x0": 132,
+        "y0": 650.0,
+        "x1": 306.03125,
+        "y1": 686.25,
+        "size": 29
+      },
+      {
+        "text": "Only while property remains",
+        "x0": 76,
+        "y0": 695.0,
+        "x1": 373.4375,
+        "y1": 725.0,
+        "size": 24
+      },
+      {
+        "text": "PendingEscrow under the",
+        "x0": 76,
+        "y0": 727.64,
+        "x1": 350.828125,
+        "y1": 757.64,
+        "size": 24
+      },
+      {
+        "text": "declared profile.",
+        "x0": 76,
+        "y0": 760.28,
+        "x1": 246.75,
+        "y1": 790.28,
+        "size": 24
+      },
+      {
+        "text": "Failure / unwind",
+        "x0": 628,
+        "y0": 650.0,
+        "x1": 848.78125,
+        "y1": 686.25,
+        "size": 29
+      },
+      {
+        "text": "Who bears the loss?",
+        "x0": 572,
+        "y0": 695.0,
+        "x1": 790.765625,
+        "y1": 725.0,
+        "size": 24
+      },
+      {
+        "text": "What can be cancelled?",
+        "x0": 572,
+        "y0": 727.64,
+        "x1": 828.125,
+        "y1": 757.64,
+        "size": 24
+      },
+      {
+        "text": "Which on-chain right recovers",
+        "x0": 572,
+        "y0": 760.28,
+        "x1": 889.453125,
+        "y1": 790.28,
+        "size": 24
+      },
+      {
+        "text": "value?",
+        "x0": 572,
+        "y0": 792.92,
+        "x1": 642.703125,
+        "y1": 822.92,
+        "size": 24
+      },
+      {
+        "text": "Required extension",
+        "x0": 1124,
+        "y0": 652.0,
+        "x1": 1374.578125,
+        "y1": 685.75,
+        "size": 27
+      },
+      {
+        "text": "rules",
+        "x0": 1124,
+        "y0": 682.24,
+        "x1": 1188.53125,
+        "y1": 715.99,
+        "size": 27
+      },
+      {
+        "text": "Custody and valuation",
+        "x0": 1068,
+        "y0": 725.24,
+        "x1": 1305.453125,
+        "y1": 755.24,
+        "size": 24
+      },
+      {
+        "text": "Interim ownership and losses",
+        "x0": 1068,
+        "y0": 757.88,
+        "x1": 1378.796875,
+        "y1": 787.88,
+        "size": 24
+      },
+      {
+        "text": "Actual recovery permissions",
+        "x0": 1068,
+        "y0": 790.52,
+        "x1": 1368.109375,
+        "y1": 820.52,
+        "size": 24
+      },
+      {
+        "text": "cancel / expire",
+        "x0": 287.6640625,
+        "y0": 560,
+        "x1": 432.3359375,
+        "y1": 586.25,
+        "size": 21
+      },
+      {
+        "text": "failure",
+        "x0": 776.5,
+        "y0": 560,
+        "x1": 839.5,
+        "y1": 586.25,
+        "size": 21
+      },
+      {
+        "text": "An operator notice or timeout cannot reverse a completed investment or manufacture liquidity.",
+        "x0": 221.7890625,
+        "y0": 869.0,
+        "x1": 1258.2109375,
+        "y1": 900.25,
+        "size": 25
+      },
+      {
+        "text": "The extension must specify the rights at every intermediate state.",
+        "x0": 379.3203125,
+        "y0": 902.5,
+        "x1": 1100.6796875,
+        "y1": 933.75,
+        "size": 25
+      }
+    ],
+    "cards": [
+      [
+        48,
+        241,
+        442,
+        509,
+        "Pending escrow"
+      ],
+      [
+        544,
+        241,
+        938,
+        509,
+        "Accepted / in-flight"
+      ],
+      [
+        1040,
+        241,
+        1432,
+        509,
+        "Funded result"
+      ],
+      [
+        48,
+        637,
+        442,
+        842,
+        "Fixed refund"
+      ],
+      [
+        544,
+        637,
+        938,
+        842,
+        "Failure / unwind"
+      ],
+      [
+        1040,
+        637,
+        1432,
+        842,
+        "Required extension rules"
+      ]
+    ],
+    "connectors": [
+      {
+        "points": [
+          [
+            442,
+            373
+          ],
+          [
+            544,
+            373
+          ]
+        ],
+        "label": "accept"
+      },
+      {
+        "points": [
+          [
+            938,
+            373
+          ],
+          [
+            1040,
+            373
+          ]
+        ],
+        "label": "settle"
+      },
+      {
+        "points": [
+          [
+            245,
+            509
+          ],
+          [
+            245,
+            637
+          ]
+        ],
+        "label": "cancel / expire"
+      },
+      {
+        "points": [
+          [
+            741,
+            509
+          ],
+          [
+            741,
+            637
+          ]
+        ],
+        "label": "failure"
+      }
+    ],
+    "min_body_size": 24
+  }
+]

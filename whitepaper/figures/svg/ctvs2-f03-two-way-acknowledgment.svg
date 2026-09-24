@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="940px" version="1.1" viewBox="0 0 1480 940" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="940" width="1480" x="0" y="0"/>
+  <g id="background-panels"/>
+  <g id="connectors">
+    <path d="M 604 341 L 876 341" fill="none" marker-end="url(#arrow-purple)" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 876 478 L 604 478" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="334" opacity="0.35" rx="18" width="556" x="48" y="241"/>
+    <rect fill="url(#fill-purple)" height="334" rx="18" stroke="#A18BBE" stroke-width="1.8" width="556" x="48" y="239"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,255) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+    <rect fill="#EDF1F5" height="334" opacity="0.35" rx="18" width="556" x="876" y="241"/>
+    <rect fill="url(#fill-blue)" height="334" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="556" x="876" y="239"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(901,255) scale(0.8333333333333334)">
+      <ellipse cx="24" cy="10" rx="16" ry="6"/>
+      <path d="M 8 10 V 35 C 8 44 40 44 40 35 V 10 M 8 23 C 8 32 40 32 40 23 M 8 34 C 8 43 40 43 40 34"/>
+    </g>
+    <rect fill="#EDF1F5" height="168" opacity="0.35" rx="18" width="1384" x="48" y="633"/>
+    <rect fill="url(#fill-green)" height="168" rx="18" stroke="#78A88F" stroke-width="1.8" width="1384" x="48" y="631"/>
+    <g fill="none" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,647) scale(0.8333333333333334)">
+      <circle cx="24" cy="24" r="18"/>
+      <path d="M 14 24 L 21 31 L 35 17"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-2  /  DIRECT CUSTODY PROFILE • REQUEST / STATE COUPLING</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">Settlement requires agreement in both directions</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="132" y="281.0">Consumed Request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="321.0">RequestSpend:</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="355.0">Acknowledge(state_ref)</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="389.0"/>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="423.0">Points to the actual consumed State</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="457.0">and its StateSpend(Batch) action.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="960" y="281.0">Consumed State</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="904" y="321.0">StateSpend:</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="904" y="355.0">Batch(entries)</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="904" y="389.0"/>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="904" y="423.0">Checks every consumed Request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="904" y="457.0">and its matching acknowledgment.</text>
+    <text fill="#725294" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="740" y="302">must name this State</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="740" y="516">must cover this</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="740" y="543">Request</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="132" y="673.0">Complete, unique coverage - not a batcher’s assertion</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="713.0">Unique entry references + exact set equality with all consumed Requests.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="747.0">Price and validate the same covered set; every protected output remains separately allocated.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="862.0">Referencing State is insufficient. Pause or reserve top-up is not Batch.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="894.16">An omitted request, duplicate entry, or Cancel branch cannot count as acknowledgment.</text>
+  </g>
+</svg>

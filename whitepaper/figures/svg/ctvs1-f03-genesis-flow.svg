@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="1010px" version="1.1" viewBox="0 0 1480 1010" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="1010" width="1480" x="0" y="0"/>
+  <g id="background-panels"/>
+  <g id="connectors">
+    <path d="M 412 288 L 459.0 288.0 Q 475 288 475.0 304.0 L 475.0 322.0 Q 475 338 491.0 338.0 L 535 338" fill="none" marker-end="url(#arrow-purple)" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 412 510 L 459.0 510.0 Q 475 510 475.0 494.0 L 475.0 481.0 Q 475 465 491.0 465.0 L 535 465" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 917 353 L 1040 353" fill="none" marker-end="url(#arrow-slate)" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 1176 498 L 1176.0 617.0 Q 1176 633 1160.0 633.0 L 394.0 633.0 Q 378 633 378.0 649.0 L 378 685" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 1276 498 L 1276.0 640.0 Q 1276 656 1260.0 656.0 L 1116.5 656.0 Q 1102 656 1102.0 670.5 L 1102 685" fill="none" marker-end="url(#arrow-green)" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="156" opacity="0.35" rx="18" width="364" x="48" y="212"/>
+    <rect fill="url(#fill-purple)" height="156" rx="18" stroke="#A18BBE" stroke-width="1.8" width="364" x="48" y="210"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,226) scale(0.8333333333333334)">
+      <circle cx="15" cy="18" r="9"/>
+      <path d="M 21 25 L 39 43 M 30 34 L 35 29 M 35 39 L 40 34"/>
+    </g>
+    <rect fill="#EDF1F5" height="200" opacity="0.35" rx="18" width="364" x="48" y="412"/>
+    <rect fill="url(#fill-blue)" height="200" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="364" x="48" y="410"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,426) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+    <rect fill="#EDF1F5" height="310" opacity="0.35" rx="18" width="382" x="535" y="277"/>
+    <rect fill="url(#fill-slate)" height="310" rx="18" stroke="#9CAEBD" stroke-width="1.8" width="382" x="535" y="275"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(560,291) scale(0.8333333333333334)">
+      <path d="M 16 13 L 6 24 L 16 35 M 32 13 L 42 24 L 32 35 M 27 9 L 21 39"/>
+    </g>
+    <rect fill="#EDF1F5" height="288" opacity="0.35" rx="18" width="392" x="1040" y="212"/>
+    <rect fill="url(#fill-sand)" height="288" rx="18" stroke="#C7AD74" stroke-width="1.8" width="392" x="1040" y="210"/>
+    <g fill="none" stroke="#947331" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1065,226) scale(0.8333333333333334)">
+      <path d="M 24 4 L 40 11 V 25 C 40 35 33 41 24 45 C 15 41 8 35 8 25 V 11 Z M 15 24 L 21 30 L 33 17"/>
+    </g>
+    <rect fill="#EDF1F5" height="176" opacity="0.35" rx="18" width="660" x="48" y="687"/>
+    <rect fill="url(#fill-blue)" height="176" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="660" x="48" y="685"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,701) scale(0.8333333333333334)">
+      <path d="M 14 21 V 13 C 14 0 34 0 34 13 V 21 M 9 21 H 39 V 43 H 9 Z M 24 29 V 35"/>
+      <circle cx="24" cy="29" r="2"/>
+    </g>
+    <rect fill="#EDF1F5" height="176" opacity="0.35" rx="18" width="660" x="772" y="687"/>
+    <rect fill="url(#fill-green)" height="176" rx="18" stroke="#78A88F" stroke-width="1.8" width="660" x="772" y="685"/>
+    <g fill="none" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(797,701) scale(0.8333333333333334)">
+      <ellipse cx="24" cy="10" rx="16" ry="6"/>
+      <path d="M 8 10 V 35 C 8 44 40 44 40 35 V 10 M 8 23 C 8 32 40 32 40 23 M 8 34 C 8 43 40 43 40 34"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-1  /  DIRECT CUSTODY PROFILE</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">Acyclic genesis &amp; identity creation</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="21" font-weight="600" letter-spacing="1" text-anchor="start" x="48" y="176">INPUTS</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="21" font-weight="600" letter-spacing="1" text-anchor="start" x="535" y="176">BUILD</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="21" font-weight="600" letter-spacing="1" text-anchor="start" x="1040" y="176">ONE-TIME TRANSACTION</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="132" y="252.0">Seed output r0</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="292.0">Existing UTxO</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="324.64">Consumed once at genesis</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="132" y="452.0">Terms K</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="492.0">Assets, fees, modes, roles</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="524.64">Commitment hK</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="557.28">No self-dependent hash</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="619" y="317.0">Parameterize T</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="563" y="357.0">Compile F_lock and Q_claim</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="563" y="389.64">first.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="563" y="422.28">Apply r0 and hK to T.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="563" y="454.92">Derive policy / script hash P.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="1124" y="252.0">Genesis mint</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="292.0">Consume r0.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="324.64">Mint ID(1) and STATE(1).</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="357.28">Mint no SHARE.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="389.92">Reject extra policy assets.</text>
+    <text fill="#725294" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="470" y="260">r0</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="475" y="551">hK</text>
+    <text fill="#526A7E" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="978" y="328">P</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="132" y="727.0">Config at F_lock</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="767.0">ID(1) • Terms K and hK • exact reserve</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="856" y="727.0">State at P</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="800" y="767.0">STATE(1) • A = S = F = 0 • positive reserve</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="921.0">After genesis: only SHARE may change, coupled to an authentic State transition.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="953.16">ID and STATE cannot be minted again or burned. Compiled deployment proof remains required.</text>
+  </g>
+</svg>

@@ -1,0 +1,139 @@
+{
+  "scope": "Publication, figure geometry, source preservation and PDF structure only",
+  "revision": "0.6.3",
+  "date": "2026-09-16",
+  "semantic_source": {
+    "1": {
+      "identical_after_removing_illustration_metadata_and_figures": true,
+      "sha256": "fab87e0e172a635f02ad86234a8aa3901b94a73c94cf5037abff41a1032186c3"
+    },
+    "2": {
+      "identical_after_removing_illustration_metadata_and_figures": true,
+      "sha256": "9747474a3172b21a3224c172b1e6cfe447e263f464856237f20223004e7a7635"
+    }
+  },
+  "wire": {
+    "golden.json": {
+      "sha256": "6895d9dbf07c990d8f6cbed0f18ec18a9911a8f9875153faecc374998b7d36ce",
+      "unchanged": true
+    },
+    "types.ak": {
+      "sha256": "9bf7bd82f7a75b9207887f7ba176cb4e618d1414c8f51308030c7aa42d1e78e9",
+      "unchanged": true
+    },
+    "wire.cddl": {
+      "sha256": "9043159fca1a745b895c714fdbb85eee3cd3dbff7d96074f722f9862508461cf",
+      "unchanged": true
+    },
+    "schema.json": {
+      "sha256": "9b6fa186fcec1c491db7d77c8c69f9e9863c6c4702e183797830203196862293",
+      "unchanged": true
+    }
+  },
+  "figures": [
+    {
+      "id": "ctvs1-f01-native-mapping",
+      "retained_approved_png_unchanged": true
+    },
+    {
+      "id": "ctvs1-f02-object-model",
+      "retained_approved_png_unchanged": true
+    },
+    {
+      "id": "ctvs1-f03-genesis-flow",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs1-f04-protected-obligations",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs1-f05-direct-operation-anatomy",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs1-f06-ada-accounting-partitions",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs1-f07-managed-accounting-boundary",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f01-lifecycle-cutover",
+      "retained_approved_png_unchanged": true
+    },
+    {
+      "id": "ctvs2-f02-request-creation-envelope",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f03-two-way-acknowledgment",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f04-settlement-anatomy",
+      "retained_approved_png_unchanged": true
+    },
+    {
+      "id": "ctvs2-f05-delivery-variants",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f06-recovery-flow",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f07-zero-net-mint",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    },
+    {
+      "id": "ctvs2-f08-inflight-boundary",
+      "new_svg": true,
+      "vector_pdf_with_selectable_text": true,
+      "no_thick_left_bar": true
+    }
+  ],
+  "pdfs": [
+    {
+      "file": "CTVS-1-Whitepaper-v0.6.3-Illustrated.pdf",
+      "pages": 44,
+      "sha256": "f40656b6644c5afa87ef607d1bea04764fb50a2bb6d13434442091c6d267ecd5",
+      "figure_captions": 7,
+      "out_of_page_text": false
+    },
+    {
+      "file": "CTVS-2-Whitepaper-v0.6.3-Illustrated.pdf",
+      "pages": 41,
+      "sha256": "bc55962f682fcc7d498c8744f378c587f1abf405942254222248f0a9fb7ed127",
+      "figure_captions": 8,
+      "out_of_page_text": false
+    }
+  ],
+  "status": "PASS",
+  "new_figures": 11,
+  "retained_figures": 4,
+  "total_figures": 15,
+  "source_value_identities_checked": 5,
+  "implementation_release": "BLOCKED"
+}

@@ -1,0 +1,46 @@
+{
+  "status": "CANDIDATE_CHECKS_PASS__RELEASE_BLOCKED",
+  "profile": "CTVS-WIRE-2; incompatible candidate, not WP1 or repository V0",
+  "python_tests": 71,
+  "failures": 0,
+  "errors": 0,
+  "fixture_count": 22,
+  "javascript_crosscheck": {
+    "status": "PASS",
+    "fixture_count": 22,
+    "decoding_and_reencoding_cases": 44,
+    "authors_independent": false,
+    "on_chain_crosscheck": false
+  },
+  "normalized_datum_bytes": {
+    "config": 333,
+    "state": 92,
+    "request": 310,
+    "claim": 311
+  },
+  "environment": {
+    "python": "3.13.5",
+    "aiken_available": false
+  },
+  "excluded_claims": [
+    "Aiken compilation",
+    "Plutus serialiseData agreement",
+    "ledger transaction acceptance",
+    "signature verification",
+    "complete economic validator",
+    "minimum ADA or fees",
+    "measured execution units",
+    "production security",
+    "independent audit"
+  ],
+  "release_blockers": [
+    "compiled genesis/hash binding",
+    "actual script context projection and all branches",
+    "cross-check Data bytes against pinned Plutus serialiseData",
+    "independent semantic/wire decoder review",
+    "ledger-valid transactions and full field handling",
+    "resource measurements",
+    "managed and capability profiles"
+  ],
+  "publication_note": "Recorded result snapshot carried forward from the source evidence. Labels are publication aliases; no new security, compiler, builtin, ledger, or integration run is claimed for document revision 0.5."
+}

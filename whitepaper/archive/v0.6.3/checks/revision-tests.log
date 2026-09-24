@@ -1,0 +1,21 @@
+test_01_reference_wire_artifacts_identical (__main__.PublicationChecks.test_01_reference_wire_artifacts_identical) ... ok
+test_02_retained_reference_sections (__main__.PublicationChecks.test_02_retained_reference_sections) ... ok
+test_03_versions_and_explicit_boundaries (__main__.PublicationChecks.test_03_versions_and_explicit_boundaries) ... ok
+test_04_all_section_numbers_exist_and_unique (__main__.PublicationChecks.test_04_all_section_numbers_exist_and_unique) ... ok
+test_05_citation_labels_resolve (__main__.PublicationChecks.test_05_citation_labels_resolve) ... ok
+test_06_no_duplicate_historical_run_tables (__main__.PublicationChecks.test_06_no_duplicate_historical_run_tables) ... ok
+test_07_reference_quotes_and_residual (__main__.PublicationChecks.test_07_reference_quotes_and_residual) ... ok
+test_08_reference_action_arithmetic_differential (__main__.PublicationChecks.test_08_reference_action_arithmetic_differential) ... ok
+test_09_reference_value_balances (__main__.PublicationChecks.test_09_reference_value_balances) ... ok
+test_10_mixed_batch_and_direct_delivery_substitution (__main__.PublicationChecks.test_10_mixed_batch_and_direct_delivery_substitution) ... ok
+test_11_lifecycle_rounding_counterexample (__main__.PublicationChecks.test_11_lifecycle_rounding_counterexample) ... ok
+test_12_budget_equivalence_without_wire_change (__main__.PublicationChecks.test_12_budget_equivalence_without_wire_change) ... ok
+test_13_inventory_denominator (__main__.PublicationChecks.test_13_inventory_denominator) ... ok
+test_14_positive_response_shapes_and_crossfields (__main__.PublicationChecks.test_14_positive_response_shapes_and_crossfields) ... ok
+test_15_targeted_bad_responses_rejected (__main__.PublicationChecks.test_15_targeted_bad_responses_rejected) ... ok
+test_16_build_effects_complete_value_example (__main__.PublicationChecks.test_16_build_effects_complete_value_example) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.134s
+
+OK

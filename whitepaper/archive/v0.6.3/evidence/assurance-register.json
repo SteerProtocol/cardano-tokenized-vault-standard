@@ -1,0 +1,122 @@
+{
+  "publication_revision": "0.5",
+  "candidate": "CTVS-WIRE-2",
+  "wire_version": 2,
+  "profile": 0,
+  "release": "BLOCKED",
+  "interpretation": "Publication-facing requirement inventory; recorded local checks do not establish compiled or ledger conformance. REQ-13 is additionally required for a managed-vault claim.",
+  "requirements": [
+    {
+      "id": "REQ-01",
+      "requirement": "Genesis and unique identities",
+      "recorded_local_evidence": "E0; concrete T/F/Q candidate",
+      "remaining_acceptance_artifact": "Compiled seed, policy, role and initial-state vectors",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-02",
+      "requirement": "Configuration and state succession",
+      "recorded_local_evidence": "E2; selected role/config boundary checks",
+      "remaining_acceptance_artifact": "Real full-address, purpose, hash and successor enforcement",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-03",
+      "requirement": "Supply and zero-net gross obligations",
+      "recorded_local_evidence": "E2; exact purpose/link requirements",
+      "remaining_acceptance_artifact": "Compiled spend/mint and zero-net ledger trace",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-04",
+      "requirement": "Quotes, fees and limits",
+      "recorded_local_evidence": "E2; corrected economic search",
+      "remaining_acceptance_artifact": "Decoded input/refinement tests and all arithmetic bounds",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-05",
+      "requirement": "Custody, fees and storage",
+      "recorded_local_evidence": "E2; selected value-boundary predicates",
+      "remaining_acceptance_artifact": "Ledger-valid partitions, collateral separation, balanced theft rejection",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-06",
+      "requirement": "Coverage and output allocation",
+      "recorded_local_evidence": "E2; linkage/allocation primitives",
+      "remaining_acceptance_artifact": "Complete multi-handler coverage and disjoint payouts",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-07",
+      "requirement": "Ownership and operator permissions",
+      "recorded_local_evidence": "E2: keys only; exact key schema",
+      "remaining_acceptance_artifact": "Ledger witnesses; separately executed capability profile",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-08",
+      "requirement": "Request/claim lifecycle and recovery",
+      "recorded_local_evidence": "E2; Recovery/Data separation",
+      "remaining_acceptance_artifact": "Compiled branch-independent recovery and funded delivery",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-09",
+      "requirement": "Time, pauses and replay",
+      "recorded_local_evidence": "E2; exact candidate requirements",
+      "remaining_acceptance_artifact": "Actual interval mapping and real rollback/replay",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-10",
+      "requirement": "Recursive encoding and commitments",
+      "recorded_local_evidence": "22 fixtures; local codec/schema checks",
+      "remaining_acceptance_artifact": "Pinned Aiken, builtin bytes, independent semantics and blueprint",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "Model-to-validator refinement",
+      "recorded_local_evidence": "E0; mapping obligations specified",
+      "remaining_acceptance_artifact": "Actual context projection and compiled positive/negative agreement",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-12",
+      "requirement": "Ledger and resource feasibility",
+      "recorded_local_evidence": "E0; provisional structural limits",
+      "remaining_acceptance_artifact": "Accepted serialized traces and measured worst-case budgets",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-13",
+      "requirement": "Managed permissioned integration",
+      "recorded_local_evidence": "E0; exact state-basis NAV obligation",
+      "remaining_acceptance_artifact": "Concrete position, liability, valuation and recovery lifecycle",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    },
+    {
+      "id": "REQ-14",
+      "requirement": "Independent builders/indexers",
+      "recorded_local_evidence": "E0; provider/identity requirements",
+      "remaining_acceptance_artifact": "Independent construction, indexing, rollback and review",
+      "disposition": "BLOCKED_FOR_IMPLEMENTATION_RELEASE",
+      "independent_external_review": false
+    }
+  ]
+}

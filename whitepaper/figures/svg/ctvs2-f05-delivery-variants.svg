@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="985px" version="1.1" viewBox="0 0 1480 985" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="985" width="1480" x="0" y="0"/>
+  <g id="background-panels">
+    <rect fill="#FFFFFF" height="281" rx="20" stroke="#CEDBE6" stroke-width="1.3" width="1384" x="48" y="177"/>
+    <rect fill="#FFFFFF" height="281" rx="20" stroke="#CEDBE6" stroke-width="1.3" width="1384" x="48" y="505"/>
+  </g>
+  <g id="connectors">
+    <path d="M 400 335 L 542 335" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 938 335 L 1080 335" fill="none" marker-end="url(#arrow-green)" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 400 663 L 542 663" fill="none" marker-end="url(#arrow-sand)" stroke="#947331" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 938 663 L 1080 663" fill="none" marker-end="url(#arrow-sand)" stroke="#947331" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="324" x="76" y="252"/>
+    <rect fill="url(#fill-purple)" height="177" rx="18" stroke="#A18BBE" stroke-width="1.8" width="324" x="76" y="250"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(101,266) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="396" x="542" y="252"/>
+    <rect fill="url(#fill-blue)" height="177" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="396" x="542" y="250"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(567,266) scale(0.8333333333333334)">
+      <path d="M 24 4 L 43 14 V 35 L 24 45 L 5 35 V 14 Z M 5 14 L 24 25 L 43 14 M 24 25 V 45 M 15 9 L 33 19"/>
+    </g>
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="324" x="1080" y="252"/>
+    <rect fill="url(#fill-green)" height="177" rx="18" stroke="#78A88F" stroke-width="1.8" width="324" x="1080" y="250"/>
+    <g fill="none" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1105,266) scale(0.8333333333333334)">
+      <path d="M 6 14 H 39 V 40 H 6 Z M 6 14 L 34 6 V 14 M 30 23 H 43 V 33 H 30 Z"/>
+      <circle cx="35" cy="28" r="1"/>
+    </g>
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="324" x="76" y="580"/>
+    <rect fill="url(#fill-purple)" height="177" rx="18" stroke="#A18BBE" stroke-width="1.8" width="324" x="76" y="578"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(101,594) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="396" x="542" y="580"/>
+    <rect fill="url(#fill-slate)" height="177" rx="18" stroke="#9CAEBD" stroke-width="1.8" width="396" x="542" y="578"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(567,594) scale(0.8333333333333334)">
+      <path d="M 24 7 V 42 M 10 42 H 38 M 7 15 H 41 M 12 15 L 5 29 H 19 Z M 36 15 L 29 29 H 43 Z"/>
+      <circle cx="24" cy="8" r="3"/>
+    </g>
+    <rect fill="#EDF1F5" height="177" opacity="0.35" rx="18" width="324" x="1080" y="580"/>
+    <rect fill="url(#fill-green)" height="177" rx="18" stroke="#78A88F" stroke-width="1.8" width="324" x="1080" y="578"/>
+    <g fill="none" stroke="#32765B" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1105,594) scale(0.8333333333333334)">
+      <path d="M 6 14 H 39 V 40 H 6 Z M 6 14 L 34 6 V 14 M 30 23 H 43 V 33 H 30 Z"/>
+      <circle cx="35" cy="28" r="1"/>
+    </g>
+    <rect fill="url(#fill-slate)" height="127" rx="18" stroke="#9CAEBD" stroke-width="1.5" width="1384" x="48" y="840"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(72,852) scale(0.7083333333333334)">
+      <circle cx="24" cy="24" r="18"/>
+      <circle cx="24" cy="14" r="1"/>
+      <path d="M 24 21 V 34"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-2  /  DIRECT CUSTODY PROFILE AND A SEPARATE NATIVE SEMANTIC VARIANT</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">Two delivery paths, one economic cutover</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="26" font-weight="700" text-anchor="start" x="76" y="215">A  Direct Custody Profile  -  FUNDED CLAIM</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="160" y="292.0">Request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="332.0">Direct Custody Profile</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="364.64">Consent consumed in</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="397.28">settlement</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="626" y="292.0">Funded claim</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="332.0">100,000 SHARE + 2,000,000</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="364.64">lovelace</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="397.28">Shares already participate</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="1164" y="292.0">Final receiver</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1108" y="332.0">Exact destination and</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1108" y="364.64">datum</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1108" y="397.28">No repricing or mint</text>
+    <text fill="#345E86" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="471" y="312">settle</text>
+    <text fill="#32765B" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="1009" y="312">deliver later</text>
+    <text fill="#947331" font-family="Liberation Sans" font-size="26" font-weight="700" text-anchor="start" x="76" y="543">B  NATIVE SEMANTIC VARIANT  -  DIRECT AT SETTLEMENT</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="160" y="620.0">Request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="660.0">Explicit direct-delivery</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="692.64">consent and variant</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="104" y="725.28">binding</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="626" y="620.0">Settlement</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="660.0">Same quote, fees and supply</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="692.64">change</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="570" y="725.28">No intermediate Claim UTxO</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="28" font-weight="700" text-anchor="start" x="1164" y="620.0">Final receiver</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1108" y="660.0">100,000 SHARE</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1108" y="692.64">2,000,000 lovelace</text>
+    <text fill="#947331" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="471" y="640">consume</text>
+    <text fill="#947331" font-family="Liberation Sans" font-size="21" font-weight="600" text-anchor="middle" x="1009" y="640">pay now</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="27" font-weight="700" text-anchor="start" x="122" y="877">A native variant cannot reinterpret an existing Direct Custody Profile request.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="23" font-weight="400" text-anchor="start" x="76" y="918.0">It needs its own reviewed consent, encoding and transaction rules. Both routes change economic participation at settlement - not</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="23" font-weight="400" text-anchor="start" x="76" y="948.82">at later claim delivery.</text>
+  </g>
+</svg>

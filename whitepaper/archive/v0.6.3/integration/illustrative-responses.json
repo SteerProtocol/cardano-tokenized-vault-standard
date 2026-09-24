@@ -1,0 +1,595 @@
+[
+  {
+    "schema_revision": "CTVS-INTEGRATION-0.6",
+    "kind": "snapshot",
+    "network": "illustrative-not-a-network",
+    "chain_point": {
+      "slot": "123456",
+      "block_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "vault_id": "illustrative-vault-not-authenticated",
+    "implementation": {
+      "kind": "reference",
+      "wire": "CTVS-WIRE-2",
+      "wire_version": 2,
+      "profile": 0,
+      "script_hashes": [
+        "11111111111111111111111111111111111111111111111111111111"
+      ]
+    },
+    "conformance_claims": [],
+    "verification": "illustrative",
+    "evidence_refs": [
+      "illustrative-fixture; no accepted transaction or deployed mapping"
+    ],
+    "body": {
+      "underlying": {
+        "kind": "native",
+        "policy_id": "33333333333333333333333333333333333333333333333333333333",
+        "asset_name": "554e4954"
+      },
+      "share": {
+        "kind": "native",
+        "policy_id": "11111111111111111111111111111111111111111111111111111111",
+        "asset_name": "5348415245"
+      },
+      "backing": {
+        "status": "known",
+        "units": "underlying_base_units",
+        "value": "1000000"
+      },
+      "economic_supply": {
+        "status": "known",
+        "units": "share_base_units",
+        "value": "1000000"
+      },
+      "accrued_fee_assets": {
+        "status": "known",
+        "units": "underlying_base_units",
+        "value": "0"
+      },
+      "liquid_assets": {
+        "status": "known",
+        "units": "underlying_base_units",
+        "value": "1000000"
+      },
+      "vault_status": "active",
+      "capabilities": {
+        "operations": [
+          "deposit",
+          "mint",
+          "withdraw",
+          "redeem"
+        ],
+        "async_delivery": [],
+        "settlement_permission": "not_applicable"
+      },
+      "pricing_basis": {
+        "calculation_id": "profile-0-virtual-ratio-fixed-markup",
+        "terms_ref": "illustrative-terms-only",
+        "source_refs": [
+          {
+            "transaction_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "output_index": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "schema_revision": "CTVS-INTEGRATION-0.6",
+    "kind": "quote",
+    "network": "illustrative-not-a-network",
+    "chain_point": {
+      "slot": "123456",
+      "block_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "vault_id": "illustrative-vault-not-authenticated",
+    "implementation": {
+      "kind": "reference",
+      "wire": "CTVS-WIRE-2",
+      "wire_version": 2,
+      "profile": 0,
+      "script_hashes": [
+        "11111111111111111111111111111111111111111111111111111111"
+      ]
+    },
+    "conformance_claims": [],
+    "verification": "illustrative",
+    "evidence_refs": [
+      "illustrative-fixture; no accepted transaction or deployed mapping"
+    ],
+    "body": {
+      "underlying": {
+        "kind": "native",
+        "policy_id": "33333333333333333333333333333333333333333333333333333333",
+        "asset_name": "554e4954"
+      },
+      "share": {
+        "kind": "native",
+        "policy_id": "11111111111111111111111111111111111111111111111111111111",
+        "asset_name": "5348415245"
+      },
+      "operation": "deposit",
+      "quote_kind": "exact_at_snapshot",
+      "input": {
+        "status": "known",
+        "units": "underlying_base_units",
+        "value": "101000"
+      },
+      "output": {
+        "status": "known",
+        "units": "share_base_units",
+        "value": "100000"
+      },
+      "user_bound": {
+        "kind": "minimum_shares",
+        "value": "99900"
+      },
+      "pricing_basis": {
+        "calculation_id": "profile-0-virtual-ratio-fixed-markup",
+        "terms_ref": "illustrative-terms-only",
+        "source_refs": [
+          {
+            "transaction_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "output_index": 0
+          }
+        ]
+      },
+      "economic_minimum": {
+        "status": "unknown",
+        "units": "underlying_base_units",
+        "reason": "No limit search in this illustrative response"
+      },
+      "economic_maximum": {
+        "status": "unknown",
+        "units": "underlying_base_units",
+        "reason": "No authenticated cap query"
+      },
+      "construction_limit": {
+        "status": "unknown",
+        "units": "underlying_base_units",
+        "reason": "No measured ledger build"
+      },
+      "charges": {
+        "economic_fee": {
+          "status": "known",
+          "units": "underlying_base_units",
+          "value": "1000"
+        },
+        "execution_fee": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "0"
+        },
+        "protected_storage": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "2000000"
+        },
+        "network_fee_estimate": {
+          "status": "unknown",
+          "units": "lovelace",
+          "reason": "Not a live transaction"
+        },
+        "external_topup": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "0"
+        }
+      },
+      "execution_status": "illustrative_only",
+      "expiry": null,
+      "prerequisites": [
+        "Authenticate real inputs, terms, network and all funding before building"
+      ]
+    }
+  },
+  {
+    "schema_revision": "CTVS-INTEGRATION-0.6",
+    "kind": "request",
+    "network": "illustrative-not-a-network",
+    "chain_point": {
+      "slot": "123456",
+      "block_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "vault_id": "illustrative-vault-not-authenticated",
+    "implementation": {
+      "kind": "reference",
+      "wire": "CTVS-WIRE-2",
+      "wire_version": 2,
+      "profile": 0,
+      "script_hashes": [
+        "11111111111111111111111111111111111111111111111111111111"
+      ]
+    },
+    "conformance_claims": [],
+    "verification": "illustrative",
+    "evidence_refs": [
+      "illustrative-fixture; no accepted transaction or deployed mapping"
+    ],
+    "body": {
+      "origin": {
+        "transaction_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "output_index": 0
+      },
+      "source_ref": {
+        "transaction_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "output_index": 0
+      },
+      "terms_ref": "illustrative-terms-only",
+      "lifecycle": "pending_escrow",
+      "participation": "nonparticipating_assets",
+      "offered_asset": {
+        "kind": "native",
+        "policy_id": "33333333333333333333333333333333333333333333333333333333",
+        "asset_name": "554e4954"
+      },
+      "offered_quantity": "101000",
+      "minimum_output": "99900",
+      "controller": "illustrative-key-controller",
+      "execution_authority": "illustrative-authorized-key-set",
+      "receiver": {
+        "payment": {
+          "kind": "key",
+          "hash": "33333333333333333333333333333333333333333333333333333333"
+        },
+        "stake": null,
+        "datum": {
+          "kind": "none"
+        }
+      },
+      "refund_destination": {
+        "payment": {
+          "kind": "key",
+          "hash": "44444444444444444444444444444444444444444444444444444444"
+        },
+        "stake": null,
+        "datum": {
+          "kind": "none"
+        }
+      },
+      "deadline": "1900000000000",
+      "delivery_mode": "funded_claim",
+      "recovery": {
+        "status": "supported",
+        "conditions": "Illustrative profile rule only: controller cancellation or fixed expiry refund"
+      },
+      "charges": {
+        "economic_fee": {
+          "status": "known",
+          "units": "underlying_base_units",
+          "value": "1000"
+        },
+        "execution_fee": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "1000000"
+        },
+        "protected_storage": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "2000000"
+        },
+        "network_fee_estimate": {
+          "status": "unknown",
+          "units": "lovelace",
+          "reason": "Not a live transaction"
+        },
+        "external_topup": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "0"
+        }
+      },
+      "pricing_basis": {
+        "calculation_id": "profile-0-virtual-ratio-fixed-markup",
+        "terms_ref": "illustrative-terms-only",
+        "source_refs": [
+          {
+            "transaction_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "output_index": 0
+          }
+        ]
+      },
+      "realized_quantity": {
+        "status": "unknown",
+        "units": "share_base_units",
+        "reason": "Not settled"
+      },
+      "result_outputs": []
+    }
+  },
+  {
+    "schema_revision": "CTVS-INTEGRATION-0.6",
+    "kind": "request",
+    "network": "illustrative-not-a-network",
+    "chain_point": {
+      "slot": "123456",
+      "block_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "vault_id": "illustrative-vault-not-authenticated",
+    "implementation": {
+      "kind": "native",
+      "mapping_id": "illustrative-native-direct-delivery",
+      "mapping_version": "unimplemented-0.1",
+      "mapping_commitment": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "script_hashes": [
+        "dddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      ]
+    },
+    "conformance_claims": [],
+    "verification": "illustrative",
+    "evidence_refs": [
+      "illustrative-fixture; no accepted transaction or deployed mapping"
+    ],
+    "body": {
+      "origin": {
+        "transaction_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "output_index": 0
+      },
+      "source_ref": {
+        "transaction_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "output_index": 0
+      },
+      "terms_ref": "illustrative-terms-only",
+      "lifecycle": "settled_delivered",
+      "participation": "participating_shares",
+      "offered_asset": {
+        "kind": "native",
+        "policy_id": "33333333333333333333333333333333333333333333333333333333",
+        "asset_name": "554e4954"
+      },
+      "offered_quantity": "101000",
+      "minimum_output": "99900",
+      "controller": "illustrative-key-controller",
+      "execution_authority": "illustrative-authorized-key-set",
+      "receiver": {
+        "payment": {
+          "kind": "key",
+          "hash": "33333333333333333333333333333333333333333333333333333333"
+        },
+        "stake": null,
+        "datum": {
+          "kind": "none"
+        }
+      },
+      "refund_destination": {
+        "payment": {
+          "kind": "key",
+          "hash": "44444444444444444444444444444444444444444444444444444444"
+        },
+        "stake": null,
+        "datum": {
+          "kind": "none"
+        }
+      },
+      "deadline": "1900000000000",
+      "delivery_mode": "delivery_at_settlement",
+      "recovery": {
+        "status": "unavailable",
+        "conditions": "Hypothetical completed request: delivered output replaces request; no claim"
+      },
+      "charges": {
+        "economic_fee": {
+          "status": "known",
+          "units": "underlying_base_units",
+          "value": "1000"
+        },
+        "execution_fee": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "1000000"
+        },
+        "protected_storage": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "2000000"
+        },
+        "network_fee_estimate": {
+          "status": "unknown",
+          "units": "lovelace",
+          "reason": "Not a live transaction"
+        },
+        "external_topup": {
+          "status": "known",
+          "units": "lovelace",
+          "value": "0"
+        }
+      },
+      "pricing_basis": {
+        "calculation_id": "profile-0-virtual-ratio-fixed-markup",
+        "terms_ref": "illustrative-terms-only",
+        "source_refs": [
+          {
+            "transaction_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "output_index": 0
+          }
+        ]
+      },
+      "realized_quantity": {
+        "status": "known",
+        "units": "share_base_units",
+        "value": "100000"
+      },
+      "result_outputs": [
+        {
+          "transaction_id": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "output_index": 1
+        }
+      ]
+    }
+  },
+  {
+    "schema_revision": "CTVS-INTEGRATION-0.6",
+    "kind": "build_effects",
+    "network": "illustrative-not-a-network",
+    "chain_point": {
+      "slot": "123456",
+      "block_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "vault_id": "illustrative-vault-not-authenticated",
+    "implementation": {
+      "kind": "reference",
+      "wire": "CTVS-WIRE-2",
+      "wire_version": 2,
+      "profile": 0,
+      "script_hashes": [
+        "11111111111111111111111111111111111111111111111111111111"
+      ]
+    },
+    "conformance_claims": [],
+    "verification": "illustrative",
+    "evidence_refs": [
+      "illustrative-fixture; no accepted transaction or deployed mapping"
+    ],
+    "body": {
+      "operation": "deposit",
+      "approved_bound": {
+        "kind": "minimum_shares",
+        "value": "99900"
+      },
+      "inputs": [
+        {
+          "transaction_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "output_index": 0
+        },
+        {
+          "transaction_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "output_index": 0
+        }
+      ],
+      "reference_inputs": [
+        {
+          "transaction_id": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "output_index": 0
+        }
+      ],
+      "mint": [
+        {
+          "asset": {
+            "kind": "native",
+            "policy_id": "11111111111111111111111111111111111111111111111111111111",
+            "asset_name": "5348415245"
+          },
+          "quantity": "100000"
+        }
+      ],
+      "outputs": [
+        {
+          "output_index": 0,
+          "destination": {
+            "payment": {
+              "kind": "script",
+              "hash": "11111111111111111111111111111111111111111111111111111111"
+            },
+            "stake": null,
+            "datum": {
+              "kind": "inline",
+              "data_cbor": "d8799f444354565302581c1111111111111111111111111111111111111111111111111111111158205b94a94a33138d5fdf6c1492d1e9c788ceaab18b6afd2ee3fcbf792388f3f607081a0010c8e01a0010c8e01903e81a002dc6c000ff"
+            }
+          },
+          "value": [
+            {
+              "asset": {
+                "kind": "native",
+                "policy_id": "11111111111111111111111111111111111111111111111111111111",
+                "asset_name": "5354415445"
+              },
+              "quantity": "1"
+            },
+            {
+              "asset": {
+                "kind": "native",
+                "policy_id": "33333333333333333333333333333333333333333333333333333333",
+                "asset_name": "554e4954"
+              },
+              "quantity": "1101000"
+            },
+            {
+              "asset": {
+                "kind": "ada"
+              },
+              "quantity": "3000000"
+            }
+          ],
+          "role": "accounting_successor"
+        },
+        {
+          "output_index": 1,
+          "destination": {
+            "payment": {
+              "kind": "key",
+              "hash": "33333333333333333333333333333333333333333333333333333333"
+            },
+            "stake": null,
+            "datum": {
+              "kind": "none"
+            }
+          },
+          "value": [
+            {
+              "asset": {
+                "kind": "native",
+                "policy_id": "11111111111111111111111111111111111111111111111111111111",
+                "asset_name": "5348415245"
+              },
+              "quantity": "100000"
+            },
+            {
+              "asset": {
+                "kind": "ada"
+              },
+              "quantity": "2000000"
+            }
+          ],
+          "role": "receiver"
+        },
+        {
+          "output_index": 2,
+          "destination": {
+            "payment": {
+              "kind": "key",
+              "hash": "44444444444444444444444444444444444444444444444444444444"
+            },
+            "stake": null,
+            "datum": {
+              "kind": "none"
+            }
+          },
+          "value": [
+            {
+              "asset": {
+                "kind": "ada"
+              },
+              "quantity": "3600000"
+            }
+          ],
+          "role": "external_funder_change"
+        }
+      ],
+      "change_output_indices": [
+        2
+      ],
+      "network_fee": {
+        "status": "known",
+        "units": "lovelace",
+        "value": "400000"
+      },
+      "collateral_exposure": {
+        "status": "unknown",
+        "units": "lovelace",
+        "reason": "No real collateral selected"
+      },
+      "required_authorities": [
+        "illustrative funding key"
+      ],
+      "validity_interval": {
+        "lower": "123450",
+        "upper": "123470"
+      },
+      "construction_status": "illustrative_only",
+      "effect_summary": "Complete illustrative successful-value outputs for CTVS-1 Example 1: old State has 1,000,000 UNIT and 3,000,000 lovelace; funding supplies 101,000 UNIT and 6,000,000 lovelace. Hypothetical fee is not a live estimate; no real input resolution, witness, collateral or signed transaction supplied."
+    }
+  }
+]

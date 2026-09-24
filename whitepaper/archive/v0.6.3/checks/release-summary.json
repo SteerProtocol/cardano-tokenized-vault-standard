@@ -1,0 +1,25 @@
+{
+  "revision": "0.6.3",
+  "checked_at_date": "2026-09-16",
+  "status": "PASS_PUBLICATION_CHECKS",
+  "new_polished_vector_figures": 11,
+  "retained_approved_pngs_unchanged": 4,
+  "total_figures": 15,
+  "pages": {
+    "CTVS-1": 44,
+    "CTVS-2": 41,
+    "combined": 85,
+    "new_figure_folio": 11
+  },
+  "source_preservation": "exact semantic text after removing illustration-only metadata/environments",
+  "candidate_wire": "all four hashes unchanged",
+  "legacy_revision_test_methods": 16,
+  "manual_review": {
+    "all_11_new_figures_full_size": true,
+    "all_85_paper_pages_contact_sheet_layout_review": true,
+    "final_changed_pages_reviewed": true
+  },
+  "final_tex_overfull_or_missing_character_warnings": false,
+  "implementation_release": "BLOCKED",
+  "contract_or_ledger_evidence_added": false
+}

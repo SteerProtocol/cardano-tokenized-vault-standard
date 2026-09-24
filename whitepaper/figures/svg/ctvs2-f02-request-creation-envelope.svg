@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="full" height="1010px" version="1.1" viewBox="0 0 1480 1010" width="1480px">
+  <defs>
+    <linearGradient id="fill-blue" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EEF5FD"/>
+      <stop offset="1" stop-color="#FCFDFE"/>
+    </linearGradient>
+    <marker id="arrow-blue" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#345E86"/>
+    </marker>
+    <linearGradient id="fill-green" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#EDF7F2"/>
+      <stop offset="1" stop-color="#FCFEFC"/>
+    </linearGradient>
+    <marker id="arrow-green" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#32765B"/>
+    </marker>
+    <linearGradient id="fill-purple" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F3EFFB"/>
+      <stop offset="1" stop-color="#FEFCFF"/>
+    </linearGradient>
+    <marker id="arrow-purple" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#725294"/>
+    </marker>
+    <linearGradient id="fill-sand" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FBF5E8"/>
+      <stop offset="1" stop-color="#FFFDF9"/>
+    </linearGradient>
+    <marker id="arrow-sand" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#947331"/>
+    </marker>
+    <linearGradient id="fill-red" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#FAF0F0"/>
+      <stop offset="1" stop-color="#FFFCFC"/>
+    </linearGradient>
+    <marker id="arrow-red" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#A15564"/>
+    </marker>
+    <linearGradient id="fill-slate" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#F1F5F9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <marker id="arrow-slate" markerHeight="10" markerUnits="userSpaceOnUse" markerWidth="10" orient="auto" refX="9" refY="5">
+      <path d="M 0 0 L 9 5 L 0 10 Z" fill="#526A7E"/>
+    </marker>
+  </defs>
+  <rect fill="white" height="1010" width="1480" x="0" y="0"/>
+  <g id="background-panels"/>
+  <g id="connectors">
+    <path d="M 440 293 L 544 293" fill="none" marker-end="url(#arrow-slate)" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+    <path d="M 936 293 L 1040 293" fill="none" marker-end="url(#arrow-blue)" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"/>
+  </g>
+  <g id="cards">
+    <rect fill="#EDF1F5" height="178" opacity="0.35" rx="18" width="392" x="48" y="207"/>
+    <rect fill="url(#fill-purple)" height="178" rx="18" stroke="#A18BBE" stroke-width="1.8" width="392" x="48" y="205"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,221) scale(0.8333333333333334)">
+      <path d="M 6 14 H 39 V 40 H 6 Z M 6 14 L 34 6 V 14 M 30 23 H 43 V 33 H 30 Z"/>
+      <circle cx="35" cy="28" r="1"/>
+    </g>
+    <rect fill="#EDF1F5" height="178" opacity="0.35" rx="18" width="392" x="544" y="207"/>
+    <rect fill="url(#fill-slate)" height="178" rx="18" stroke="#9CAEBD" stroke-width="1.8" width="392" x="544" y="205"/>
+    <g fill="none" stroke="#526A7E" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(569,221) scale(0.8333333333333334)">
+      <path d="M 11 5 H 29 L 38 14 V 43 H 11 Z M 29 5 V 14 H 38 M 17 23 H 31 M 17 30 H 31 M 17 36 H 26"/>
+    </g>
+    <rect fill="#EDF1F5" height="178" opacity="0.35" rx="18" width="392" x="1040" y="207"/>
+    <rect fill="url(#fill-blue)" height="178" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="392" x="1040" y="205"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(1065,221) scale(0.8333333333333334)">
+      <path d="M 24 4 L 43 14 V 35 L 24 45 L 5 35 V 14 Z M 5 14 L 24 25 L 43 14 M 24 25 V 45 M 15 9 L 33 19"/>
+    </g>
+    <rect fill="#EDF7F2" height="36" rx="18" stroke="#78A88F" stroke-width="1.2" width="548" x="48" y="424"/>
+    <rect fill="#EDF1F5" height="304" opacity="0.35" rx="18" width="660" x="48" y="542"/>
+    <rect fill="url(#fill-blue)" height="304" rx="18" stroke="#7D9FBE" stroke-width="1.8" width="660" x="48" y="540"/>
+    <g fill="none" stroke="#345E86" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(73,556) scale(0.8333333333333334)">
+      <path d="M 24 4 L 40 11 V 25 C 40 35 33 41 24 45 C 15 41 8 35 8 25 V 11 Z M 15 24 L 21 30 L 33 17"/>
+    </g>
+    <rect fill="#EDF1F5" height="304" opacity="0.35" rx="18" width="660" x="772" y="542"/>
+    <rect fill="url(#fill-purple)" height="304" rx="18" stroke="#A18BBE" stroke-width="1.8" width="660" x="772" y="540"/>
+    <g fill="none" stroke="#725294" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" transform="translate(797,556) scale(0.8333333333333334)">
+      <path d="M 16 13 L 6 24 L 16 35 M 32 13 L 42 24 L 32 35 M 27 9 L 21 39"/>
+    </g>
+  </g>
+  <g id="labels">
+    <text fill="#52687C" font-family="Liberation Sans" font-size="20" font-weight="600" letter-spacing="1.5" text-anchor="middle" x="740" y="40">CTVS-2  /  DIRECT CUSTODY PROFILE • INDEPENDENT REQUEST CREATION</text>
+    <text fill="#122C45" font-family="Liberation Serif" font-size="45" font-weight="700" text-anchor="middle" x="740" y="101">One request, two deliberately separate validation paths</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="132" y="247.0">User inputs</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="287.0">Offered assets or shares</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="76" y="319.64">Storage + execution budget</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="628" y="247.0">Create request</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="287.0">Create an independent UTxO.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="572" y="319.64">Return user change.</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="29" font-weight="700" text-anchor="start" x="1124" y="247.0">Request UTxO</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="287.0">Stable identity: originating</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="start" x="1068" y="319.64">transaction output reference</text>
+    <text fill="#32765B" font-family="Liberation Sans" font-size="20" font-weight="600" text-anchor="middle" x="322.0" y="449">ACCOUNTING STATE IS NOT CONSUMED</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="600" text-anchor="middle" x="740" y="492">SUPPORTED OUTER VERSION  +  RECOVERY  +  ECONOMIC BODY</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="132" y="582.0">Stable Recovery envelope</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="622.0">Vault binding and controller</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="656.0">Fixed refund destination and datum</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="690.0">Deadline</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="76" y="724.0">Read before economic downcasting</text>
+    <text fill="#122C45" font-family="Liberation Sans" font-size="30" font-weight="700" text-anchor="start" x="856" y="582.0">Settlement-only economic body</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="800" y="622.0">Terms, operation and offered quantity</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="800" y="656.0">Minimum output and success receiver</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="800" y="690.0">Storage, budget and exact settler fee</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="25" font-weight="400" text-anchor="start" x="800" y="724.0">Validate the complete economic intent</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="911.0">Creation does not change backing or supply, reserve capacity, or prove settlement eligibility.</text>
+    <text fill="#52687C" font-family="Liberation Sans" font-size="24" font-weight="400" text-anchor="middle" x="740" y="943.16">Unsupported economics can remain refundable only when the outer Recovery envelope is valid.</text>
+  </g>
+</svg>

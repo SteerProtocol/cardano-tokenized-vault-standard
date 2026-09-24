@@ -1,0 +1,13 @@
+{
+  "ctvs2-f03-two-way-acknowledgment": "f328023cf5e1f94031a4befe035b4d2bdd8fd2432702081820f3998c6e1b8469",
+  "ctvs2-f06-recovery-flow": "056127412950e1ee86cf652dfece2ced4e00c15907344a61445618b18a3fc11c",
+  "ctvs2-f02-request-creation-envelope": "cdc26c40d06a9149d313a8cb81d1855f64503f0b710144d3c46d8f6b917c6925",
+  "ctvs2-f05-delivery-variants": "80c9ef4478bfdd02cff6ceb2ec581d487b5de0f06b3246f8e363b09bf2f66970",
+  "ctvs1-f04-protected-obligations": "6c176f942384d0a9f8fe7a105e7f74d524a8a51faa9b158e10bfa424ac5e1bc2",
+  "ctvs1-f05-direct-operation-anatomy": "bdd377979ab2aa613d06c5b99d8e6a864dc8dbc98b35e0784f958e8827cef136",
+  "ctvs2-f08-inflight-boundary": "00991dbd83ca46e315f75cb297a7a770e51038deaf778bf61633d9c3a9abbe92",
+  "ctvs2-f07-zero-net-mint": "cae6147a1f5a67058a992be96880eba9ac1f8372c4f340639d155c29890f13ae",
+  "ctvs1-f07-managed-accounting-boundary": "534f712038bc542a9191a88cfda6ec760b2ac3c38990793ec6eeb209bb040304",
+  "ctvs1-f03-genesis-flow": "01a5b23c340e48717c8b9141c529b08dbd8617b42aa108aba8ee4c966bac7917",
+  "ctvs1-f06-ada-accounting-partitions": "5abcc0f945d3cf22b034f67b71fa97a9c528b1a47e196d9ba23161f122055ece"
+}

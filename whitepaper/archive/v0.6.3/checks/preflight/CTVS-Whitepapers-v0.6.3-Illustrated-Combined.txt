@@ -1,0 +1,6 @@
+PDF: /mnt/data/ctvs-polished-v063/delivery/CTVS-Whitepapers-v0.6.3-Illustrated-Combined.pdf
+Pages: 85
+Encrypted: False
+Openable (PyMuPDF): True
+Likely scanned: False
+XFA present: False
