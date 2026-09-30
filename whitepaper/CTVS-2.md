@@ -4,7 +4,7 @@ shorttitle: "CTVS-2"
 subtitle: "Technical whitepaper"
 coverlineone: "Asynchronous Requests,"
 coverlinetwo: "Settlement, and Claims"
-date: "23 September 2026"
+date: "29 September 2026"
 tagline: "Independent requests, purpose-bound settlement, and immutable full-value recovery."
 companion: "CTVS-1"
 lang: en-US
@@ -331,6 +331,10 @@ g_j=\operatorname{floor}\left(\frac{r_jX}{Y}\right),
 $$
 
 Every request enforces its minimum output and positive economic result. Rates and virtual parameters are authenticated terms. Economic fees are rounded per request, not once over an aggregate that the batcher can split differently.
+
+CTVS-1 Sections 6.5 and 6.6 define common units and optional verified pricing assertions. A native settlement profile using `Price` MUST identify the coherent accounting basis used for each included request and enforce its declared snapshot or sequencing rule. A pending estimate does not fix a future rate. This optional interface does not change the reference snapshot formulas or enable withdrawals in the Direct Custody Profile. Once a Claim is funded, its ledger-unit entitlement remains fixed through delivery.
+
+CTVS-1 Section 6.7 supplies the complete construction and decoding walkthrough and the isolated provider binding. The same envelope is used here; no second async Price encoding is defined. The example's custody checkpoint does not implement request settlement or funded-claim delivery. A native async implementation must additionally bind the verified assertion to the authenticated request, settlement basis, actual share issuance or burn, and funded output. It cannot issue an entitlement based only on a future tend estimate. Signed reports and managed composition remain unsupported by the isolated example.
 
 ## 5.2 Aggregate state transition
 
@@ -691,6 +695,8 @@ The accepted report head must be authenticated; an old signed unspent output is 
 
 The Direct Custody Profile has no NAV field or managed update action. A Merkle root or signature proves neither complete ownership nor fair valuation without its surrounding rules. Permission to settle does not confer permission to invent NAV, and reported positive backing is not liquid assets. No managed-protocol or trusted-NAV test is included in the local wire-format results. [\[6\]](#ctvs2-ref-6), [\[13\]](#ctvs2-ref-13)
 
+A `Price` conversion of an owned downstream position is an input to managed valuation, not an absolute report overwriting the vault's backing. Native denominations and rate scales follow CTVS-1 Section 6.5; authenticated report schemas must bind any scale used to interpret a signed value. The profile must reconcile positions, debt, fees and cash flows before pricing requests. It must independently establish liquidity and authorized execution; a correct conversion assertion supplies neither. Exact provider encoding is specified once in CTVS-1 Appendix B.
+
 ## 10.3 In-flight exposure is excluded until separately specified
 
 If pending assets are committed downstream before final pricing or recovery ceases to be freely executable, the position is no longer `PendingEscrow` under this specification. It requires a distinct, explicit ownership/recovery model before any execution-conformance claim. That workflow requires a separate specification. A timeout cannot reverse an investment, create liquidity or bypass a downstream operator's permissions. Retain the actual state and rights in the read view; do not label the position fully refundable or funded merely to fit a common enum.
@@ -829,6 +835,8 @@ Recovery deliberately does not first validate the complete economic body. Unknow
 ## 12.6 Common request/claim response contract
 
 Use CTVS-1 Section 13's common envelope and value-state rules, not a second transport or provider standard. For every request, the async response additionally identifies original request ID, observed source reference, native/reference implementation binding, applicable terms, controller and execution authority, economic receiver and refund destination, offered property, user bound, fee/storage partition and deadline.
+
+All offered quantities, bounds and funded entitlements retain their identified asset's ledger units. For native `Price` use, the response also identifies the approved provider, evidence and settlement pricing basis through the shared implementation binding. Human-readable decimal formatting cannot reprice an immutable Claim.
 
 | Field group | Required interpretation |
 |---|---|

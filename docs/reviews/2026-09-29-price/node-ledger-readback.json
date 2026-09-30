@@ -1,0 +1,23 @@
+{
+    "243414d277eba1dc59b4de69bed3a125bc967b733f3d6c5027e336633c7a829d#0": {
+        "address": "addr_test1wrg9cathr79l3m8puvyxz0a9k2v2wd30gycf8crhefpu67sxq203l",
+        "datum": null,
+        "inlineDatum": {
+            "constructor": 0,
+            "fields": [
+                {
+                    "int": 550000000
+                }
+            ]
+        },
+        "inlineDatumRaw": "d8799f1a20c85580ff",
+        "inlineDatumhash": "63b28d803d9d5c18973942f357f3850769b46903895ee3d21a646c52744ee1d1",
+        "referenceScript": null,
+        "value": {
+            "c215e0815035cf4d0fa12de46a3f72946ddf1b03b79a36f6aadcca8e": {
+                "52454345495054": 50000000000
+            },
+            "lovelace": 5000000
+        }
+    }
+}

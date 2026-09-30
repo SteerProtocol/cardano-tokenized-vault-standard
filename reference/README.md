@@ -20,7 +20,7 @@ npm ci --ignore-scripts
 npm run check
 ```
 
-Set `AIKEN=/absolute/path/to/aiken` if necessary. The complete check runs strict typechecking, Biome formatting/lint/import checks, Aiken formatting, Vitest unit/property tests with V8 coverage, both compiled Aiken suites and signed ledger integration tests. A [GitHub Actions workflow](../.github/workflows/reference.yml) runs the same gate and retains reports. Its configuration is checked in; no remote run is claimed by a local check.
+Set `AIKEN=/absolute/path/to/aiken` if necessary. The complete check runs strict typechecking, Biome formatting/lint/import checks, Aiken formatting, Vitest unit/property tests with V8 coverage, both compiled Aiken suites, the isolated Price provider suite and signed ledger integration tests. A [GitHub Actions workflow](../.github/workflows/reference.yml) runs the same gate and retains reports. Its configuration is checked in; no remote run is claimed by a local check.
 
 ## TypeScript formatting and linting
 
@@ -54,6 +54,7 @@ npm run test:watch
 npm run build:ctvs1
 npm run build:ctvs2
 npm run test:onchain         # Both families, reproducible property seeds
+npm run test:price-example   # Isolated evidence provider and consumer handler tests
 npm run test:integration     # Uses the previously built artifacts
 ```
 
@@ -72,6 +73,10 @@ Each authored code file explains its responsibility and relevant boundaries. Pub
 Keep rationale beside the checks it explains: rounding, wire commitments, asset custody, execution order and local test assumptions. Test names already describe most assertions; comments should explain scenario setup, phase dependencies and what a rejection actually proves. Update these explanations when behavior changes, and avoid comments that merely repeat a name, type or statement.
 
 ## Organization
+
+The shared Aiken package also contains the [Price provider interface candidate](../docs/price-provider-interface.md). It defines typed, versioned pricing claims for future provider integrations. The direct-custody contracts do not consume those claims or permit provider withdrawals yet.
+
+The [executable LendingA example](examples/price-provider/README.md) decodes on-chain evidence, verifies a conversion and consumes the same claim in a custody-preserving checkpoint. Its validators and synthetic handler tests are isolated from the reference vault deployments.
 
 ```text
 implementations/

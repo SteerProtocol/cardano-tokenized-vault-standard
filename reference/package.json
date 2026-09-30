@@ -29,7 +29,9 @@
     "test:coverage": "vitest run --project unit --project property --coverage --outputFile.junit=artifacts/test-results/unit.xml --outputFile.json=artifacts/test-results/unit.json",
     "test:integration": "vitest run --project integration --outputFile.junit=artifacts/test-results/integration.xml --outputFile.json=artifacts/test-results/integration.json",
     "test:onchain": "node --import tsx tools/check-onchain.ts",
-    "check": "npm run check:typescript && npm run format:onchain:check && npm run test:coverage && npm run test:onchain && npm run test:integration"
+    "test:price-example": "node --import tsx tools/check-price-example.ts",
+    "test:price-node": "node --import tsx tools/check-price-node.ts",
+    "check": "npm run check:typescript && npm run format:onchain:check && npm run test:coverage && npm run test:onchain && npm run test:price-example && npm run test:integration"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.14",

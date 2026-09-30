@@ -1,0 +1,21 @@
+{
+  "CTVS-1-Whitepaper.pdf": {
+    "pages": 51,
+    "links": 130,
+    "updatedBindingPages": [
+      22
+    ]
+  },
+  "CTVS-2-Whitepaper.pdf": {
+    "pages": 41,
+    "links": 99,
+    "updatedBindingPages": []
+  },
+  "CTVS-Whitepapers-Combined.pdf": {
+    "pages": 92,
+    "links": 229,
+    "updatedBindingPages": [
+      22
+    ]
+  }
+}

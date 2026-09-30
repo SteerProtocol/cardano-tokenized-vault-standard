@@ -1,0 +1,557 @@
+{
+  "seed": 3842551541,
+  "summary": {
+    "total": 44,
+    "passed": 44,
+    "failed": 0,
+    "kind": {
+      "unit": 42,
+      "property": 2
+    }
+  },
+  "modules": [
+    {
+      "name": "flow_test",
+      "summary": {
+        "total": 27,
+        "passed": 27,
+        "failed": 0,
+        "kind": {
+          "unit": 27,
+          "property": 0
+        }
+      },
+      "tests": [
+        {
+          "title": "converts_500_receipts_to_550_assets_and_records_value",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 883542,
+            "cpu": 315661927
+          }
+        },
+        {
+          "title": "consumer_reads_same_claim_but_does_not_recompute_native_price",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 552535,
+            "cpu": 196535083
+          }
+        },
+        {
+          "title": "well_formed_700_asset_lie_fails_combined_validation",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 550880,
+            "cpu": 184791384
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect provider(tx)"
+          ]
+        },
+        {
+          "title": "all_supported_assertions_are_verified",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 1022717,
+            "cpu": 362130108
+          }
+        },
+        {
+          "title": "incorrect_extra_assertion_fails_even_when_consumer_query_is_correct",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 592767,
+            "cpu": 199104171
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect provider(tx)"
+          ]
+        },
+        {
+          "title": "incorrect_extra_mint_preview_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 591994,
+            "cpu": 198753919
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect provider(tx)"
+          ]
+        },
+        {
+          "title": "evidence_pointer_without_reference_input_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 422450,
+            "cpu": 140615544
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [source] = list.filter(\n    tx.reference_inputs,\n    fn(input) { input.output_reference == state_ref },\n  )"
+          ]
+        },
+        {
+          "title": "code_reference_is_not_accounting_evidence",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 487166,
+            "cpu": 164216604
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect assets.quantity_of(source.output.value, policy_id, asset_name) == 1"
+          ]
+        },
+        {
+          "title": "fake_state_without_identity_nft_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 486596,
+            "cpu": 161216102
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect assets.quantity_of(source.output.value, policy_id, asset_name) == 1"
+          ]
+        },
+        {
+          "title": "identity_at_wrong_address_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 465532,
+            "cpu": 154946159
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect source.output.address == config.state_address"
+          ]
+        },
+        {
+          "title": "no_inline_native_datum_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 487116,
+            "cpu": 163274894
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect InlineDatum(raw) = source.output.datum"
+          ]
+        },
+        {
+          "title": "native_datum_trailing_field_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 508278,
+            "cpu": 170121878
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect tag == 0 && list.length(fields) == count"
+          ]
+        },
+        {
+          "title": "zero_supply_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 508411,
+            "cpu": 170195036
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect validation.q(accounted_assets) && validation.positive_q(receipt_supply)"
+          ]
+        },
+        {
+          "title": "negative_accounting_value_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 508408,
+            "cpu": 170029860
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect validation.q(accounted_assets) && validation.positive_q(receipt_supply)"
+          ]
+        },
+        {
+          "title": "malformed_evidence_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 382716,
+            "cpu": 127188502
+          },
+          "traces": [
+            "failed to deserialise PlutusData using UnConstrData\n        Value Con(\n                  Data(\n                      BigInt(\n                          Int(\n                              Int(\n                                  Int {\n                                      neg: false,\n                                      val: 2,\n                                  },\n                              ),\n                  ...redacted...\n              )"
+          ]
+        },
+        {
+          "title": "wrong_asset_pair_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 381785,
+            "cpu": 127934612
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect matches_subject(claim, config)"
+          ]
+        },
+        {
+          "title": "code_reference_without_withdrawal_does_not_authorize_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 171818,
+            "cpu": 56170816
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [Pair(_, amount)] = list.filter(\n      tx.withdrawals,\n      fn(entry) { entry.1st == credential },\n    )"
+          ]
+        },
+        {
+          "title": "unapproved_provider_fails_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 171948,
+            "cpu": 57912063
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [Pair(_, amount)] = list.filter(\n      tx.withdrawals,\n      fn(entry) { entry.1st == credential },\n    )"
+          ]
+        },
+        {
+          "title": "nonzero_withdrawal_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 170332,
+            "cpu": 51605152
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect amount == 0"
+          ]
+        },
+        {
+          "title": "missing_provider_redeemer_fails_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 193488,
+            "cpu": 66243712
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [Pair(_, data)] = list.filter(tx.redeemers, fn(p) { p.1st == purpose })"
+          ]
+        },
+        {
+          "title": "quote_for_different_receipt_quantity_fails_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 845640,
+            "cpu": 295666315
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [ConvertToAssets { assets: value, .. }] = list.filter(\n      claim.assertions,\n      fn(assertion) {\n        when assertion is {\n          ConvertToAssets { shares, .. } -> shares == held\n          _ -> False\n        }\n      },\n    )"
+          ]
+        },
+        {
+          "title": "receipt_diversion_fails_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 866592,
+            "cpu": 310563259
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect next.address == own.output.address && next.value == own.output.value"
+          ]
+        },
+        {
+          "title": "wrong_checkpoint_value_fails_consumer",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 887622,
+            "cpu": 318983966
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect consumer(tx)"
+          ]
+        },
+        {
+          "title": "two_positions_cannot_share_one_successor",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 550936,
+            "cpu": 191941469
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect [single] = list.filter(\n      tx.inputs,\n      fn(input) { input.output.address == own.output.address },\n    )"
+          ]
+        },
+        {
+          "title": "zero_and_fractional_views_round_down",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 639563,
+            "cpu": 216652639
+          }
+        },
+        {
+          "title": "maximum_quantity_uses_exact_intermediate_arithmetic",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 578755,
+            "cpu": 191356966
+          }
+        },
+        {
+          "title": "overflowing_economic_result_is_not_clamped",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 572964,
+            "cpu": 190106331
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n    provider(\n      with_claim(\n        with_source(context(), changed.output),\n        Price {\n          ..p,\n          assertions: [\n            ConvertToAssets { shares: 2, assets: 9_223_372_036_854_775_807 },\n          ],\n        },\n      ),\n    )"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pricing_test",
+      "summary": {
+        "total": 17,
+        "passed": 17,
+        "failed": 0,
+        "kind": {
+          "unit": 15,
+          "property": 2
+        }
+      },
+      "tests": [
+        {
+          "title": "all_six_methods_accept_exact_division",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 918244,
+            "cpu": 312748397
+          }
+        },
+        {
+          "title": "fractional_results_round_outputs_down_and_required_inputs_up",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 918244,
+            "cpu": 312748397
+          }
+        },
+        {
+          "title": "mixed_decimal_base_units_need_no_metadata_normalization",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 918244,
+            "cpu": 312748397
+          }
+        },
+        {
+          "title": "zero_queries_are_valid_for_a_positive_market",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 918244,
+            "cpu": 312748397
+          }
+        },
+        {
+          "title": "all_methods_use_exact_maximum_quantity_intermediates",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 928248,
+            "cpu": 315705967
+          }
+        },
+        {
+          "title": "zero_backing_values_existing_shares_at_zero",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "execution_units": {
+            "mem": 621932,
+            "cpu": 203225227
+          }
+        },
+        {
+          "title": "zero_backing_rejects_convert_to_shares",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551684,
+            "cpu": 180783178
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect backing > 0"
+          ]
+        },
+        {
+          "title": "zero_backing_rejects_deposit",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551692,
+            "cpu": 181296706
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect backing > 0"
+          ]
+        },
+        {
+          "title": "zero_backing_rejects_free_mint",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551700,
+            "cpu": 181810234
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect backing > 0"
+          ]
+        },
+        {
+          "title": "zero_backing_rejects_withdrawal",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551708,
+            "cpu": 182323762
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect backing > 0"
+          ]
+        },
+        {
+          "title": "mint_underpayment_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551714,
+            "cpu": 182681189
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect verify(7, 3, [PreviewMint { shares_out: 2, assets_in: 4 }])"
+          ]
+        },
+        {
+          "title": "mint_overpayment_is_not_an_exact_preview",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551714,
+            "cpu": 182681189
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect verify(7, 3, [PreviewMint { shares_out: 2, assets_in: 6 }])"
+          ]
+        },
+        {
+          "title": "withdrawal_underburn_fails",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 571722,
+            "cpu": 186394717
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect verify(7, 3, [PreviewWithdraw { assets_out: 5, shares_in: 2 }])"
+          ]
+        },
+        {
+          "title": "withdrawal_overburn_is_not_an_exact_preview",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 571722,
+            "cpu": 186394717
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect verify(7, 3, [PreviewWithdraw { assets_out: 5, shares_in: 4 }])"
+          ]
+        },
+        {
+          "title": "inverse_result_overflow_is_not_clamped",
+          "status": "pass",
+          "on_failure": "succeed_eventually",
+          "execution_units": {
+            "mem": 551690,
+            "cpu": 181210492
+          },
+          "traces": [
+            "the validator crashed / exited prematurely",
+            "expect\n    verify(\n      1,\n      9_223_372_036_854_775_807,\n      [ConvertToShares { assets: 2, shares: 9_223_372_036_854_775_807 }],\n    )"
+          ]
+        },
+        {
+          "title": "generated_ratios_verify_every_method",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "iterations": 100,
+          "counterexample": null
+        },
+        {
+          "title": "every_method_rejects_a_one_unit_false_result",
+          "status": "pass",
+          "on_failure": "fail_immediately",
+          "iterations": 100,
+          "counterexample": null
+        }
+      ]
+    }
+  ]
+}

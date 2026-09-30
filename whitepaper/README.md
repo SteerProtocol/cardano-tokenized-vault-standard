@@ -31,12 +31,13 @@ The papers include worked examples, diagrams, reference data structures, and exp
 - [`figures/README.md`](figures/README.md): which figure files are originals, generated assets, and PDF inputs, with a figure index.
 - [`archive/v0.6.3/evidence/`](archive/v0.6.3/evidence/): the human-readable validation evidence accompanying the prior edition.
 - [`candidate-wire/`](candidate-wire/): the proposed on-chain encoding, type declarations, and golden bytes. Its JSON is part of the cited wire candidate, not an off-chain response fixture.
+- CTVS-1 Sections 6.5 through 6.7 and Appendix B: units, rate scaling and the optional `Price` assertion candidate, separate from the Direct Custody Profile wire and composition rules. [Interface notes](../docs/price-provider-interface.md) and the [isolated provider example](../reference/examples/price-provider/README.md) accompany that candidate.
 - [`tools/`](tools/): PDF build, figure drawing, visual review, template, and publication dependencies.
 - [Reference integration package](../reference/packages/integration/README.md): the maintained Direct Custody Profile reader, response types, transport serialization, and local tests.
 - [Reference validation record](../reference/VALIDATION.md): dated local implementation results and remaining acceptance work.
 - [`archive/v0.6.3/`](archive/v0.6.3/): historical response schema, illustrative responses, evidence snapshots, dated checks, Markdown sources, PDFs, and generated PNG previews from the prior edition.
 
-CTVS is a proposed standard, not an adopted CIP. The publication describes requirements and a candidate reference profile. The linked implementation has compiled and signed local tests; node-backed acceptance, independent interoperability, external review, and deployment remain unverified.
+CTVS is a proposed standard, not an adopted CIP. The publication describes requirements and a candidate reference profile. The linked implementation has compiled and signed local tests. Positive node acceptance is retained for the isolated Price example's earlier conversion-only program; the updated six-method provider has local verification and has not been rerun on a node. Core vault node acceptance, independent interoperability, external review, and public deployment remain unverified.
 
 The common integration contract and worked response interpretations are stated in the papers. The current edition does not maintain a separate illustrative response schema or fixture set. The older JSON files are frozen in the archive for readers of the prior edition and for its historical checker. For a human-readable account of those earlier results, start with [`archive/v0.6.3/evidence/CTVS-Validation-Evidence.md`](archive/v0.6.3/evidence/CTVS-Validation-Evidence.md).
 
