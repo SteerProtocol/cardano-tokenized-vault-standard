@@ -1,5 +1,10 @@
 # Cardano Tokenized Vault Standard
 
+Development is coordinated through an open [working group](WORKING_GROUP.md)
+led by Steer Protocol. Participation and contributions are welcome. Original
+repository code and documentation are available under the [MIT License](LICENSE);
+third-party materials retain their existing licences.
+
 The [CTVS whitepapers](whitepaper/README.md) describe the proposed standard. The [combined PDF](whitepaper/output/CTVS-Whitepapers-Combined.pdf) contains CTVS-1, covering synchronous vault operations and accounting, followed by CTVS-2, covering asynchronous requests, settlement, and claims. The whitepaper directory also contains the editable sources, figures, and historical publication checks.
 
 This repository also contains two reference implementations of the whitepapers' WIRE-2, profile 0 candidate:
