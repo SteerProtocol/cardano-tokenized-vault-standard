@@ -32,7 +32,7 @@ Draft proposals remain proposals until explicitly accepted and documented.
 ## Open source and maintenance
 
 The standard and its reference artifacts are public goods. Original repository
-code and documentation are available under the [MIT License](LICENSE).
+code and documentation are available under the [Apache License 2.0](LICENSE).
 Contributors retain ownership of their contributions and submit them under
 that licence. Third-party materials retain their existing licences.
 
