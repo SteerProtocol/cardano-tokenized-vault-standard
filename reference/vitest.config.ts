@@ -15,7 +15,11 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       // Explicit inclusion keeps unimported production files in the coverage denominator.
-      include: ["packages/*/src/**/*.ts", "implementations/*/client/src/**/*.ts"],
+      include: [
+        "packages/*/src/**/*.ts",
+        "services/*/src/**/*.ts",
+        "implementations/*/client/src/**/*.ts",
+      ],
       exclude: ["**/*.d.ts"],
       reporter: ["text", "html", "lcov", "json-summary"],
       reportsDirectory: "artifacts/coverage",
@@ -25,9 +29,20 @@ export default defineConfig({
       {
         extends: true,
         test: {
+          name: "node",
+          include: ["services/indexer/test/node/**/*.test.ts"],
+          fileParallelism: false,
+          testTimeout: 180000,
+          hookTimeout: 60000,
+        },
+      },
+      {
+        extends: true,
+        test: {
           name: "unit",
           include: [
             "packages/**/*.test.ts",
+            "services/*/test/unit/**/*.test.ts",
             "implementations/*/client/**/*.test.ts",
             "testing/ledger/**/*.test.ts",
             "tools/**/*.test.ts",
@@ -42,6 +57,7 @@ export default defineConfig({
           setupFiles: ["testing/setup/property.ts"],
           include: [
             "packages/**/*.property.test.ts",
+            "services/*/test/unit/**/*.property.test.ts",
             "implementations/*/client/**/*.property.test.ts",
           ],
         },
@@ -50,7 +66,7 @@ export default defineConfig({
         extends: true,
         test: {
           name: "integration",
-          include: ["testing/integration/**/*.test.ts"],
+          include: ["testing/integration/**/*.test.ts", "services/*/test/integration/**/*.test.ts"],
           testTimeout: 120_000,
           hookTimeout: 120_000,
           fileParallelism: false,

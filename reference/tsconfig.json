@@ -22,6 +22,7 @@
   },
   "include": [
     "packages/**/*.ts",
+    "services/**/*.ts",
     "implementations/*/client/**/*.ts",
     "testing/**/*.ts",
     "tools/**/*.ts",

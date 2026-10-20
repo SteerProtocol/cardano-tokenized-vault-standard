@@ -1,45 +1,10 @@
 /** Real parameterized programs, signatures and final CBOR evaluation; local acceptance is not a node receipt. */
 import * as p from "@ctvs/protocol";
 import { describe, expect, it } from "vitest";
+import { allMethodAssertions, maximumAssertion } from "../../fixtures/price/assertions.js";
 import { createPriceFixture } from "../../fixtures/price/index.js";
-import { BACKING, RECEIPTS, SUPPLY, VALUE } from "../../fixtures/price/scripts.js";
+import { RECEIPTS, VALUE } from "../../fixtures/price/scripts.js";
 import { only } from "../../ledger/serialization.js";
-
-/** Cycle distinct queries across every method for the maximum-envelope fixture. */
-function maximumAssertion(index: number): p.PriceAssertion {
-  const amount = RECEIPTS + BigInt(index);
-
-  switch (index % 6) {
-    case 0:
-      return { kind: "ConvertToAssets", shares: amount, assets: (amount * BACKING) / SUPPLY };
-    case 1:
-      return { kind: "ConvertToShares", assets: amount, shares: (amount * SUPPLY) / BACKING };
-    case 2:
-      return {
-        kind: "PreviewDeposit",
-        assetsIn: amount,
-        sharesOut: (amount * SUPPLY) / BACKING,
-      };
-    case 3:
-      return {
-        kind: "PreviewMint",
-        sharesOut: amount,
-        assetsIn: (amount * BACKING + SUPPLY - 1n) / SUPPLY,
-      };
-    case 4:
-      return {
-        kind: "PreviewWithdraw",
-        assetsOut: amount,
-        sharesIn: (amount * SUPPLY + BACKING - 1n) / BACKING,
-      };
-    default:
-      return {
-        kind: "PreviewRedeem",
-        sharesIn: amount,
-        assetsOut: (amount * BACKING) / SUPPLY,
-      };
-  }
-}
 
 describe.each(["witness", "reference"] as const)("Price signed %s programs", (source) => {
   it("rejects an old evidence pointer and reprices against the replacement", async () => {
@@ -66,17 +31,9 @@ describe.each(["witness", "reference"] as const)("Price signed %s programs", (so
   it("verifies all six methods and preserves custody in observed output", async () => {
     const fixture = await createPriceFixture(source);
     // Include fractional exact-output queries so ceiling branches execute too.
-    const assertions: p.PriceAssertion[] = [
-      { kind: "ConvertToAssets", shares: RECEIPTS, assets: VALUE },
-      { kind: "ConvertToShares", assets: 1n, shares: 90n },
-      { kind: "PreviewDeposit", assetsIn: 1n, sharesOut: 90n },
-      { kind: "PreviewMint", sharesOut: 100n, assetsIn: 2n },
-      { kind: "PreviewWithdraw", assetsOut: 1n, sharesIn: 91n },
-      { kind: "PreviewRedeem", sharesIn: 100n, assetsOut: 1n },
-    ];
     const id = await fixture.submit(
       "checkpoint",
-      fixture.checkpoint(source, fixture.claim(assertions)),
+      fixture.checkpoint(source, fixture.claim(allMethodAssertions)),
     );
     const result = only(
       await fixture.provider.getUtxosByOutRef([{ txHash: id, outputIndex: 0 }]),

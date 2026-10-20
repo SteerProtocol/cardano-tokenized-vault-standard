@@ -1,0 +1,11 @@
+**/node_modules
+**/.build
+**/artifacts
+**/dist
+**/.DS_Store
+**/*.skey
+**/.env
+**/.env.local
+services/indexer/config/indexer.json
+services/indexer/data
+services/indexer/test
