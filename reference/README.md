@@ -95,11 +95,14 @@ testing/
   integration/{ctvs1,ctvs2}/ Family lifecycle and compiled rejection tests
 tools/                      Compiler staging, builds, parameter application and checks
 artifacts/                  Generated blueprints, coverage, raw CBOR and test reports
+services/indexer/           Ogmios transport, durable reader host and local deployment
 ```
 
 Shared primitives have one canonical source. The Aiken build merges that source and exactly one family into disposable `.build/{family}` staging, rejects collisions and symlinks, and generates only the support-script hash binding module. It never patches authored family sources. Build manifests record source hashes, compiler/library versions and final script identities. Mint and spend entrypoints must have identical applied P bytes and policy identity.
 
 The packages are private source workspaces, consumed through their TypeScript exports. Publishing JavaScript distributions or npm releases is outside the current build.
+
+The [indexer service](services/indexer/README.md) imports the integration reader and owns chain transport, SQLite history, operational/query HTTP endpoints and deployment. Use `npm run start:indexer` with a validated configuration and `npm run test:indexer` for focused tests. The [integration plan](../docs/chain-integration-plan.md#17-completion-checklist) owns current completion status; the [node guide](services/indexer/test/node/README.md) documents executable acceptance scenarios.
 
 ## Dependencies and API boundaries
 

@@ -23,8 +23,8 @@ provider has a different applied script hash and has not been rerun on a node;
 its current verification is compiled Aiken and signed local execution.
 The test tool uses the same parameterization and construction code as the local
 signed suite. A successful tool run requires node submission and indexed
-readback of both witness and reference-script successors. It verifies actual
-signature witnesses and evaluates final signed CBOR before submission. A third accepted transaction measures 16 assertions using
+readback of both witness and reference-script successors. Each checkpoint includes all six methods, with fractional exact-output queries exercising ceiling rounding. It verifies actual
+signature witnesses and evaluates final signed CBOR before submission. A third accepted transaction measures 16 mixed-method assertions using
 reference scripts.
 
 To prepare an equivalent network with the official image:
@@ -64,7 +64,7 @@ example under the stricter 14,000,000-unit local envelope. Neither run claims a
 universal capacity for arbitrary providers or evidence.
 
 False-price cases in this tool are rejected by the local compiled evaluator
-before submission. A third accepted transaction measures 16 assertions using
+before submission. A third accepted transaction measures 16 mixed-method assertions using
 reference scripts. The successful transactions additionally pass actual node
 validation. Negative node submission, public deployment, consensus rollback,
 production market transitions and independent provider interoperability are

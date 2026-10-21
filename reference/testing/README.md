@@ -16,9 +16,11 @@ For the static gate alone, run `npm run check:typescript`. It fails on formattin
 
 Use `*.property.test.ts` for generated properties. New economic or wire behavior needs observable invariants, boundary cases and malformed-input examples. A validator fix needs a compiled rejection case and, when transaction construction matters, a signed lifecycle regression. Avoid tests that merely duplicate an implementation formula.
 
+The [indexer service](../services/indexer/README.md) has focused tests under `services/indexer/test/unit/`, registered with the unit project. Service patterns are included in property/integration discovery and production coverage. SQLite crash/replay and synthetic official-client transport tests run without a Cardano node. The opt-in node project extends the primary `services/indexer/compose.yml` deployment with a disposable environment and test override. Its [test layout](../services/indexer/test/README.md) separates reusable support, captured fixtures and live scenarios; the [node guide](../services/indexer/test/node/README.md) documents the Docker command and filters. Current project completion belongs to [Section 17 of the integration plan](../../docs/chain-integration-plan.md#17-completion-checklist). Shared fixtures and the transaction harness stay here; service runtime must not import them.
+
 ## Coverage and reproducibility
 
-The coverage include patterns name **every production TypeScript file** in shared packages and both clients, including files not imported by tests. Gates require at least **90% lines, statements and functions**, and **85% branches**. Harness/tool coverage is outside this percentage; those components have explicit regressions and signed integration tests. Aiken does not provide comparable source line/branch coverage in this workflow. Its passing test counts and generated cases are reported separately.
+The coverage include patterns name **every production TypeScript file** in shared packages, services and both clients, including files not imported by tests. Gates require at least **90% lines, statements and functions**, and **85% branches**. Harness/tool coverage is outside this percentage; those components have explicit regressions and signed integration tests. Aiken does not provide comparable source line/branch coverage in this workflow. Its passing test counts and generated cases are reported separately.
 
 ```sh
 npm run test:coverage
