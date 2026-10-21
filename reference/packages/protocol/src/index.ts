@@ -2,5 +2,6 @@
 export * from "./data/index.js";
 export * from "./hash.js";
 export * from "./math/index.js";
+export * from "./price/index.js";
 export type * from "./types.js";
 export * from "./wire/index.js";

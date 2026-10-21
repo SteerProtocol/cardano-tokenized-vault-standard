@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./query": "./src/query/index.ts",
+    "./client": "./src/client/index.ts"
   },
   "dependencies": {
     "@ctvs/cardano": "0.1.0",

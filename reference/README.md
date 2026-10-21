@@ -20,7 +20,7 @@ npm ci --ignore-scripts
 npm run check
 ```
 
-Set `AIKEN=/absolute/path/to/aiken` if necessary. The complete check runs strict typechecking, Biome formatting/lint/import checks, Aiken formatting, Vitest unit/property tests with V8 coverage, both compiled Aiken suites and signed ledger integration tests. A [GitHub Actions workflow](../.github/workflows/reference.yml) runs the same gate and retains reports. Its configuration is checked in; no remote run is claimed by a local check.
+Set `AIKEN=/absolute/path/to/aiken` if necessary. The complete check runs strict typechecking, Biome formatting/lint/import checks, Aiken formatting, Vitest unit/property tests with V8 coverage, both compiled Aiken suites, the isolated Price provider suite and signed ledger integration tests. A [GitHub Actions workflow](../.github/workflows/reference.yml) runs the same gate and retains reports. Its configuration is checked in; no remote run is claimed by a local check.
 
 ## TypeScript formatting and linting
 
@@ -54,6 +54,7 @@ npm run test:watch
 npm run build:ctvs1
 npm run build:ctvs2
 npm run test:onchain         # Both families, reproducible property seeds
+npm run test:price-example   # Isolated evidence provider and consumer handler tests
 npm run test:integration     # Uses the previously built artifacts
 ```
 
@@ -73,6 +74,10 @@ Keep rationale beside the checks it explains: rounding, wire commitments, asset 
 
 ## Organization
 
+The shared Aiken package also contains the [Price provider interface candidate](../docs/price-provider-interface.md). It defines typed, versioned pricing claims for future provider integrations. The direct-custody contracts do not consume those claims or permit provider withdrawals yet.
+
+The [executable LendingA example](examples/price-provider/README.md) decodes on-chain evidence, verifies a conversion and consumes the same claim in a custody-preserving checkpoint. Its validators and synthetic handler tests are isolated from the reference vault deployments.
+
 ```text
 implementations/
   ctvs1/{client,onchain}/    Synchronous API and independently compiled contract
@@ -90,11 +95,14 @@ testing/
   integration/{ctvs1,ctvs2}/ Family lifecycle and compiled rejection tests
 tools/                      Compiler staging, builds, parameter application and checks
 artifacts/                  Generated blueprints, coverage, raw CBOR and test reports
+services/indexer/           Ogmios transport, durable reader host and local deployment
 ```
 
 Shared primitives have one canonical source. The Aiken build merges that source and exactly one family into disposable `.build/{family}` staging, rejects collisions and symlinks, and generates only the support-script hash binding module. It never patches authored family sources. Build manifests record source hashes, compiler/library versions and final script identities. Mint and spend entrypoints must have identical applied P bytes and policy identity.
 
 The packages are private source workspaces, consumed through their TypeScript exports. Publishing JavaScript distributions or npm releases is outside the current build.
+
+The [indexer service](services/indexer/README.md) imports the integration reader and owns chain transport, SQLite history, operational/query HTTP endpoints and deployment. Use `npm run start:indexer` with a validated configuration and `npm run test:indexer` for focused tests. The [integration plan](../docs/chain-integration-plan.md#17-completion-checklist) owns current completion status; the [node guide](services/indexer/test/node/README.md) documents executable acceptance scenarios.
 
 ## Dependencies and API boundaries
 

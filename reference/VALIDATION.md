@@ -1,5 +1,38 @@
 # Reference validation record
 
+## Latest Price methods run: 29 September 2026
+
+LendingA now economically verifies all six conversion and preview assertions
+under its no-fee snapshot binding. The full offline gate passes: 331 TypeScript
+cases, 107 CTVS-1 and 130 CTVS-2 Aiken cases, 44 isolated provider tests
+(42 unit and 2 generated properties), and 39 integration cases. The 8 Price
+scenarios now execute all six methods and a mixed 16-assertion envelope through
+both witness and reference-script paths, rejecting false results for each method.
+
+The [all-methods record](../docs/reviews/2026-09-29-price-all-methods/README.md)
+retains source bindings, test reports and current local resource measurements.
+This changed provider has a new program identity. Node acceptance retained in the
+earlier record applies to the old conversion-only program, not this update.
+No native market state schema, core custody rule, signed reporter or actual
+deposit/redemption implementation was added. The isolated example reuses the
+repository's pinned fuzz test package for its generated checks.
+
+## Prior Price extension run: 29 September 2026
+
+The optional Price example now includes a shared TypeScript codec, a cross-language
+byte vector, exact provider binding, 27 compiled handler tests and 8 signed local
+scenarios. The full gate passes with 331 TypeScript cases, 107 CTVS-1 and 130
+CTVS-2 Aiken cases, and 39 integration cases. Shared family tests overlap.
+
+The [dated Price record](../docs/reviews/2026-09-29-price/README.md) preserves
+source hashes, resource measurements and three accepted transactions on an
+isolated Cardano node through Kupo/Ogmios, plus direct node readback of the final
+output. This is a hypothetical receipt checkpoint with issuer-controlled native
+policies. Core vault node acceptance, production accounting, public deployment,
+signed reports and managed composition remain unverified or unsupported as
+specified there. Existing custody validators and wallet withdrawal restrictions
+are unchanged.
+
 ## Latest verified run: structural refactor, 18 September 2026
 
 All 38 structural lint findings are resolved across 28 TypeScript files. Cyclomatic complexity remains limited to 15, nesting to 4, and function length to 100 nonblank, noncomment lines. ESLint reports zero errors or warnings across 112 files, including tests and tools. No rule exemptions or dependencies were added.

@@ -1,0 +1,35 @@
+# Standalone existing-node mode: bind the same socket/config directories into both upstream services.
+name: ${CTVS_STACK_NAME:-ctvs-indexer-existing-node}
+services:
+  ogmios:
+    image: cardanosolutions/ogmios@sha256:8892ef5f77b94f1c95427cf9f2b40e6235a32b27a8b1e378db02289f3991617f
+    working_dir: /network
+    command: [--node-socket, /ipc/node.socket, --node-config, /network/config.json,
+      --host, 0.0.0.0, --port, "1337", --include-transaction-cbor]
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - ${NODE_SOCKET_DIR:?Set NODE_SOCKET_DIR}:/ipc
+    ports: ["127.0.0.1:${OGMIOS_PORT:-18005}:1337"]
+  kupo:
+    image: cardanosolutions/kupo@sha256:7d3c62368a4a5a609f5cf0ee6949eb8d491ed8f5a4d05b38da3213d95735f03b
+    working_dir: /network
+    command: [--node-socket, /ipc/node.socket, --node-config, /network/config.json,
+      --since, origin, --match, "*", --workdir, /kupo-db, --host, 0.0.0.0, --port, "1442"]
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - ${NODE_SOCKET_DIR:?Set NODE_SOCKET_DIR}:/ipc
+      - kupo-db:/kupo-db
+    ports: ["127.0.0.1:${KUPO_PORT:-18006}:1442"]
+  indexer:
+    build:
+      context: ../..
+      dockerfile: services/indexer/Dockerfile
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - ${INDEXER_CONFIG:?Set INDEXER_CONFIG}:/configuration/indexer.json:ro
+      - indexer-db:/data
+    ports: ["127.0.0.1:${INDEXER_PORT:-18080}:8080"]
+    depends_on: [ogmios, kupo]
+volumes:
+  kupo-db:
+  indexer-db:

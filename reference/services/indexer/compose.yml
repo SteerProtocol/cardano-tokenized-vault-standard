@@ -1,0 +1,53 @@
+name: ${CTVS_STACK_NAME:-ctvs-indexer-local}
+services:
+  node:
+    image: ghcr.io/intersectmbo/cardano-node@sha256:007da778998d0bdb043fb834c62b9da1c95e33610f31f6f9cccab29a945e2b99
+    # Bypass the image wrapper, which injects its default mainnet configuration arguments.
+    entrypoint: [cardano-node]
+    working_dir: /network
+    command: [run, --config, /network/config.json, --topology, /network/topology.json,
+      --database-path, /node-db, --socket-path, /ipc/node.socket]
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - node-db:/node-db
+      - node-ipc:/ipc
+    restart: on-failure:3
+  ogmios:
+    image: cardanosolutions/ogmios@sha256:8892ef5f77b94f1c95427cf9f2b40e6235a32b27a8b1e378db02289f3991617f
+    working_dir: /network
+    command: [--node-socket, /ipc/node.socket, --node-config, /network/config.json,
+      --host, 0.0.0.0, --port, "1337", --include-transaction-cbor]
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - node-ipc:/ipc
+    ports: ["127.0.0.1:${OGMIOS_PORT:-18005}:1337"]
+    depends_on: [node]
+    restart: on-failure:3
+  kupo:
+    image: cardanosolutions/kupo@sha256:7d3c62368a4a5a609f5cf0ee6949eb8d491ed8f5a4d05b38da3213d95735f03b
+    working_dir: /network
+    command: [--node-socket, /ipc/node.socket, --node-config, /network/config.json,
+      --since, origin, --match, "*", --workdir, /kupo-db, --host, 0.0.0.0, --port, "1442"]
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - node-ipc:/ipc
+      - kupo-db:/kupo-db
+    ports: ["127.0.0.1:${KUPO_PORT:-18006}:1442"]
+    depends_on: [node]
+    restart: on-failure:3
+  indexer:
+    build:
+      context: ../..
+      dockerfile: services/indexer/Dockerfile
+    volumes:
+      - ${NODE_CONFIG_DIR:?Set NODE_CONFIG_DIR}:/network:ro
+      - ${INDEXER_CONFIG:?Set INDEXER_CONFIG}:/configuration/indexer.json:ro
+      - indexer-db:/data
+    ports: ["127.0.0.1:${INDEXER_PORT:-18080}:8080"]
+    depends_on: [ogmios, kupo]
+    restart: on-failure:3
+volumes:
+  node-db:
+  node-ipc:
+  kupo-db:
+  indexer-db:

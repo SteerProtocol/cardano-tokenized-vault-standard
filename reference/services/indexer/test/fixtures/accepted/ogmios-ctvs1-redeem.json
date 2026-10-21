@@ -1,0 +1,179 @@
+{
+  "block": {
+    "type": "praos",
+    "era": "conway",
+    "id": "41399dc7eb16fc9f57302b0008efd1f94964683ba9b954cd01b7c553cea3967f",
+    "size": {
+      "bytes": 983
+    },
+    "height": 22,
+    "slot": 80,
+    "ancestor": "839783e927cbd751979487718a3addef621a24cc27682c06578953865e5b49bb",
+    "issuer": {
+      "verificationKey": "94cfffa8eff3818267463546eaeaee5c742ef66173b19d07e8a0123f84c24fb9",
+      "vrfVerificationKey": "ba9c42d115ec5d6f92317f81ad4f4f04968f5a33c14290562689870f2942eeb3",
+      "operationalCertificate": {
+        "count": 0,
+        "sigma": "51fc36ff6ec30a1234d3a18a24c4cd7989277cb8f0df85c05e23adacb469f58f95c5207ac211c3747ce8438f23114cbed55e7f1c06352fe29b5d9b618f76fc0b",
+        "kes": {
+          "period": 0,
+          "verificationKey": "c289acb5d3f138227dacf38faf193c08deb0de9d69bdc1e42c603b07d349b9c9"
+        }
+      },
+      "leaderValue": {
+        "output": "725b1813f7721bd1e89d0613e47ffd4381b975bb337599e319a8e3f78789a91460f626c3b76a39744d1abc2d91701caeef436cddbe4df2d4dfe5f5fc1fcb3948",
+        "proof": "1d71cef2919762a5dd111a2adf40f2732bf1b9dfbde097748e23a61264efaf685a338bd9b591f6bf750ee124bfbe9f71a94b0196a0f84094044ab5802ab68df457363fafe277be69ec47e52b493e4004"
+      }
+    },
+    "protocol": {
+      "version": {
+        "major": 12,
+        "minor": 0
+      }
+    },
+    "transactions": [
+      {
+        "id": "eb26930ce9d905406250bd88a993ca30cf9daeecf3037ef082b739025f9fa22a",
+        "spends": "inputs",
+        "inputs": [
+          {
+            "transaction": {
+              "id": "af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c"
+            },
+            "index": 0
+          },
+          {
+            "transaction": {
+              "id": "af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c"
+            },
+            "index": 2
+          },
+          {
+            "transaction": {
+              "id": "f3eb3a6eb28b49bc211ecadbe87adfab89c00bc80cb9432eebb0b54dcda024c1"
+            },
+            "index": 1
+          }
+        ],
+        "references": [
+          {
+            "transaction": {
+              "id": "12f14c7782f2969c4c66ad731fb48235906a6fcba54ae6d780ac704c976be854"
+            },
+            "index": 0
+          },
+          {
+            "transaction": {
+              "id": "8582cb2c646053b3ae6ec772c582621f3e6a06c267ba8ca4133c9ec22a106d91"
+            },
+            "index": 0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "addr_test1wr4hweqcmpvqeqrreyfpfgfplh67sw3cptu56wjmgpdvyxst0cuav",
+            "value": {
+              "ada": {
+                "lovelace": "111188343"
+              },
+              "eb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a": {
+                "5354415445": "1"
+              }
+            },
+            "datum": "d8799f444354565302581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a5820c16bd9cff64e45b71f1731b12731cd7bb9b440187e39c77c4bb3af82280ecaee041a05f4b1311a05f4b1311a001351c61a0098968000ff"
+          },
+          {
+            "address": "addr_test1vrf2nqlyx6rzxagmngfrzwm8j3hcd8jfhn0yfw87jg5ez4q3n98tz",
+            "value": {
+              "ada": {
+                "lovelace": "7500551"
+              }
+            }
+          },
+          {
+            "address": "addr_test1vrf2nqlyx6rzxagmngfrzwm8j3hcd8jfhn0yfw87jg5ez4q3n98tz",
+            "value": {
+              "ada": {
+                "lovelace": "449989668816472"
+              },
+              "eb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a": {
+                "5348415245": "99922225"
+              }
+            }
+          }
+        ],
+        "collaterals": [
+          {
+            "transaction": {
+              "id": "af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c"
+            },
+            "index": 2
+          }
+        ],
+        "collateralReturn": {
+          "address": "addr_test1vrf2nqlyx6rzxagmngfrzwm8j3hcd8jfhn0yfw87jg5ez4q3n98tz",
+          "value": {
+            "ada": {
+              "lovelace": "449989664242002"
+            },
+            "eb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a": {
+              "5348415245": "5477782"
+            }
+          }
+        },
+        "totalCollateral": {
+          "ada": {
+            "lovelace": "5000000"
+          }
+        },
+        "mint": {
+          "eb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a": {
+            "5348415245": "-5555557"
+          }
+        },
+        "scriptIntegrityHash": "36ead8f38011cc2fe30cca25d07808d01d6d3f345d97c80d225a23cd6baad757",
+        "fee": {
+          "ada": {
+            "lovelace": "425530"
+          }
+        },
+        "signatories": [
+          {
+            "key": "e315d2b7c3bc0d829de92f97e6290ad4a6992cf1acb353f35984a5096ac70ee4",
+            "signature": "222057854d7b9f8c67cca6c5e7e666dfb8e18a88b0cd1c104fece0d07514394fe78ba2e2c4b5fb49e176bf92046b1a30536e9c5fbbc89a38b83938089d477909"
+          }
+        ],
+        "redeemers": [
+          {
+            "validator": {
+              "index": 0,
+              "purpose": "spend"
+            },
+            "redeemer": "d8799f444354565302d87c9fd8799fd8799fd8799f581cd2a983e4368623751b9a12313b67946f869e49bcde44b8fe92299154ffd87a80ffd87a80ff1a0054c5651a0053ee870001ffff",
+            "executionUnits": {
+              "memory": 1375196,
+              "cpu": 591919739
+            }
+          },
+          {
+            "validator": {
+              "index": 0,
+              "purpose": "mint"
+            },
+            "redeemer": "d87c9f444354565302d87a9fd8799f5820af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c00ffffff",
+            "executionUnits": {
+              "memory": 1170801,
+              "cpu": 518155950
+            }
+          }
+        ],
+        "cbor": "84a900d9010283825820af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c00825820af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c02825820f3eb3a6eb28b49bc211ecadbe87adfab89c00bc80cb9432eebb0b54dcda024c1010183a300581d70eb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a01821a06a09977a1581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21aa145535441544501028201d8185860d8799f444354565302581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21a5820c16bd9cff64e45b71f1731b12731cd7bb9b440187e39c77c4bb3af82280ecaee041a05f4b1311a05f4b1311a001351c61a0098968000ff82581d60d2a983e4368623751b9a12313b67946f869e49bcde44b8fe922991541a0072730782581d60d2a983e4368623751b9a12313b67946f869e49bcde44b8fe92299154821b00019943625cc658a1581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21aa14553484152451a05f4b131021a00067e3a09a1581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21aa14553484152453a0054c5640b582036ead8f38011cc2fe30cca25d07808d01d6d3f345d97c80d225a23cd6baad7570dd9010281825820af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c021082581d60d2a983e4368623751b9a12313b67946f869e49bcde44b8fe92299154821b000199436216f952a1581ceb776418d8580c8063c91214a121fdf5e83a380af94d3a5b405ac21aa14553484152451a00539596111a004c4b4012d90102828258208582cb2c646053b3ae6ec772c582621f3e6a06c267ba8ca4133c9ec22a106d910082582012f14c7782f2969c4c66ad731fb48235906a6fcba54ae6d780ac704c976be85400a200d9010281825820e315d2b7c3bc0d829de92f97e6290ad4a6992cf1acb353f35984a5096ac70ee45840222057854d7b9f8c67cca6c5e7e666dfb8e18a88b0cd1c104fece0d07514394fe78ba2e2c4b5fb49e176bf92046b1a30536e9c5fbbc89a38b83938089d4779090582840000d8799f444354565302d87c9fd8799fd8799fd8799f581cd2a983e4368623751b9a12313b67946f869e49bcde44b8fe92299154ffd87a80ffd87a80ff1a0054c5651a0053ee870001ffff821a0014fbdc1a2347fa7b840100d87c9f444354565302d87a9fd8799f5820af21378a675d0808a65d066e760dc2d2a86f1500a435a00bc66a83a390deed6c00ffffff821a0011dd711a1ee26eaef5f6"
+      }
+    ]
+  },
+  "tip": {
+    "slot": 80,
+    "id": "41399dc7eb16fc9f57302b0008efd1f94964683ba9b954cd01b7c553cea3967f",
+    "height": 22
+  }
+}

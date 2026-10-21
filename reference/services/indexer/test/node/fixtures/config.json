@@ -1,0 +1,54 @@
+{
+  "AlonzoGenesisFile": "genesis/alonzo-genesis.json",
+  "ByronGenesisFile": "genesis/byron-genesis.json",
+  "ConsensusMode": "PraosMode",
+  "ConwayGenesisFile": "genesis/conway-genesis.json",
+  "ExperimentalHardForksEnabled": true,
+  "ExperimentalProtocolsEnabled": false,
+  "LastKnownBlockVersion-Alt": 0,
+  "LastKnownBlockVersion-Major": 3,
+  "LastKnownBlockVersion-Minor": 1,
+  "LedgerDB": {
+    "Backend": "V2InMemory",
+    "NumOfDiskSnapshots": 2,
+    "QueryBatchSize": 100000,
+    "SnapshotInterval": 864
+  },
+  "MinNodeVersion": "10.7.0",
+  "Protocol": "Cardano",
+  "RequiresNetworkMagic": "RequiresMagic",
+  "ShelleyGenesisFile": "genesis/shelley-genesis.json",
+  "TestAllegraHardForkAtEpoch": 0,
+  "TestAlonzoHardForkAtEpoch": 0,
+  "TestMaryHardForkAtEpoch": 0,
+  "TestShelleyHardForkAtEpoch": 0,
+  "TraceOptionForwarder": {
+    "connQueueSize": 64,
+    "disconnQueueSize": 128,
+    "maxReconnectDelay": 30
+  },
+  "TraceOptionMetricsPrefix": "cardano.node.metrics.",
+  "TraceOptionResourceFrequency": 1000,
+  "TraceOptions": {
+    "": {
+      "backends": ["Stdout HumanFormatColoured"],
+      "detail": "DNormal",
+      "severity": "Warning"
+    }
+  },
+  "TurnOnLogMetrics": true,
+  "TurnOnLogging": true,
+  "UseTraceDispatcher": true,
+  "defaultBackends": [],
+  "defaultScribes": [],
+  "minSeverity": "Critical",
+  "options": {},
+  "setupBackends": [],
+  "setupScribes": [],
+  "EnableP2P": true,
+  "TestBabbageHardForkAtEpoch": 0,
+  "TestConwayHardForkAtEpoch": 0,
+  "DijkstraGenesisFile": "genesis/dijkstra-genesis.json",
+  "PeerSharing": false,
+  "MinBigLedgerPeersForTrustedState": 0
+}

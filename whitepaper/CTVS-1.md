@@ -4,7 +4,7 @@ shorttitle: "CTVS-1"
 subtitle: "Technical whitepaper"
 coverlineone: "Synchronous Tokenized"
 coverlinetwo: "Vaults on Cardano"
-date: "23 September 2026"
+date: "29 September 2026"
 tagline: "Authenticated identity, integer share accounting, and an exact candidate ledger boundary."
 companion: "CTVS-2"
 lang: en-US
@@ -151,6 +151,8 @@ The Direct Custody Profile still fixes direct custody, mint/burn supply, immutab
 
 Native execution conformance below is not a second universal wire. It is a requirement for a specific implementation/version to expose and prove the common semantics using its own authenticated representation. Any future modification of the Direct Custody Profile's exact records requires an intentional new wire/profile decision and migration analysis. [\[12\]](#ctvs1-ref-12)
 
+Sections 6.5 and 6.6 and Appendix B additionally specify a candidate `Price` interface for verified native conversions and previews. Its encoded version 1 is independent of CTVS-WIRE-2. It does not modify the Direct Custody Profile, certify a native integration, or require every conforming vault to invoke a pricing script.
+
 ## 2.5 Native-format conformance without an adapter platform
 
 A native implementation MAY retain its existing scripts, datums and token identities. It MUST publish a versioned mapping with the following seven elements before claiming execution conformance. A read-only integration that cannot establish these elements remains read-only.
@@ -170,6 +172,8 @@ For full direct conformance, the four operations and their applicable views are 
 **Mappings translate representation, not rights.** A mapping cannot make an unfunded ticket a funded claim, invent fixed refund rights, hide a different fee convention, or call a multi-asset withdrawal a guaranteed single-underlying redemption. If a wrapper actually creates the missing guarantees, identify that wrapper as a distinct implementation and disclose its custody and trust boundary.
 
 This is a finite conformance record and reviewed construction procedure, not a universal translator or code-execution system. The descriptor does not authorize downloaded programs. No generic module catalogue, transcript interpreter, cross-protocol routing engine or new permission language is required.
+
+A mapping using `Price` MUST publish its source quantities and denominations, any fixed-point rate scale, exact intermediate rounding, supported assertions, evidence authentication and approved provider identity. Scale changes require an authenticated configuration/version transition, not a change to display metadata. The off-chain response provider in Section 13 and the on-chain pricing validator in Section 6.6 have distinct responsibilities; neither establishes the other's conformance.
 
 
 \begin{figure}[H]
@@ -334,6 +338,8 @@ The permanent config reserve and absence of a sweep are disclosed design costs. 
 
 All economic arithmetic uses base-unit integers. Decimal display settings are presentation metadata, never inputs to the conversion kernel.
 
+An asset quantity is denominated in that asset's ledger units; a share quantity is denominated in the identified share asset's ledger units. These units need not have the same display decimals. A source rate's fixed-point scale is a separate interpretation rule authenticated by its native mapping, not inferred from ticker symbols or mutable display metadata. Section 6.5 specifies conversion between such representations.
+
 | Symbol | Definition |
 |---|---|
 | $A$ | Underlying-asset units backing economically issued shares |
@@ -474,6 +480,120 @@ Do not call the returned amount a resource-feasible transaction maximum. The sea
 
 In this reference profile, nonzero state-action amounts and user bounds are positive integers; views can still convert zero. An immutable cap, a pause, or a disabled execution mode does not change the conversion equation. The economic maximum-deposit implementation agrees with exhaustive enumeration in 384 small configurations; no unbounded or ledger-resource conclusion follows.
 
+## 6.5 Units and rate scaling
+
+**Common unit contract.** Inputs and outputs MUST remain integer quantities of their identified assets. No common 18-decimal scale is required. Providers MAY use another internal representation, but MUST convert to the advertised ledger units before asserting a result and MUST publish every scale and intermediate rounding rule. Different output assets cannot be added merely by aligning decimals; converting them into one valuation asset requires its own authenticated exchange-rate basis.
+
+For a native proportional conversion, let $q$ be receipt units, $B$ recognized backing in underlying units and $T$ participating receipt supply in the same receipt units as $q$. Then:
+
+$$
+a=\operatorname{floor}\left(\frac{qB}{T}\right),\qquad T>0.
+$$
+
+Receipt units cancel; this formula needs no additional decimal factor. It illustrates a native provider, not a replacement for Sections 6.1–6.3's virtualized reference equations or a universal treatment of fees and losses.
+
+For eight-decimal receipts and six-decimal underlying, assume 1,000,000 whole receipts backed by 1,100,000 whole underlying tokens:
+
+```text
+q =        50,000,000,000 receipt units       (500 receipts)
+B =     1,100,000,000,000 underlying units
+T =   100,000,000,000,000 receipt units
+a = floor(q * B / T) = 550,000,000 underlying units
+```
+
+The result displays as 550 underlying tokens. Display formatting does not participate in this calculation.
+
+A different source may report $r/10^{d_r}$ whole underlying tokens per whole receipt. If its authenticated unit interpretation defines $d_s$ receipt decimals and $d_a$ underlying decimals, the down-rounded conversion is:
+
+$$
+a=\operatorname{floor}\left(\frac{q\,r\,10^{d_a}}{10^{d_s}\,10^{d_r}}\right).
+$$
+
+For $r=110{,}000{,}000$, $d_r=8$, $d_s=8$ and $d_a=6$, the same input produces 550,000,000 underlying units. The provider MUST authenticate the rate's direction, asset pair and scale through pinned configuration or verified evidence. A signed source MUST bind these meanings through its authenticated schema or report. A builder cannot independently select a more favorable exponent.
+
+Multiply with exact intermediate arithmetic before the specified division. Exact-output requirements round up under their declared action rule; conversions and exact-input outputs round down. Source quantization and any unavoidable intermediate rounding MUST be disclosed. Results exceeding the supported quantity domain fail explicitly; normalizing to a larger internal scale does not enlarge that domain. Zero views and zero-output execution retain their distinct Section 6 rules.
+
+## 6.6 Verified pricing assertions {#ctvs1-price-assertions}
+
+**Candidate optional interface.** A builder supplies `Price` as the redeemer of an approved pricing withdrawal validator. The provider authenticates its evidence and verifies every assertion. A consumer requires that exact provider invocation, reads the same redeemer and selects the exact subject, operation and fixed input. There is no cross-script return value and no mutable price store implied by this interface.
+
+| Assertion | Fixed input | Claimed result | Result rounding |
+|---|---|---|---|
+| `ConvertToAssets` | Share units | Underlying units, excluding operation entry/exit fees | Down |
+| `ConvertToShares` | Underlying units | Share units, excluding operation entry/exit fees | Down |
+| `PreviewDeposit` | Gross underlying input | Shares issued after declared operation fees | Down |
+| `PreviewMint` | Shares required | Gross underlying input including declared operation fees | Up |
+| `PreviewWithdraw` | Net underlying required | Shares surrendered including declared operation fees | Up |
+| `PreviewRedeem` | Shares surrendered | Net underlying after declared operation fees | Down |
+
+Previews exclude wallet network fees and non-economic storage ADA. They do not reserve liquidity or guarantee construction, permission, inclusion or future execution. The candidate is context-free; owner-dependent pricing requires a separately specified authenticated context and consumer binding. Unsupported methods fail, including unsupported assertions accompanying a valid one.
+
+The provider MUST match the market and asset pair, authenticate native state or the declared attestation, apply its published accounting and fee rules, enforce applicable freshness/state-basis requirements, and reject every incorrect assertion. A signature establishes reporter authorization under an attested profile, not independent economic truth. Structural decoding alone validates none of these properties.
+
+The consumer MUST require the configured provider's script credential with withdrawal amount zero, resolve its redeemer by withdrawal purpose, match market/assets and select exactly one matching query. It MUST separately enforce custody, liabilities, supply, user bounds and destinations. A provider's success does not authorize moving receipts or establish ownership of them. Both validators must pass in the same transaction; execution order is not a data dependency.
+
+Accounting evidence and code witnesses are distinct. An evidence pointer names a state output that the transaction must include as a reference input. The provider reads that output from the transaction context; it does not fetch an API or execute the evidence. Compiled provider code is supplied as a witness or by a separate reference-script UTxO. Referencing that code does not invoke it; the withdrawal purpose does. Read-only reference inputs remain unspent. A recipe consuming native state must separately define whether assertions use its pre-transition, post-transition or reconciled basis.
+
+**Worked claim.** The Section 6.5 example asserts `ConvertToAssets { shares: 50000000000, assets: 550000000 }`. The provider verifies the native backing and supply. A receipt-holding consumer verifies that it owns the claimed quantity and uses the value in its permitted accounting transition. An optional successor checkpoint records that transition's valuation; it is not perpetual evidence of the current rate.
+
+Appendix B defines the exact candidate encoding. The [shared decoder](../reference/packages/onchain/lib/ctvs/price.ak) and [hypothetical LendingA example](../reference/examples/price-provider/README.md) are local implementation material, separate from the pinned Direct Custody Profile evidence. The example is a valuation checkpoint, not a complete vault, signature verifier or deployed protocol integration.
+
+The Direct Custody Profile still rejects withdrawals under Sections 3.4 and 8.2. A deployment adopting this mechanism MUST define a separate reviewed composition profile with approved withdrawal purposes, witness requirements and complete allocation checks across validators, planners and pre-signing effects. Appending a zero withdrawal to an existing reference transaction does not enable the extension.
+
+## 6.7 Complete Price construction and decoding example {#ctvs1-price-walkthrough}
+
+**Isolated LendingA binding.** This example values a receipt position, not a complete managed vault. Its [published binding](../reference/examples/price-provider/BINDING.md) verifies all six conversion and preview methods against authenticated native accounting, with no operation fees or time-dependent accrual. Exact-input results round down; exact-output costs round up. Zero supply rejects. At zero backing, share-to-asset conversion and redemption preview report zero value; the other four methods reject. Signed reports, bootstrap and actual deposit/redemption execution remain unsupported. The updated provider has compiled and signed local tests; the retained node trace applies to the earlier conversion-only program hash. A provider publishing different rules must specify and verify them independently.
+
+Assume the consumer holds 500 receipts with eight display decimals. The native market recognizes 1,100,000 underlying tokens with six decimals against 1,000,000 participating receipts. The transaction builder reads ledger integers, computes the Section 6.5 result, and proposes 550 underlying tokens. The provider's configured NFT identifies the market; token labels and display decimals do not authenticate it.
+
+| Transaction component | Contents and purpose | Consumed? |
+|---|---|---|
+| Receipt input | Consumer address, 50,000,000,000 receipt units, storage ADA, previous checkpoint | Yes |
+| Wallet inputs | Fees, required collateral and ordinary change funding | Funding is spent; collateral follows ledger rules |
+| Native state reference | Configured script address, exactly one market NFT, inline backing 1,100,000,000,000 and supply 100,000,000,000,000 | No |
+| Program references, if used | Actual compiled provider and consumer programs, each checked against its applied script hash | No |
+| Withdrawal | Script credential of approved provider, amount zero, `Price` redeemer | Invokes provider; moves no rewards |
+| Receipt successor | Same consumer address and full receipt-input value; checkpoint 550,000,000 | Created |
+
+The builder requires chain-data access to discover the current unspent NFT-bearing market output and receipt input. It can use a node/indexer provider, a wallet backend or another verified chain-data source. Running a dedicated indexer or using WASM is not required by the interface. A code-reference location is an availability hint; its program must hash to the approved identity. The evidence reference is a full transaction ID and output index, not a position in the reference-input list.
+
+The [shared TypeScript codec](../reference/packages/protocol/src/price/codec.ts) constructs the common claim. In abbreviated code, with assets and references already authenticated:
+
+```typescript
+const claim = {
+  version: 1n,
+  marketId, shareAsset, underlyingAsset,
+  assertions: [{
+    kind: "ConvertToAssets",
+    shares: 50_000_000_000n,
+    assets: 550_000_000n,
+  }],
+  evidence: constr(0, [outRefData(marketStateRef)]),
+};
+const redeemer = hex(encodeData(priceToData(claim)));
+const decoded = priceFromData(decodeData(redeemer));
+```
+
+Decoding requires constructor 0 with exactly six fields, encoded version 1, exact asset encodings, 1..16 assertions, supported constructor shapes and bounded evidence. The conversion is constructor 0 with two integers, input first and result second. Duplicate queries reject even when their results agree. These checks establish well-formed Data, not a truthful conversion.
+
+The [LendingA provider](../reference/examples/price-provider/onchain/lib/example/lending_a.ak) then decodes `OnChain` as constructor 0 containing one exact `OutputReference`. It selects exactly that included reference input, checks the configured address and NFT, decodes its exact two-integer inline native datum, and verifies **every** assertion:
+
+```text
+assert declared market and asset identities match Config
+assert backing >= 0 and receipt supply > 0
+for each assertion:
+    require ConvertToAssets
+    require assets == floor(shares * backing / receipt_supply)
+```
+
+The [consumer](../reference/examples/price-provider/onchain/validators/receipt_consumer.ak) separately requires the approved script's zero withdrawal and reads its redeemer by semantic withdrawal purpose. It matches market and both assets, then selects exactly the conversion for its actual held receipt quantity. It requires one consumed position and one successor at its address, the complete input value preserved, no successor reference script, and the exact recorded value. A lie of 700 underlying tokens may pass consumer selection and custody checks but fails the provider's arithmetic; the ledger requires both invoked validators to pass. No execution ordering or cross-script return value is involved.
+
+The [signed construction fixture](../reference/testing/fixtures/price/index.ts) uses actual parameterized programs and derived hashes. It registers the reward credential, mints issuer-controlled test assets, publishes real reference programs, balances and signs the transaction, re-evaluates final CBOR for both purposes and reads the accepted local successor. Its two paths supply programs as witnesses or references. The issuer-controlled policies do not establish production NFT uniqueness or native transition correctness. The source protocol remains responsible for those guarantees and for accounting after applicable liabilities.
+
+A market output spent before submission is unavailable evidence. Rebuild from its replacement and recalculate; do not silently reuse the old reference or checkpoint. A later tend transaction likewise uses its own evidence and actual outputs. A deposit priced before tend is a share of the vault's current recognized assets and liabilities, including idle funds; a hypothetical future receipt count is not an asset already held. Later gains and execution losses affect participating shareholders through the declared accounting rules. A conversion never reserves liquidity or establishes the feasibility of an unwind.
+
+**Acceptance boundary.** The shared byte vector checks TypeScript/Aiken agreement for all six assertion constructors. Compiled handler and signed local tests exercise this provider's mixed-unit conversion, rejection paths and resource costs, including 16 distinct assertions. This is one hypothetical binding. An opt-in test additionally submitted and read back both paths and a 16-assertion reference invocation on an isolated magic-42 Cardano node through Kupo/Ogmios; the [dated validation record](../docs/reviews/2026-09-29-price/README.md) retains transaction bytes and costs. This closes the isolated example's positive node-acceptance check only. Public deployment, independent implementations, negative node submission, signed-report verification and managed composition remain distinct gates.
+
 # 7. Direct transitions and authorization
 
 ## 7.1 Accounting deltas
@@ -554,6 +674,8 @@ Local output-index injectivity cannot prevent an unrelated validator from counti
 Withdrawals, including zero-withdrawal hooks, certificates, votes, proposals, treasury declarations, donations, unrelated minting, and unsupported purposes are rejected as specified in Section 3.4. These are validator requirements, not builder conventions. Reference-only data does not fund payouts. Config/state and protected destination outputs forbid attached reference scripts.
 
 The restricted family closes the reference proof's script-protected obligation set; it intentionally limits atomic composition. A shared allocation verifier or reviewed adapter is required before relaxing it. Request creation from another protocol and delivery to a script destination remain distinct from consuming that protocol's script during settlement. [\[12\]](#ctvs1-ref-12), [\[14\]](#ctvs1-ref-14)
+
+Section 6.6's optional `Price` invocation requires a separate composition profile. It does not relax this profile's empty-withdrawal rule or transfer its restricted-family allocation proof to arbitrary script composition.
 
 ## 8.3 Destinations
 
@@ -855,6 +977,8 @@ $$
 
 This is a perimeter-dependent identity, not an instruction to deduct every symbol twice. If net equity is negative, the managed profile must retain the signed deficit and liabilities, mark insolvency, and halt ordinary conversion-based admission. It must not encode a negative backing value into the nonnegative reference kernel or hide debt by merely reporting zero assets. A separately escrowed claim that was excluded from $G$ is not deducted again. An underlying-denominated lending receivable can be recognized once; its collateral and receipt token must not both be counted as independent backing.
 
+A verified `Price` conversion can value an authenticated position within this perimeter. The Section 6.5 conversion contributes 550,000,000 underlying units to $G$ only when the vault proves custody and the mapping recognizes that position once. It does not establish the whole vault's $A$ or $L$. Debt, excluded balances and applicable fees remain the managed accounting profile's reconciliation obligations. All components must be valued in one declared asset under a coherent basis; aligning decimal precision is not a conversion between currencies. Receipt conversion evidence is distinct from an absolute whole-vault NAV report, whose update must satisfy Section 11.4.
+
 
 \begin{figure}[H]
 \centering
@@ -970,6 +1094,8 @@ The linked response types and [transport.ts](https://github.com/SteerProtocol/ca
 
 Unsigned quantities are decimal strings. Assets use `ada` or explicit policy-ID/asset-name bytes; display symbols and decimals do not change arithmetic. A quantity result is `known` with a value, or `unknown`, `unsupported`, `stale` or `not_applicable` without a fabricated value. Known zero is not missing data. Native signed deficits, if relevant, must be separately represented by the managed mapping rather than cast into unsigned backing.
 
+For a `Price` integration, disclose the approved provider script identity/version, supported assertions, evidence schema, native source identities, scale interpretation and pricing basis through the implementation binding. Display decimals and their metadata source are separate presentation information. The provider's code-reference location is an availability hint; clients must verify its script identity rather than trust the location.
+
 Capabilities are operation-specific. Read availability does not imply construction or execution. Each direction reports supported operations, delivery form where async, applicable pricing rule, cancellation rights and authority requirements. An unknown required native rule disables execution; a provider may still return an explicitly partial or unsupported read view.
 
 ## 13.3 Snapshot, quote and limit invariants
@@ -993,6 +1119,8 @@ Rollback reverses both status and quantities. An orphaned settlement loses its r
 `implementation` identifies either the Direct Custody Profile's exact reference binding or a native implementation's mapping ID, mapping version, mapping commitment and source references. Every independently decoded field must trace to that binding. The hash algorithm, domain and exact bytes covered by a mapping commitment must be documented by the mapping; merely hashing an arbitrary provider response is not authentication. No universal mapping registry or code runtime is introduced.
 
 An independent builder must derive the same permitted effect from the public mapping, not call the first builder's opaque construction service. A separately implemented decoder/indexer must agree on native bytes, economic field meanings, each supported operation and real rollback. A well-shaped response is not that acceptance test. The linked Direct Custody Profile reader and its local tests are implementation evidence, not independent interoperability or a declaration that a native protocol conforms. [\[20\]](#ctvs1-ref-20), [\[21\]](#ctvs1-ref-21)
+
+A `Price` construction recipe must locate current authenticated native evidence and consumer inputs, obtain the approved program or code-reference output, calculate and encode assertions, include the evidence reference inputs and zero withdrawal, construct protected outputs, then balance and evaluate with actual fees, collateral and witnesses. Chain-data access is required; operating a dedicated indexer or using a particular WASM runtime is not. A missing or spent source requires fresh discovery and rebuilding, not silent reuse of a cached claim. Section 6.7 and the isolated example supply a shared codec and signed local construction. The existing reader serves the Direct Custody Profile; production native discovery and independent-provider interoperability remain separate work.
 
 # 14. Resource limits, operational behavior, and risks
 
@@ -1041,6 +1169,8 @@ This is the concrete reference-profile acceptance matrix. A native implementatio
 | S-10 | Reproducible transaction construction | Independent builders and ledger-valid transactions |
 | S-11 | Bounded resource usage | Measured bytes, CPU/memory, fees, and reserves |
 | S-12 | Reliable infrastructure views | State lineage, coherent snapshots, and rollback replay |
+
+An implementation advertising the optional `Price` extension additionally requires mixed-decimal and differently scaled source vectors; fractional and exact-output rounding; incorrect or unbound scale rejection; signed subject/scale/freshness rejection when signatures are supported; unsupported and duplicate assertion rejection; and provider/consumer selection and custody tests. End-to-end acceptance must supply actual compiled provider code, invoke both purposes in a signed ledger-valid transaction, exercise stale/replaced evidence, and measure resources. Local synthetic handler tests alone do not establish that acceptance. These requirements do not assert new tests have been executed for this publication.
 
 ## 15.2 Recorded evidence and publication checks
 
@@ -1200,3 +1330,49 @@ ERC-4626, ERC-7540 and CIP-57 were rechecked on 11 September 2026 for their inte
 | Make invested-vault support substantive | One pinned managed integration is an explicit unresolved acceptance milestone |
 
 The publication source bundle includes both Markdown papers, figure sources, unchanged candidate-wire artifacts, the shared historical evidence record, and PDF build tooling. `python tools/build_whitepapers.py` typesets the papers. The archived publication checker records historical checks; current reference implementation code and dated local validation are linked in [\[19\]](#ctvs1-ref-19) and [\[21\]](#ctvs1-ref-21). Final publication QA must inspect rendered equations, tables, headings, cross-references, and links.
+
+\clearpage
+
+# Appendix B. Candidate Price encoding {#ctvs1-price-encoding}
+
+**Exact for this optional candidate, separate from CTVS-WIRE-2.** The public type is `Price`; its encoded version is 1. It is a withdrawal redeemer, not a Direct Custody Profile State or action. Section 6.6 supplies the economic and invocation requirements. Adopting this encoding does not alone establish native execution conformance or a reviewed composition profile.
+
+Use Section 10.1's `C(tag,[fields])`, `Asset`, `OutRef` and `Q` notation. A native asset retains its 28-byte policy ID and 0..32-byte name. `market_id` uses the Asset encoding as an implementation-defined subject identifier; this syntax does not require a singleton NFT or establish source authenticity. Provider and consumer configuration must authenticate and match that subject.
+
+```text
+Price = C(0,[
+    1,                          -- Price version, not wire version 2
+    market_id: Asset,
+    share_asset: Asset,
+    underlying_asset: Asset,
+    List<PriceAssertion>,
+    evidence: BoundedData
+])
+
+PriceAssertion =
+    C(0,[shares: Q, assets: Q])         -- ConvertToAssets
+  | C(1,[assets: Q, shares: Q])         -- ConvertToShares
+  | C(2,[assets_in: Q, shares_out: Q])   -- PreviewDeposit
+  | C(3,[shares_out: Q, assets_in: Q])   -- PreviewMint
+  | C(4,[assets_out: Q, shares_in: Q])   -- PreviewWithdraw
+  | C(5,[shares_in: Q, assets_out: Q])   -- PreviewRedeem
+```
+
+The outer constructor has exactly six fields. Every assertion has exactly two fields, with its fixed input first and claimed result second. Unknown versions, tags, wrong types, malformed asset identities and extra or missing fields fail. Quantities are integers in 0..2^63-1 in their respective ledger units; this includes valid zero-valued conversion views, not permission for zero-output execution.
+
+The assertion list is nonempty and has at most 16 entries. Within an envelope, `(operation tag, fixed input)` identifies a query. Duplicate queries fail even when their results match. Providers verify every assertion, rejecting unsupported methods. Consumers select exactly one matching query; list order must not select the assertion.
+
+Evidence is provider-specific Plutus Data. The candidate bound is at most 1,024 bytes under the pinned decoder's normalized serialization, 256 nodes counting containers and map keys/values, and depth 16 with the root at depth zero. Constructor tags are 0..127; byte strings are at most 1,024 bytes; integers are in $[-2^{255},2^{255}-1]$; maps reject structurally duplicate keys. These are the shared decoder's resource bounds, not universal ledger Data limits or proof that a maximum-size invocation fits a transaction. The original accepted CBOR spelling need not have the normalized size. Providers must publish their exact evidence schemas within the advertised bounds and measure actual verification costs.
+
+For the hypothetical LendingA read-only example, one evidence schema is:
+
+```text
+OnChain = C(0,[market_state_ref: OutRef])
+OutRef  = C(0,[B[32], output_index])
+```
+
+The output index is in 0..65,535. The reference must identify exactly one included reference input; it is not an ordinal selecting the second or third entry in the reference-input list. The adapter additionally verifies the configured state address and market NFT, then decodes its native backing and supply. This example schema is not imposed on other providers. A signed provider may define different evidence, including a report, signature and validity/state-basis data under its published authenticated schema.
+
+There is no common signature field, rate-decimals field, provider hash or liquidity reservation in `Price`. The approved provider identity belongs to the consumer's authenticated configuration; signature and rate-scale interpretation belong to the provider's evidence/configuration contract. Liquidity and execution capabilities remain separately disclosed. No arbitrary builder-supplied decimal exponent may override those meanings.
+
+The [Aiken type and decoder](../reference/packages/onchain/lib/ctvs/price.ak), [TypeScript codec](../reference/packages/protocol/src/price/codec.ts), [interface notes](../docs/price-provider-interface.md) and [isolated example](../reference/examples/price-provider/README.md) are local candidate sources. Section 6.7 provides the complete transaction and decoding walkthrough. The example adds a shared byte vector, native-state verification, custody checks and signed local traces with measured execution. It supplies no signature verifier or deployed native integration. The isolated positive node trace does not establish independent construction or production deployment. Those and provider-specific requirements remain obligations under Section 15.
