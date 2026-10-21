@@ -1,6 +1,0 @@
-warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
-[WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
-[WARNING] Deprecated: --no-highlight. Use --syntax-highlighting=none instead.
-CTVS-1-Whitepaper.pdf: 51 pages
-CTVS-2-Whitepaper.pdf: 41 pages
-CTVS-Whitepapers-Combined.pdf: 92 pages
