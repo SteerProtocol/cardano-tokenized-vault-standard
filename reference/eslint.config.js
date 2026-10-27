@@ -26,6 +26,7 @@ export default [
       "**/build/**",
       "**/.build/**",
       "**/dist/**",
+      "**/target/**",
       "**/coverage/**",
       "**/artifacts/**",
       "**/evidence/**",

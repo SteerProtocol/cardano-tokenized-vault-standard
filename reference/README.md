@@ -13,10 +13,14 @@ CTVS-1 implements deposit, mint, withdraw and redeem. CTVS-2 implements request 
 
 Use Node.js **22.20** (the CI version), or a release matching `^22.13.0 || ^24.0.0 || >=26.0.0`, with **Aiken v1.1.22+39d6b04**, stdlib **v3.1.0**, fuzz **v2.2.0** and Plutus **V3**. Dependencies are pinned in one npm lockfile and each onchain project's Aiken lockfile. Install the compiler from its [upstream release](https://github.com/aiken-lang/aiken/releases/tag/v1.1.22).
 
+Workspace checks also require Rust **1.95.0** and its `wasm32-wasip2` target to build the plugin packages. The [plugin guide](packages/plugins/README.md) covers the separate native-JSPI host tests.
+
 From `reference/`:
 
 ```sh
 npm ci --ignore-scripts
+rustup toolchain install 1.95.0 --profile minimal --target wasm32-wasip2
+RUSTUP_TOOLCHAIN=1.95.0 npm run build:plugins
 npm run check
 ```
 

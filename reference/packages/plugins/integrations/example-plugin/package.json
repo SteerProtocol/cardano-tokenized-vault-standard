@@ -1,0 +1,34 @@
+{
+  "name": "@ctvs/example-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "plugin/wit",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./component": "./dist/plugin.wasm"
+  },
+  "scripts": {
+    "build:component": "cargo build --manifest-path plugin/Cargo.toml --target wasm32-wasip2 --release --locked",
+    "build:js": "jco transpile plugin/target/wasm32-wasip2/release/example_plugin.wasm --name example-plugin -o dist/js --instantiation async --no-wasi-shim --async-mode jspi --async-imports ctvs:example-plugin/http#get --async-exports fetch",
+    "build:package": "npm run build:component && npm run build:js && node tools/assets.js && tsc -p tsconfig.build.json",
+    "build:host": "cargo build --manifest-path host/rust/Cargo.toml --locked",
+    "build": "npm run build:package && npm run build:host",
+    "test": "npm run build && node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@ctvs/plugins": "0.1.0",
+    "@bytecodealliance/preview2-shim": "0.30.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@bytecodealliance/jco": "1.39.0"
+  }
+}

@@ -8,6 +8,7 @@
   },
   "workspaces": [
     "packages/*",
+    "packages/plugins/integrations/*",
     "services/*",
     "implementations/*/client",
     "testing"
@@ -16,6 +17,9 @@
     "build": "node --import tsx tools/build.ts",
     "build:ctvs1": "node --import tsx tools/build.ts ctvs1",
     "build:ctvs2": "node --import tsx tools/build.ts ctvs2",
+    "build:plugins": "npm run build --workspace @ctvs/plugins && npm run build:package --workspace @ctvs/example-plugin",
+    "test:plugins": "npm run build:plugins && vitest run --project unit packages/plugins/test --reporter=default",
+    "test:plugins:package": "npm run build:plugins && node packages/plugins/tools/check-packages.js",
     "apply": "node --import tsx tools/apply.ts",
     "typecheck": "tsc --noEmit",
     "format": "eslint . --fix --max-warnings=0 && biome format --write .",

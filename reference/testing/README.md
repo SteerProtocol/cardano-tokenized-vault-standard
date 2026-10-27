@@ -1,6 +1,6 @@
 # Testing and contribution guide
 
-Run the complete gate with `npm run check` from `reference/`. The workspace uses Vitest projects for unit, property and integration tests, fast-check for TypeScript properties, Aiken's native test/property runner for onchain code, V8 for measured TypeScript coverage, and Biome plus strict TypeScript for static checks.
+After installing dependencies and building the plugin packages using the [workspace setup](../README.md#install-and-verify), run the complete gate with `npm run check` from `reference/`. The workspace uses Vitest projects for unit, property and integration tests, fast-check for TypeScript properties, Aiken's native test/property runner for onchain code, V8 for measured TypeScript coverage, and Biome plus strict TypeScript for static checks.
 
 For the static gate alone, run `npm run check:typescript`. It fails on formatting, import-order, lint or compiler violations without editing files. See the [formatting and linting commands](../README.md#typescript-formatting-and-linting) for safe local fixes and the shared ruleset.
 

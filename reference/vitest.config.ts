@@ -17,6 +17,7 @@ export default defineConfig({
       // Explicit inclusion keeps unimported production files in the coverage denominator.
       include: [
         "packages/*/src/**/*.ts",
+        "packages/plugins/dist/**/*.js",
         "services/*/src/**/*.ts",
         "implementations/*/client/src/**/*.ts",
       ],

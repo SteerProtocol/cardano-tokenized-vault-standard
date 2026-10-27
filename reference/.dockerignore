@@ -2,6 +2,7 @@
 **/.build
 **/artifacts
 **/dist
+**/target
 **/.DS_Store
 **/*.skey
 **/.env

@@ -33,6 +33,10 @@ jobs:
           version: v1.1.22
       - name: Install locked dependencies
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build plugin workspace packages
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --target wasm32-wasip2
+          RUSTUP_TOOLCHAIN=1.95.0 npm run build:plugins
       - name: Typecheck, formatting, lint, coverage, onchain properties, and signed integration
         run: npm run check
       - name: Preserve coverage and execution evidence
@@ -42,3 +46,29 @@ jobs:
           name: reference-validation
           path: reference/artifacts/
           retention-days: 14
+
+  plugins:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: reference
+    env:
+      RUSTUP_TOOLCHAIN: "1.95.0"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "26.12.1"
+          cache: npm
+          cache-dependency-path: reference/package-lock.json
+      - name: Install component target and workspace dependencies
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --target wasm32-wasip2
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check loader, discovery and collection planning
+        run: npm run test:plugins
+      - name: Check component execution through JCO and Wasmtime
+        run: npm test --workspace @ctvs/example-plugin
+      - name: Check isolated packed consumers
+        run: npm run test:plugins:package

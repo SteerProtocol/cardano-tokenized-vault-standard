@@ -14,6 +14,8 @@ Start with the [reference workspace](reference/README.md), [validation record](r
 ```sh
 cd reference
 npm ci --ignore-scripts
+rustup toolchain install 1.95.0 --profile minimal --target wasm32-wasip2
+RUSTUP_TOOLCHAIN=1.95.0 npm run build:plugins
 # Aiken v1.1.22+39d6b04 must be on PATH, or set AIKEN to its absolute path.
 npm run check
 ```
