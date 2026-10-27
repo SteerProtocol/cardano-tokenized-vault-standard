@@ -32,7 +32,10 @@ export default defineConfig({
         extends: true,
         test: {
           name: "node",
-          include: ["services/indexer/test/node/**/*.test.ts"],
+          include: [
+            "services/indexer/test/node/**/*.test.ts",
+            "services/indexer/kupo/test/node/**/*.test.ts",
+          ],
           fileParallelism: false,
           testTimeout: 180000,
           hookTimeout: 60000,
@@ -50,7 +53,11 @@ export default defineConfig({
             "testing/ledger/**/*.test.ts",
             "tools/**/*.test.ts",
           ],
-          exclude: ["**/*.property.test.ts", "**/node_modules/**"],
+          exclude: [
+            "**/*.property.test.ts",
+            "**/node_modules/**",
+            "services/indexer/kupo/test/node/**",
+          ],
         },
       },
       {

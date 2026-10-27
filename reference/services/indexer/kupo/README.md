@@ -1,6 +1,6 @@
 # Kupo deployment
 
-This directory is the home for plugin-aware Kupo startup and deployment within the existing stack. Configuration validation, package resolution and collection settings are implemented as separate APIs with tests. Discovery orchestration and container startup remain unimplemented. The current [Compose stack](../compose.yml) still starts Kupo with fixed origin/wildcard coverage. Managed-storage recognition and native reuse-policy tests remain pending.
+This directory is the home for plugin-aware Kupo startup and deployment within the existing stack. Configuration validation, package resolution, collection settings and a minimal managed-storage guard are implemented as separate APIs with tests. Discovery orchestration and container startup remain unimplemented. The current [Compose stack](../compose.yml) still starts Kupo with fixed origin/wildcard coverage. Stage 4 is ready for review; its scope is database reuse policy and focused tests of Kupo's behavior.
 
 The reusable WASM loader, discovery wrapper, collection planner and bundled integrations stay in [`@ctvs/plugins`](../../../packages/plugins/README.md). The private `@ctvs/kupo-startup` workspace declares its own dependency on that package. Kupo startup will consume those APIs through its own container entrypoint. The existing indexer reader continues to use [`src/main.ts`](../src/main.ts), and its HTTP SDK remains stateless.
 
@@ -16,6 +16,7 @@ kupo/
     packages.ts
     package-cache.ts
     settings.ts
+    managed-storage.ts
   test/
     config.test.ts
     packages.test.ts
@@ -23,6 +24,10 @@ kupo/
     package-fixture.ts
     native-packages.ts
     settings.test.ts
+    managed-storage.test.ts
+    node/
+      kupo-fixture.ts
+      reuse.test.ts
 ```
 
 ## Planned implementation files
@@ -38,9 +43,9 @@ Add the remaining files as their behavior is implemented. Startup orchestration 
 | `src/packages.ts` | Resolve bundled/additional packages and provide the discovery importer | Implemented, reviewed |
 | `src/package-cache.ts` | Install additional packages into complete, locked npm snapshots | Implemented, reviewed |
 | `src/settings.ts` | Translate the combined collection plan into Kupo startup settings | Implemented, reviewed |
-| `src/managed-storage.ts` | Recognize initialization ownership and refuse unsupported existing storage | Pending |
+| `src/managed-storage.ts` | Recognize initialization ownership and refuse unsupported existing storage | Implemented, awaiting stage review |
 | `src/startup.ts` | Coordinate package resolution, discovery, planning and startup preparation | Pending |
-| `test/` | Keep validation, installation and native Kupo checks beside their implementation | Unit tests implemented |
+| `test/` | Keep validation, installation and native Kupo checks beside their implementation | Unit tests and five focused pinned-Kupo tests implemented |
 
 The existing [service Compose files](../README.md#complete-local-stack) remain the deployment definitions. The Kupo image has a separate execution path from the reader daemon. This workspace adds no runtime imports, dependencies, configuration fields or startup hooks to that daemon.
 
@@ -118,7 +123,33 @@ The pinned image `cardanosolutions/kupo@sha256:7d3c62368a4a5a609f5cf0ee6949eb8d4
 
 ## Database reuse policy
 
-Managed-storage initialization and focused tests of Kupo's checkpoint, pattern-conflict and retention behavior remain pending. Kupo owns database schema creation, indexing and checkpoint resumption; startup must preserve unsupported existing data.
+Stage 4 implements a small operational contract and tests the pinned Kupo behavior:
+
+- Initialize fresh managed storage from origin, using the generated patterns and retaining spent outputs.
+- Reuse the same operator-controlled managed volume on normal restarts under that policy. Kupo owns checkpoint resumption and already rejects command-line patterns conflicting with its stored patterns; surface its errors instead of duplicating those checks.
+- Treat unrecognized/imported databases, known previously pruned databases and initialization network/profile changes as unsupported reuse. Preserve the data and report the reason; do not adopt, delete or rebuild it automatically.
+- Keep the initialization guard limited to a managed ownership marker with the declared network and origin/retain policy. Normal reuse assumes no outside modification of the managed volume.
+
+`prepareManagedStorage(directory, network)` returns `"initialized"` or `"reused"`. A fresh directory receives `.ctvs-kupo.json`, containing `format: "CTVS-KUPO-MANAGED-1"`, the canonical network identity, `since: "origin"` and `spent: "retain"`. A nonempty directory without that marker is refused, including when only SQLite WAL/SHM/journal files remain. Existing contents are not adopted, deleted or rebuilt. An existing marker must match the wrapper's canonical bytes exactly; it is private initialization metadata, not an operator-editable configuration file.
+
+The marker is created exclusively and flushed before this function returns. It records initialization intent before Kupo starts, not successful indexing. A completed marker without a database therefore permits retry after interruption before Kupo's first launch. A partial, corrupt or incompatible marker is refused without repair or deletion, and a matching marker is never rewritten on reuse. Kupo still owns schema creation, checkpoints, retained rows, locking and conflicting-pattern refusal. There are no pattern lists, checkpoint copies or per-plugin history fields in this record.
+
+The guard compares the supplied network declaration; it does not authenticate a node or inspect mounted node configuration. Startup wiring must supply the intended network/configuration and the fixed origin/retain settings. The marker is not evidence against outside replacement, external pruning or HTTP pattern changes. Those actions violate the managed-volume reuse contract; an externally modified database cannot be certified merely because its marker remains. The guard is not yet connected to Compose or a runtime entrypoint.
+
+There is no planned standalone `coverage.ts`, general `assessCoverage` engine, per-plugin history ledger or historical matcher-containment algorithm. Under managed wildcard collection, enabling another supported plugin does not require a separate raw-history assessment. Dynamic pattern mutation and automated backfill remain outside the initial scope. Reuse permission does not establish synchronization or readiness.
+
+The 20 guard unit cases cover fresh initialization, marker-only restart, preservation of existing files, unrecognized databases/sidecars, changed network identities, incompatible retention/start policies, torn markers and filesystem errors. The five native tests run the pinned Kupo image with `--network none`, test-owned temporary storage and no reader service. They verify schema creation, shared-reader and plugin-only settings, unchanged restart, native pattern-conflict refusal and the real garbage collector's retention/pruning behavior.
+
+Kupo creates the SQLite schema itself. Tests then stop it and seed tiny synthetic checkpoint/input rows to isolate storage behavior from ledger decoding. On restart, Kupo selects the newest checkpoint within its rollback window despite `--since origin`, and retained spent rows survive a garbage-collection cycle. An unmanaged pruning control actually deletes an aged spent row; restarting without pruning and with origin leaves that row absent, and the guard refuses to adopt that volume. These tests do not establish node synchronization, valid transaction decoding, real chain intersection or production readiness. Kupo's [startup implementation](https://github.com/CardanoSolutions/kupo/blob/v2.12.0/src/Kupo/App/Configuration.hs#L170) and the [maintainer's pruning explanation](https://github.com/CardanoSolutions/kupo/discussions/118) explain those boundaries. Orchestration remains Stage 5 and the complete container workflow remains Stage 6.
+
+From `reference/`, with Docker available, run the native tests separately:
+
+```sh
+docker pull cardanosolutions/kupo@sha256:7d3c62368a4a5a609f5cf0ee6949eb8d491ed8f5a4d05b38da3213d95735f03b
+npx vitest run --project node services/indexer/kupo/test/node --reporter=default
+```
+
+This is a test command, not an additional operator startup step. Tests use the cached pinned image without automatic pulls, remove their own containers and temporary storage, and do not touch existing Docker volumes. They run in the existing `node` test project and are excluded from the fast unit suite. The reference verification workflow pulls the pinned image and runs this focused test path after its existing checks.
 
 ## Intended operator experience
 
