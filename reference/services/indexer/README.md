@@ -44,6 +44,8 @@ curl -i http://127.0.0.1:18080/health/ready
 
 Kupo starts at origin with `--match "*"`, independently of vault tracking, and retains broad output coverage without pruning. This conservative local configuration can be expensive on a public network. The workload below is for controlled reference runs. The controlled G0 stack passes; representative network load and full lifecycle acceptance remain unverified.
 
+The [Kupo deployment directory](kupo/README.md) owns plugin-aware startup beside this stack. Its separate workspace implements configuration validation, package provisioning and collection settings generation. Discovery orchestration and container startup remain unimplemented. Existing Compose behavior is unchanged.
+
 ## Existing node
 
 Use the standalone `compose.existing-node.yml` instead of the default file:

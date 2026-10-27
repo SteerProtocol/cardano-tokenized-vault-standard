@@ -19,6 +19,7 @@ export default defineConfig({
         "packages/*/src/**/*.ts",
         "packages/plugins/dist/**/*.js",
         "services/*/src/**/*.ts",
+        "services/indexer/kupo/src/**/*.ts",
         "implementations/*/client/src/**/*.ts",
       ],
       exclude: ["**/*.d.ts"],
@@ -44,6 +45,7 @@ export default defineConfig({
           include: [
             "packages/**/*.test.ts",
             "services/*/test/unit/**/*.test.ts",
+            "services/indexer/kupo/test/**/*.test.ts",
             "implementations/*/client/**/*.test.ts",
             "testing/ledger/**/*.test.ts",
             "tools/**/*.test.ts",
