@@ -22,10 +22,19 @@
   },
   "include": [
     "packages/**/*.ts",
+    "services/**/*.ts",
     "implementations/*/client/**/*.ts",
     "testing/**/*.ts",
     "tools/**/*.ts",
     "vitest.config.ts"
   ],
-  "exclude": ["**/node_modules", "**/dist", "**/coverage", ".build", "artifacts"]
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/target",
+    "**/coverage",
+    ".build",
+    "artifacts",
+    "packages/plugins/integrations/*/src"
+  ]
 }

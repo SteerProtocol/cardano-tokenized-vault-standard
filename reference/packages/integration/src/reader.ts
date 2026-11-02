@@ -1,250 +1,73 @@
-/** Chain-point-bound views and construction checks over a trusted accepted-block journal, without consensus validation. */
+/** Chain-point-bound facade and atomic publication over a trusted accepted-block journal. */
 import { verifyTransactionEffects, type WalletAuthorization } from "@ctvs/cardano";
-import {
-  assertSameValue,
-  type ChainPoint,
-  requestValue,
-  type TransactionPlan,
-} from "@ctvs/planning";
-import {
-  type Address,
-  addressData,
-  assetId,
-  equalData,
-  maxDeposit,
-  NAMES,
-  type Operation,
-  type OutRef,
-  preview,
-  refId,
-  stateFromData,
-  transition,
-} from "@ctvs/protocol";
-import { getAddressDetails } from "@lucid-evolution/lucid";
-import { protectedMetadata } from "./ledger.js";
+import type { ChainPoint, TransactionPlan } from "@ctvs/planning";
+import { type Address, NAMES, type Operation, type OutRef, refId } from "@ctvs/protocol";
 import { emptyProjection, projectTransaction } from "./project.js";
+import { QueryError } from "./query/schema.js";
+import type {
+  ClaimView,
+  ConstructionContext,
+  EconomicMethod,
+  EconomicView,
+  PreviewInput,
+  RequestView,
+  ShareInput,
+} from "./query/types.js";
+import {
+  assertConstructionBinding,
+  assertCurrentPlanInputs,
+  rawSource,
+  recoveryData,
+} from "./reader/construction.js";
+import { candidateData, claimData, requestData } from "./reader/lifecycle.js";
+import { ownershipData } from "./reader/ownership.js";
+import { economicData, quoteData, snapshotData } from "./reader/views.js";
 import type {
   AcceptedBlock,
   Envelope,
   NetworkBinding,
   Observation,
   Projection,
-  RequestRecord,
   ReviewedBuild,
   VaultRecord,
 } from "./types.js";
 
 const known = <T>(value: T): Observation<T> => ({ status: "known", value });
 
-const unknown = (reason: string): Observation<never> => ({ status: "unknown", reason });
-
 const samePoint = (a: ChainPoint, b: ChainPoint) =>
   a.slot === b.slot && a.blockHash === b.blockHash;
 
 /** Validate the local cursor shape only; block membership and chain selection come from the feed. */
 function checkPoint(point: ChainPoint): void {
-  if (point.slot < 0n || !/^[a-f0-9]{64}$/.test(point.blockHash))
+  if (typeof point.slot !== "bigint" || point.slot < 0n || !/^[a-f0-9]{64}$/.test(point.blockHash))
     throw new Error("invalid chain point");
 }
 
-/**
- * Match payment and stake credentials for the Address forms this profile represents.
- * Pointer and other address forms return false rather than collapsing an unresolved
- * stake reference into an enterprise address. Network provenance comes from the feed.
- */
-function sameAddress(bech32: string, address: Address): boolean {
-  const actual = getAddressDetails(bech32);
-
-  if (actual.type !== "Base" && actual.type !== "Enterprise") return false;
-
-  const credential = (a: { type: string; hash: string } | undefined, b: Address["stake"]) =>
-    b === null ? !a : a?.type.toLowerCase() === b.type && a.hash === b.hash.toLowerCase();
-
-  return (
-    credential(actual.paymentCredential, address.payment) &&
-    credential(actual.stakeCredential, address.stake)
-  );
+/** Counts used by a host to bound retained history and projection growth before publication. */
+export interface ReaderCounts {
+  blocks: number;
+  transactions: number;
+  utxos: number;
+  vaults: number;
+  requests: number;
+  claims: number;
 }
 
-/**
- * Classify whether recognized Request economics match this vault's Terms and exact
- * escrow composition. A known result does not promise settlement: current State,
- * bounds, expiry and transaction construction still need their operation checks.
- * Unsupported economics remain an observation so their Recovery path stays visible.
- */
-function requestValidation(record: RequestRecord, vault: VaultRecord): Observation<boolean> {
-  try {
-    if (!record.request || record.request.body.termsHash !== vault.deployment.termsHash)
-      throw new Error("unsupported economics or Terms");
-
-    assertSameValue(record.source.value, requestValue(record.request, vault.terms));
-
-    return known(true);
-  } catch (error) {
-    return {
-      status: "unsupported",
-      reason: error instanceof Error ? error.message : String(error),
-    };
-  }
+/** Privately validated update; a host persists its event before invoking the one-use publish function. */
+export interface PreparedReaderUpdate {
+  readonly counts: Readonly<ReaderCounts>;
+  publish(): void;
 }
 
-/**
- * Sum observed unspent SHARE at the complete owner address, excluding tracked escrow
- * and Claims that are reported separately. Zero means none in the retained projection,
- * not proof that an arbitrary wallet has no holdings outside the replayed history.
- */
-function freeShareBalance(projection: Projection, owner: Address, unit: string): bigint {
-  let freeShares = 0n;
-
-  for (const utxo of projection.utxos.values())
-    if (
-      sameAddress(utxo.address, owner) &&
-      !projection.claims.has(refId(utxo.ref)) &&
-      !projection.requests.has(refId(utxo.ref))
-    )
-      freeShares += utxo.value[unit] ?? 0n;
-
-  return freeShares;
-}
-
-/**
- * Keep cancellation authority separate from the destination entitled to a refund.
- * A matching controller can be reported even when a different address receives funds.
- * Only pending Requests with supported, correctly funded economics enter asset/share
- * subtotals; unsupported Requests for the refund owner are counted without a valuation.
- */
-function pendingRequestOwnership(
-  projection: Projection,
-  vault: VaultRecord,
-  owner: Address,
-): {
-  lockedRedemptionShares: bigint;
-  pendingDepositAssets: bigint;
-  unsupportedRequests: number;
-  controlledRequests: OutRef[];
-} {
-  const controlledRequests: OutRef[] = [];
-  let lockedRedemptionShares = 0n,
-    pendingDepositAssets = 0n,
-    unsupportedRequests = 0;
-
-  for (const request of projection.requests.values()) {
-    if (request.policy !== vault.deployment.policy || request.status !== "pending_escrow") continue;
-
-    if (
-      owner.payment.type === "key" &&
-      request.recovery.controller === owner.payment.hash.toLowerCase()
-    )
-      controlledRequests.push(request.ref);
-
-    if (!equalData(addressData(request.recovery.refund.address), addressData(owner))) continue;
-
-    const participation = requestValidation(request, vault);
-
-    if (!request.request || participation.status !== "known") {
-      unsupportedRequests++;
-      continue;
-    }
-
-    if (request.request.body.kind === "deposit")
-      pendingDepositAssets += request.request.body.offered;
-    else lockedRedemptionShares += request.request.body.offered;
-  }
-
-  return { lockedRedemptionShares, pendingDepositAssets, unsupportedRequests, controlledRequests };
-}
-
-/**
- * Aggregate authenticated, undelivered Claims by their recorded receiver, which can
- * differ from the original controller and refund destination. Issued SHARE remains
- * part of economic supply while escrowed here; fixed asset Claims have already exited.
- * Use economicQuantity so carried storage lovelace is not counted as an entitlement.
- */
-function undeliveredClaimOwnership(
-  projection: Projection,
-  vault: VaultRecord,
-  owner: Address,
-  unit: string,
-): { issuedUndeliveredShares: bigint; fixedAssetClaims: bigint } {
-  let issuedUndeliveredShares = 0n,
-    fixedAssetClaims = 0n;
-
-  for (const record of projection.claims.values()) {
-    if (record.delivered || record.claim.vaultPolicy !== vault.deployment.policy) continue;
-
-    const destination = record.claim.receiver.address;
-
-    if (!equalData(addressData(destination), addressData(owner))) continue;
-
-    if (assetId(record.claim.asset) === unit)
-      issuedUndeliveredShares += record.claim.economicQuantity;
-    else fixedAssetClaims += record.claim.economicQuantity;
-  }
-
-  return { issuedUndeliveredShares, fixedAssetClaims };
-}
-
-/**
- * Reject a plan from another deployment or reader snapshot before comparing effects.
- * Policy, Terms and reviewed build identities bind semantics; the exact chain point
- * prevents an older quote from becoming current merely because its CBOR still balances.
- * Network authorization must also agree with the caller-pinned reader connection.
- */
-function assertConstructionBinding(
-  vault: VaultRecord,
-  network: NetworkBinding,
-  point: ChainPoint,
-  plan: TransactionPlan,
-  authorization: WalletAuthorization,
-): void {
-  const expected = vault.deployment,
-    actual = plan.implementation;
-
-  if (
-    actual.policy.toLowerCase() !== expected.policy ||
-    actual.family !== expected.family ||
-    actual.buildId !== expected.buildId ||
-    actual.termsHash.toLowerCase() !== expected.termsHash ||
-    actual.configLock.toLowerCase() !== expected.configLock ||
-    actual.claimScript?.toLowerCase() !== expected.claimScript?.toLowerCase() ||
-    !samePoint(plan.chainPoint, point) ||
-    authorization.networkName !== network.name ||
-    authorization.networkDomain.toLowerCase() !== network.domain ||
-    authorization.networkId !== network.networkId
-  )
-    throw new Error("construction is stale or bound to another vault/network/build");
-}
-
-/**
- * Corroborate planned protected inputs against unspent outputs in this projection.
- * Matching address/value and absent reference scripts prevent substituted evidence;
- * a State input must additionally be the current pricing State. Wallet funding and
- * other authorization sources remain the caller's responsibility, outside this check.
- */
-function assertCurrentPlanInputs(
-  projection: Projection,
-  vault: VaultRecord,
-  plan: TransactionPlan,
-  authorization: WalletAuthorization,
-): void {
-  for (const input of plan.inputs) {
-    const source = projection.utxos.get(refId(input.ref));
-    const resolved = authorization.planInputs.find((item) => refId(item.ref) === refId(input.ref));
-
-    if (
-      !source ||
-      !resolved ||
-      source.address !== resolved.address ||
-      source.scriptRef ||
-      resolved.referenceScript
-    )
-      throw new Error("protected input evidence does not match current indexed UTxO");
-
-    assertSameValue(resolved.value, source.value);
-
-    if (input.role === "state" && refId(input.ref) !== refId(vault.state.ref))
-      throw new Error("pricing State is stale");
-  }
+function projectionCounts(projection: Projection, blocks: number): ReaderCounts {
+  return {
+    blocks,
+    transactions: projection.transactions.size,
+    utxos: projection.utxos.size,
+    vaults: projection.vaults.size,
+    requests: projection.requests.size,
+    claims: projection.claims.size,
+  };
 }
 
 /**
@@ -261,6 +84,8 @@ export class VaultReader {
   #blocks: AcceptedBlock[] = [];
   #projection: Projection = emptyProjection();
   #point: ChainPoint;
+  #revision = 0;
+  readonly #vaultPolicies: ReadonlySet<string> | null;
 
   /**
    * Pin trusted network/build inputs and an initially empty journal intersection.
@@ -272,6 +97,7 @@ export class VaultReader {
     network: NetworkBinding,
     reviewedBuilds: readonly ReviewedBuild[],
     intersection: ChainPoint,
+    options: { vaultPolicies?: readonly string[] } = {},
   ) {
     checkPoint(intersection);
 
@@ -294,6 +120,16 @@ export class VaultReader {
     this.#builds = structuredClone(reviewedBuilds);
     this.#intersection = structuredClone(intersection);
     this.#point = structuredClone(intersection);
+
+    const policies = options.vaultPolicies?.map((policy) => policy.toLowerCase());
+
+    if (
+      policies?.some((policy) => !/^[a-f0-9]{56}$/.test(policy)) ||
+      (policies && new Set(policies).size !== policies.length)
+    )
+      throw new Error("invalid or duplicate selected vault policy");
+
+    this.#vaultPolicies = policies ? new Set(policies) : null;
   }
 
   /**
@@ -319,6 +155,11 @@ export class VaultReader {
     return structuredClone(this.#point);
   }
 
+  /** Detached resource counts; includes unrelated UTxOs still retained by this reference reader. */
+  get counts(): ReaderCounts {
+    return projectionCounts(this.#projection, this.#blocks.length);
+  }
+
   /**
    * Append one contiguous accepted block in transaction order. Clone the projection
    * first and publish it with the journal/cursor only after every transaction succeeds.
@@ -326,6 +167,11 @@ export class VaultReader {
    * intact. Empty blocks still advance the response freshness boundary.
    */
   rollForward(block: AcceptedBlock): void {
+    this.prepareForward(block).publish();
+  }
+
+  /** Validate without publication, allowing a durable host to commit before changing the served view. */
+  prepareForward(block: AcceptedBlock): PreparedReaderUpdate {
     checkPoint(block.point);
 
     if (!samePoint(block.parent, this.#point) || block.point.slot <= block.parent.slot)
@@ -335,11 +181,11 @@ export class VaultReader {
     const next = structuredClone(this.#projection);
 
     for (const tx of block.transactions)
-      projectTransaction(next, tx, block.point, this.#network, this.#builds);
+      projectTransaction(next, tx, block.point, this.#network, this.#builds, this.#vaultPolicies);
 
-    this.#blocks.push(structuredClone(block));
-    this.#projection = next;
-    this.#point = structuredClone(block.point);
+    const retained = [...this.#blocks, structuredClone(block)];
+
+    return this.#prepared(next, retained, block.point);
   }
 
   /**
@@ -349,6 +195,13 @@ export class VaultReader {
    * rolling back to the intersection empties the view and permits a competing branch.
    */
   rollBackward(point: ChainPoint): void {
+    this.prepareBackward(point).publish();
+  }
+
+  /** Reconstruct a retained prefix privately; persistence and publication remain separate host steps. */
+  prepareBackward(point: ChainPoint): PreparedReaderUpdate {
+    checkPoint(point);
+
     const index = samePoint(point, this.#intersection)
       ? -1
       : this.#blocks.findIndex((block) => samePoint(block.point, point));
@@ -363,11 +216,30 @@ export class VaultReader {
 
     for (const block of retained)
       for (const tx of block.transactions)
-        projectTransaction(next, tx, block.point, this.#network, this.#builds);
+        projectTransaction(next, tx, block.point, this.#network, this.#builds, this.#vaultPolicies);
 
-    this.#blocks = retained;
-    this.#projection = next;
-    this.#point = structuredClone(point);
+    return this.#prepared(next, retained, point);
+  }
+
+  /** Reject reused or overtaken preparation tokens before any mutation of the published reader. */
+  #prepared(next: Projection, retained: AcceptedBlock[], point: ChainPoint): PreparedReaderUpdate {
+    const revision = this.#revision;
+    const cursor = structuredClone(point);
+    let published = false;
+
+    return Object.freeze({
+      counts: Object.freeze(projectionCounts(next, retained.length)),
+      publish: () => {
+        if (published || revision !== this.#revision)
+          throw new Error("prepared reader update is stale or already published");
+
+        this.#blocks = retained;
+        this.#projection = next;
+        this.#point = cursor;
+        this.#revision++;
+        published = true;
+      },
+    });
   }
 
   /**
@@ -376,9 +248,17 @@ export class VaultReader {
    * or envelopes rather than references they could use to mutate the projection.
    */
   #vault(policy: string): VaultRecord {
+    if (this.#vaultPolicies && !this.#vaultPolicies.has(policy.toLowerCase()))
+      throw new QueryError("OUTSIDE_SCOPE", "vault is outside configured tracking scope", 403);
+
     const vault = this.#projection.vaults.get(policy.toLowerCase());
 
-    if (!vault) throw new Error("vault has no authenticated genesis in retained history");
+    if (!vault)
+      throw new QueryError(
+        "HISTORY_INCOMPLETE",
+        "vault has no authenticated genesis in retained history",
+        404,
+      );
 
     return vault;
   }
@@ -451,6 +331,88 @@ export class VaultReader {
     });
   }
 
+  constructionContext(policy: string): ConstructionContext {
+    const vault = this.#vault(policy);
+    const source = this.#projection.utxos.get(refId(vault.state.ref));
+
+    if (!source) throw new QueryError("NOT_FOUND", "current State is not unspent", 409);
+
+    return structuredClone({
+      ...this.context(policy),
+      stateInput: rawSource(source, vault.deployment.policy, this.#network.networkId),
+    });
+  }
+
+  #economic(
+    policy: string,
+    method: EconomicMethod,
+    input: PreviewInput | ShareInput,
+  ): Envelope<EconomicView> {
+    const vault = this.#vault(policy);
+
+    return this.#response(
+      vault,
+      method,
+      economicData(vault, method, input, () => this.constructionContext(policy)),
+    );
+  }
+
+  convertToAssets(policy: string, input: { shares: bigint }) {
+    return this.#economic(policy, "convertToAssets", input);
+  }
+
+  convertToShares(policy: string, input: { assets: bigint }) {
+    return this.#economic(policy, "convertToShares", input);
+  }
+
+  previewDeposit(policy: string, input: PreviewInput) {
+    return this.#economic(policy, "previewDeposit", input);
+  }
+
+  previewMint(policy: string, input: ShareInput) {
+    return this.#economic(policy, "previewMint", input);
+  }
+
+  previewWithdraw(policy: string, input: PreviewInput) {
+    return this.#economic(policy, "previewWithdraw", input);
+  }
+
+  previewRedeem(policy: string, input: ShareInput) {
+    return this.#economic(policy, "previewRedeem", input);
+  }
+
+  /** Lifecycle data retains history; only the explicit unspent flag authorizes a planner source handoff. */
+  requestView(policy: string, ref: OutRef): Envelope<RequestView> {
+    const vault = this.#vault(policy);
+    const { data } = this.request(policy, ref);
+
+    return this.#response(vault, "request", {
+      ref: data.ref,
+      policy: data.policy,
+      recovery: data.recovery,
+      request: data.request,
+      created: data.created,
+      status: data.status,
+      settlement: data.settlement,
+      completion: data.completion,
+      source: rawSource(data.source, vault.deployment.policy, this.#network.networkId),
+      unspent: this.#projection.utxos.has(refId(ref)),
+      validation: data.requestValidation,
+    });
+  }
+
+  claimView(policy: string, ref: OutRef): Envelope<ClaimView> {
+    const vault = this.#vault(policy);
+    const { data } = this.claim(policy, ref);
+
+    return this.#response(vault, "claim", {
+      ref: data.ref,
+      claim: data.claim,
+      source: rawSource(data.source, vault.deployment.claimScript ?? "", this.#network.networkId),
+      unspent: !data.delivered && this.#projection.utxos.has(refId(ref)),
+    });
+  }
+
   /**
    * Expose direct-custody accounting in ledger integer units from the current State.
    * Backing, excluded fees and storage reserve remain separate; arbitrary UTxOs or
@@ -458,26 +420,9 @@ export class VaultReader {
    * backing quantity, not a promise that a funded transaction can currently execute.
    */
   snapshot(policy: string) {
-    const vault = this.#vault(policy),
-      state = stateFromData(vault.state.datum);
+    const vault = this.#vault(policy);
 
-    return this.#response(vault, "snapshot", {
-      underlying: assetId(vault.terms.underlying),
-      quantityUnit: "ledger_integer_quantity",
-      state,
-      terms: vault.terms,
-      backingAssets: known(state.backingAssets),
-      economicSupply: known(state.economicSupply),
-      excludedFees: known(state.accruedFees),
-      excludedReserve: known(state.storageLovelace),
-      availableLiquidity: known(state.backingAssets),
-      executionModes: vault.terms.executionModes,
-      pauseFlags: state.pauseFlags,
-      pricing: "direct_custody_at_chain_point",
-      constructionCapacity: unknown(
-        "requires current protocol parameters and evaluation of the complete transaction",
-      ),
-    });
+    return this.#response(vault, "snapshot", snapshotData(vault));
   }
 
   /**
@@ -487,56 +432,9 @@ export class VaultReader {
    * construction capacity and non-deposit maximums remain unknown rather than guessed.
    */
   quote(policy: string, operation: Operation, amount: bigint) {
-    const vault = this.#vault(policy),
-      state = stateFromData(vault.state.datum);
-    const asynchronous = vault.deployment.family === "ctvs2";
-    const quote = preview(operation, amount, state, vault.terms);
-    let availability: Observation<boolean>;
+    const vault = this.#vault(policy);
 
-    try {
-      transition(
-        operation,
-        amount,
-        operation === "mint" ? quote.grossAssets : operation === "withdraw" ? quote.shares : 1n,
-        state,
-        vault.terms,
-        { asynchronous },
-      );
-      availability = known(true);
-    } catch (error) {
-      availability = {
-        status: "unsupported",
-        reason: error instanceof Error ? error.message : String(error),
-      };
-    }
-
-    return this.#response(vault, "quote", {
-      operation,
-      amount,
-      result: known(quote),
-      availability,
-      pricingBasis: vault.state.ref,
-      pricing: asynchronous ? "indicative_until_settlement" : "exact_at_snapshot",
-      economicMaximum:
-        operation === "deposit"
-          ? maxDeposit(state, vault.terms, { asynchronous })
-          : unknown("no operation-specific maximum solver exposed"),
-      constructionMaximum: unknown("complete transaction evaluation required"),
-      fees: {
-        protocol: known(quote.fee),
-        network: unknown("not constructed"),
-        settler: asynchronous
-          ? unknown("Request-specific fee")
-          : { status: "not_applicable", reason: "direct operation" },
-      },
-      expiry: { invalidatedBy: "State consumption or rollback", stateRef: vault.state.ref },
-      prerequisites: [
-        "unspent State at the stated chain point",
-        "user bound and destination",
-        "wallet funding and witnesses",
-        "ledger-valid constructed transaction",
-      ],
-    });
+    return this.#response(vault, "quote", quoteData(vault, operation, amount));
   }
 
   /**
@@ -547,46 +445,9 @@ export class VaultReader {
    * Missing origin or a Request belonging to another vault throws.
    */
   request(policy: string, ref: OutRef) {
-    const vault = this.#vault(policy),
-      record = this.#projection.requests.get(refId(ref));
+    const vault = this.#vault(policy);
 
-    if (!record || record.policy !== vault.deployment.policy)
-      throw new Error("Request has no accepted origin for this vault");
-
-    const participation = requestValidation(record, vault);
-
-    return this.#response(vault, "request", {
-      ...record,
-      requestValidation: participation,
-      participation: {
-        pendingDepositAssetsInBacking: false,
-        redemptionEscrowSharesParticipate:
-          participation.status === "known" &&
-          record.request?.body.kind === "redeem" &&
-          record.status === "pending_escrow",
-        // Issued SHARE stays in supply even when the surrounding economic body is unsupported.
-        escrowedSharesParticipating:
-          record.status === "pending_escrow"
-            ? (record.source.value[`${vault.deployment.policy}.${NAMES.share}`] ?? 0n)
-            : 0n,
-        issuedUndeliveredSharesParticipate:
-          record.request?.body.kind === "deposit" && record.status === "claimable",
-        fixedAssetClaimsParticipate: false,
-        settlementRealized: record.settlement !== null,
-      },
-      recoveryAvailability:
-        record.status === "pending_escrow"
-          ? known({
-              cancel: "controller witness required",
-              expiry: "finite validity lower bound at or after deadline",
-              deadlinePosixMs: record.recovery.deadlinePosixMs,
-              fullSourceValue: record.source.value,
-            })
-          : { status: "not_applicable", reason: "Request already consumed" },
-      delivery: record.settlement
-        ? known(this.#projection.claims.get(refId(record.settlement.claimRef)))
-        : unknown("not settled"),
-    });
+    return this.#response(vault, "request", requestData(this.#projection, vault, ref));
   }
 
   /**
@@ -596,25 +457,7 @@ export class VaultReader {
    * still satisfy the controller-witness or expiry-interval requirements.
    */
   recoverySource(policy: string, ref: OutRef) {
-    const vault = this.#vault(policy),
-      request = this.#projection.requests.get(refId(ref));
-
-    if (
-      vault.deployment.family !== "ctvs2" ||
-      !request ||
-      request.policy !== vault.deployment.policy ||
-      request.status !== "pending_escrow" ||
-      !request.source.datum
-    )
-      throw new Error("no unspent recognized recovery source");
-
-    return structuredClone({
-      deployment: { ...vault.deployment, chainPoint: this.#point },
-      source: {
-        ...protectedMetadata(request.source, vault.deployment.policy, this.#network.networkId),
-        datumCbor: request.source.datum,
-      },
-    });
+    return recoveryData(this.#projection, this.#vault(policy), ref, this.#network, this.#point);
   }
 
   /**
@@ -625,40 +468,12 @@ export class VaultReader {
    */
   candidate(policy: string, ref: OutRef) {
     const vault = this.#vault(policy);
-    const recognized = this.#projection.requests.get(refId(ref));
-    const source = recognized?.source ?? this.#projection.utxos.get(refId(ref));
 
-    if (
-      !source ||
-      getAddressDetails(source.address).paymentCredential?.hash !== vault.deployment.policy
-    )
-      throw new Error("no candidate at this vault in retained history");
-
-    let recovery: Observation<unknown>;
-
-    try {
-      protectedMetadata(source, vault.deployment.policy, this.#network.networkId);
-
-      if (!recognized) throw new Error("unknown or unsupported Request recovery envelope");
-
-      recovery = known(recognized.recovery);
-    } catch (error) {
-      recovery = {
-        status: "unsupported",
-        reason: error instanceof Error ? error.message : String(error),
-      };
-    }
-
-    return this.#response(vault, "request_candidate", {
-      ref,
-      source,
-      recovery,
-      economics: recognized
-        ? this.request(policy, ref).data.requestValidation
-        : { status: "unsupported", reason: "unrecognized recovery envelope" },
-      vaultLiability: false,
-      classification: recognized ? "recognized_recovery" : "unsupported_recovery",
-    });
+    return this.#response(
+      vault,
+      "request_candidate",
+      candidateData(this.#projection, vault, ref, this.#network),
+    );
   }
 
   /**
@@ -667,13 +482,9 @@ export class VaultReader {
    * Delivery does not erase the record; rollback reconstructs its prior lifecycle.
    */
   claim(policy: string, ref: OutRef) {
-    const vault = this.#vault(policy),
-      record = this.#projection.claims.get(refId(ref));
+    const vault = this.#vault(policy);
 
-    if (!record || record.claim.vaultPolicy !== vault.deployment.policy)
-      throw new Error("output is not a Claim with authenticated settlement lineage");
-
-    return this.#response(vault, "claim", record);
+    return this.#response(vault, "claim", claimData(this.#projection, vault, ref));
   }
 
   /**
@@ -684,33 +495,9 @@ export class VaultReader {
    * unsupported Requests are counted rather than assigned invented economic amounts.
    */
   ownership(policy: string, owner: Address) {
-    const vault = this.#vault(policy),
-      unit = `${vault.deployment.policy}.${NAMES.share}`;
-    const freeShares = freeShareBalance(this.#projection, owner, unit);
-    const {
-      lockedRedemptionShares,
-      pendingDepositAssets,
-      unsupportedRequests,
-      controlledRequests,
-    } = pendingRequestOwnership(this.#projection, vault, owner);
-    const { issuedUndeliveredShares, fixedAssetClaims } = undeliveredClaimOwnership(
-      this.#projection,
-      vault,
-      owner,
-      unit,
-    );
+    const vault = this.#vault(policy);
 
-    return this.#response(vault, "ownership", {
-      freeShares,
-      lockedRedemptionShares,
-      issuedUndeliveredShares,
-      pendingDepositAssets,
-      fixedAssetClaims,
-      unsupportedRequests,
-      controlledRequests,
-      pendingEntitlement: "refund_destination",
-      scope: "accepted history since authenticated genesis",
-    });
+    return this.#response(vault, "ownership", ownershipData(this.#projection, vault, owner));
   }
 
   /**

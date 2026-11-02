@@ -1,0 +1,592 @@
+{
+  "schema": "CTVS-INTEGRATION-0.6",
+  "kind": "query",
+  "network": {
+    "name": "preview",
+    "networkId": 0,
+    "networkMagic": 42,
+    "genesisHash": "0101010101010101010101010101010101010101010101010101010101010101",
+    "domain": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "chainPoint": {
+    "slot": "1",
+    "blockHash": "0000000000000000000000000000000000000000000000000000000000000001"
+  },
+  "vault": {
+    "policy": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171",
+    "share": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245",
+    "configRef": {
+      "txId": "8f4f3ffe11927a0b82419172a9ac8ff6a7ba5c53bb5720a410406cc6e40e0c39",
+      "index": "0"
+    }
+  },
+  "implementation": {
+    "family": "ctvs1",
+    "buildId": "synthetic-reader-fixture",
+    "profile": 0,
+    "wire": 2
+  },
+  "claimedConformance": "profile-0-reference-semantics",
+  "evidence": {
+    "genesis": "8f4f3ffe11927a0b82419172a9ac8ff6a7ba5c53bb5720a410406cc6e40e0c39",
+    "state": {
+      "txId": "8f4f3ffe11927a0b82419172a9ac8ff6a7ba5c53bb5720a410406cc6e40e0c39",
+      "index": "1"
+    },
+    "termsHash": "df746bd6942db0fb8e589d94309ddb9fd72d636ca44d57947ee95639133d2cb0"
+  },
+  "verification": {
+    "disposition": "accepted_chain_and_reviewed_build",
+    "consensusSource": "trusted_accepted_block_feed",
+    "independentLedgerValidation": false
+  },
+  "apiVersion": "CTVS-QUERY-1",
+  "basis": {
+    "instance": "fixture",
+    "recoveryGeneration": 1,
+    "chainPoint": {
+      "slot": "1",
+      "blockHash": "0000000000000000000000000000000000000000000000000000000000000001"
+    },
+    "stateRef": {
+      "txId": "8f4f3ffe11927a0b82419172a9ac8ff6a7ba5c53bb5720a410406cc6e40e0c39",
+      "index": "1"
+    }
+  },
+  "data": {
+    "convertToAssets": {
+      "method": "convertToAssets",
+      "amount": "101000",
+      "inputUnit": "shares",
+      "outputUnit": "assets",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "101000"
+      },
+      "quote": null,
+      "pricing": "fee_free_at_snapshot",
+      "availability": {
+        "status": "not_applicable",
+        "code": "VALUATION_ONLY"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": false,
+        "execution": "not_applicable"
+      },
+      "economicMaximum": {
+        "status": "unknown",
+        "reason": "valuation has no operation maximum"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "not_applicable",
+          "reason": "fee-free valuation"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "valuation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    },
+    "convertToShares": {
+      "method": "convertToShares",
+      "amount": "101000",
+      "inputUnit": "assets",
+      "outputUnit": "shares",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "101000"
+      },
+      "quote": null,
+      "pricing": "fee_free_at_snapshot",
+      "availability": {
+        "status": "not_applicable",
+        "code": "VALUATION_ONLY"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": false,
+        "execution": "not_applicable"
+      },
+      "economicMaximum": {
+        "status": "unknown",
+        "reason": "valuation has no operation maximum"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "not_applicable",
+          "reason": "fee-free valuation"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "valuation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    },
+    "previewDeposit": {
+      "method": "previewDeposit",
+      "amount": "101000",
+      "inputUnit": "assets",
+      "outputUnit": "shares",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "100000"
+      },
+      "quote": {
+        "operation": "deposit",
+        "amount": "101000",
+        "grossAssets": "101000",
+        "netAssets": "100000",
+        "shares": "100000",
+        "fee": "1000",
+        "pricing": "exact_at_snapshot",
+        "execution": "unchecked"
+      },
+      "pricing": "exact_at_snapshot",
+      "availability": {
+        "status": "available",
+        "code": "AVAILABLE"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": true,
+        "execution": "direct"
+      },
+      "economicMaximum": {
+        "status": "known",
+        "value": "9223372036854775807"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "known",
+          "value": "1000"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "direct operation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    },
+    "previewMint": {
+      "method": "previewMint",
+      "amount": "100000",
+      "inputUnit": "shares",
+      "outputUnit": "assets",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "101000"
+      },
+      "quote": {
+        "operation": "mint",
+        "amount": "100000",
+        "grossAssets": "101000",
+        "netAssets": "100000",
+        "shares": "100000",
+        "fee": "1000",
+        "pricing": "exact_at_snapshot",
+        "execution": "unchecked"
+      },
+      "pricing": "exact_at_snapshot",
+      "availability": {
+        "status": "available",
+        "code": "AVAILABLE"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": true,
+        "execution": "direct"
+      },
+      "economicMaximum": {
+        "status": "unknown",
+        "reason": "no operation-specific maximum solver exposed"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "known",
+          "value": "1000"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "direct operation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    },
+    "previewWithdraw": {
+      "method": "previewWithdraw",
+      "amount": "100000",
+      "inputUnit": "assets",
+      "outputUnit": "shares",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "101000"
+      },
+      "quote": {
+        "operation": "withdraw",
+        "amount": "100000",
+        "grossAssets": "101000",
+        "netAssets": "100000",
+        "shares": "101000",
+        "fee": "1000",
+        "pricing": "exact_at_snapshot",
+        "execution": "unchecked"
+      },
+      "pricing": "exact_at_snapshot",
+      "availability": {
+        "status": "unavailable",
+        "code": "ECONOMIC_LIMIT"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": true,
+        "execution": "direct"
+      },
+      "economicMaximum": {
+        "status": "unknown",
+        "reason": "no operation-specific maximum solver exposed"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "known",
+          "value": "1000"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "direct operation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    },
+    "previewRedeem": {
+      "method": "previewRedeem",
+      "amount": "101000",
+      "inputUnit": "shares",
+      "outputUnit": "assets",
+      "units": {
+        "assets": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "shares": "e698f1097ec3371ab78b1d22d400f0757b14fb8b403f02da7d446171.5348415245"
+      },
+      "feeUnits": {
+        "protocol": {
+          "policy": "44444444444444444444444444444444444444444444444444444444",
+          "name": "554e4954"
+        },
+        "network": "lovelace",
+        "settler": "lovelace",
+        "executionCharge": "lovelace",
+        "storage": "lovelace",
+        "topups": "lovelace"
+      },
+      "result": {
+        "status": "known",
+        "value": "100000"
+      },
+      "quote": {
+        "operation": "redeem",
+        "amount": "101000",
+        "grossAssets": "101000",
+        "netAssets": "100000",
+        "shares": "101000",
+        "fee": "1000",
+        "pricing": "exact_at_snapshot",
+        "execution": "unchecked"
+      },
+      "pricing": "exact_at_snapshot",
+      "availability": {
+        "status": "unavailable",
+        "code": "ECONOMIC_LIMIT"
+      },
+      "capabilities": {
+        "read": true,
+        "construction": true,
+        "execution": "direct"
+      },
+      "economicMaximum": {
+        "status": "unknown",
+        "reason": "no operation-specific maximum solver exposed"
+      },
+      "constructionMaximum": {
+        "status": "unknown",
+        "reason": "complete transaction evaluation required"
+      },
+      "protocolFeeDestination": {
+        "address": {
+          "payment": {
+            "type": "key",
+            "hash": "22222222222222222222222222222222222222222222222222222222"
+          },
+          "stake": null
+        },
+        "datum": null
+      },
+      "fees": {
+        "protocol": {
+          "status": "known",
+          "value": "1000"
+        },
+        "network": {
+          "status": "unknown",
+          "reason": "not constructed"
+        },
+        "settler": {
+          "status": "not_applicable",
+          "reason": "direct operation"
+        },
+        "executionCharge": {
+          "status": "unknown",
+          "reason": "construction-specific execution charge"
+        },
+        "storage": {
+          "status": "unknown",
+          "reason": "construction-specific storage/carry"
+        },
+        "topups": {
+          "status": "unknown",
+          "reason": "complete minimum-ADA calculation required"
+        }
+      }
+    }
+  }
+}

@@ -9,9 +9,12 @@ execFileSync(
   [
     "fmt",
     "--check",
-    ...["packages/onchain", "implementations/ctvs1/onchain", "implementations/ctvs2/onchain"].map(
-      (path) => join(referenceRoot, path),
-    ),
+    ...[
+      "packages/onchain",
+      "implementations/ctvs1/onchain",
+      "implementations/ctvs2/onchain",
+      "examples/price-provider/onchain",
+    ].map((path) => join(referenceRoot, path)),
   ],
   { stdio: "inherit" },
 );

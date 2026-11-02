@@ -1,0 +1,23 @@
+{
+  "apiVersion": "CTVS-QUERY-1",
+  "queries": {
+    "convertToAssets": { "shares": "101000" },
+    "convertToShares": { "assets": "101000" },
+    "previewDeposit": { "assets": "101000" },
+    "previewMint": { "shares": "100000" },
+    "previewWithdraw": { "assets": "100000" },
+    "previewRedeem": { "shares": "101000" }
+  },
+  "expectedResults": {
+    "convertToAssets": "101000",
+    "convertToShares": "101000",
+    "previewDeposit": "100000",
+    "previewMint": "101000",
+    "previewWithdraw": "101000",
+    "previewRedeem": "100000"
+  },
+  "families": {
+    "ctvs1": { "previewPricing": "exact_at_snapshot", "mintConstruction": true },
+    "ctvs2": { "previewPricing": "indicative_until_settlement", "mintConstruction": false }
+  }
+}

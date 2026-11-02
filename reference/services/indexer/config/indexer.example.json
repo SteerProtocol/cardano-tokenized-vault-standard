@@ -1,0 +1,40 @@
+{
+  "network": {
+    "name": "isolated",
+    "networkId": 0,
+    "networkMagic": 42,
+    "genesisHash": "REPLACE_WITH_SHA256_OF_ORIGINAL_SHELLEY_GENESIS_FILE",
+    "domain": "REPLACE_WITH_TERMS_NETWORK_DOMAIN_HEX"
+  },
+  "genesisPath": "/network/shelley-genesis.json",
+  "intersection": {
+    "slot": "REPLACE_WITH_REAL_ACCEPTED_SLOT_BEFORE_VAULT_GENESIS",
+    "blockHash": "REPLACE_WITH_REAL_BLOCK_HASH"
+  },
+  "reviewedBuilds": [
+    {
+      "family": "ctvs2",
+      "buildId": "REPLACE_WITH_REVIEWED_BUILD_ID",
+      "vaultTemplate": "REPLACE_WITH_REVIEWED_VAULT_TEMPLATE_CBOR",
+      "config": { "type": "PlutusV3", "script": "REPLACE_WITH_CONFIG_LOCK_CBOR" },
+      "claim": { "type": "PlutusV3", "script": "REPLACE_WITH_CLAIM_GUARD_CBOR" }
+    }
+  ],
+  "tracking": { "mode": "all" },
+  "database": "/data/indexer.sqlite",
+  "sources": { "ogmios": "http://ogmios:1337", "kupo": "http://kupo:1442" },
+  "kupoCoverage": { "since": "origin", "match": "*", "spent": "retain" },
+  "http": { "host": "0.0.0.0", "port": 8080 },
+  "limits": {
+    "maxBlocks": 2000,
+    "maxTransactions": 10000,
+    "maxUtxos": 20000,
+    "maxRecords": 20000,
+    "maxBlockBytes": 2000000,
+    "maxHistoryBytes": 64000000,
+    "maxLagSlots": 0,
+    "requestTimeoutMs": 10000,
+    "reconnectDelayMs": 3000,
+    "lookupMaxAgeMs": 10000
+  }
+}

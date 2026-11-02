@@ -12,9 +12,12 @@ This directory is the canonical source for the protocol types, exact scoped deco
 | `lib/ctvs/genesis.ak` | Seed consumption and permanent identity creation |
 | `lib/ctvs/state_core.ak` | Authenticated configuration, state, administration and supply coupling |
 | `lib/ctvs/testing.ak` | Shared transaction fixtures |
+| `lib/ctvs/price.ak` | Candidate `Price` provider claims and structural decoding; no economic verification or direct-custody integration |
 | `validators/config_lock.ak` | Permanently unspendable configuration output |
 
 Family policy entrypoints remain in `implementations/ctvs1/onchain` and `implementations/ctvs2/onchain`. CTVS1 permits immutable execution modes 1, 2 and 3 and implements synchronous operations. CTVS2 permits modes 4, 8 and 12 and implements request settlement, independent recovery and claim delivery. Both reject unsupported mode bits at genesis and on authenticated state transitions. The public datum and action encodings retain their existing tags and field order.
+
+The separate [Price provider interface candidate](../../../docs/price-provider-interface.md) uses the public type name `Price` with an explicit version field and six typed operations. It does not enable provider withdrawals in the reference vaults. Successful decoding establishes only claim structure; a protocol-specific provider must authenticate the evidence and verify every result.
 
 ## Reproducible consumption
 

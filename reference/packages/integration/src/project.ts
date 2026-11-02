@@ -275,6 +275,7 @@ export function projectTransaction(
   point: ChainPoint,
   network: NetworkBinding,
   builds: readonly ReviewedBuild[],
+  vaultPolicies: ReadonlySet<string> | null = null,
 ): void {
   const tx = readAcceptedTransaction(cbor);
 
@@ -295,6 +296,8 @@ export function projectTransaction(
     projectConsumedRequestsAndClaims(p, tx, point);
 
     for (const vault of discoverGenesis(tx, point, network, builds)) {
+      if (vaultPolicies && !vaultPolicies.has(vault.deployment.policy)) continue;
+
       if (p.vaults.has(vault.deployment.policy)) throw new Error("duplicate vault genesis");
 
       p.vaults.set(vault.deployment.policy, vault);

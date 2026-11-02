@@ -1,0 +1,18 @@
+# Disposable-only differences. The primary deployment remains service-owned.
+services:
+  node:
+    command: [run, --config, /network/config.json, --topology, /network/topology.json,
+      --database-path, /node-db, --socket-path, /ipc/node.socket,
+      --shelley-kes-key, /keys/kes.skey, --shelley-vrf-key, /keys/vrf.skey,
+      --shelley-operational-certificate, /keys/opcert.cert]
+    volumes:
+      - ${G0_POOL_KEYS:?Generated pool keys required}:/keys:ro
+    restart: "no"
+  ogmios:
+    restart: "no"
+  kupo:
+    restart: "no"
+  indexer:
+    image: ctvs-indexer:g0
+    pull_policy: never
+    restart: "no"

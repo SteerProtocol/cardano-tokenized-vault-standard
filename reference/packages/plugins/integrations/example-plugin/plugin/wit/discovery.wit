@@ -1,0 +1,76 @@
+package ctvs:example-plugin@0.1.0;
+
+interface discovery-types {
+    // Hosts validate canonical encodings and lengths for these wire strings.
+    type hex28 = string;
+    type hex32 = string;
+    type asset-name-hex = string;
+    type uint64-decimal = string;
+
+    record chain-point {
+        slot: uint64-decimal,
+        block-hash: hex32,
+    }
+
+    record network-identity {
+        network-id: u8,
+        network-magic: u32,
+        genesis-hash: hex32,
+    }
+
+    record asset-id {
+        policy-id: hex28,
+        asset-name: asset-name-hex,
+    }
+
+    variant collection-match {
+        address(string),
+        payment-credential(hex28),
+        policy(hex28),
+        asset(asset-id),
+    }
+
+    variant collection-start {
+        origin,
+        // Required output creation must follow this replay intersection.
+        point(chain-point),
+    }
+
+    enum history-requirement {
+        unspent-sufficient,
+        spent-required,
+    }
+
+    record collection-rule {
+        // Local to the enabled plugin registration.
+        source: string,
+        match: collection-match,
+        %from: collection-start,
+        history: history-requirement,
+    }
+
+    record discovery-page-v1 {
+        // Always CTVS-DISCOVERY-1.
+        schema: string,
+        network: network-identity,
+        rules: list<collection-rule>,
+        next-cursor: option<string>,
+    }
+
+    // Fixture input, not a required configuration format for real protocols.
+    record example-deployment {
+        network: network-identity,
+        rules: list<collection-rule>,
+    }
+
+    enum discovery-error-code {
+        invalid-network,
+        invalid-page-size,
+        invalid-cursor,
+    }
+
+    record discovery-error {
+        code: discovery-error-code,
+        message: string,
+    }
+}

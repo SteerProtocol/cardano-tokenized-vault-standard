@@ -1,0 +1,26 @@
+{
+  "name": "@ctvs/plugins",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    "./indexer": {
+      "types": "./dist/indexer.d.ts",
+      "default": "./dist/indexer.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@bytecodealliance/preview2-shim": "0.30.0",
+    "@lucid-evolution/utils": "0.1.74"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

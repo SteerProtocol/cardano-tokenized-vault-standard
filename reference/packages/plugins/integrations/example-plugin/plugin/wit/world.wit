@@ -1,0 +1,24 @@
+package ctvs:example-plugin@0.1.0;
+
+interface http {
+    record response {
+        status: u16,
+        body: string,
+    }
+
+    get: func(url: string) -> result<response, string>;
+}
+
+world plugin {
+    import http;
+    use http.{response};
+    use discovery-types.{example-deployment, discovery-page-v1, discovery-error};
+
+    // Page size is 1..256; cursors select offsets into unchanged fixture input.
+    export discover: func(
+        config: example-deployment,
+        cursor: option<string>,
+        page-size: u32
+    ) -> result<discovery-page-v1, discovery-error>;
+    export fetch: func(url: string) -> result<response, string>;
+}

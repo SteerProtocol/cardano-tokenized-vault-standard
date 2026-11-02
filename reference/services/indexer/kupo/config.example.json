@@ -1,0 +1,29 @@
+{
+  "network": {
+    "networkId": 0,
+    "networkMagic": 42,
+    "genesisHash": "<sha256-of-original-shelley-genesis>"
+  },
+  "additionalPackages": {},
+  "registrations": [
+    {
+      "id": "example",
+      "package": "@ctvs/example-plugin",
+      "deployment": {
+        "network": {
+          "networkId": 0,
+          "networkMagic": 42,
+          "genesisHash": "<sha256-of-original-shelley-genesis>"
+        },
+        "rules": [
+          {
+            "source": "example-policy",
+            "match": { "tag": "policy", "val": "<56-lowercase-hex-policy-id>" },
+            "from": { "tag": "origin" },
+            "history": "spent-required"
+          }
+        ]
+      }
+    }
+  ]
+}

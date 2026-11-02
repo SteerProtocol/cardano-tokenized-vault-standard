@@ -14,6 +14,8 @@ Start with the [reference workspace](reference/README.md), [validation record](r
 ```sh
 cd reference
 npm ci --ignore-scripts
+rustup toolchain install 1.95.0 --profile minimal --target wasm32-wasip2
+RUSTUP_TOOLCHAIN=1.95.0 npm run build:plugins
 # Aiken v1.1.22+39d6b04 must be on PATH, or set AIKEN to its absolute path.
 npm run check
 ```
@@ -26,6 +28,7 @@ npm run check
 | `reference/implementations/ctvs1/` | Independent synchronous contract project and client |
 | `reference/implementations/ctvs2/` | Independent asynchronous contract project and client |
 | `reference/packages/` | Shared onchain predicates, TypeScript protocol and planning primitives |
+| `reference/services/indexer/` | Runnable Ogmios reader host, SQLite history and local stack deployment |
 | `reference/testing/` | Local ledger adapter, fixtures and integration tests |
 | `reference/tools/` | Reproducible compiler staging and parameter application |
 | `docs/` | Earlier design discussion, requirements and proposed architecture decisions |
@@ -37,3 +40,5 @@ in [`docs/adrs/`](docs/adrs/README.md). They are not normative until accepted
 and reflected in the wire format, transaction rules, vectors, and tests.
 
 The root V0 planning types and inert validator sketches are historical inputs. The current reference projects live under `reference/`; their exact source basis, protocol boundaries and unresolved evidence gates are documented there.
+
+The [indexer service](reference/services/indexer/README.md) hosts the shared vault reader, durable chain history, all six economic views, stateless typed HTTP SDK and local deployment stack. See the [integration plan](docs/chain-integration-plan.md#17-completion-checklist) for current implementation status and acceptance gates, and the [node guide](reference/services/indexer/test/node/README.md) for executable acceptance scenarios.
