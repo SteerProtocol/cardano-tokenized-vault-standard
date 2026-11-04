@@ -1,3 +1,4 @@
 .env
 config/indexer.json
+kupo/config/
 data/

@@ -4,28 +4,21 @@ import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-import {
-  exampleDeployment,
-  manyRulesDeployment,
-  nativeFailure,
-  nativeRequest,
-  nativeSuccess,
-  network,
-} from "./fixtures/discovery.js";
+import { discoveryCalls } from "./fixtures/calls.js";
+import { nativeFailure, nativeRequest, nativeSuccess } from "./fixtures/discovery.js";
+import { component as componentUrl } from "./fixtures/guest.js";
 import { startHttpFixture } from "./fixtures/http.js";
 import { discover, fetch as fetchThroughPlugin } from "./fixtures/plugin.js";
 
-const component = fileURLToPath(
-  new URL("../plugin/target/wasm32-wasip2/release/example_plugin.wasm", import.meta.url),
-);
+const component = fileURLToPath(componentUrl);
 
 function runWasmtime(input) {
   const executable = fileURLToPath(
-    new URL("../host/rust/target/debug/example-plugin-host", import.meta.url),
+    new URL("../host/rust/target/release/example-plugin-host", import.meta.url),
   );
 
   return new Promise((resolve, reject) => {
-    const child = execFile(executable, [], { timeout: 15000 }, (error, stdout, stderr) => {
+    const child = execFile(executable, [], { timeout: 60000 }, (error, stdout, stderr) => {
       if (error) {
         reject(new Error(`Wasmtime runner failed: ${stderr}`, { cause: error }));
 
@@ -44,29 +37,7 @@ function runWasmtime(input) {
 }
 
 test("structured discovery pages and errors agree across JCO and Wasmtime", async () => {
-  const config = exampleDeployment();
-  const many = manyRulesDeployment(10_001);
-  const calls = [
-    { config, cursor: undefined, pageSize: 2 },
-    { config, cursor: "2", pageSize: 2 },
-    { config: { network, rules: [] }, cursor: undefined, pageSize: 256 },
-    {
-      config: { ...config, network: { ...network, networkId: 1, networkMagic: 764824073 } },
-      cursor: undefined,
-      pageSize: 256,
-    },
-    { config: many, cursor: undefined, pageSize: 256 },
-    { config: many, cursor: "9984", pageSize: 256 },
-    { config, cursor: undefined, pageSize: 0 },
-    { config, cursor: undefined, pageSize: 257 },
-    { config, cursor: "01", pageSize: 256 },
-    { config, cursor: "5", pageSize: 256 },
-    {
-      config: { network: { ...network, networkId: 2 }, rules: [] },
-      cursor: undefined,
-      pageSize: 256,
-    },
-  ];
+  const calls = discoveryCalls();
   const bytes = await readFile(component);
   const result = await runWasmtime({ discoveries: calls.map(nativeRequest), urls: [] });
 
@@ -84,7 +55,7 @@ test("structured discovery pages and errors agree across JCO and Wasmtime", asyn
 });
 
 test("async GET results and transport errors agree across both hosts", {
-  timeout: 20000,
+  timeout: 60000,
 }, async (t) => {
   const { origin, requests } = await startHttpFixture(t);
   const urls = ["/delayed", "/missing", "/redirect", "/disconnect"].map(

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 import { exampleDeployment, manyRulesDeployment, network, rule } from "./fixtures/discovery.js";
+import { component as componentUrl } from "./fixtures/guest.js";
 import { discover } from "./fixtures/plugin.js";
 
 const schema = "CTVS-DISCOVERY-1";
@@ -17,9 +18,7 @@ function expectFailure(operation, code) {
 }
 
 test("build emits a WebAssembly component", async () => {
-  const component = await readFile(
-    new URL("../plugin/target/wasm32-wasip2/release/example_plugin.wasm", import.meta.url),
-  );
+  const component = await readFile(componentUrl);
 
   assert.deepEqual([...component.subarray(0, 8)], [0x00, 0x61, 0x73, 0x6d, 0x0d, 0x00, 0x01, 0x00]);
 });

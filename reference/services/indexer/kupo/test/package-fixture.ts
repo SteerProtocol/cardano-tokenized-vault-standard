@@ -74,7 +74,7 @@ interface FixturePackage {
   os?: string[];
 }
 
-export async function registryFixture() {
+export async function registryFixture(options: { listenHost?: string; hostname?: string } = {}) {
   const directory = await mkdtemp(join(tmpdir(), "ctvs-package-registry-"));
   const packages = new Map<string, Record<string, unknown>>();
   const tarballs = new Map<string, Buffer>();
@@ -99,13 +99,15 @@ export async function registryFixture() {
     response.end(body ?? "{}");
   });
 
-  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+  await new Promise<void>((resolve) =>
+    server.listen(0, options.listenHost ?? "127.0.0.1", resolve),
+  );
 
   const address = server.address();
 
   if (!address || typeof address === "string") throw new Error("fixture registry failed to bind");
 
-  const url = `http://127.0.0.1:${address.port}/`;
+  const url = `http://${options.hostname ?? "127.0.0.1"}:${address.port}/`;
 
   async function publish(input: FixturePackage) {
     const version = input.version ?? "1.0.0";

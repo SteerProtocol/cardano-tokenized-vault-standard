@@ -1,5 +1,6 @@
 /** Create a fresh, isolated G0 environment. Keys remain in ignored, private artifact directories. */
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   chmodSync,
   copyFileSync,
@@ -16,7 +17,7 @@ import { docker, eventually, nodeImage, write } from "./environment.js";
 const fixtures = fileURLToPath(new URL("../fixtures/", import.meta.url));
 const override = fileURLToPath(new URL("../compose.override.yml", import.meta.url));
 
-function generate(directory: string, fork: boolean, forkSecurityParam: number) {
+export function generate(directory: string, fork: boolean, forkSecurityParam: number) {
   const spec = JSON.parse(readFileSync(join(fixtures, "shelley.spec.json"), "utf8"));
   const start = new Date(Date.now() + 10000).toISOString().replace(/\.\d+Z$/, "Z");
 
@@ -31,6 +32,8 @@ function generate(directory: string, fork: boolean, forkSecurityParam: number) {
   docker([
     "run",
     "--rm",
+    "--user",
+    `${process.getuid?.() ?? 1000}:${process.getgid?.() ?? 1000}`,
     "--entrypoint",
     "cardano-cli",
     "-v",
@@ -107,7 +110,7 @@ function generate(directory: string, fork: boolean, forkSecurityParam: number) {
   return network;
 }
 
-function fund(directory: string, node: string) {
+export function fund(directory: string, node: string) {
   const cli = (...args: string[]) =>
     docker([
       "run",
@@ -208,6 +211,26 @@ export async function prepare(options: { fork?: boolean; forkSecurityParam?: num
 
   const project = `ctvs-${directory.split("/").at(-1)?.toLowerCase()}`;
   const network = generate(directory, options.fork ?? false, options.forkSecurityParam ?? 100);
+  const genesis = readFileSync(join(network, "genesis/shelley-genesis.json"));
+  const identity = {
+    networkId: 0,
+    networkMagic: 42,
+    genesisHash: createHash("sha256").update(genesis).digest("hex"),
+  };
+
+  const kupoConfiguration = join(directory, "kupo-configuration");
+
+  mkdirSync(kupoConfiguration);
+  write(kupoConfiguration, "kupo", {
+    network: identity,
+    registrations: [
+      {
+        id: "example",
+        package: "@ctvs/example-plugin",
+        deployment: { network: identity, rules: [] },
+      },
+    ],
+  });
 
   writeFileSync(
     join(directory, "stack.env"),
@@ -215,6 +238,7 @@ export async function prepare(options: { fork?: boolean; forkSecurityParam?: num
       CTVS_STACK_NAME: project,
       NODE_CONFIG_DIR: network,
       INDEXER_CONFIG: join(directory, "indexer.json"),
+      KUPO_CONFIG_DIR: kupoConfiguration,
       G0_POOL_KEYS: join(directory, "genesis/pools-keys/pool1"),
       OGMIOS_PORT: "19005",
       KUPO_PORT: "19006",
@@ -237,7 +261,7 @@ export async function prepare(options: { fork?: boolean; forkSecurityParam?: num
     ]);
 
   try {
-    compose("build", "indexer");
+    compose("build", "indexer", "kupo");
     compose("up", "-d", "node", "ogmios", "kupo");
     await eventually(async () => {
       try {

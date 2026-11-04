@@ -19,9 +19,12 @@
     "build:component": "cargo build --manifest-path plugin/Cargo.toml --target wasm32-wasip2 --release --locked",
     "build:js": "jco transpile plugin/target/wasm32-wasip2/release/example_plugin.wasm --name example-plugin -o dist/js --instantiation async --no-wasi-shim --async-mode jspi --async-imports ctvs:example-plugin/http#get --async-exports fetch",
     "build:package": "npm run build:component && npm run build:js && node tools/assets.js && tsc -p tsconfig.build.json",
-    "build:host": "cargo build --manifest-path host/rust/Cargo.toml --locked",
+    "build:host": "cargo build --release --manifest-path host/rust/Cargo.toml --locked",
     "build": "npm run build:package && npm run build:host",
-    "test": "npm run build && node --test test/*.test.js"
+    "test": "npm run build && node --test test/*.test.js",
+    "build:typescript": "npm run build:package && tsc -p typescript/tsconfig.json && node tools/build-typescript.js && jco transpile dist/typescript/plugin.wasm --name example-plugin -o dist/typescript/js --instantiation async --no-wasi-shim --async-mode jspi --async-imports ctvs:example-plugin/http#get --async-exports fetch",
+    "test:typescript": "npm run build:typescript && npm run build:host && EXAMPLE_PLUGIN_GUEST=typescript node --test test/*.test.js",
+    "compare": "node tools/compare.js"
   },
   "dependencies": {
     "@ctvs/plugins": "0.1.0",
@@ -29,6 +32,7 @@
   },
   "devDependencies": {
     "typescript": "5.9.3",
-    "@bytecodealliance/jco": "1.39.0"
+    "@bytecodealliance/jco": "1.39.0",
+    "@bytecodealliance/componentize-js": "0.23.0"
   }
 }
